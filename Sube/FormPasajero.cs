@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca_Usuarios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace Sube
 {
     public partial class FormPasajero : Form
     {
+        List<Usuario> listaUsuarios;
+
         public FormPasajero()
         {
             InitializeComponent();
+            listaUsuarios = new List<Usuario>();
+
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -30,7 +35,7 @@ namespace Sube
         }
         private void btnRegistrar_Click_1(object sender, EventArgs e)
         {
-            FormRegistro formRegistro = new FormRegistro();
+            FormRegistro formRegistro = new FormRegistro(listaUsuarios);
             formRegistro.Show();
             Close();
         }

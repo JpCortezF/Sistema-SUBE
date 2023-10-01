@@ -151,6 +151,7 @@
             textBox5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBox5.ForeColor = SystemColors.WindowFrame;
             textBox5.Location = new Point(14, 50);
+            textBox5.MaxLength = 4;
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(78, 19);
@@ -330,9 +331,11 @@
             // 
             txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtDni.Location = new Point(31, 171);
+            txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(335, 26);
             txtDni.TabIndex = 4;
+            txtDni.TextChanged += txtDni_TextChanged;
             // 
             // btnDni
             // 
@@ -392,6 +395,7 @@
             Name = "FormRegistro";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegistro";
+            Load += FormRegistro_Load_1;
             grpDatos.ResumeLayout(false);
             grpDatos.PerformLayout();
             grpTarjeta.ResumeLayout(false);
