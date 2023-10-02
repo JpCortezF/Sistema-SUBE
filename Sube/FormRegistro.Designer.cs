@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
+            label4 = new Label();
+            btnMasculino = new Button();
+            btnFemenino = new Button();
+            btnX = new Button();
             grpTarjeta = new GroupBox();
             label2 = new Label();
             txtTarjeta4 = new TextBox();
@@ -46,10 +50,6 @@
             label5 = new Label();
             txtCorreo = new TextBox();
             lblDni = new Label();
-            btnX = new Button();
-            btnFemenino = new Button();
-            btnMasculino = new Button();
-            label4 = new Label();
             label3 = new Label();
             txtDni = new TextBox();
             btnDni = new Button();
@@ -65,6 +65,10 @@
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
+            grpDatos.Controls.Add(label4);
+            grpDatos.Controls.Add(btnMasculino);
+            grpDatos.Controls.Add(btnFemenino);
+            grpDatos.Controls.Add(btnX);
             grpDatos.Controls.Add(grpTarjeta);
             grpDatos.Controls.Add(btnContinuar);
             grpDatos.Controls.Add(label9);
@@ -75,10 +79,6 @@
             grpDatos.Controls.Add(label5);
             grpDatos.Controls.Add(txtCorreo);
             grpDatos.Controls.Add(lblDni);
-            grpDatos.Controls.Add(btnX);
-            grpDatos.Controls.Add(btnFemenino);
-            grpDatos.Controls.Add(btnMasculino);
-            grpDatos.Controls.Add(label4);
             grpDatos.Controls.Add(label3);
             grpDatos.Controls.Add(txtDni);
             grpDatos.Controls.Add(btnDni);
@@ -88,6 +88,52 @@
             grpDatos.Size = new Size(461, 519);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(31, 229);
+            label4.Name = "label4";
+            label4.Size = new Size(68, 16);
+            label4.TabIndex = 23;
+            label4.Text = "* Genero";
+            // 
+            // btnMasculino
+            // 
+            btnMasculino.Cursor = Cursors.Hand;
+            btnMasculino.FlatStyle = FlatStyle.Flat;
+            btnMasculino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMasculino.Location = new Point(32, 248);
+            btnMasculino.Name = "btnMasculino";
+            btnMasculino.Size = new Size(130, 28);
+            btnMasculino.TabIndex = 6;
+            btnMasculino.Text = "Masculino";
+            btnMasculino.UseVisualStyleBackColor = true;
+            // 
+            // btnFemenino
+            // 
+            btnFemenino.Cursor = Cursors.Hand;
+            btnFemenino.FlatStyle = FlatStyle.Flat;
+            btnFemenino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFemenino.Location = new Point(159, 248);
+            btnFemenino.Name = "btnFemenino";
+            btnFemenino.Size = new Size(130, 28);
+            btnFemenino.TabIndex = 7;
+            btnFemenino.Text = "Femenino";
+            btnFemenino.UseVisualStyleBackColor = true;
+            // 
+            // btnX
+            // 
+            btnX.Cursor = Cursors.Hand;
+            btnX.FlatStyle = FlatStyle.Flat;
+            btnX.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnX.Location = new Point(288, 248);
+            btnX.Name = "btnX";
+            btnX.Size = new Size(130, 28);
+            btnX.TabIndex = 8;
+            btnX.Text = "x";
+            btnX.UseVisualStyleBackColor = true;
             // 
             // grpTarjeta
             // 
@@ -165,7 +211,7 @@
             lblTarjeta.AutoSize = true;
             lblTarjeta.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblTarjeta.ForeColor = Color.DarkRed;
-            lblTarjeta.Location = new Point(13, 82);
+            lblTarjeta.Location = new Point(14, 82);
             lblTarjeta.Name = "lblTarjeta";
             lblTarjeta.Size = new Size(85, 15);
             lblTarjeta.TabIndex = 28;
@@ -192,7 +238,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.DarkRed;
-            label9.Location = new Point(31, 285);
+            label9.Location = new Point(31, 289);
             label9.Name = "label9";
             label9.Size = new Size(68, 15);
             label9.TabIndex = 35;
@@ -271,52 +317,6 @@
             lblDni.Text = "lblErrorDNI";
             lblDni.Visible = false;
             // 
-            // btnX
-            // 
-            btnX.Cursor = Cursors.Hand;
-            btnX.FlatStyle = FlatStyle.Flat;
-            btnX.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnX.Location = new Point(288, 254);
-            btnX.Name = "btnX";
-            btnX.Size = new Size(130, 28);
-            btnX.TabIndex = 8;
-            btnX.Text = "x";
-            btnX.UseVisualStyleBackColor = true;
-            // 
-            // btnFemenino
-            // 
-            btnFemenino.Cursor = Cursors.Hand;
-            btnFemenino.FlatStyle = FlatStyle.Flat;
-            btnFemenino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFemenino.Location = new Point(159, 254);
-            btnFemenino.Name = "btnFemenino";
-            btnFemenino.Size = new Size(130, 28);
-            btnFemenino.TabIndex = 7;
-            btnFemenino.Text = "Femenino";
-            btnFemenino.UseVisualStyleBackColor = true;
-            // 
-            // btnMasculino
-            // 
-            btnMasculino.Cursor = Cursors.Hand;
-            btnMasculino.FlatStyle = FlatStyle.Flat;
-            btnMasculino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnMasculino.Location = new Point(31, 254);
-            btnMasculino.Name = "btnMasculino";
-            btnMasculino.Size = new Size(130, 28);
-            btnMasculino.TabIndex = 6;
-            btnMasculino.Text = "Masculino";
-            btnMasculino.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(31, 226);
-            label4.Name = "label4";
-            label4.Size = new Size(68, 16);
-            label4.TabIndex = 23;
-            label4.Text = "* Genero";
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -365,7 +365,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { sUBEToolStripMenuItem, iNGRESARToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(788, 39);
+            menuStrip1.Size = new Size(787, 39);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -387,7 +387,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(788, 552);
+            ClientSize = new Size(787, 589);
             ControlBox = false;
             Controls.Add(grpDatos);
             Controls.Add(menuStrip1);
