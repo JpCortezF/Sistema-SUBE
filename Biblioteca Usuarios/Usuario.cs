@@ -11,41 +11,37 @@ namespace Biblioteca_Usuarios
         private string email;
         private string password;
 
-        protected Usuario(string email, string password)
+        public Usuario()
+        {
+            this.password = string.Empty;
+            this.email = string.Empty;
+        }
+        protected Usuario(string email):this()
         {
             this.email = email;
+        }
+        protected Usuario(string email, string password):this(email)
+        {
             this.password = password;
         }
         protected string Email { get => email; set => email = value; }
         protected string Password { get => password; set => password = value; }
 
-        public static bool operator +(List<Usuario> lista, Usuario usuario)
+        public virtual string ShowUser()
         {
-            bool result = true;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Email: {this.Email}");
+            sb.AppendLine($"Password: {this.Password}");
 
-            if(lista != null)
-            {
-                foreach (Usuario campo in lista)
-                {
-                    if(campo != null)
-                    {
-                        if(campo.email == usuario.email)
-                        {
-                            result = false;
-                        }
-                    }
-                }
-                for (int i = 0; i < lista.Count; i++)
-                {
-                    if (lista[i] != null)
-                    {
-                        lista[i] = usuario;
-                        result = true;
-                        break;
-                    }
-                }
-            }
-            return result;
+            return sb.ToString();
+        }
+        public virtual string ShowUsers(Dictionary<string, Usuario> dictionaryPassengers)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Email: {this.Email}");
+            sb.Append($"Password: {this.Password}");
+
+            return sb.ToString();
         }
     }
 }

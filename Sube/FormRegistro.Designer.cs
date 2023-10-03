@@ -148,7 +148,6 @@
             grpTarjeta.Size = new Size(427, 100);
             grpTarjeta.TabIndex = 36;
             grpTarjeta.TabStop = false;
-            grpTarjeta.Text = "Tarjeta";
             // 
             // label2
             // 

@@ -14,12 +14,12 @@ namespace Sube
 {
     public partial class FormIngreso : Form
     {
-        List<Usuario> listaUsuarios;
+        Dictionary<string, Usuario> dictonaryPassengers;
 
         public FormIngreso()
         {
             InitializeComponent();
-            listaUsuarios = new List<Usuario>();
+            this.dictonaryPassengers = new Dictionary<string, Usuario>();
         }
 
         private void FormIngreso_Load(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace Sube
         }
         private void lblRegistro_Click_1(object sender, EventArgs e)
         {
-            FormRegistro frm = new FormRegistro(listaUsuarios);
+            FormRegistro frm = new FormRegistro(dictonaryPassengers);
             frm.Show();
             Close();
         }

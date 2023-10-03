@@ -21,6 +21,11 @@ namespace Sube
 
 
         public FormRegistro(List<Usuario> usuarios)
+        Dictionary<string, Usuario> dictonaryPassengers;
+        string userCardNumber = "";
+        
+
+        public FormRegistro(Dictionary<string, Usuario> passengers)
         {
             InitializeComponent();
             this.listaUsuarios = usuarios;
@@ -28,6 +33,7 @@ namespace Sube
             btnMasculino.Click += ButtonGender_Click;
             btnFemenino.Click += ButtonGender_Click;
             btnX.Click += ButtonGender_Click;
+            this.dictonaryPassengers = passengers;
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -57,15 +63,43 @@ namespace Sube
         }
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
+            
+            if (ValidarIngresoTextBox())
+            {
+                string document = txtDni.Text;
+                string gender = "Masculino";
+                string cardNumber = userCardNumber;
+                string email = "pepito@gmail.com";
+
+                Pasajero passenger = new Pasajero(document,gender,cardNumber,email,"4718");
+                if(!dictonaryPassengers.ContainsKey(document))
+                {
+                    dictonaryPassengers[document] = passenger;
+                    MessageBox.Show(passenger.ShowUsers(dictonaryPassengers));
+                }
+            }
+            else
+            {
+
+            }
+        }
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+            txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
+        }
+        private bool ValidarIngresoTextBox()
+        {
             bool camposCompletos = true;
-            int i = 0;
-            string tarjeta = "";
+            int totalLength = 0;
+            List<string> cardNumbers = new List<string>();
+
             foreach (Control campo in grpTarjeta.Controls)
             {
                 if (campo is TextBox textBox)
                 {
-                    i += textBox.Text.Length;
-                    tarjeta += textBox.Text ;
+                    totalLength += textBox.Text.Length;
+                    
+                    cardNumbers.Add(textBox.Text);
                     if (string.IsNullOrEmpty(textBox.Text))
                     {
                         camposCompletos = false;
@@ -73,18 +107,10 @@ namespace Sube
                     }
                 }
             }
-            if (buttonGenderClicked == false)
-            {
-                label9.Text = "Error Ingrese un genero";
-                label9.Visible = true;
-            }
-            else
-            {
-                MessageBox.Show(this.gender);
-            }
+            cardNumbers.Reverse();
 
-            tarjeta.Reverse();
-            if (i < 16)
+            userCardNumber = string.Join("", cardNumbers);
+            if (totalLength < 16)
             {
                 lblTarjeta.Visible = true;
                 MessageBox.Show(tarjeta);
@@ -93,17 +119,11 @@ namespace Sube
             {
                 lblTarjeta.Visible = false;
             }
-            if (camposCompletos)
-            {
-                // Usuario usuario = new Pasajero(this.txtDni.Text,);
+            else
+            {              
+                lblTarjeta.Visible = false;
             }
-
-
-        }
-
-        private void txtDni_TextChanged(object sender, EventArgs e)
-        {
-            txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
+            return camposCompletos;
         }
 
         private void ButtonGender_Click(object? sender, EventArgs e)
