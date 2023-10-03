@@ -15,12 +15,9 @@ namespace Sube
 {
     public partial class FormRegistro : Form
     {
-        List<Usuario> listaUsuarios;
-        private string gender;
+        private string gender = "";
         private bool buttonGenderClicked;
 
-
-        public FormRegistro(List<Usuario> usuarios)
         Dictionary<string, Usuario> dictonaryPassengers;
         string userCardNumber = "";
         
@@ -28,11 +25,6 @@ namespace Sube
         public FormRegistro(Dictionary<string, Usuario> passengers)
         {
             InitializeComponent();
-            this.listaUsuarios = usuarios;
-            this.gender = "";
-            btnMasculino.Click += ButtonGender_Click;
-            btnFemenino.Click += ButtonGender_Click;
-            btnX.Click += ButtonGender_Click;
             this.dictonaryPassengers = passengers;
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -50,11 +42,14 @@ namespace Sube
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
             lblTarjeta.Text = "El número de tarjeta debe tener 16 dígitos.";
-            txtTarjeta2.KeyPress += txtTarjeta2_KeyPress;
-            txtTarjeta3.KeyPress += txtTarjeta2_KeyPress;
-            txtTarjeta4.KeyPress += txtTarjeta2_KeyPress;
+            txtTarjeta2.KeyPress += txtTarjeta_KeyPress;
+            txtTarjeta3.KeyPress += txtTarjeta_KeyPress;
+            txtTarjeta4.KeyPress += txtTarjeta_KeyPress;
+            btnMasculino.Click += ButtonGender_Click;
+            btnFemenino.Click += ButtonGender_Click;
+            btnX.Click += ButtonGender_Click;
         }
-        private void txtTarjeta2_KeyPress(object? sender, KeyPressEventArgs e)
+        private void txtTarjeta_KeyPress(object? sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -67,7 +62,6 @@ namespace Sube
             if (ValidarIngresoTextBox())
             {
                 string document = txtDni.Text;
-                string gender = "Masculino";
                 string cardNumber = userCardNumber;
                 string email = "pepito@gmail.com";
 
@@ -113,24 +107,23 @@ namespace Sube
             if (totalLength < 16)
             {
                 lblTarjeta.Visible = true;
-                MessageBox.Show(tarjeta);
             }
             else
             {
                 lblTarjeta.Visible = false;
             }
-            else
-            {              
-                lblTarjeta.Visible = false;
-            }
+
             return camposCompletos;
         }
 
         private void ButtonGender_Click(object? sender, EventArgs e)
         {
             if (sender is Button clickedButton)
+            {
                 this.gender = clickedButton.Text;
-            this.buttonGenderClicked = true;
+
+                this.buttonGenderClicked = true;
+            }
         }
 
 
