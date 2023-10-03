@@ -13,12 +13,12 @@ namespace Sube
 {
     public partial class FormPasajero : Form
     {
-        List<Usuario> listaUsuarios;
+        Dictionary<string, Usuario> dictonaryPassengers;
 
         public FormPasajero()
         {
             InitializeComponent();
-            listaUsuarios = new List<Usuario>();
+            this.dictonaryPassengers = new Dictionary<string, Usuario>();
 
         }
         private void btnSalir_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace Sube
         }
         private void btnRegistrar_Click_1(object sender, EventArgs e)
         {
-            FormRegistro formRegistro = new FormRegistro(listaUsuarios);
+            FormRegistro formRegistro = new FormRegistro(dictonaryPassengers);
             formRegistro.Show();
             Close();
         }

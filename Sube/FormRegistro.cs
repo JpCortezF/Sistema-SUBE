@@ -14,12 +14,14 @@ namespace Sube
 {
     public partial class FormRegistro : Form
     {
-        List<Usuario> listaUsuarios;
+        Dictionary<string, Usuario> dictonaryPassengers;
+        string userCardNumber = "";
+        
 
-        public FormRegistro(List<Usuario> usuarios)
+        public FormRegistro(Dictionary<string, Usuario> passengers)
         {
             InitializeComponent();
-            this.listaUsuarios = usuarios;
+            this.dictonaryPassengers = passengers;
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -49,11 +51,43 @@ namespace Sube
         }
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
+            
+            if (ValidarIngresoTextBox())
+            {
+                string document = txtDni.Text;
+                string gender = "Masculino";
+                string cardNumber = userCardNumber;
+                string email = "pepito@gmail.com";
+
+                Pasajero passenger = new Pasajero(document,gender,cardNumber,email,"4718");
+                if(!dictonaryPassengers.ContainsKey(document))
+                {
+                    dictonaryPassengers[document] = passenger;
+                    MessageBox.Show(passenger.ShowUsers(dictonaryPassengers));
+                }
+            }
+            else
+            {
+
+            }
+        }
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+            txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
+        }
+        private bool ValidarIngresoTextBox()
+        {
             bool camposCompletos = true;
+            int totalLength = 0;
+            List<string> cardNumbers = new List<string>();
+
             foreach (Control campo in grpTarjeta.Controls)
             {
                 if (campo is TextBox textBox)
                 {
+                    totalLength += textBox.Text.Length;
+                    
+                    cardNumbers.Add(textBox.Text);
                     if (string.IsNullOrEmpty(textBox.Text))
                     {
                         camposCompletos = false;
@@ -61,19 +95,18 @@ namespace Sube
                     }
                 }
             }
-            if(grpTarjeta.Text.Length < 16)
+            cardNumbers.Reverse();
+
+            userCardNumber = string.Join("", cardNumbers);
+            if (totalLength < 16)
             {
                 lblTarjeta.Visible = true;
             }
-            if(camposCompletos)
-            {
-
+            else
+            {              
+                lblTarjeta.Visible = false;
             }
-        }
-
-        private void txtDni_TextChanged(object sender, EventArgs e)
-        {
-            txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
+            return camposCompletos;
         }
     }
 }
