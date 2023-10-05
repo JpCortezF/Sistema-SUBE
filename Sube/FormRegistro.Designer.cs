@@ -46,7 +46,7 @@
             lblCorreo = new Label();
             lblCorreoRepetido = new Label();
             label6 = new Label();
-            textBox1 = new TextBox();
+            txtCorreo2 = new TextBox();
             label5 = new Label();
             txtCorreo = new TextBox();
             lblDni = new Label();
@@ -75,7 +75,7 @@
             grpDatos.Controls.Add(lblCorreo);
             grpDatos.Controls.Add(lblCorreoRepetido);
             grpDatos.Controls.Add(label6);
-            grpDatos.Controls.Add(textBox1);
+            grpDatos.Controls.Add(txtCorreo2);
             grpDatos.Controls.Add(label5);
             grpDatos.Controls.Add(txtCorreo);
             grpDatos.Controls.Add(lblDni);
@@ -101,6 +101,7 @@
             // 
             // btnMasculino
             // 
+            btnMasculino.BackColor = Color.WhiteSmoke;
             btnMasculino.Cursor = Cursors.Hand;
             btnMasculino.FlatStyle = FlatStyle.Flat;
             btnMasculino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -109,10 +110,11 @@
             btnMasculino.Size = new Size(130, 28);
             btnMasculino.TabIndex = 6;
             btnMasculino.Text = "Masculino";
-            btnMasculino.UseVisualStyleBackColor = true;
+            btnMasculino.UseVisualStyleBackColor = false;
             // 
             // btnFemenino
             // 
+            btnFemenino.BackColor = Color.WhiteSmoke;
             btnFemenino.Cursor = Cursors.Hand;
             btnFemenino.FlatStyle = FlatStyle.Flat;
             btnFemenino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -121,10 +123,11 @@
             btnFemenino.Size = new Size(130, 28);
             btnFemenino.TabIndex = 7;
             btnFemenino.Text = "Femenino";
-            btnFemenino.UseVisualStyleBackColor = true;
+            btnFemenino.UseVisualStyleBackColor = false;
             // 
             // btnX
             // 
+            btnX.BackColor = Color.WhiteSmoke;
             btnX.Cursor = Cursors.Hand;
             btnX.FlatStyle = FlatStyle.Flat;
             btnX.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
@@ -133,7 +136,7 @@
             btnX.Size = new Size(130, 28);
             btnX.TabIndex = 8;
             btnX.Text = "x";
-            btnX.UseVisualStyleBackColor = true;
+            btnX.UseVisualStyleBackColor = false;
             // 
             // grpTarjeta
             // 
@@ -278,13 +281,13 @@
             label6.TabIndex = 32;
             label6.Text = "* Repetir Correo electrónico";
             // 
-            // textBox1
+            // txtCorreo2
             // 
-            textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(31, 410);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(387, 26);
-            textBox1.TabIndex = 10;
+            txtCorreo2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCorreo2.Location = new Point(31, 410);
+            txtCorreo2.Name = "txtCorreo2";
+            txtCorreo2.Size = new Size(387, 26);
+            txtCorreo2.TabIndex = 10;
             // 
             // label5
             // 
@@ -420,7 +423,7 @@
         private Label lblCorreo;
         private Label lblCorreoRepetido;
         private Label label6;
-        private TextBox textBox1;
+        private TextBox txtCorreo2;
         private Label label5;
         private TextBox txtCorreo;
         private Label lblDni;

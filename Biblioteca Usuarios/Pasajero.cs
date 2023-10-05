@@ -20,7 +20,6 @@ namespace Biblioteca_Usuarios
             this.gender = string.Empty;
             this.cardNumber = string.Empty;
         }
-
         public Pasajero(string document, string gender, string cardNumber, string email, string password) : this(email, password)
         {
             this.document = document;
@@ -58,6 +57,34 @@ namespace Biblioteca_Usuarios
             }
 
             return result;
+        }
+        /// <summary>
+        /// Compara los atributos de 2 pasajeros, si encuentra alguna coincidencia entre sus atributos, retorna true.
+        /// </summary>
+        /// <param name="pasajero1"></param>
+        /// <param name="pasajero2"></param>
+        /// <returns> Retorna true si coincide algun atributo de los pasajeros. False si no encuentra coincidencia. </returns>
+        private bool ComparePassengers(Pasajero pasajero1, Pasajero pasajero2)
+        {
+            return pasajero1.Document == pasajero2.Document
+                || pasajero1.CardNumber == pasajero2.CardNumber
+                || pasajero1.Email == pasajero2.Email;
+        }
+        /// <summary>
+        /// Recorre todos los valores dentro del Dictionary, y en cada iteracion guarda el valor en PassengerToCompare
+        /// </summary>
+        /// <param name="passenger"></param>
+        /// <returns> Retorna True si el pasajero se encuentra en el Dictionary. False si se encuentra. </returns>
+        public bool PassengerExist(Pasajero passenger, Dictionary<string, Usuario> dictionaryPassengers)
+        {
+            foreach (Pasajero passengerToCompare in dictionaryPassengers.Values)
+            {
+                if (ComparePassengers(passenger, passengerToCompare))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public override string ShowUsers(Dictionary<string, Usuario> dictionaryPassengers)
         {
