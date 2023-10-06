@@ -11,26 +11,20 @@ namespace Biblioteca_Usuarios
         Dictionary<string, Usuario> dictionaryPassengers;
         string document;
         string gender;
-        string cardNumber;
+        TarjetaSube mySube;
 
-        public Pasajero(string email, string password) : base(email, password)
+        public Pasajero(string document, string gender, TarjetaSube sube, string email, string password) : base(email, password)
         {
             this.DictionaryPassengers = new Dictionary<string, Usuario>();
-            this.document = string.Empty;
-            this.gender = string.Empty;
-            this.cardNumber = string.Empty;
-        }
-        public Pasajero(string document, string gender, string cardNumber, string email, string password) : this(email, password)
-        {
+            this.mySube = sube;
             this.document = document;
             this.gender = gender;
-            this.cardNumber = cardNumber;
+
         }
 
 
         public string Document { get => document; set => document = value; }
         public string Gender { get => gender; set => gender = value; }
-        public string CardNumber { get => cardNumber; set => cardNumber = value; }
         public Dictionary<string, Usuario> DictionaryPassengers { get => dictionaryPassengers; set => dictionaryPassengers = value; }
 
         /// <summary>
@@ -67,7 +61,6 @@ namespace Biblioteca_Usuarios
         private bool ComparePassengers(Pasajero pasajero1, Pasajero pasajero2)
         {
             return pasajero1.Document == pasajero2.Document
-                || pasajero1.CardNumber == pasajero2.CardNumber
                 || pasajero1.Email == pasajero2.Email;
         }
         /// <summary>
@@ -97,7 +90,7 @@ namespace Biblioteca_Usuarios
                     sb.AppendLine(base.ShowUsers(dictionaryPassengers));
                     sb.AppendLine($"DNI: {pasajero.document}");
                     sb.AppendLine($"Gender: {pasajero.gender}");
-                    sb.AppendLine($"Card Number: {pasajero.cardNumber}");
+                    sb.AppendLine($"Sube id: {mySube.CardNumber}\n Tipo: {mySube.TipoPasajero}");
                     sb.AppendLine();
                 }
             }
@@ -110,8 +103,7 @@ namespace Biblioteca_Usuarios
             sb.AppendLine(base.ShowUser());
 
             sb.AppendLine($"DNI: {this.document}");
-            sb.AppendLine($"Gender: {this.gender}");
-            sb.AppendLine($"Card Number: {this.cardNumber}");              
+            sb.AppendLine($"Gender: {this.gender}");     
             
             return sb.ToString();
         }

@@ -45,7 +45,6 @@ namespace Sube
             lblTarjeta.Text = "El número de tarjeta debe tener 16 dígitos.";
             lblDni.Text = "El número de documento debe tener de 5 a 8 dígitos";
             lblCorreo.Text = "Por favor, ingresá tu correo electrónico.";
-            lblCorreoRepetido.Text = "El correo electrónico y su confirmación no coinciden.";
             txtTarjeta2.KeyPress += txtTarjeta_KeyPress;
             txtTarjeta3.KeyPress += txtTarjeta_KeyPress;
             txtTarjeta4.KeyPress += txtTarjeta_KeyPress;
@@ -63,12 +62,13 @@ namespace Sube
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
             string email = txtCorreo.Text;
+            
             if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email))
             {
                 string document = txtDni.Text;
                 string cardNumber = userCardNumber;
-
-                Pasajero passenger = new Pasajero(document, gender, cardNumber, email, "");
+                TarjetaSube newSube = new TarjetaSube(cardNumber, EnumTipoPasajero.Discapacitado);
+                Pasajero passenger = new Pasajero(document, gender, newSube, email, "");
                 if (!passenger.PassengerExist(passenger, dictonaryPassengers))
                 {
                     dictonaryPassengers[document] = passenger;
@@ -148,14 +148,6 @@ namespace Sube
             else
             {
                 lblDni.Visible = false;
-            }
-            if (txtCorreo.Text != txtCorreo2.Text)
-            {
-                lblCorreoRepetido.Visible = true;
-            }
-            else
-            {
-                lblCorreoRepetido.Visible = false;
             }
             return allCompleted;
         }

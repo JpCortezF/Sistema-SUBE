@@ -44,9 +44,6 @@
             btnContinuar = new Button();
             label9 = new Label();
             lblCorreo = new Label();
-            lblCorreoRepetido = new Label();
-            label6 = new Label();
-            txtCorreo2 = new TextBox();
             label5 = new Label();
             txtCorreo = new TextBox();
             lblDni = new Label();
@@ -57,6 +54,14 @@
             menuStrip1 = new MenuStrip();
             sUBEToolStripMenuItem = new ToolStripMenuItem();
             iNGRESARToolStripMenuItem = new ToolStripMenuItem();
+            label7 = new Label();
+            label8 = new Label();
+            txtClave = new TextBox();
+            label10 = new Label();
+            label11 = new Label();
+            txtRepetirClave = new TextBox();
+            cmbTipoPasajero = new ComboBox();
+            label12 = new Label();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -65,6 +70,14 @@
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
+            grpDatos.Controls.Add(label12);
+            grpDatos.Controls.Add(cmbTipoPasajero);
+            grpDatos.Controls.Add(label10);
+            grpDatos.Controls.Add(label11);
+            grpDatos.Controls.Add(txtRepetirClave);
+            grpDatos.Controls.Add(label7);
+            grpDatos.Controls.Add(label8);
+            grpDatos.Controls.Add(txtClave);
             grpDatos.Controls.Add(label4);
             grpDatos.Controls.Add(btnMasculino);
             grpDatos.Controls.Add(btnFemenino);
@@ -73,9 +86,6 @@
             grpDatos.Controls.Add(btnContinuar);
             grpDatos.Controls.Add(label9);
             grpDatos.Controls.Add(lblCorreo);
-            grpDatos.Controls.Add(lblCorreoRepetido);
-            grpDatos.Controls.Add(label6);
-            grpDatos.Controls.Add(txtCorreo2);
             grpDatos.Controls.Add(label5);
             grpDatos.Controls.Add(txtCorreo);
             grpDatos.Controls.Add(lblDni);
@@ -85,7 +95,7 @@
             grpDatos.Controls.Add(label1);
             grpDatos.Location = new Point(155, 44);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(461, 519);
+            grpDatos.Size = new Size(461, 664);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
             // 
@@ -227,7 +237,7 @@
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnContinuar.ForeColor = SystemColors.Control;
-            btnContinuar.Location = new Point(271, 463);
+            btnContinuar.Location = new Point(273, 611);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(147, 41);
             btnContinuar.TabIndex = 0;
@@ -258,36 +268,6 @@
             lblCorreo.TabIndex = 34;
             lblCorreo.Text = "lblErrorCorreo";
             lblCorreo.Visible = false;
-            // 
-            // lblCorreoRepetido
-            // 
-            lblCorreoRepetido.AutoSize = true;
-            lblCorreoRepetido.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCorreoRepetido.ForeColor = Color.DarkRed;
-            lblCorreoRepetido.Location = new Point(31, 439);
-            lblCorreoRepetido.Name = "lblCorreoRepetido";
-            lblCorreoRepetido.Size = new Size(84, 15);
-            lblCorreoRepetido.TabIndex = 33;
-            lblCorreoRepetido.Text = "lblErrorCorreo";
-            lblCorreoRepetido.Visible = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(32, 391);
-            label6.Name = "label6";
-            label6.Size = new Size(200, 16);
-            label6.TabIndex = 32;
-            label6.Text = "* Repetir Correo electrónico";
-            // 
-            // txtCorreo2
-            // 
-            txtCorreo2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCorreo2.Location = new Point(31, 410);
-            txtCorreo2.Name = "txtCorreo2";
-            txtCorreo2.Size = new Size(387, 26);
-            txtCorreo2.TabIndex = 10;
             // 
             // label5
             // 
@@ -385,11 +365,90 @@
             iNGRESARToolStripMenuItem.Text = "INGRESAR";
             iNGRESARToolStripMenuItem.Click += iNGRESARToolStripMenuItem_Click_1;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.DarkRed;
+            label7.Location = new Point(32, 443);
+            label7.Name = "label7";
+            label7.Size = new Size(77, 15);
+            label7.TabIndex = 39;
+            label7.Text = "lblErrorClave";
+            label7.Visible = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(33, 395);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 16);
+            label8.TabIndex = 38;
+            label8.Text = "* Clave";
+            // 
+            // txtClave
+            // 
+            txtClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtClave.Location = new Point(32, 414);
+            txtClave.Name = "txtClave";
+            txtClave.Size = new Size(387, 26);
+            txtClave.TabIndex = 37;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.ForeColor = Color.DarkRed;
+            label10.Location = new Point(32, 516);
+            label10.Name = "label10";
+            label10.Size = new Size(77, 15);
+            label10.TabIndex = 42;
+            label10.Text = "lblErrorClave";
+            label10.Visible = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(33, 468);
+            label11.Name = "label11";
+            label11.Size = new Size(112, 16);
+            label11.TabIndex = 41;
+            label11.Text = "* Repetir Clave";
+            // 
+            // txtRepetirClave
+            // 
+            txtRepetirClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRepetirClave.Location = new Point(32, 487);
+            txtRepetirClave.Name = "txtRepetirClave";
+            txtRepetirClave.Size = new Size(387, 26);
+            txtRepetirClave.TabIndex = 40;
+            // 
+            // cmbTipoPasajero
+            // 
+            cmbTipoPasajero.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbTipoPasajero.FormattingEnabled = true;
+            cmbTipoPasajero.Location = new Point(32, 569);
+            cmbTipoPasajero.Name = "cmbTipoPasajero";
+            cmbTipoPasajero.Size = new Size(173, 28);
+            cmbTipoPasajero.TabIndex = 43;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(32, 550);
+            label12.Name = "label12";
+            label12.Size = new Size(138, 16);
+            label12.TabIndex = 44;
+            label12.Text = "* TIpo de Pasajero";
+            // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(787, 589);
+            ClientSize = new Size(787, 720);
             ControlBox = false;
             Controls.Add(grpDatos);
             Controls.Add(menuStrip1);
@@ -438,5 +497,13 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem sUBEToolStripMenuItem;
         private ToolStripMenuItem iNGRESARToolStripMenuItem;
+        private Label label10;
+        private Label label11;
+        private TextBox txtRepetirClave;
+        private Label label7;
+        private Label label8;
+        private TextBox txtClave;
+        private Label label12;
+        private ComboBox cmbTipoPasajero;
     }
 }
