@@ -72,5 +72,10 @@ namespace Biblioteca_Usuarios
             }
             return sb.ToString();
         }
+
+        public string PassengerPassword(Pasajero pasajero)
+        {
+            return pasajero.password;
+        }
     }
 }

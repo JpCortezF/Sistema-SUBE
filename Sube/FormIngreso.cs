@@ -49,7 +49,7 @@ namespace Sube
                 {
                     if (kvp.Value is Pasajero passenger)
                     {
-                        if (txtDni.Text == passenger.Document)
+                        if (txtDni.Text == passenger.Document && txtPass.Text == passenger.PassengerPassword(passenger))
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
