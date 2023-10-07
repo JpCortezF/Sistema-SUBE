@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_Usuarios
 {
-    public enum EnumTipoPasajero
+    public enum EnumTarifaSocial
     {
+        Ninguna,
         Jubilado,
         Estudiantil,
-        Pensionado,
+        Malvinas,
         Discapacitado,        
     }
 }

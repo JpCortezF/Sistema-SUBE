@@ -19,14 +19,14 @@ namespace Sube
         private string gender = "";
         private bool buttonGenderClicked;
 
-        Dictionary<string, Usuario> dictonaryPassengers;
+        Dictionary<string, Usuario> dictionaryPassengers;
         string userCardNumber = "";
 
 
         public FormRegistro(Dictionary<string, Usuario> passengers)
         {
             InitializeComponent();
-            this.dictonaryPassengers = passengers;
+            this.dictionaryPassengers = passengers;
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -36,15 +36,22 @@ namespace Sube
         }
         private void iNGRESARToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FormIngreso formIngreso = new FormIngreso();
+            FormIngreso formIngreso = new FormIngreso(dictionaryPassengers);
             formIngreso.Show();
             Close();
         }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
             lblTarjeta.Text = "El número de tarjeta debe tener 16 dígitos.";
-            lblDni.Text = "El número de documento debe tener de 5 a 8 dígitos";
+            lblDni.Text = "El número de documento debe tener 8 dígitos";
             lblCorreo.Text = "Por favor, ingresá tu correo electrónico.";
+            lblClave.Text = "Las claves no coinciden";
+            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Ninguna);
+            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Jubilado);
+            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Estudiantil);
+            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Malvinas);
+            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Discapacitado);
+            cmbTipoPasajero.SelectedIndex = 0;
             txtTarjeta2.KeyPress += txtTarjeta_KeyPress;
             txtTarjeta3.KeyPress += txtTarjeta_KeyPress;
             txtTarjeta4.KeyPress += txtTarjeta_KeyPress;
@@ -52,7 +59,7 @@ namespace Sube
             btnFemenino.Click += ButtonGender_Click;
             btnX.Click += ButtonGender_Click;
         }
-        private void txtTarjeta_KeyPress(object? sender, KeyPressEventArgs e)
+        private void txtTarjeta_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -61,26 +68,41 @@ namespace Sube
         }
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
-            string email = txtCorreo.Text;
-            
-            if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email))
+            try
             {
-                string document = txtDni.Text;
-                string cardNumber = userCardNumber;
-                TarjetaSube newSube = new TarjetaSube(cardNumber, EnumTipoPasajero.Discapacitado);
-                Pasajero passenger = new Pasajero(document, gender, newSube, email, "");
-                if (!passenger.PassengerExist(passenger, dictonaryPassengers))
+                string email = txtCorreo.Text;
+                string password = txtClave.Text;
+                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email))
                 {
-                    dictonaryPassengers[document] = passenger;
-                    MessageBox.Show(passenger.ShowUsers(dictonaryPassengers));
+                    string document = txtDni.Text;
+                    string cardNumber = userCardNumber;
+                    EnumTarifaSocial tarifa = (EnumTarifaSocial)cmbTipoPasajero.SelectedItem;
+
+                    TarjetaSube newSube = new TarjetaSube(cardNumber, tarifa);
+                    Pasajero passenger = new Pasajero(document, gender, newSube, email, password);
+                    if (!passenger.PassengerExist(passenger, dictionaryPassengers))
+                    {
+                        dictionaryPassengers[document] = passenger;
+                        MessageBox.Show(passenger.ShowUsers(dictionaryPassengers));
+                        MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario ya se encuentra registrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         private void txtDni_TextChanged(object sender, EventArgs e)
         {
             txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
         }
-        private void ButtonGender_Click(object? sender, EventArgs e)
+        private void ButtonGender_Click(object sender, EventArgs e)
         {
             btnMasculino.BackColor = Color.WhiteSmoke;
             btnFemenino.BackColor = Color.WhiteSmoke;
@@ -129,7 +151,6 @@ namespace Sube
         private bool ValidarIngresoTextBox()
         {
             bool allCompleted = true;
-
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox textBox)
@@ -148,6 +169,14 @@ namespace Sube
             else
             {
                 lblDni.Visible = false;
+            }
+            if (txtClave.Text != txtRepetirClave.Text)
+            {
+                lblClave.Visible = true;
+            }
+            else
+            {
+                lblClave.Visible = false;
             }
             return allCompleted;
         }

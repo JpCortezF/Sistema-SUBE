@@ -14,12 +14,12 @@ namespace Sube
 {
     public partial class FormIngreso : Form
     {
-        Dictionary<string, Usuario> dictonaryPassengers;
+        Dictionary<string, Usuario> dictionaryPassengers;
 
-        public FormIngreso()
+        public FormIngreso(Dictionary<string, Usuario> passengers)
         {
             InitializeComponent();
-            this.dictonaryPassengers = new Dictionary<string, Usuario>();
+            this.dictionaryPassengers = passengers;
         }
 
         private void FormIngreso_Load(object sender, EventArgs e)
@@ -42,15 +42,33 @@ namespace Sube
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-
+            bool exist = false;
+            if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPass.Text))
+            {
+                foreach (KeyValuePair<string, Usuario> kvp in dictionaryPassengers)
+                {
+                    if (kvp.Value is Pasajero passenger)
+                    {
+                        if (txtDni.Text == passenger.Document)
+                        {
+                            exist = true;
+                            MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
+                }
+            }
+            if (!exist)
+            {
+                MessageBox.Show("No se encontro al usuario.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void lblRegistro_Click_1(object sender, EventArgs e)
         {
-            FormRegistro frm = new FormRegistro(dictonaryPassengers);
+            FormRegistro frm = new FormRegistro(dictionaryPassengers);
             frm.Show();
-            Close();
+            Hide();
         }
-
         private void btnMostrarPass_Click_1(object sender, EventArgs e)
         {
             if (txtPass.PasswordChar == '•')

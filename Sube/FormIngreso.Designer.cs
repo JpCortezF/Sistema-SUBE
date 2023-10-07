@@ -33,18 +33,13 @@
             menuStrip1 = new MenuStrip();
             label1 = new Label();
             groupBox1 = new GroupBox();
-            btnFem = new Button();
-            btnX = new Button();
-            btnMas = new Button();
             lblClave = new Label();
-            lblGenero = new Label();
             btnMostrarPass = new Button();
             lblRegistro = new Label();
             btnIngresar = new Button();
             label6 = new Label();
             txtPass = new TextBox();
             label4 = new Label();
-            label3 = new Label();
             lblErrorDni = new Label();
             txtDni = new TextBox();
             label2 = new Label();
@@ -89,18 +84,13 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ButtonFace;
-            groupBox1.Controls.Add(btnFem);
-            groupBox1.Controls.Add(btnX);
-            groupBox1.Controls.Add(btnMas);
             groupBox1.Controls.Add(lblClave);
-            groupBox1.Controls.Add(lblGenero);
             groupBox1.Controls.Add(btnMostrarPass);
             groupBox1.Controls.Add(lblRegistro);
             groupBox1.Controls.Add(btnIngresar);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(txtPass);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(lblErrorDni);
             groupBox1.Controls.Add(txtDni);
             groupBox1.Controls.Add(label2);
@@ -109,78 +99,30 @@
             groupBox1.Location = new Point(160, 173);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(467, 414);
+            groupBox1.Size = new Size(467, 382);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
-            // 
-            // btnFem
-            // 
-            btnFem.Cursor = Cursors.Hand;
-            btnFem.FlatStyle = FlatStyle.Flat;
-            btnFem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFem.Location = new Point(178, 184);
-            btnFem.Name = "btnFem";
-            btnFem.Size = new Size(106, 28);
-            btnFem.TabIndex = 23;
-            btnFem.Text = "Femenino";
-            btnFem.UseVisualStyleBackColor = true;
-            // 
-            // btnX
-            // 
-            btnX.Cursor = Cursors.Hand;
-            btnX.FlatStyle = FlatStyle.Flat;
-            btnX.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnX.Location = new Point(284, 184);
-            btnX.Name = "btnX";
-            btnX.Size = new Size(106, 28);
-            btnX.TabIndex = 22;
-            btnX.Text = "x";
-            btnX.UseVisualStyleBackColor = true;
-            // 
-            // btnMas
-            // 
-            btnMas.Cursor = Cursors.Hand;
-            btnMas.FlatStyle = FlatStyle.Flat;
-            btnMas.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnMas.Location = new Point(75, 184);
-            btnMas.Name = "btnMas";
-            btnMas.Size = new Size(106, 28);
-            btnMas.TabIndex = 21;
-            btnMas.Text = "Masculino";
-            btnMas.UseVisualStyleBackColor = true;
             // 
             // lblClave
             // 
             lblClave.AutoSize = true;
             lblClave.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblClave.ForeColor = Color.DarkRed;
-            lblClave.Location = new Point(75, 303);
+            lblClave.Location = new Point(76, 221);
             lblClave.Name = "lblClave";
             lblClave.Size = new Size(63, 16);
             lblClave.TabIndex = 19;
             lblClave.Text = "MsjClave";
             lblClave.Visible = false;
             // 
-            // lblGenero
-            // 
-            lblGenero.AutoSize = true;
-            lblGenero.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblGenero.ForeColor = Color.DarkRed;
-            lblGenero.Location = new Point(74, 217);
-            lblGenero.Name = "lblGenero";
-            lblGenero.Size = new Size(73, 16);
-            lblGenero.TabIndex = 18;
-            lblGenero.Text = "MsjGenero";
-            lblGenero.Visible = false;
-            // 
             // btnMostrarPass
             // 
             btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
             btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
-            btnMostrarPass.Location = new Point(337, 274);
+            btnMostrarPass.Location = new Point(338, 192);
             btnMostrarPass.Name = "btnMostrarPass";
             btnMostrarPass.Size = new Size(53, 27);
-            btnMostrarPass.TabIndex = 14;
+            btnMostrarPass.TabIndex = 4;
             btnMostrarPass.UseVisualStyleBackColor = true;
             btnMostrarPass.Click += btnMostrarPass_Click_1;
             // 
@@ -190,10 +132,10 @@
             lblRegistro.Cursor = Cursors.Hand;
             lblRegistro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistro.ForeColor = Color.LimeGreen;
-            lblRegistro.Location = new Point(178, 363);
+            lblRegistro.Location = new Point(178, 327);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(121, 17);
-            lblRegistro.TabIndex = 17;
+            lblRegistro.TabIndex = 6;
             lblRegistro.Text = "ó Registrate ahora";
             lblRegistro.Click += lblRegistro_Click_1;
             // 
@@ -203,7 +145,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(74, 352);
+            btnIngresar.Location = new Point(74, 316);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(89, 39);
             btnIngresar.TabIndex = 0;
@@ -216,42 +158,32 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label6.ForeColor = Color.DodgerBlue;
-            label6.Location = new Point(74, 303);
+            label6.Location = new Point(75, 221);
             label6.Name = "label6";
             label6.Size = new Size(89, 15);
-            label6.TabIndex = 16;
+            label6.TabIndex = 5;
             label6.Text = "Olvidé mi clave";
             // 
             // txtPass
             // 
             txtPass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPass.Location = new Point(74, 274);
+            txtPass.Location = new Point(75, 192);
             txtPass.MaxLength = 4;
             txtPass.Name = "txtPass";
             txtPass.PasswordChar = '•';
             txtPass.Size = new Size(267, 26);
-            txtPass.TabIndex = 13;
+            txtPass.TabIndex = 3;
             txtPass.TextChanged += txtPass_TextChanged_1;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(74, 252);
+            label4.Location = new Point(75, 170);
             label4.Name = "label4";
             label4.Size = new Size(58, 19);
             label4.TabIndex = 12;
             label4.Text = "* Clave";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(74, 163);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 19);
-            label3.TabIndex = 7;
-            label3.Text = "* Genero";
             // 
             // lblErrorDni
             // 
@@ -272,7 +204,7 @@
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(316, 26);
-            txtDni.TabIndex = 5;
+            txtDni.TabIndex = 2;
             txtDni.TextChanged += txtDni_TextChanged;
             // 
             // label2
@@ -292,7 +224,7 @@
             cmbDni.Location = new Point(74, 36);
             cmbDni.Name = "cmbDni";
             cmbDni.Size = new Size(316, 28);
-            cmbDni.TabIndex = 3;
+            cmbDni.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -320,7 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 623);
+            ClientSize = new Size(781, 573);
             ControlBox = false;
             Controls.Add(lblMensaje);
             Controls.Add(pictureBox1);
@@ -346,18 +278,13 @@
         private MenuStrip menuStrip1;
         private Label label1;
         private GroupBox groupBox1;
-        private Button btnFem;
-        private Button btnX;
-        private Button btnMas;
         private Label lblClave;
-        private Label lblGenero;
         private Button btnMostrarPass;
         private Label lblRegistro;
         private Button btnIngresar;
         private Label label6;
         private TextBox txtPass;
         private Label label4;
-        private Label label3;
         private Label lblErrorDni;
         private TextBox txtDni;
         private Label label2;

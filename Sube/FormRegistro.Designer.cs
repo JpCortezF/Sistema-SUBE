@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
+            label12 = new Label();
+            cmbTipoPasajero = new ComboBox();
+            label11 = new Label();
+            txtRepetirClave = new TextBox();
+            lblClave = new Label();
+            label8 = new Label();
+            txtClave = new TextBox();
             label4 = new Label();
             btnMasculino = new Button();
             btnFemenino = new Button();
@@ -54,14 +61,6 @@
             menuStrip1 = new MenuStrip();
             sUBEToolStripMenuItem = new ToolStripMenuItem();
             iNGRESARToolStripMenuItem = new ToolStripMenuItem();
-            label7 = new Label();
-            label8 = new Label();
-            txtClave = new TextBox();
-            label10 = new Label();
-            label11 = new Label();
-            txtRepetirClave = new TextBox();
-            cmbTipoPasajero = new ComboBox();
-            label12 = new Label();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -72,10 +71,9 @@
             grpDatos.BackColor = SystemColors.ButtonFace;
             grpDatos.Controls.Add(label12);
             grpDatos.Controls.Add(cmbTipoPasajero);
-            grpDatos.Controls.Add(label10);
             grpDatos.Controls.Add(label11);
             grpDatos.Controls.Add(txtRepetirClave);
-            grpDatos.Controls.Add(label7);
+            grpDatos.Controls.Add(lblClave);
             grpDatos.Controls.Add(label8);
             grpDatos.Controls.Add(txtClave);
             grpDatos.Controls.Add(label4);
@@ -98,6 +96,77 @@
             grpDatos.Size = new Size(461, 664);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(32, 550);
+            label12.Name = "label12";
+            label12.Size = new Size(106, 16);
+            label12.TabIndex = 44;
+            label12.Text = "* Tarifa Social";
+            // 
+            // cmbTipoPasajero
+            // 
+            cmbTipoPasajero.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbTipoPasajero.FormattingEnabled = true;
+            cmbTipoPasajero.Location = new Point(32, 569);
+            cmbTipoPasajero.Name = "cmbTipoPasajero";
+            cmbTipoPasajero.Size = new Size(173, 28);
+            cmbTipoPasajero.TabIndex = 12;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(33, 468);
+            label11.Name = "label11";
+            label11.Size = new Size(112, 16);
+            label11.TabIndex = 41;
+            label11.Text = "* Repetir Clave";
+            // 
+            // txtRepetirClave
+            // 
+            txtRepetirClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRepetirClave.Location = new Point(32, 487);
+            txtRepetirClave.MaxLength = 4;
+            txtRepetirClave.Name = "txtRepetirClave";
+            txtRepetirClave.PasswordChar = '•';
+            txtRepetirClave.Size = new Size(387, 26);
+            txtRepetirClave.TabIndex = 11;
+            // 
+            // lblClave
+            // 
+            lblClave.AutoSize = true;
+            lblClave.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblClave.ForeColor = Color.DarkRed;
+            lblClave.Location = new Point(33, 516);
+            lblClave.Name = "lblClave";
+            lblClave.Size = new Size(77, 15);
+            lblClave.TabIndex = 39;
+            lblClave.Text = "lblErrorClave";
+            lblClave.Visible = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(33, 395);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 16);
+            label8.TabIndex = 38;
+            label8.Text = "* Clave";
+            // 
+            // txtClave
+            // 
+            txtClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtClave.Location = new Point(32, 414);
+            txtClave.MaxLength = 4;
+            txtClave.Name = "txtClave";
+            txtClave.PasswordChar = '•';
+            txtClave.Size = new Size(387, 26);
+            txtClave.TabIndex = 10;
             // 
             // label4
             // 
@@ -365,85 +434,6 @@
             iNGRESARToolStripMenuItem.Text = "INGRESAR";
             iNGRESARToolStripMenuItem.Click += iNGRESARToolStripMenuItem_Click_1;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.DarkRed;
-            label7.Location = new Point(32, 443);
-            label7.Name = "label7";
-            label7.Size = new Size(77, 15);
-            label7.TabIndex = 39;
-            label7.Text = "lblErrorClave";
-            label7.Visible = false;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(33, 395);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 16);
-            label8.TabIndex = 38;
-            label8.Text = "* Clave";
-            // 
-            // txtClave
-            // 
-            txtClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtClave.Location = new Point(32, 414);
-            txtClave.Name = "txtClave";
-            txtClave.Size = new Size(387, 26);
-            txtClave.TabIndex = 37;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.ForeColor = Color.DarkRed;
-            label10.Location = new Point(32, 516);
-            label10.Name = "label10";
-            label10.Size = new Size(77, 15);
-            label10.TabIndex = 42;
-            label10.Text = "lblErrorClave";
-            label10.Visible = false;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(33, 468);
-            label11.Name = "label11";
-            label11.Size = new Size(112, 16);
-            label11.TabIndex = 41;
-            label11.Text = "* Repetir Clave";
-            // 
-            // txtRepetirClave
-            // 
-            txtRepetirClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtRepetirClave.Location = new Point(32, 487);
-            txtRepetirClave.Name = "txtRepetirClave";
-            txtRepetirClave.Size = new Size(387, 26);
-            txtRepetirClave.TabIndex = 40;
-            // 
-            // cmbTipoPasajero
-            // 
-            cmbTipoPasajero.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbTipoPasajero.FormattingEnabled = true;
-            cmbTipoPasajero.Location = new Point(32, 569);
-            cmbTipoPasajero.Name = "cmbTipoPasajero";
-            cmbTipoPasajero.Size = new Size(173, 28);
-            cmbTipoPasajero.TabIndex = 43;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(32, 550);
-            label12.Name = "label12";
-            label12.Size = new Size(138, 16);
-            label12.TabIndex = 44;
-            label12.Text = "* TIpo de Pasajero";
-            // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -480,9 +470,6 @@
         private Button btnContinuar;
         private Label label9;
         private Label lblCorreo;
-        private Label lblCorreoRepetido;
-        private Label label6;
-        private TextBox txtCorreo2;
         private Label label5;
         private TextBox txtCorreo;
         private Label lblDni;
@@ -497,10 +484,9 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem sUBEToolStripMenuItem;
         private ToolStripMenuItem iNGRESARToolStripMenuItem;
-        private Label label10;
         private Label label11;
         private TextBox txtRepetirClave;
-        private Label label7;
+        private Label lblClave;
         private Label label8;
         private TextBox txtClave;
         private Label label12;

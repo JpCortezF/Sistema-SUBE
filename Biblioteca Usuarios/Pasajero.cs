@@ -15,11 +15,9 @@ namespace Biblioteca_Usuarios
 
         public Pasajero(string document, string gender, TarjetaSube sube, string email, string password) : base(email, password)
         {
-            this.DictionaryPassengers = new Dictionary<string, Usuario>();
             this.mySube = sube;
             this.document = document;
             this.gender = gender;
-
         }
 
 
@@ -27,31 +25,6 @@ namespace Biblioteca_Usuarios
         public string Gender { get => gender; set => gender = value; }
         public Dictionary<string, Usuario> DictionaryPassengers { get => dictionaryPassengers; set => dictionaryPassengers = value; }
 
-        /// <summary>
-        /// Si la Key ya existe en el Dictionary, significa que ya hay un pasajero con ese número de documento.
-        ///  Si la Key no existe, se agrega el pasajero al Dictionary usando el número de documento como clave.
-        /// </summary>
-        /// <param name="dictionary"></param>
-        /// <param name="passenger"></param>
-        /// <returns>  y se establece result en false. </returns>
-        public static bool operator +(Dictionary<string, Usuario> dictionary, Pasajero passenger)
-        {
-            bool result = true;
-
-            if (dictionary != null)
-            {
-                if (dictionary.ContainsKey(passenger.document))
-                {
-                    result = false; 
-                }
-                else
-                {
-                    dictionary[passenger.document] = passenger; 
-                }
-            }
-
-            return result;
-        }
         /// <summary>
         /// Compara los atributos de 2 pasajeros, si encuentra alguna coincidencia entre sus atributos, retorna true.
         /// </summary>
@@ -61,7 +34,8 @@ namespace Biblioteca_Usuarios
         private bool ComparePassengers(Pasajero pasajero1, Pasajero pasajero2)
         {
             return pasajero1.Document == pasajero2.Document
-                || pasajero1.Email == pasajero2.Email;
+                || pasajero1.Email == pasajero2.Email
+                || pasajero1.mySube.CardNumber == pasajero2.mySube.CardNumber;
         }
         /// <summary>
         /// Recorre todos los valores dentro del Dictionary, y en cada iteracion guarda el valor en PassengerToCompare
@@ -79,7 +53,7 @@ namespace Biblioteca_Usuarios
             }
             return false;
         }
-        public override string ShowUsers(Dictionary<string, Usuario> dictionaryPassengers)
+        public string ShowUsers(Dictionary<string, Usuario> dictionaryPassengers)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -87,24 +61,15 @@ namespace Biblioteca_Usuarios
             {
                 if (kvp.Value is Pasajero pasajero)
                 {
-                    sb.AppendLine(base.ShowUsers(dictionaryPassengers));
+                    sb.AppendLine($"Email: {pasajero.email}");
+                    sb.AppendLine($"Password: {pasajero.password}");
                     sb.AppendLine($"DNI: {pasajero.document}");
                     sb.AppendLine($"Gender: {pasajero.gender}");
-                    sb.AppendLine($"Sube id: {mySube.CardNumber}\n Tipo: {mySube.TipoPasajero}");
+                    sb.AppendLine($"Sube id: {pasajero.mySube.CardNumber}");
+                    sb.AppendLine($"Tarifa social: {pasajero.mySube.TarifaSocial}");
                     sb.AppendLine();
                 }
             }
-            return sb.ToString();
-        }
-
-        public override string ShowUser()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.ShowUser());
-
-            sb.AppendLine($"DNI: {this.document}");
-            sb.AppendLine($"Gender: {this.gender}");     
-            
             return sb.ToString();
         }
     }

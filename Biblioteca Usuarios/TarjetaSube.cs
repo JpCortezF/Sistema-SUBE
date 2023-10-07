@@ -10,19 +10,17 @@ namespace Biblioteca_Usuarios
     {
         string _cardNumber;
         float _balance;
-        private Enum tipoPasajero;
+        EnumTarifaSocial tarifaSocial;
 
-        public TarjetaSube(string cardNumber, Enum tipoPasajero)
+        public TarjetaSube(string cardNumber, EnumTarifaSocial tarifaSocial)
         {
-            _cardNumber = cardNumber;
-            _balance = 0;
-            this.tipoPasajero = tipoPasajero;
+            this._cardNumber = cardNumber;
+            this._balance = 0;
+            this.tarifaSocial = tarifaSocial;
         }
 
         public string CardNumber { get => _cardNumber; set => _cardNumber = value; }
         public float Balance { get => _balance; set => _balance = value; }
-        public Enum TipoPasajero { get => tipoPasajero; set => tipoPasajero = value; }
-
-
+        public EnumTarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
     }
 }

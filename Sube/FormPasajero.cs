@@ -14,12 +14,10 @@ namespace Sube
     public partial class FormPasajero : Form
     {
         Dictionary<string, Usuario> dictonaryPassengers;
-
         public FormPasajero()
         {
             InitializeComponent();
             this.dictonaryPassengers = new Dictionary<string, Usuario>();
-
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -29,7 +27,7 @@ namespace Sube
         }
         private void btnIngresar_Click_1(object sender, EventArgs e)
         {
-            FormIngreso formIngreso = new FormIngreso();
+            FormIngreso formIngreso = new FormIngreso(dictonaryPassengers);
             formIngreso.Show();
             Close();
         }
