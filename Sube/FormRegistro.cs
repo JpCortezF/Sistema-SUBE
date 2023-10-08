@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,14 +20,18 @@ namespace Sube
         private string gender = "";
         private bool buttonGenderClicked;
 
-        Dictionary<string, Usuario> dictionaryPassengers;
+        Dictionary<string, Pasajero> dictionaryPassengers;
         string userCardNumber = "";
 
 
-        public FormRegistro(Dictionary<string, Usuario> passengers)
+        public FormRegistro(Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string nombre = "MisPasajeros.Json";
+            string path = Path.Combine(ruta, nombre);
+            dictionaryPassengers = Serializador.ReadJson(path);
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -42,6 +47,9 @@ namespace Sube
         }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
+            ////string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            ////string nombre = @".\MisPasajeros.Json";
+            ////string path = ruta + nombre;
             lblTarjeta.Text = "El número de tarjeta debe tener 16 dígitos.";
             lblDni.Text = "El número de documento debe tener 8 dígitos";
             lblCorreo.Text = "Por favor, ingresá tu correo electrónico.";
@@ -58,6 +66,7 @@ namespace Sube
             btnMasculino.Click += ButtonGender_Click;
             btnFemenino.Click += ButtonGender_Click;
             btnX.Click += ButtonGender_Click;
+            //dictionaryPassengers = Serializador.ReadJson(path);
         }
         private void txtTarjeta_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -82,13 +91,12 @@ namespace Sube
                     EnumTarifaSocial tarifa = (EnumTarifaSocial)cmbTipoPasajero.SelectedItem;
 
                     TarjetaSube newSube = new TarjetaSube(cardNumber, tarifa);
-                    Pasajero passenger = new Pasajero(document, gender, email, password,newSube);
+                    Pasajero passenger = new Pasajero(document, gender, email, password, newSube);
                     if (!passenger.PassengerExist(passenger, dictionaryPassengers))
                     {
-                        dictionaryPassengers[document] = passenger;
-                        MessageBox.Show(passenger.ShowUsers(dictionaryPassengers));
+                        dictionaryPassengers[document] = passenger;    
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Serializador.EscribirJson(path, dictionaryPassengers);
+                        Serializador.WriteJson(path, dictionaryPassengers);
                     }
                     else
                     {
@@ -198,6 +206,14 @@ namespace Sube
                 lblCorreo.Visible = false;
             }
             return result;
+        }
+
+        private void btnMostrarCargados_Click(object sender, EventArgs e)
+        {
+            foreach(Pasajero pasajero in dictionaryPassengers.Values)
+            {
+                MessageBox.Show(pasajero.ShowUser(pasajero));
+            }
         }
     }
 }

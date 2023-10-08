@@ -61,6 +61,7 @@
             menuStrip1 = new MenuStrip();
             sUBEToolStripMenuItem = new ToolStripMenuItem();
             iNGRESARToolStripMenuItem = new ToolStripMenuItem();
+            btnMostrarCargados = new Button();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -69,6 +70,7 @@
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
+            grpDatos.Controls.Add(btnMostrarCargados);
             grpDatos.Controls.Add(label12);
             grpDatos.Controls.Add(cmbTipoPasajero);
             grpDatos.Controls.Add(label11);
@@ -434,6 +436,16 @@
             iNGRESARToolStripMenuItem.Text = "INGRESAR";
             iNGRESARToolStripMenuItem.Click += iNGRESARToolStripMenuItem_Click_1;
             // 
+            // btnMostrarCargados
+            // 
+            btnMostrarCargados.Location = new Point(32, 617);
+            btnMostrarCargados.Name = "btnMostrarCargados";
+            btnMostrarCargados.Size = new Size(97, 30);
+            btnMostrarCargados.TabIndex = 45;
+            btnMostrarCargados.Text = "Mostrar";
+            btnMostrarCargados.UseVisualStyleBackColor = true;
+            btnMostrarCargados.Click += btnMostrarCargados_Click;
+            // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -491,5 +503,6 @@
         private TextBox txtClave;
         private Label label12;
         private ComboBox cmbTipoPasajero;
+        private Button btnMostrarCargados;
     }
 }

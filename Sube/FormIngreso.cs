@@ -14,9 +14,9 @@ namespace Sube
 {
     public partial class FormIngreso : Form
     {
-        Dictionary<string, Usuario> dictionaryPassengers;
+        Dictionary<string, Pasajero> dictionaryPassengers;
 
-        public FormIngreso(Dictionary<string, Usuario> passengers)
+        public FormIngreso(Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
@@ -45,7 +45,7 @@ namespace Sube
             bool exist = false;
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPass.Text))
             {
-                foreach (KeyValuePair<string, Usuario> kvp in dictionaryPassengers)
+                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
                 {
                     if (kvp.Value is Pasajero passenger)
                     {

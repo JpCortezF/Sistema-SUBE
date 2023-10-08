@@ -9,7 +9,6 @@ namespace Biblioteca_Usuarios
 {
     public class Pasajero : Usuario
     {
-        Dictionary<string, Usuario> dictionaryPassengers;
         string document;
         string gender;
         TarjetaSube mySube;
@@ -22,7 +21,7 @@ namespace Biblioteca_Usuarios
         }
 
         public string Document { get => document; set => document = value; }
-        public string Gender { get => gender; set => gender = value; }      
+        public string Gender { get => gender; set => gender = value; }
         public TarjetaSube MySube { get => mySube; set => mySube = value; }
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace Biblioteca_Usuarios
         /// </summary>
         /// <param name="passenger"></param>
         /// <returns> Retorna True si el pasajero se encuentra en el Dictionary. False si se encuentra. </returns>
-        public bool PassengerExist(Pasajero passenger, Dictionary<string, Usuario> dictionaryPassengers)
+        public bool PassengerExist(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers)
         {
             foreach (Pasajero passengerToCompare in dictionaryPassengers.Values)
             {
@@ -53,11 +52,11 @@ namespace Biblioteca_Usuarios
             }
             return false;
         }
-        public string ShowUsers(Dictionary<string, Usuario> dictionaryPassengers)
+        public string ShowUsers(Dictionary<string, Pasajero> dictionaryPassengers)
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (KeyValuePair<string, Usuario> kvp in dictionaryPassengers)
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
             {
                 if (kvp.Value is Pasajero passenger)
                 {
@@ -70,6 +69,21 @@ namespace Biblioteca_Usuarios
                     sb.AppendLine();
                 }
             }
+            return sb.ToString();
+        }
+
+        public string ShowUser(Pasajero passenger)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Email: {passenger.email}");
+            sb.AppendLine($"Password: {passenger.password}");
+            sb.AppendLine($"DNI: {passenger.document}");
+            sb.AppendLine($"Gender: {passenger.gender}");
+            sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
+            sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
+            sb.AppendLine();
+
             return sb.ToString();
         }
 

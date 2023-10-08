@@ -13,11 +13,11 @@ namespace Sube
 {
     public partial class FormPasajero : Form
     {
-        Dictionary<string, Usuario> dictonaryPassengers;
+        Dictionary<string, Pasajero> dictonaryPassengers;
         public FormPasajero()
         {
             InitializeComponent();
-            this.dictonaryPassengers = new Dictionary<string, Usuario>();
+            this.dictonaryPassengers = new Dictionary<string, Pasajero>();
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
