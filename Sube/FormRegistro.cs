@@ -69,7 +69,7 @@ namespace Sube
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string nombre = @".\MisEmpleados.Json";
+            string nombre = @".\MisPasajeros.Json";
             string path = ruta + nombre;
             try
             {

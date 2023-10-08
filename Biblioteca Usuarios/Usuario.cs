@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,9 @@ namespace Biblioteca_Usuarios
         {
             this.password = password;
         }
+        [JsonProperty("Email")]
         protected string Email { get => email; set => email = value; }
+        [JsonProperty("Password")]
         protected string Password { get => password; set => password = value; }
 
 

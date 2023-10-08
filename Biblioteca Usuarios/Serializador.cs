@@ -9,16 +9,17 @@ namespace Biblioteca_Usuarios
 {
     public class Serializador
     {
-        public static void EscribirJson(string ruta, Dictionary<string, Usuario> dictionaryPassengers)
+        public static void EscribirJson(string path, Dictionary<string, Usuario> dictionaryPassengers)
         {
             try
             {
-                string json = JsonConvert.SerializeObject(dictionaryPassengers, Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(ruta, json);
+                List<Usuario> listPassengers = dictionaryPassengers.Values.ToList();
+                string json = JsonConvert.SerializeObject(listPassengers, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(path, json);
             }
-            catch
+            catch(Exception ex)
             {
-                Console.WriteLine("Error");
+                Console.WriteLine(ex.ToString());
             }
         }
     }

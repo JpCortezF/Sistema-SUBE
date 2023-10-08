@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,15 @@ namespace Biblioteca_Usuarios
 
         public Pasajero(string document, string gender, TarjetaSube sube, string email, string password) : base(email, password)
         {
+            this.dictionaryPassengers = new Dictionary<string, Usuario>();
             this.mySube = sube;
             this.document = document;
             this.gender = gender;
         }
 
-
         public string Document { get => document; set => document = value; }
         public string Gender { get => gender; set => gender = value; }
+        [JsonProperty("DictionaryPassengers")]
         public Dictionary<string, Usuario> DictionaryPassengers { get => dictionaryPassengers; set => dictionaryPassengers = value; }
 
         /// <summary>
@@ -59,23 +61,23 @@ namespace Biblioteca_Usuarios
 
             foreach (KeyValuePair<string, Usuario> kvp in dictionaryPassengers)
             {
-                if (kvp.Value is Pasajero pasajero)
+                if (kvp.Value is Pasajero passenger)
                 {
-                    sb.AppendLine($"Email: {pasajero.email}");
-                    sb.AppendLine($"Password: {pasajero.password}");
-                    sb.AppendLine($"DNI: {pasajero.document}");
-                    sb.AppendLine($"Gender: {pasajero.gender}");
-                    sb.AppendLine($"Sube id: {pasajero.mySube.CardNumber}");
-                    sb.AppendLine($"Tarifa social: {pasajero.mySube.TarifaSocial}");
+                    sb.AppendLine($"Email: {passenger.email}");
+                    sb.AppendLine($"Password: {passenger.password}");
+                    sb.AppendLine($"DNI: {passenger.document}");
+                    sb.AppendLine($"Gender: {passenger.gender}");
+                    sb.AppendLine($"Sube id: {passenger.mySube.CardNumber}");
+                    sb.AppendLine($"Tarifa social: {passenger.mySube.TarifaSocial}");
                     sb.AppendLine();
                 }
             }
             return sb.ToString();
         }
 
-        public string PassengerPassword(Pasajero pasajero)
+        public string PassengerPassword(Pasajero passenger)
         {
-            return pasajero.password;
+            return passenger.password;
         }
     }
 }
