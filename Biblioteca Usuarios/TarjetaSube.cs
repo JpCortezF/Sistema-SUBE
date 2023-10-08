@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Biblioteca_Usuarios
 {
@@ -12,6 +14,7 @@ namespace Biblioteca_Usuarios
         string _cardNumber;
         float _balance;
         EnumTarifaSocial tarifaSocial;
+        Queue<Viajes> travels;
 
         public TarjetaSube(string cardNumber, EnumTarifaSocial tarifaSocial)
         {
@@ -23,5 +26,20 @@ namespace Biblioteca_Usuarios
         public string CardNumber { get => _cardNumber; set => _cardNumber = value; }
         public float Balance { get => _balance; set => _balance = value; }
         public EnumTarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
+        public Queue<Viajes> Travels { get => travels; set => travels = value; }
+
+
+        public Queue<Viajes> historialViajes(Viajes viajes)
+        {
+            Queue<Viajes> miQueue = new Queue<Viajes>();
+
+            miQueue.Enqueue(viajes);
+
+            return miQueue;
+        }
+
+
+
+
     }
 }

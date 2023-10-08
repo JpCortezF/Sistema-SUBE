@@ -92,7 +92,7 @@ namespace Sube
 
                     TarjetaSube newSube = new TarjetaSube(cardNumber, tarifa);
                     Pasajero passenger = new Pasajero(gender, email, password, newSube);
-                    if (!passenger.PassengerExist(passenger, dictionaryPassengers))
+                    if (!passenger.PassengerExist(passenger, dictionaryPassengers, document))
                     {
                         dictionaryPassengers[document] = passenger;    
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
