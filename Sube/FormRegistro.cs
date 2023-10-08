@@ -82,7 +82,7 @@ namespace Sube
                     EnumTarifaSocial tarifa = (EnumTarifaSocial)cmbTipoPasajero.SelectedItem;
 
                     TarjetaSube newSube = new TarjetaSube(cardNumber, tarifa);
-                    Pasajero passenger = new Pasajero(document, gender, newSube, email, password);
+                    Pasajero passenger = new Pasajero(document, gender, email, password,newSube);
                     if (!passenger.PassengerExist(passenger, dictionaryPassengers))
                     {
                         dictionaryPassengers[document] = passenger;

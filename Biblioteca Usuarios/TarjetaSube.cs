@@ -9,9 +9,9 @@ namespace Biblioteca_Usuarios
 {
     public class TarjetaSube
     {
-        string _cardNumber;
-        float _balance;
-        EnumTarifaSocial tarifaSocial;
+        public string _cardNumber;
+        public float _balance;
+        public EnumTarifaSocial tarifaSocial;
 
         public TarjetaSube(string cardNumber, EnumTarifaSocial tarifaSocial)
         {
@@ -19,9 +19,11 @@ namespace Biblioteca_Usuarios
             this._balance = 0;
             this.tarifaSocial = tarifaSocial;
         }
-
+        [JsonIgnore]
         public string CardNumber { get => _cardNumber; set => _cardNumber = value; }
+        [JsonIgnore]
         public float Balance { get => _balance; set => _balance = value; }
+        [JsonIgnore]
         public EnumTarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
     }
 }

@@ -12,9 +12,8 @@ namespace Biblioteca_Usuarios
         public static void EscribirJson(string path, Dictionary<string, Usuario> dictionaryPassengers)
         {
             try
-            {
-                List<Usuario> listPassengers = dictionaryPassengers.Values.ToList();
-                string json = JsonConvert.SerializeObject(listPassengers, Newtonsoft.Json.Formatting.Indented);
+            {   
+                string json = JsonConvert.SerializeObject(dictionaryPassengers, Newtonsoft.Json.Formatting.Indented);
                 File.WriteAllText(path, json);
             }
             catch(Exception ex)
