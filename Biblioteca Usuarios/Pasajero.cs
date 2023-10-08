@@ -9,18 +9,15 @@ namespace Biblioteca_Usuarios
 {
     public class Pasajero : Usuario
     {
-        string document;
         string gender;
         TarjetaSube mySube;
 
-        public Pasajero(string document, string gender, string email, string password,TarjetaSube sube) : base(email, password)
+        public Pasajero(string gender, string email, string password,TarjetaSube sube) : base(email, password)
         {
-            this.document = document;
             this.gender = gender;
             this.mySube = sube;
         }
 
-        public string Document { get => document; set => document = value; }
         public string Gender { get => gender; set => gender = value; }
         public TarjetaSube MySube { get => mySube; set => mySube = value; }
 
@@ -32,8 +29,7 @@ namespace Biblioteca_Usuarios
         /// <returns> Retorna true si coincide algun atributo de los pasajeros. False si no encuentra coincidencia. </returns>
         private bool ComparePassengers(Pasajero pasajero1, Pasajero pasajero2)
         {
-            return pasajero1.Document == pasajero2.Document
-                || pasajero1.Email == pasajero2.Email
+            return pasajero1.Email == pasajero2.Email
                 || pasajero1.MySube.CardNumber == pasajero2.MySube.CardNumber;
         }
         /// <summary>
@@ -62,7 +58,6 @@ namespace Biblioteca_Usuarios
                 {
                     sb.AppendLine($"Email: {passenger.email}");
                     sb.AppendLine($"Password: {passenger.password}");
-                    sb.AppendLine($"DNI: {passenger.document}");
                     sb.AppendLine($"Gender: {passenger.gender}");
                     sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
                     sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
@@ -78,7 +73,6 @@ namespace Biblioteca_Usuarios
 
             sb.AppendLine($"Email: {passenger.email}");
             sb.AppendLine($"Password: {passenger.password}");
-            sb.AppendLine($"DNI: {passenger.document}");
             sb.AppendLine($"Gender: {passenger.gender}");
             sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
             sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
