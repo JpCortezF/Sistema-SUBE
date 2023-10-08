@@ -99,7 +99,7 @@
             groupBox1.Location = new Point(160, 173);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(467, 382);
+            groupBox1.Size = new Size(467, 329);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             // 
@@ -132,7 +132,7 @@
             lblRegistro.Cursor = Cursors.Hand;
             lblRegistro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistro.ForeColor = Color.LimeGreen;
-            lblRegistro.Location = new Point(178, 327);
+            lblRegistro.Location = new Point(221, 285);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(121, 17);
             lblRegistro.TabIndex = 6;
@@ -145,7 +145,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(74, 316);
+            btnIngresar.Location = new Point(117, 274);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(89, 39);
             btnIngresar.TabIndex = 0;
@@ -252,7 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 573);
+            ClientSize = new Size(781, 528);
             ControlBox = false;
             Controls.Add(lblMensaje);
             Controls.Add(pictureBox1);
