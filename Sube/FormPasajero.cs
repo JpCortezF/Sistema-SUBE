@@ -13,11 +13,15 @@ namespace Sube
 {
     public partial class FormPasajero : Form
     {
-        Dictionary<string, Pasajero> dictonaryPassengers;
+        Dictionary<string, Pasajero> dictionaryPassengers;
         public FormPasajero()
         {
             InitializeComponent();
-            this.dictonaryPassengers = new Dictionary<string, Pasajero>();
+            this.dictionaryPassengers = new Dictionary<string, Pasajero>();
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string nombre = "MisPasajeros.Json";
+            string path = Path.Combine(ruta, nombre);
+            dictionaryPassengers = Serializador.ReadJson(path);
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -27,13 +31,13 @@ namespace Sube
         }
         private void btnIngresar_Click_1(object sender, EventArgs e)
         {
-            FormIngreso formIngreso = new FormIngreso(dictonaryPassengers);
+            FormIngreso formIngreso = new FormIngreso(dictionaryPassengers);
             formIngreso.Show();
             Close();
         }
         private void btnRegistrar_Click_1(object sender, EventArgs e)
         {
-            FormRegistro formRegistro = new FormRegistro(dictonaryPassengers);
+            FormRegistro formRegistro = new FormRegistro(dictionaryPassengers);
             formRegistro.Show();
             Close();
         }

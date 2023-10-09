@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Biblioteca_Usuarios;
+using Biblioteca_TarjetaSube;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -28,10 +29,6 @@ namespace Sube
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
-            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string nombre = "MisPasajeros.Json";
-            string path = Path.Combine(ruta, nombre);
-            dictionaryPassengers = Serializador.ReadJson(path);
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -47,9 +44,6 @@ namespace Sube
         }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
-            ////string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            ////string nombre = @".\MisPasajeros.Json";
-            ////string path = ruta + nombre;
             lblTarjeta.Text = "El número de tarjeta debe tener 16 dígitos.";
             lblDni.Text = "El número de documento debe tener 8 dígitos";
             lblCorreo.Text = "Por favor, ingresá tu correo electrónico.";
@@ -66,7 +60,6 @@ namespace Sube
             btnMasculino.Click += ButtonGender_Click;
             btnFemenino.Click += ButtonGender_Click;
             btnX.Click += ButtonGender_Click;
-            //dictionaryPassengers = Serializador.ReadJson(path);
         }
         private void txtTarjeta_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -94,7 +87,7 @@ namespace Sube
                     Pasajero passenger = new Pasajero(gender, email, password, newSube);
                     if (!passenger.PassengerExist(passenger, dictionaryPassengers, document))
                     {
-                        dictionaryPassengers[document] = passenger;    
+                        dictionaryPassengers[document] = passenger;
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Serializador.WriteJson(path, dictionaryPassengers);
                     }
@@ -126,6 +119,7 @@ namespace Sube
                 this.buttonGenderClicked = true;
             }
         }
+
         private bool ValidarIngresoTarjeta()
         {
             bool allCompleted = true;
@@ -210,10 +204,20 @@ namespace Sube
 
         private void btnMostrarCargados_Click(object sender, EventArgs e)
         {
-            foreach(Pasajero pasajero in dictionaryPassengers.Values)
+            foreach (Pasajero pasajero in dictionaryPassengers.Values)
             {
                 MessageBox.Show(pasajero.ShowUser(pasajero));
             }
+        }
+
+        private void txtClave_TextChanged(object sender, EventArgs e)
+        {
+            txtClave.Text = Regex.Replace(txtClave.Text, @"[^0-9]", "");
+        }
+
+        private void txtRepetirClave_TextChanged(object sender, EventArgs e)
+        {
+            txtRepetirClave.Text = Regex.Replace(txtRepetirClave.Text, @"[^0-9]", "");
         }
     }
 }

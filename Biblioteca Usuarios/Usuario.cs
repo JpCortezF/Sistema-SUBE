@@ -30,6 +30,6 @@ namespace Biblioteca_Usuarios
         [JsonProperty("Password")]
         protected string Password { get => password; set => password = value; }
 
-
+        public abstract string DevolverClave();
     }
 }

@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca_Usuarios
+namespace Biblioteca_TarjetaSube
 {
     public class Viajes
     {
-        string salida;
-        string destino;
-        int kilometrosRecorridos;
+
 
     }
 }
