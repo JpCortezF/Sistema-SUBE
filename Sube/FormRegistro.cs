@@ -44,6 +44,7 @@ namespace Sube
         }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
+            grpDatos.Parent = panelDatos;
             lblTarjeta.Text = "El número de tarjeta debe tener 16 dígitos.";
             lblDni.Text = "El número de documento debe tener 8 dígitos";
             lblCorreo.Text = "Por favor, ingresá tu correo electrónico.";
@@ -201,15 +202,6 @@ namespace Sube
             }
             return result;
         }
-
-        private void btnMostrarCargados_Click(object sender, EventArgs e)
-        {
-            foreach (Pasajero pasajero in dictionaryPassengers.Values)
-            {
-                MessageBox.Show(pasajero.ShowUser(pasajero));
-            }
-        }
-
         private void txtClave_TextChanged(object sender, EventArgs e)
         {
             txtClave.Text = Regex.Replace(txtClave.Text, @"[^0-9]", "");
@@ -218,6 +210,19 @@ namespace Sube
         private void txtRepetirClave_TextChanged(object sender, EventArgs e)
         {
             txtRepetirClave.Text = Regex.Replace(txtRepetirClave.Text, @"[^0-9]", "");
+        }
+
+        private void iNICIOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPasajero formPasajero = new FormPasajero();
+            formPasajero.Show();
+            Close();
+        }
+        private void atrasToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            FormIngreso frmIngreso = new FormIngreso(dictionaryPassengers);
+            frmIngreso.Show();
+            Close();
         }
     }
 }

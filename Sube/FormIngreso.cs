@@ -24,15 +24,13 @@ namespace Sube
 
         private void FormIngreso_Load(object sender, EventArgs e)
         {
-            lblMensaje.Text = "¡Hola! Te damos la bienvenida a tu cuenta SUBE";
+            groupBox1.Parent = panel1;
             cmbDni.Items.Add("DNI - Documento Nacional de Identidad");
             cmbDni.Items.Add("LE - Libreta Enrolamiento");
             cmbDni.Items.Add("LC - Libreta Cívica");
             cmbDni.Items.Add("DE - Documento Extranjero");
 
             cmbDni.SelectedIndex = 0;
-            lblMensaje.Parent = pictureBox1;
-            lblMensaje.BackColor = Color.Transparent;
         }
         private void iNICIOToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -53,6 +51,9 @@ namespace Sube
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            InicioPasajero inicio = new InicioPasajero();
+                            inicio.Show();
+                            this.Close();
                             break;
                         }
                     }
@@ -67,7 +68,7 @@ namespace Sube
         {
             FormRegistro frm = new FormRegistro(dictionaryPassengers);
             frm.Show();
-            Hide();
+            Close();
         }
         private void btnMostrarPass_Click_1(object sender, EventArgs e)
         {

@@ -124,11 +124,11 @@
   <data name="comprobado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\comprobado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fondoIngreso" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fondoingreso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="fondoSube" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\fondoSube.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="headerShortMiSube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\headershortmisube.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconPesos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\iconPesos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -141,6 +141,9 @@
   </data>
   <data name="pregunta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\pregunta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubeIngreso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\subeingreso.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
