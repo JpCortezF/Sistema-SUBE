@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIngreso));
             iNICIOToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
+            atrasToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             groupBox1 = new GroupBox();
             lblClave = new Label();
@@ -45,10 +46,11 @@
             label2 = new Label();
             cmbDni = new ComboBox();
             pictureBox1 = new PictureBox();
-            lblMensaje = new Label();
+            panel1 = new Panel();
             menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // iNICIOToolStripMenuItem
@@ -62,14 +64,20 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = SystemColors.Control;
+            menuStrip1.BackColor = SystemColors.ActiveCaption;
             menuStrip1.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, atrasToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(781, 39);
+            menuStrip1.Size = new Size(934, 39);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // atrasToolStripMenuItem
+            // 
+            atrasToolStripMenuItem.Name = "atrasToolStripMenuItem";
+            atrasToolStripMenuItem.Size = new Size(117, 35);
+            atrasToolStripMenuItem.Text = "VOLVER";
             // 
             // label1
             // 
@@ -96,10 +104,10 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(cmbDni);
-            groupBox1.Location = new Point(160, 173);
+            groupBox1.Location = new Point(0, 0);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(467, 329);
+            groupBox1.Size = new Size(470, 331);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             // 
@@ -231,37 +239,34 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Properties.Resources.fondoIngreso;
+            pictureBox1.BackgroundImage = Properties.Resources.SubeIngreso;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 42);
+            pictureBox1.Location = new Point(0, 37);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(781, 124);
-            pictureBox1.TabIndex = 10;
+            pictureBox1.Size = new Size(464, 331);
+            pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // lblMensaje
+            // panel1
             // 
-            lblMensaje.AutoSize = true;
-            lblMensaje.BackColor = Color.Transparent;
-            lblMensaje.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMensaje.ForeColor = SystemColors.Control;
-            lblMensaje.Location = new Point(12, 56);
-            lblMensaje.Name = "lblMensaje";
-            lblMensaje.Size = new Size(105, 29);
-            lblMensaje.TabIndex = 11;
-            lblMensaje.Text = "Mensaje";
+            panel1.Controls.Add(groupBox1);
+            panel1.Location = new Point(464, 37);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(470, 336);
+            panel1.TabIndex = 13;
             // 
             // FormIngreso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 528);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(934, 368);
             ControlBox = false;
-            Controls.Add(lblMensaje);
+            Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
-            Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
+            IsMdiContainer = true;
             Name = "FormIngreso";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormIngreso";
@@ -271,6 +276,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -293,6 +299,7 @@
         private Label label2;
         private ComboBox cmbDni;
         private PictureBox pictureBox1;
-        private Label lblMensaje;
+        private ToolStripMenuItem atrasToolStripMenuItem;
+        private Panel panel1;
     }
 }

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
-            btnMostrarCargados = new Button();
             label12 = new Label();
             cmbTipoPasajero = new ComboBox();
             label11 = new Label();
@@ -59,18 +58,21 @@
             txtDni = new TextBox();
             btnDni = new Button();
             label1 = new Label();
+            panelDatos = new Panel();
             menuStrip1 = new MenuStrip();
-            sUBEToolStripMenuItem = new ToolStripMenuItem();
-            iNGRESARToolStripMenuItem = new ToolStripMenuItem();
+            iNICIOToolStripMenuItem = new ToolStripMenuItem();
+            atrasToolStripMenuItem = new ToolStripMenuItem();
+            pictureBox1 = new PictureBox();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
+            panelDatos.SuspendLayout();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
-            grpDatos.Controls.Add(btnMostrarCargados);
             grpDatos.Controls.Add(label12);
             grpDatos.Controls.Add(cmbTipoPasajero);
             grpDatos.Controls.Add(label11);
@@ -93,21 +95,11 @@
             grpDatos.Controls.Add(txtDni);
             grpDatos.Controls.Add(btnDni);
             grpDatos.Controls.Add(label1);
-            grpDatos.Location = new Point(155, 44);
+            grpDatos.Location = new Point(10, -4);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(461, 664);
+            grpDatos.Size = new Size(432, 669);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
-            // 
-            // btnMostrarCargados
-            // 
-            btnMostrarCargados.Location = new Point(32, 617);
-            btnMostrarCargados.Name = "btnMostrarCargados";
-            btnMostrarCargados.Size = new Size(97, 30);
-            btnMostrarCargados.TabIndex = 45;
-            btnMostrarCargados.Text = "Mostrar";
-            btnMostrarCargados.UseVisualStyleBackColor = true;
-            btnMostrarCargados.Click += btnMostrarCargados_Click;
             // 
             // label12
             // 
@@ -296,7 +288,7 @@
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
             textBox5.Size = new Size(78, 19);
-            textBox5.TabIndex = 21;
+            textBox5.TabIndex = 0;
             textBox5.TabStop = false;
             textBox5.Text = "6061";
             textBox5.TextAlign = HorizontalAlignment.Center;
@@ -323,7 +315,7 @@
             btnContinuar.Location = new Point(273, 611);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(147, 41);
-            btnContinuar.TabIndex = 0;
+            btnContinuar.TabIndex = 13;
             btnContinuar.Text = "CONTINUAR ->";
             btnContinuar.UseVisualStyleBackColor = false;
             btnContinuar.Click += btnContinuar_Click_1;
@@ -423,39 +415,63 @@
             label1.TabIndex = 0;
             label1.Text = "Paso 1";
             // 
+            // panelDatos
+            // 
+            panelDatos.AutoScroll = true;
+            panelDatos.Controls.Add(grpDatos);
+            panelDatos.Location = new Point(461, 37);
+            panelDatos.Name = "panelDatos";
+            panelDatos.Size = new Size(473, 333);
+            panelDatos.TabIndex = 5;
+            // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.LightSkyBlue;
+            menuStrip1.BackColor = SystemColors.ActiveCaption;
             menuStrip1.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sUBEToolStripMenuItem, iNGRESARToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, atrasToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(787, 39);
-            menuStrip1.TabIndex = 5;
+            menuStrip1.Size = new Size(934, 39);
+            menuStrip1.TabIndex = 9;
             menuStrip1.Text = "menuStrip1";
             // 
-            // sUBEToolStripMenuItem
+            // iNICIOToolStripMenuItem
             // 
-            sUBEToolStripMenuItem.Name = "sUBEToolStripMenuItem";
-            sUBEToolStripMenuItem.Size = new Size(84, 35);
-            sUBEToolStripMenuItem.Text = "SUBE";
-            sUBEToolStripMenuItem.Click += sUBEToolStripMenuItem_Click_1;
+            iNICIOToolStripMenuItem.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            iNICIOToolStripMenuItem.ForeColor = Color.Black;
+            iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
+            iNICIOToolStripMenuItem.Size = new Size(102, 35);
+            iNICIOToolStripMenuItem.Text = "INICIO";
+            iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click;
             // 
-            // iNGRESARToolStripMenuItem
+            // atrasToolStripMenuItem
             // 
-            iNGRESARToolStripMenuItem.Name = "iNGRESARToolStripMenuItem";
-            iNGRESARToolStripMenuItem.Size = new Size(145, 35);
-            iNGRESARToolStripMenuItem.Text = "INGRESAR";
-            iNGRESARToolStripMenuItem.Click += iNGRESARToolStripMenuItem_Click_1;
+            atrasToolStripMenuItem.Name = "atrasToolStripMenuItem";
+            atrasToolStripMenuItem.Size = new Size(130, 35);
+            atrasToolStripMenuItem.Text = "INGRESO";
+            atrasToolStripMenuItem.Click += atrasToolStripMenuItem_Click_1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = Properties.Resources.SubeIngreso;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(0, 39);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(465, 329);
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
             // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(787, 720);
+            BackgroundImageLayout = ImageLayout.None;
+            ClientSize = new Size(934, 368);
             ControlBox = false;
-            Controls.Add(grpDatos);
+            Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
+            Controls.Add(panelDatos);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormRegistro";
             StartPosition = FormStartPosition.CenterScreen;
@@ -465,8 +481,10 @@
             grpDatos.PerformLayout();
             grpTarjeta.ResumeLayout(false);
             grpTarjeta.PerformLayout();
+            panelDatos.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -495,9 +513,6 @@
         private TextBox txtDni;
         private Button btnDni;
         private Label label1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem sUBEToolStripMenuItem;
-        private ToolStripMenuItem iNGRESARToolStripMenuItem;
         private Label label11;
         private TextBox txtRepetirClave;
         private Label lblClave;
@@ -505,6 +520,10 @@
         private TextBox txtClave;
         private Label label12;
         private ComboBox cmbTipoPasajero;
-        private Button btnMostrarCargados;
+        private Panel panelDatos;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem iNICIOToolStripMenuItem;
+        private ToolStripMenuItem atrasToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }
