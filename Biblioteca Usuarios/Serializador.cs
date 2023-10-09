@@ -13,7 +13,7 @@ namespace Biblioteca_Usuarios
 {
     public class Serializador
     {
-        public static void WriteJson(string path, Dictionary<string, Pasajero> dictionaryPassengers)
+        public static void WriteJsonPassenger(string path, Dictionary<string, Pasajero> dictionaryPassengers)
         {
             try
             {   
@@ -26,7 +26,7 @@ namespace Biblioteca_Usuarios
             }
         }
 
-        public static Dictionary<string, Pasajero> ReadJson(string path)
+        public static Dictionary<string, Pasajero> ReadJsonPassenger(string path)
         {
             Dictionary<string, Pasajero> dictionary = new Dictionary<string, Pasajero>();
 
@@ -34,6 +34,35 @@ namespace Biblioteca_Usuarios
             {
                 string json = File.ReadAllText(path);
                 dictionary = JsonConvert.DeserializeObject<Dictionary<string, Pasajero>>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return dictionary;
+        }
+
+        public static void WriteJsonAdmin(string path, Dictionary<string, Administrador> dictionaryAdmins)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(dictionaryAdmins, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(path, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public static Dictionary<string, Administrador> ReadJsonAdmin(string path)
+        {
+            Dictionary<string, Administrador> dictionary = new Dictionary<string, Administrador>();
+
+            try
+            {
+                string json = File.ReadAllText(path);
+                dictionary = JsonConvert.DeserializeObject<Dictionary<string, Administrador>>(json);
             }
             catch (Exception ex)
             {

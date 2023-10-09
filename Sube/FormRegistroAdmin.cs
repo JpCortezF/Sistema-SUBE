@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sube
 {
-    public partial class RegistroAdmin : FormAdmin
+    public partial class FormRegistroAdmin : Form
     {
-        public RegistroAdmin()
+        public FormRegistroAdmin()
         {
             InitializeComponent();
         }

@@ -29,11 +29,11 @@ namespace Biblioteca_Usuarios
         public Queue<Viajes> Travels { get => travels; set => travels = value; }
 
 
-        public Queue<Viajes> historialViajes(Viajes viajes)
+        public Queue<Viajes> historialViajes(Viajes viaje)
         {
             Queue<Viajes> miQueue = new Queue<Viajes>();
 
-            miQueue.Enqueue(viajes);
+            miQueue.Enqueue(viaje);
 
             return miQueue;
         }

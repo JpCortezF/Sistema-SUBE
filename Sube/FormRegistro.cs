@@ -31,7 +31,7 @@ namespace Sube
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
-            dictionaryPassengers = Serializador.ReadJson(path);
+            dictionaryPassengers = Serializador.ReadJsonPassenger(path);
         }
         private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -96,7 +96,7 @@ namespace Sube
                     {
                         dictionaryPassengers[document] = passenger;    
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Serializador.WriteJson(path, dictionaryPassengers);
+                        Serializador.WriteJsonPassenger(path, dictionaryPassengers);
                     }
                     else
                     {
