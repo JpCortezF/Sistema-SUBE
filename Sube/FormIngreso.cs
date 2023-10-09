@@ -91,5 +91,10 @@ namespace Sube
         {
             txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
         }
+
+        private void lblOlvideClave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

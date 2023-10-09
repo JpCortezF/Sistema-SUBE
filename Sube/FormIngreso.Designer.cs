@@ -37,7 +37,7 @@
             btnMostrarPass = new Button();
             lblRegistro = new Label();
             btnIngresar = new Button();
-            label6 = new Label();
+            lblOlvideClave = new Label();
             txtPass = new TextBox();
             label4 = new Label();
             lblErrorDni = new Label();
@@ -88,7 +88,7 @@
             groupBox1.Controls.Add(btnMostrarPass);
             groupBox1.Controls.Add(lblRegistro);
             groupBox1.Controls.Add(btnIngresar);
-            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(lblOlvideClave);
             groupBox1.Controls.Add(txtPass);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(lblErrorDni);
@@ -142,6 +142,7 @@
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.LimeGreen;
+            btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
@@ -153,16 +154,18 @@
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
-            // label6
+            // lblOlvideClave
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            label6.ForeColor = Color.DodgerBlue;
-            label6.Location = new Point(75, 221);
-            label6.Name = "label6";
-            label6.Size = new Size(89, 15);
-            label6.TabIndex = 5;
-            label6.Text = "Olvidé mi clave";
+            lblOlvideClave.AutoSize = true;
+            lblOlvideClave.Cursor = Cursors.Hand;
+            lblOlvideClave.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
+            lblOlvideClave.ForeColor = Color.DodgerBlue;
+            lblOlvideClave.Location = new Point(75, 221);
+            lblOlvideClave.Name = "lblOlvideClave";
+            lblOlvideClave.Size = new Size(89, 15);
+            lblOlvideClave.TabIndex = 5;
+            lblOlvideClave.Text = "Olvidé mi clave";
+            lblOlvideClave.Click += lblOlvideClave_Click;
             // 
             // txtPass
             // 
@@ -282,7 +285,7 @@
         private Button btnMostrarPass;
         private Label lblRegistro;
         private Button btnIngresar;
-        private Label label6;
+        private Label lblOlvideClave;
         private TextBox txtPass;
         private Label label4;
         private Label lblErrorDni;

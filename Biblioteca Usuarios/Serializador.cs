@@ -32,12 +32,21 @@ namespace Biblioteca_Usuarios
 
             try
             {
-                string json = File.ReadAllText(path);
-                dictionary = JsonConvert.DeserializeObject<Dictionary<string, Pasajero>>(json);
+                if(File.Exists(path))
+                {
+                    string json = File.ReadAllText(path);
+                    dictionary = JsonConvert.DeserializeObject<Dictionary<string, Pasajero>>(json);
+                }
+                else
+                {
+                    Console.WriteLine("El archivo JSON no existe.");
+                }
+
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error al trabajar con el archivo:");
+                Console.WriteLine(ex.Message);
             }
             return dictionary;
         }

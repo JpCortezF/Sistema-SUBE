@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Biblioteca_TarjetaSube;
 
 namespace Biblioteca_Usuarios
 {
@@ -92,6 +93,11 @@ namespace Biblioteca_Usuarios
         public string PassengerPassword(Pasajero passenger)
         {
             return passenger.password;
+        }
+
+        public override string DevolverClave()
+        {
+            throw new NotImplementedException();
         }
     }
 }

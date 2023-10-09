@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
+            btnMostrarCargados = new Button();
             label12 = new Label();
             cmbTipoPasajero = new ComboBox();
             label11 = new Label();
@@ -61,7 +62,6 @@
             menuStrip1 = new MenuStrip();
             sUBEToolStripMenuItem = new ToolStripMenuItem();
             iNGRESARToolStripMenuItem = new ToolStripMenuItem();
-            btnMostrarCargados = new Button();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -98,6 +98,16 @@
             grpDatos.Size = new Size(461, 664);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
+            // 
+            // btnMostrarCargados
+            // 
+            btnMostrarCargados.Location = new Point(32, 617);
+            btnMostrarCargados.Name = "btnMostrarCargados";
+            btnMostrarCargados.Size = new Size(97, 30);
+            btnMostrarCargados.TabIndex = 45;
+            btnMostrarCargados.Text = "Mostrar";
+            btnMostrarCargados.UseVisualStyleBackColor = true;
+            btnMostrarCargados.Click += btnMostrarCargados_Click;
             // 
             // label12
             // 
@@ -137,6 +147,7 @@
             txtRepetirClave.PasswordChar = '•';
             txtRepetirClave.Size = new Size(387, 26);
             txtRepetirClave.TabIndex = 11;
+            txtRepetirClave.TextChanged += txtRepetirClave_TextChanged;
             // 
             // lblClave
             // 
@@ -169,6 +180,7 @@
             txtClave.PasswordChar = '•';
             txtClave.Size = new Size(387, 26);
             txtClave.TabIndex = 10;
+            txtClave.TextChanged += txtClave_TextChanged;
             // 
             // label4
             // 
@@ -435,16 +447,6 @@
             iNGRESARToolStripMenuItem.Size = new Size(145, 35);
             iNGRESARToolStripMenuItem.Text = "INGRESAR";
             iNGRESARToolStripMenuItem.Click += iNGRESARToolStripMenuItem_Click_1;
-            // 
-            // btnMostrarCargados
-            // 
-            btnMostrarCargados.Location = new Point(32, 617);
-            btnMostrarCargados.Name = "btnMostrarCargados";
-            btnMostrarCargados.Size = new Size(97, 30);
-            btnMostrarCargados.TabIndex = 45;
-            btnMostrarCargados.Text = "Mostrar";
-            btnMostrarCargados.UseVisualStyleBackColor = true;
-            btnMostrarCargados.Click += btnMostrarCargados_Click;
             // 
             // FormRegistro
             // 
