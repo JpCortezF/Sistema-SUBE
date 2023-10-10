@@ -21,7 +21,7 @@ namespace Sube
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
-            dictionaryPassengers = Serializador.ReadJson(path);
+            dictionaryPassengers = Serializador.ReadJsonPassenger(path);
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {

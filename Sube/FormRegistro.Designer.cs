@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
+            label7 = new Label();
+            label6 = new Label();
+            txtLastname = new TextBox();
+            txtName = new TextBox();
             label12 = new Label();
             cmbTipoPasajero = new ComboBox();
             label11 = new Label();
@@ -73,6 +77,10 @@
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
+            grpDatos.Controls.Add(label7);
+            grpDatos.Controls.Add(label6);
+            grpDatos.Controls.Add(txtLastname);
+            grpDatos.Controls.Add(txtName);
             grpDatos.Controls.Add(label12);
             grpDatos.Controls.Add(cmbTipoPasajero);
             grpDatos.Controls.Add(label11);
@@ -95,17 +103,53 @@
             grpDatos.Controls.Add(txtDni);
             grpDatos.Controls.Add(btnDni);
             grpDatos.Controls.Add(label1);
-            grpDatos.Location = new Point(10, -4);
+            grpDatos.Location = new Point(3, 0);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(432, 669);
+            grpDatos.Size = new Size(458, 744);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(32, 150);
+            label7.Name = "label7";
+            label7.Size = new Size(72, 16);
+            label7.TabIndex = 48;
+            label7.Text = "* Nombre";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(32, 212);
+            label6.Name = "label6";
+            label6.Size = new Size(83, 16);
+            label6.TabIndex = 47;
+            label6.Text = "* Apellidos";
+            // 
+            // txtLastname
+            // 
+            txtLastname.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLastname.Location = new Point(32, 231);
+            txtLastname.Name = "txtLastname";
+            txtLastname.Size = new Size(388, 26);
+            txtLastname.TabIndex = 46;
+            // 
+            // txtName
+            // 
+            txtName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(31, 169);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(388, 26);
+            txtName.TabIndex = 45;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(32, 550);
+            label12.Location = new Point(32, 656);
             label12.Name = "label12";
             label12.Size = new Size(106, 16);
             label12.TabIndex = 44;
@@ -115,7 +159,7 @@
             // 
             cmbTipoPasajero.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbTipoPasajero.FormattingEnabled = true;
-            cmbTipoPasajero.Location = new Point(32, 569);
+            cmbTipoPasajero.Location = new Point(32, 675);
             cmbTipoPasajero.Name = "cmbTipoPasajero";
             cmbTipoPasajero.Size = new Size(173, 28);
             cmbTipoPasajero.TabIndex = 12;
@@ -124,7 +168,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(33, 468);
+            label11.Location = new Point(33, 574);
             label11.Name = "label11";
             label11.Size = new Size(112, 16);
             label11.TabIndex = 41;
@@ -133,7 +177,7 @@
             // txtRepetirClave
             // 
             txtRepetirClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtRepetirClave.Location = new Point(32, 487);
+            txtRepetirClave.Location = new Point(33, 593);
             txtRepetirClave.MaxLength = 4;
             txtRepetirClave.Name = "txtRepetirClave";
             txtRepetirClave.PasswordChar = '•';
@@ -146,7 +190,7 @@
             lblClave.AutoSize = true;
             lblClave.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblClave.ForeColor = Color.DarkRed;
-            lblClave.Location = new Point(33, 516);
+            lblClave.Location = new Point(34, 622);
             lblClave.Name = "lblClave";
             lblClave.Size = new Size(77, 15);
             lblClave.TabIndex = 39;
@@ -157,7 +201,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(33, 395);
+            label8.Location = new Point(35, 516);
             label8.Name = "label8";
             label8.Size = new Size(57, 16);
             label8.TabIndex = 38;
@@ -166,7 +210,7 @@
             // txtClave
             // 
             txtClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtClave.Location = new Point(32, 414);
+            txtClave.Location = new Point(34, 535);
             txtClave.MaxLength = 4;
             txtClave.Name = "txtClave";
             txtClave.PasswordChar = '•';
@@ -178,7 +222,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(31, 229);
+            label4.Location = new Point(33, 350);
             label4.Name = "label4";
             label4.Size = new Size(68, 16);
             label4.TabIndex = 23;
@@ -190,7 +234,7 @@
             btnMasculino.Cursor = Cursors.Hand;
             btnMasculino.FlatStyle = FlatStyle.Flat;
             btnMasculino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnMasculino.Location = new Point(32, 248);
+            btnMasculino.Location = new Point(34, 369);
             btnMasculino.Name = "btnMasculino";
             btnMasculino.Size = new Size(130, 28);
             btnMasculino.TabIndex = 6;
@@ -203,7 +247,7 @@
             btnFemenino.Cursor = Cursors.Hand;
             btnFemenino.FlatStyle = FlatStyle.Flat;
             btnFemenino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFemenino.Location = new Point(159, 248);
+            btnFemenino.Location = new Point(161, 369);
             btnFemenino.Name = "btnFemenino";
             btnFemenino.Size = new Size(130, 28);
             btnFemenino.TabIndex = 7;
@@ -216,7 +260,7 @@
             btnX.Cursor = Cursors.Hand;
             btnX.FlatStyle = FlatStyle.Flat;
             btnX.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnX.Location = new Point(288, 248);
+            btnX.Location = new Point(290, 369);
             btnX.Name = "btnX";
             btnX.Size = new Size(130, 28);
             btnX.TabIndex = 8;
@@ -312,7 +356,7 @@
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnContinuar.ForeColor = SystemColors.Control;
-            btnContinuar.Location = new Point(273, 611);
+            btnContinuar.Location = new Point(272, 675);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(147, 41);
             btnContinuar.TabIndex = 13;
@@ -325,7 +369,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.DarkRed;
-            label9.Location = new Point(31, 289);
+            label9.Location = new Point(33, 410);
             label9.Name = "label9";
             label9.Size = new Size(68, 15);
             label9.TabIndex = 35;
@@ -337,7 +381,7 @@
             lblCorreo.AutoSize = true;
             lblCorreo.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblCorreo.ForeColor = Color.DarkRed;
-            lblCorreo.Location = new Point(31, 367);
+            lblCorreo.Location = new Point(33, 488);
             lblCorreo.Name = "lblCorreo";
             lblCorreo.Size = new Size(84, 15);
             lblCorreo.TabIndex = 34;
@@ -348,7 +392,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(32, 319);
+            label5.Location = new Point(34, 440);
             label5.Name = "label5";
             label5.Size = new Size(145, 16);
             label5.TabIndex = 30;
@@ -357,7 +401,7 @@
             // txtCorreo
             // 
             txtCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCorreo.Location = new Point(31, 338);
+            txtCorreo.Location = new Point(33, 459);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(387, 26);
             txtCorreo.TabIndex = 9;
@@ -367,7 +411,7 @@
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblDni.ForeColor = Color.DarkRed;
-            lblDni.Location = new Point(31, 200);
+            lblDni.Location = new Point(33, 321);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(68, 15);
             lblDni.TabIndex = 27;
@@ -378,7 +422,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(31, 152);
+            label3.Location = new Point(33, 273);
             label3.Name = "label3";
             label3.Size = new Size(43, 16);
             label3.TabIndex = 22;
@@ -387,7 +431,7 @@
             // txtDni
             // 
             txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDni.Location = new Point(31, 171);
+            txtDni.Location = new Point(33, 292);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(335, 26);
@@ -399,7 +443,7 @@
             btnDni.BackgroundImage = (Image)resources.GetObject("btnDni.BackgroundImage");
             btnDni.BackgroundImageLayout = ImageLayout.Zoom;
             btnDni.Cursor = Cursors.Hand;
-            btnDni.Location = new Point(365, 170);
+            btnDni.Location = new Point(367, 291);
             btnDni.Name = "btnDni";
             btnDni.Size = new Size(53, 27);
             btnDni.TabIndex = 5;
@@ -419,9 +463,9 @@
             // 
             panelDatos.AutoScroll = true;
             panelDatos.Controls.Add(grpDatos);
-            panelDatos.Location = new Point(461, 37);
+            panelDatos.Location = new Point(454, 42);
             panelDatos.Name = "panelDatos";
-            panelDatos.Size = new Size(473, 333);
+            panelDatos.Size = new Size(480, 331);
             panelDatos.TabIndex = 5;
             // 
             // menuStrip1
@@ -455,9 +499,9 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.SubeIngreso;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 39);
+            pictureBox1.Location = new Point(0, 37);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(465, 329);
+            pictureBox1.Size = new Size(464, 331);
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
@@ -525,5 +569,9 @@
         private ToolStripMenuItem iNICIOToolStripMenuItem;
         private ToolStripMenuItem atrasToolStripMenuItem;
         private PictureBox pictureBox1;
+        private Label label7;
+        private Label label6;
+        private TextBox txtLastname;
+        private TextBox txtName;
     }
 }

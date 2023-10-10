@@ -56,6 +56,7 @@
             mISUBEToolStripMenuItem.Name = "mISUBEToolStripMenuItem";
             mISUBEToolStripMenuItem.Size = new Size(103, 33);
             mISUBEToolStripMenuItem.Text = "INICIO";
+            mISUBEToolStripMenuItem.Click += mISUBEToolStripMenuItem_Click;
             // 
             // mISUBEToolStripMenuItem1
             // 
@@ -78,8 +79,8 @@
             // 
             lblPasajero.AutoSize = true;
             lblPasajero.Font = new Font("Candara", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPasajero.ForeColor = SystemColors.Control;
-            lblPasajero.Location = new Point(12, 57);
+            lblPasajero.ForeColor = Color.White;
+            lblPasajero.Location = new Point(12, 62);
             lblPasajero.Name = "lblPasajero";
             lblPasajero.Size = new Size(224, 29);
             lblPasajero.TabIndex = 4;

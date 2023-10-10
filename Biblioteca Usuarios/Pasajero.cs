@@ -13,7 +13,11 @@ namespace Biblioteca_Usuarios
         string gender;
         TarjetaSube mySube;
 
-        public Pasajero(string gender, string email, string password,TarjetaSube sube) : base(email, password)
+        public Pasajero()
+        {
+
+        }
+        public Pasajero(string gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(email, password, name, lastname)
         {
             this.gender = gender;
             this.mySube = sube;
@@ -65,6 +69,8 @@ namespace Biblioteca_Usuarios
             {
                 if (kvp.Value is Pasajero passenger)
                 {
+                    sb.AppendLine($"Name: {passenger.name}");
+                    sb.AppendLine($"Lastname: {passenger.lastname}");
                     sb.AppendLine($"Email: {passenger.email}");
                     sb.AppendLine($"Password: {passenger.password}");
                     sb.AppendLine($"Gender: {passenger.gender}");
@@ -80,6 +86,8 @@ namespace Biblioteca_Usuarios
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.AppendLine($"Name: {passenger.name}");
+            sb.AppendLine($"Lastname: {passenger.lastname}");
             sb.AppendLine($"Email: {passenger.email}");
             sb.AppendLine($"Password: {passenger.password}");
             sb.AppendLine($"Gender: {passenger.gender}");
@@ -93,6 +101,19 @@ namespace Biblioteca_Usuarios
         public string PassengerPassword(Pasajero passenger)
         {
             return passenger.password;
+        }
+        public string FindNameByKey(Dictionary<string, Pasajero> dictionaryPassengers)
+        {
+            string name = string.Empty;
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            {
+                if (kvp.Value is Pasajero passenger)
+                {
+                    name = passenger.Name + " " +  passenger.LastName;
+                    break;
+                }
+            }
+            return name;
         }
 
         public override string DevolverClave()

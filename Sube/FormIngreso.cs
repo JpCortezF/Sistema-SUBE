@@ -51,7 +51,7 @@ namespace Sube
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            InicioPasajero inicio = new InicioPasajero();
+                            InicioPasajero inicio = new InicioPasajero(dictionaryPassengers, kvp.Key);
                             inicio.Show();
                             this.Close();
                             break;

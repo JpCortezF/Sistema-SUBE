@@ -13,6 +13,7 @@ using Biblioteca_Usuarios;
 using Biblioteca_TarjetaSube;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Xml.Linq;
 
 namespace Sube
 {
@@ -78,17 +79,19 @@ namespace Sube
             {
                 string email = txtCorreo.Text;
                 string password = txtClave.Text;
-                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email))
+                string name = txtName.Text;
+                string lastname = txtLastname.Text;
+                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname))
                 {
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
                     EnumTarifaSocial tarifa = (EnumTarifaSocial)cmbTipoPasajero.SelectedItem;
 
                     TarjetaSube newSube = new TarjetaSube(cardNumber, tarifa);
-                    Pasajero passenger = new Pasajero(gender, email, password, newSube);
+                    Pasajero passenger = new Pasajero(gender, email, password, name, lastname, newSube);
                     if (!passenger.PassengerExist(passenger, dictionaryPassengers, document))
                     {
-                        dictionaryPassengers[document] = passenger;    
+                        dictionaryPassengers[document] = passenger;
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Serializador.WriteJsonPassenger(path, dictionaryPassengers);
                     }
@@ -202,6 +205,10 @@ namespace Sube
             }
             return result;
         }
+        private bool EsSoloTexto(string texto)
+        {
+            return Regex.IsMatch(texto, "^[a-zA-Z ]+$");
+        }
         private void txtClave_TextChanged(object sender, EventArgs e)
         {
             txtClave.Text = Regex.Replace(txtClave.Text, @"[^0-9]", "");
@@ -224,5 +231,6 @@ namespace Sube
             frmIngreso.Show();
             Close();
         }
+
     }
 }
