@@ -24,7 +24,7 @@ namespace Sube
         }
 
         private void InicioPasajero_Load(object sender, EventArgs e)
-        {           
+        {
             ToolStripMenuItem itemSalir = new ToolStripMenuItem("SALIR");
             menuStrip1.Items.Add(itemSalir);
             itemSalir.Alignment = ToolStripItemAlignment.Right;
@@ -55,6 +55,11 @@ namespace Sube
 
             miSube.Show();
             miSube.BringToFront();
+        }
+
+        private void viajesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

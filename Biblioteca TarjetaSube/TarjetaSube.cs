@@ -12,7 +12,6 @@ namespace Biblioteca_TarjetaSube
     {
         string _cardNumber;
         float _balance;
-        float _amount;
         EnumTarifaSocial tarifaSocial;
         Queue<Viajes> travels;
 
@@ -27,7 +26,6 @@ namespace Biblioteca_TarjetaSube
         public float Balance { get => _balance; set => _balance = value; }
         public EnumTarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
         public Queue<Viajes> Travels { get => travels; set => travels = value; }
-        public float Amount { get => _amount; set => _amount = value; }
 
         public Queue<Viajes> historialViajes(Viajes viaje)
         {

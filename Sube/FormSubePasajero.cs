@@ -42,7 +42,7 @@ namespace Sube
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {
             lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
-            lblName.Text = $"{passenger.FindNameByKey(dictionaryPassengers)}";
+            lblName.Text = $"{passenger.FindNameByKey(dictionaryPassengers, passenger)}";
             lblSaldo.Text = $"$ {passenger.MySube.Balance}";
             cmbBaja.Items.Add("Perdida");
             cmbBaja.Items.Add("Robo");
@@ -57,6 +57,7 @@ namespace Sube
         private void btnCargar_Click(object sender, EventArgs e)
         {
             Close();
+            instancia = null;
             try
             {
                 CargaSube cargarSube = CargaSube.VentanaUnica(passenger, dictionaryPassengers);

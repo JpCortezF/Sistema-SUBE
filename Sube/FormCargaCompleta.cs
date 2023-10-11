@@ -43,7 +43,12 @@ namespace Sube
 
         private void FormCargaCompleta_Load(object sender, EventArgs e)
         {
+            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string nombre = @".\MisPasajeros.Json";
+            string path = ruta + nombre;
+
             lblSaldo.Text = $"$ {passenger.MySube.Balance}";
+            Serializador.WriteJsonPassenger(path, dictionaryPassengers);
         }
     }
 }

@@ -102,15 +102,18 @@ namespace Biblioteca_Usuarios
         {
             return passenger.password;
         }
-        public string FindNameByKey(Dictionary<string, Pasajero> dictionaryPassengers)
+        public string FindNameByKey(Dictionary<string, Pasajero> dictionaryPassengers, Pasajero pasajero)
         {
             string name = string.Empty;
             foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
             {
                 if (kvp.Value is Pasajero passenger)
                 {
-                    name = passenger.Name + " " +  passenger.LastName;
-                    break;
+                    if(pasajero.Name == passenger.Name && pasajero.LastName == passenger.LastName)
+                    {
+                        name = passenger.Name + " " + passenger.LastName;
+                        break;
+                    }
                 }
             }
             return name;
