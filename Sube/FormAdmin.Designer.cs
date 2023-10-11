@@ -34,7 +34,6 @@
             groupBox1 = new GroupBox();
             label1 = new Label();
             button1 = new Button();
-            label3 = new Label();
             textBox1 = new TextBox();
             label5 = new Label();
             lblClave = new Label();
@@ -74,7 +73,6 @@
             groupBox1.BackColor = SystemColors.ButtonFace;
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(lblClave);
@@ -110,22 +108,12 @@
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Cursor = Cursors.Hand;
             button1.Location = new Point(339, 222);
             button1.Name = "button1";
             button1.Size = new Size(53, 27);
             button1.TabIndex = 21;
             button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            label3.ForeColor = Color.DodgerBlue;
-            label3.Location = new Point(76, 251);
-            label3.Name = "label3";
-            label3.Size = new Size(89, 15);
-            label3.TabIndex = 22;
-            label3.Text = "Olvidé mi clave";
             // 
             // textBox1
             // 
@@ -163,6 +151,7 @@
             // 
             btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
             btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMostrarPass.Cursor = Cursors.Hand;
             btnMostrarPass.Location = new Point(338, 141);
             btnMostrarPass.Name = "btnMostrarPass";
             btnMostrarPass.Size = new Size(53, 27);
@@ -184,6 +173,7 @@
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.LimeGreen;
+            btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
@@ -197,6 +187,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.Cursor = Cursors.Hand;
             label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             label6.ForeColor = Color.DodgerBlue;
             label6.Location = new Point(75, 170);
@@ -293,7 +284,6 @@
         private Label label2;
         private Label label1;
         private Button button1;
-        private Label label3;
         private TextBox textBox1;
         private Label label5;
     }

@@ -127,6 +127,7 @@
             // 
             btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
             btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMostrarPass.Cursor = Cursors.Hand;
             btnMostrarPass.Location = new Point(338, 192);
             btnMostrarPass.Name = "btnMostrarPass";
             btnMostrarPass.Size = new Size(53, 27);
@@ -184,7 +185,7 @@
             txtPass.PasswordChar = '•';
             txtPass.Size = new Size(267, 26);
             txtPass.TabIndex = 3;
-            txtPass.TextChanged += txtPass_TextChanged_1;
+            txtPass.TextChanged += txt_TextChanged;
             // 
             // label4
             // 
@@ -216,7 +217,7 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(316, 26);
             txtDni.TabIndex = 2;
-            txtDni.TextChanged += txtDni_TextChanged;
+            txtDni.TextChanged += txt_TextChanged;
             // 
             // label2
             // 

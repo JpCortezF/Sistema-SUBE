@@ -35,6 +35,7 @@
             // 
             // btnSi
             // 
+            btnSi.Cursor = Cursors.Hand;
             btnSi.FlatStyle = FlatStyle.Flat;
             btnSi.Location = new Point(47, 117);
             btnSi.Name = "btnSi";
@@ -46,6 +47,7 @@
             // 
             // btnNo
             // 
+            btnNo.Cursor = Cursors.Hand;
             btnNo.FlatStyle = FlatStyle.Flat;
             btnNo.Location = new Point(175, 117);
             btnNo.Name = "btnNo";

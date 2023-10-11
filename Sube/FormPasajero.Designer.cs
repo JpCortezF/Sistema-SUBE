@@ -35,8 +35,6 @@
             label2 = new Label();
             btnTitularidad = new Button();
             btnRegistrar = new Button();
-            label1 = new Label();
-            btnCargar = new Button();
             btnSalir = new Button();
             lblIngresar = new Label();
             btnIngresar = new Button();
@@ -48,7 +46,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Gray;
-            label3.Location = new Point(153, 440);
+            label3.Location = new Point(126, 412);
             label3.Name = "label3";
             label3.Size = new Size(120, 16);
             label3.TabIndex = 32;
@@ -61,7 +59,7 @@
             button2.BackgroundImageLayout = ImageLayout.Zoom;
             button2.Cursor = Cursors.Hand;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(69, 402);
+            button2.Location = new Point(42, 374);
             button2.Name = "button2";
             button2.Size = new Size(277, 35);
             button2.TabIndex = 26;
@@ -73,7 +71,7 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(428, 174);
+            pictureBox1.Size = new Size(367, 209);
             pictureBox1.TabIndex = 31;
             pictureBox1.TabStop = false;
             // 
@@ -82,7 +80,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Gray;
-            label2.Location = new Point(169, 368);
+            label2.Location = new Point(142, 340);
             label2.Name = "label2";
             label2.Size = new Size(79, 16);
             label2.TabIndex = 30;
@@ -95,7 +93,7 @@
             btnTitularidad.FlatStyle = FlatStyle.Flat;
             btnTitularidad.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnTitularidad.ForeColor = Color.Black;
-            btnTitularidad.Location = new Point(69, 475);
+            btnTitularidad.Location = new Point(42, 474);
             btnTitularidad.Name = "btnTitularidad";
             btnTitularidad.Size = new Size(277, 35);
             btnTitularidad.TabIndex = 28;
@@ -109,37 +107,12 @@
             btnRegistrar.BackgroundImageLayout = ImageLayout.Zoom;
             btnRegistrar.Cursor = Cursors.Hand;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(69, 330);
+            btnRegistrar.Location = new Point(42, 302);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(277, 35);
             btnRegistrar.TabIndex = 25;
             btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click_1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.Gray;
-            label1.Location = new Point(176, 298);
-            label1.Name = "label1";
-            label1.Size = new Size(62, 16);
-            label1.TabIndex = 27;
-            label1.Text = "Cargala";
-            // 
-            // btnCargar
-            // 
-            btnCargar.BackColor = Color.LightSkyBlue;
-            btnCargar.BackgroundImage = (Image)resources.GetObject("btnCargar.BackgroundImage");
-            btnCargar.BackgroundImageLayout = ImageLayout.Zoom;
-            btnCargar.Cursor = Cursors.Hand;
-            btnCargar.FlatStyle = FlatStyle.Flat;
-            btnCargar.ForeColor = SystemColors.ControlText;
-            btnCargar.Location = new Point(69, 260);
-            btnCargar.Name = "btnCargar";
-            btnCargar.Size = new Size(277, 35);
-            btnCargar.TabIndex = 24;
-            btnCargar.UseVisualStyleBackColor = false;
             // 
             // btnSalir
             // 
@@ -148,7 +121,7 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = SystemColors.ButtonHighlight;
-            btnSalir.Location = new Point(69, 525);
+            btnSalir.Location = new Point(42, 526);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(277, 37);
             btnSalir.TabIndex = 29;
@@ -161,7 +134,7 @@
             lblIngresar.AutoSize = true;
             lblIngresar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblIngresar.ForeColor = Color.Gray;
-            lblIngresar.Location = new Point(135, 228);
+            lblIngresar.Location = new Point(108, 275);
             lblIngresar.Name = "lblIngresar";
             lblIngresar.Size = new Size(138, 16);
             lblIngresar.TabIndex = 23;
@@ -175,7 +148,7 @@
             btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(69, 190);
+            btnIngresar.Location = new Point(42, 237);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(277, 35);
             btnIngresar.TabIndex = 22;
@@ -186,7 +159,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(428, 579);
+            ClientSize = new Size(367, 579);
             ControlBox = false;
             Controls.Add(label3);
             Controls.Add(button2);
@@ -194,8 +167,6 @@
             Controls.Add(label2);
             Controls.Add(btnTitularidad);
             Controls.Add(btnRegistrar);
-            Controls.Add(label1);
-            Controls.Add(btnCargar);
             Controls.Add(btnSalir);
             Controls.Add(lblIngresar);
             Controls.Add(btnIngresar);
@@ -216,8 +187,6 @@
         private Label label2;
         private Button btnTitularidad;
         private Button btnRegistrar;
-        private Label label1;
-        private Button btnCargar;
         private Button btnSalir;
         private Label lblIngresar;
         private Button btnIngresar;

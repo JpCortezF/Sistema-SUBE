@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
             lblTarjeta = new Label();
-            label1 = new Label();
-            comboBox1 = new ComboBox();
+            lblName = new Label();
+            cmbBaja = new ComboBox();
             label2 = new Label();
+            btnSalir = new Button();
+            label1 = new Label();
+            lblSaldo = new Label();
+            btnCargar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -49,77 +50,98 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.LightGreen;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Candara", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(12, 246);
-            button1.Name = "button1";
-            button1.Size = new Size(108, 33);
-            button1.TabIndex = 1;
-            button1.Text = "Viajes";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.LightGreen;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Candara", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(265, 246);
-            button2.Name = "button2";
-            button2.Size = new Size(108, 33);
-            button2.TabIndex = 2;
-            button2.Text = "Viajes";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.LightGreen;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Candara", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(138, 246);
-            button3.Name = "button3";
-            button3.Size = new Size(108, 33);
-            button3.TabIndex = 3;
-            button3.Text = "turn around card";
-            button3.UseVisualStyleBackColor = false;
-            // 
             // lblTarjeta
             // 
             lblTarjeta.AutoSize = true;
-            lblTarjeta.Font = new Font("Candara", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTarjeta.Location = new Point(39, 120);
+            lblTarjeta.BackColor = Color.Transparent;
+            lblTarjeta.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTarjeta.ForeColor = Color.Black;
+            lblTarjeta.Location = new Point(39, 135);
             lblTarjeta.Name = "lblTarjeta";
-            lblTarjeta.Size = new Size(158, 23);
+            lblTarjeta.Size = new Size(158, 18);
             lblTarjeta.TabIndex = 4;
             lblTarjeta.Text = "Card Number 6061";
             // 
-            // label1
+            // lblName
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(39, 173);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 5;
-            label1.Text = "label1";
+            lblName.AutoSize = true;
+            lblName.BackColor = Color.Transparent;
+            lblName.Font = new Font("Candara", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblName.ForeColor = Color.Black;
+            lblName.Location = new Point(39, 173);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(121, 19);
+            lblName.TabIndex = 5;
+            lblName.Text = "Passenger name";
             // 
-            // comboBox1
+            // cmbBaja
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(415, 54);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(190, 23);
-            comboBox1.TabIndex = 6;
+            cmbBaja.Cursor = Cursors.Hand;
+            cmbBaja.FormattingEnabled = true;
+            cmbBaja.Location = new Point(521, 37);
+            cmbBaja.Name = "cmbBaja";
+            cmbBaja.Size = new Size(94, 23);
+            cmbBaja.TabIndex = 6;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(415, 23);
+            label2.Font = new Font("Candara", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(389, 37);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(116, 19);
             label2.TabIndex = 7;
-            label2.Text = "label2";
+            label2.Text = "Dar de baja por:";
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.RosyBrown;
+            btnSalir.Cursor = Cursors.Hand;
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Candara", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSalir.ForeColor = Color.Black;
+            btnSalir.Location = new Point(641, 0);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(48, 42);
+            btnSalir.TabIndex = 0;
+            btnSalir.Text = "X";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(39, 234);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 16);
+            label1.TabIndex = 8;
+            label1.Text = "Saldo";
+            // 
+            // lblSaldo
+            // 
+            lblSaldo.AutoSize = true;
+            lblSaldo.Font = new Font("Lucida Bright", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSaldo.ForeColor = Color.Green;
+            lblSaldo.Location = new Point(39, 265);
+            lblSaldo.Name = "lblSaldo";
+            lblSaldo.Size = new Size(69, 17);
+            lblSaldo.TabIndex = 9;
+            lblSaldo.Text = "$ pesos";
+            // 
+            // btnCargar
+            // 
+            btnCargar.BackColor = Color.LightGreen;
+            btnCargar.FlatStyle = FlatStyle.Flat;
+            btnCargar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCargar.ForeColor = SystemColors.ControlText;
+            btnCargar.Location = new Point(270, 234);
+            btnCargar.Name = "btnCargar";
+            btnCargar.Size = new Size(103, 48);
+            btnCargar.TabIndex = 10;
+            btnCargar.Text = "Carga virtual";
+            btnCargar.UseVisualStyleBackColor = false;
+            btnCargar.Click += btnCargar_Click;
             // 
             // FormSubePasajero
             // 
@@ -127,18 +149,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(689, 310);
             ControlBox = false;
-            Controls.Add(label2);
-            Controls.Add(comboBox1);
+            Controls.Add(btnCargar);
+            Controls.Add(lblSaldo);
             Controls.Add(label1);
+            Controls.Add(btnSalir);
+            Controls.Add(label2);
+            Controls.Add(cmbBaja);
+            Controls.Add(lblName);
             Controls.Add(lblTarjeta);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormSubePasajero";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormSubePasajero";
+            Load += FormSubePasajero_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -147,12 +171,13 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
         private Label lblTarjeta;
-        private Label label1;
-        private ComboBox comboBox1;
+        private Label lblName;
+        private ComboBox cmbBaja;
         private Label label2;
+        private Button btnSalir;
+        private Label label1;
+        private Label lblSaldo;
+        private Button btnCargar;
     }
 }

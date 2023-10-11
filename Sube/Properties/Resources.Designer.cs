@@ -63,6 +63,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap cargaSube {
+            get {
+                object obj = ResourceManager.GetObject("cargaSube", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap compra_en_linea {
             get {
                 object obj = ResourceManager.GetObject("compra_en_linea", resourceCulture);
@@ -116,6 +126,16 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap logo_sube_blanco_sombra_web {
             get {
                 object obj = ResourceManager.GetObject("logo_sube_blanco_sombra_web", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap mercado_pago {
+            get {
+                object obj = ResourceManager.GetObject("mercado_pago", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

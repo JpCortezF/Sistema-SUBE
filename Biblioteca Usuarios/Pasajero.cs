@@ -115,7 +115,19 @@ namespace Biblioteca_Usuarios
             }
             return name;
         }
-
+        public Pasajero FindPassenger(Dictionary<string, Pasajero> dictionaryPassengers)
+        {
+            Pasajero pasajero = null;
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            {
+                if (kvp.Value is Pasajero passenger)
+                {
+                    pasajero = kvp.Value;
+                    break;
+                }
+            }
+            return pasajero;
+        }
         public override string DevolverClave()
         {
             throw new NotImplementedException();

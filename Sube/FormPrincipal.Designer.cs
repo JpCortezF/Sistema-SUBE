@@ -49,6 +49,7 @@
             // btnPasajero
             // 
             btnPasajero.BackColor = Color.LightSkyBlue;
+            btnPasajero.Cursor = Cursors.Hand;
             btnPasajero.FlatStyle = FlatStyle.Flat;
             btnPasajero.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnPasajero.Location = new Point(284, 284);
@@ -62,6 +63,7 @@
             // btnAdmin
             // 
             btnAdmin.BackColor = Color.LightGreen;
+            btnAdmin.Cursor = Cursors.Hand;
             btnAdmin.FlatStyle = FlatStyle.Flat;
             btnAdmin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdmin.Location = new Point(284, 227);
@@ -85,6 +87,7 @@
             // btnSalir
             // 
             btnSalir.BackColor = SystemColors.ActiveCaptionText;
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = SystemColors.Control;

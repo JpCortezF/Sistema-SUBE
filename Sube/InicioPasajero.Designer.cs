@@ -29,80 +29,68 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
+            iNICIOToolStripMenuItem = new ToolStripMenuItem();
             mISUBEToolStripMenuItem = new ToolStripMenuItem();
-            mISUBEToolStripMenuItem1 = new ToolStripMenuItem();
-            panel1 = new Panel();
-            lblPasajero = new Label();
-            pictureBox1 = new PictureBox();
+            subeToolStripMenuItem = new ToolStripMenuItem();
+            viajesToolStripMenuItem = new ToolStripMenuItem();
+            tarifaSocialToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.Control;
             menuStrip1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { mISUBEToolStripMenuItem, mISUBEToolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, mISUBEToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(934, 37);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
+            // iNICIOToolStripMenuItem
+            // 
+            iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
+            iNICIOToolStripMenuItem.Size = new Size(103, 33);
+            iNICIOToolStripMenuItem.Text = "INICIO";
+            iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click;
+            // 
             // mISUBEToolStripMenuItem
             // 
-            mISUBEToolStripMenuItem.BackColor = SystemColors.Control;
+            mISUBEToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { subeToolStripMenuItem, viajesToolStripMenuItem, tarifaSocialToolStripMenuItem });
             mISUBEToolStripMenuItem.Name = "mISUBEToolStripMenuItem";
-            mISUBEToolStripMenuItem.Size = new Size(103, 33);
-            mISUBEToolStripMenuItem.Text = "INICIO";
-            mISUBEToolStripMenuItem.Click += mISUBEToolStripMenuItem_Click;
+            mISUBEToolStripMenuItem.Size = new Size(129, 33);
+            mISUBEToolStripMenuItem.Text = "MI SUBE";
             // 
-            // mISUBEToolStripMenuItem1
+            // subeToolStripMenuItem
             // 
-            mISUBEToolStripMenuItem1.Name = "mISUBEToolStripMenuItem1";
-            mISUBEToolStripMenuItem1.Size = new Size(129, 33);
-            mISUBEToolStripMenuItem1.Text = "MI SUBE";
-            mISUBEToolStripMenuItem1.Click += mISUBEToolStripMenuItem1_Click;
+            subeToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            subeToolStripMenuItem.Name = "subeToolStripMenuItem";
+            subeToolStripMenuItem.Size = new Size(169, 24);
+            subeToolStripMenuItem.Text = "Sube";
+            subeToolStripMenuItem.Click += subeToolStripMenuItem_Click;
             // 
-            // panel1
+            // viajesToolStripMenuItem
             // 
-            panel1.AutoScroll = true;
-            panel1.Controls.Add(lblPasajero);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(0, 36);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(934, 416);
-            panel1.TabIndex = 2;
+            viajesToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            viajesToolStripMenuItem.Name = "viajesToolStripMenuItem";
+            viajesToolStripMenuItem.Size = new Size(169, 24);
+            viajesToolStripMenuItem.Text = "Viajes";
             // 
-            // lblPasajero
+            // tarifaSocialToolStripMenuItem
             // 
-            lblPasajero.AutoSize = true;
-            lblPasajero.Font = new Font("Candara", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPasajero.ForeColor = Color.White;
-            lblPasajero.Location = new Point(12, 62);
-            lblPasajero.Name = "lblPasajero";
-            lblPasajero.Size = new Size(224, 29);
-            lblPasajero.TabIndex = 4;
-            lblPasajero.Text = "Nombre del pasajero";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = Properties.Resources.headerShortMiSube;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(934, 149);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            tarifaSocialToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            tarifaSocialToolStripMenuItem.Name = "tarifaSocialToolStripMenuItem";
+            tarifaSocialToolStripMenuItem.Size = new Size(169, 24);
+            tarifaSocialToolStripMenuItem.Text = "Tarifa Social";
             // 
             // InicioPasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(934, 450);
+            BackgroundImage = Properties.Resources.headerShortMiSube;
+            ClientSize = new Size(934, 477);
             ControlBox = false;
-            Controls.Add(panel1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             IsMdiContainer = true;
@@ -113,9 +101,6 @@
             Load += InicioPasajero_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,9 +109,9 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem mISUBEToolStripMenuItem;
-        private ToolStripMenuItem mISUBEToolStripMenuItem1;
-        private Panel panel1;
-        private Label lblPasajero;
-        private PictureBox pictureBox1;
+        private ToolStripMenuItem iNICIOToolStripMenuItem;
+        private ToolStripMenuItem viajesToolStripMenuItem;
+        private ToolStripMenuItem tarifaSocialToolStripMenuItem;
+        private ToolStripMenuItem subeToolStripMenuItem;
     }
 }

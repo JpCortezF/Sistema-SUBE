@@ -16,31 +16,21 @@ namespace Sube
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
         Pasajero passenger;
-        string document;
-        public InicioPasajero(Dictionary<string, Pasajero> passengers, string document)
+        public InicioPasajero(Pasajero passenger, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
-            dictionaryPassengers = passengers;
-            this.document = document;
-            passenger = new Pasajero();
+            this.passenger = passenger;
+            this.dictionaryPassengers = passengers;
         }
 
         private void InicioPasajero_Load(object sender, EventArgs e)
-        {
-            lblPasajero.BackColor = Color.FromArgb(0, 255, 255, 255); // Establece el canal alfa a 0 para hacer el fondo transparente
-            lblPasajero.Text = $"{passenger.FindNameByKey(dictionaryPassengers)}";
-
+        {           
             ToolStripMenuItem itemSalir = new ToolStripMenuItem("SALIR");
             menuStrip1.Items.Add(itemSalir);
             itemSalir.Alignment = ToolStripItemAlignment.Right;
             itemSalir.BackColor = SystemColors.Control;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
-        }
-
-        private void mISUBEToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {
@@ -53,9 +43,18 @@ namespace Sube
                 formPrincipal.Show();
             }
         }
-        private void mISUBEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void iNICIOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
+        }
+        private void subeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSubePasajero miSube = FormSubePasajero.VentanaUnica(passenger, dictionaryPassengers);
+
+            miSube.MdiParent = this;
+
+            miSube.Show();
+            miSube.BringToFront();
         }
     }
 }

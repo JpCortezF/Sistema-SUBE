@@ -29,7 +29,8 @@ namespace Sube
             cmbDni.Items.Add("LE - Libreta Enrolamiento");
             cmbDni.Items.Add("LC - Libreta Cívica");
             cmbDni.Items.Add("DE - Documento Extranjero");
-
+            txtDni.TextChanged += txt_TextChanged;
+            txtPass.TextChanged += txt_TextChanged;
             cmbDni.SelectedIndex = 0;
         }
         private void iNICIOToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace Sube
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            InicioPasajero inicio = new InicioPasajero(dictionaryPassengers, kvp.Key);
+                            InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                             inicio.Show();
                             this.Close();
                             break;
@@ -83,14 +84,10 @@ namespace Sube
                 btnMostrarPass.BackgroundImage = Properties.Resources.view;
             }
         }
-        private void txtPass_TextChanged_1(object sender, EventArgs e)
-        {
-            txtPass.Text = Regex.Replace(txtPass.Text, @"[^0-9]", "");
-
-        }
-        private void txtDni_TextChanged(object sender, EventArgs e)
+        private void txt_TextChanged(object sender, EventArgs e)
         {
             txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
+            txtPass.Text = Regex.Replace(txtPass.Text, @"[^0-9]", "");
         }
 
         private void lblOlvideClave_Click(object sender, EventArgs e)
