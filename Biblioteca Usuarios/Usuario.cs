@@ -26,13 +26,13 @@ namespace Biblioteca_Usuarios
             this.lastname = lastname;
         }
         [JsonProperty("Email")]
-        protected string Email { get => email; set => email = value; }
+        public string Email { get => email; set => email = value; }
         [JsonProperty("Password")]
-        protected string Password { get => password; set => password = value; }
+        public string Password { get => password; set => password = value; }
         [JsonProperty("Name")]
-        protected string Name { get => name; set => name = value; }
+        public string Name { get => name; set => name = value; }
         [JsonProperty("Lastname")]
-        protected string LastName { get => lastname; set => lastname = value; }
+        public string LastName { get => lastname; set => lastname = value; }
 
         public abstract string DevolverClave();
     }

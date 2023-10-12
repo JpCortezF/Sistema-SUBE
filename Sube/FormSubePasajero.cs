@@ -42,7 +42,7 @@ namespace Sube
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {
             lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
-            lblName.Text = $"{passenger.FindNameByKey(dictionaryPassengers, passenger)}";
+            lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
             lblSaldo.Text = $"$ {passenger.MySube.Balance}";
             cmbBaja.Items.Add("Perdida");
             cmbBaja.Items.Add("Robo");
