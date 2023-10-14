@@ -31,6 +31,7 @@
             lblTitulo = new Label();
             btnSalir = new Button();
             panel1 = new Panel();
+            lblContinuar = new Label();
             groupBox1 = new GroupBox();
             textBox1 = new TextBox();
             btnCargar = new Button();
@@ -40,18 +41,19 @@
             label2 = new Label();
             lblSaldo = new Label();
             txtCarga = new TextBox();
-            panel2 = new Panel();
+            pictureBox2 = new PictureBox();
+            lblMensaje = new Label();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTitulo.Location = new Point(101, 9);
+            lblTitulo.Location = new Point(343, 9);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(175, 29);
             lblTitulo.TabIndex = 1;
@@ -64,23 +66,35 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Candara", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.Black;
-            btnSalir.Location = new Point(340, 0);
+            btnSalir.Location = new Point(886, 0);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(48, 42);
+            btnSalir.Size = new Size(48, 44);
             btnSalir.TabIndex = 1;
             btnSalir.Text = "X";
             btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += btnSalir_Click;
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(lblContinuar);
             panel1.Controls.Add(lblTitulo);
             panel1.Controls.Add(btnSalir);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(388, 44);
+            panel1.Size = new Size(846, 44);
             panel1.TabIndex = 3;
+            // 
+            // lblContinuar
+            // 
+            lblContinuar.AutoSize = true;
+            lblContinuar.Cursor = Cursors.Hand;
+            lblContinuar.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            lblContinuar.Location = new Point(3, 2);
+            lblContinuar.Name = "lblContinuar";
+            lblContinuar.Size = new Size(67, 37);
+            lblContinuar.TabIndex = 18;
+            lblContinuar.Text = "<---";
+            lblContinuar.Click += lblContinuar_Click;
             // 
             // groupBox1
             // 
@@ -92,9 +106,9 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(lblSaldo);
             groupBox1.Controls.Add(txtCarga);
-            groupBox1.Location = new Point(3, 0);
+            groupBox1.Location = new Point(470, 50);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(364, 435);
+            groupBox1.Size = new Size(364, 390);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             // 
@@ -189,23 +203,36 @@
             txtCarga.TabIndex = 0;
             txtCarga.TextAlign = HorizontalAlignment.Center;
             // 
-            // panel2
+            // pictureBox2
             // 
-            panel2.AutoScroll = true;
-            panel2.BackColor = SystemColors.Control;
-            panel2.Controls.Add(groupBox1);
-            panel2.Location = new Point(0, 41);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(388, 281);
-            panel2.TabIndex = 15;
+            pictureBox2.BackgroundImage = Properties.Resources.proyectoSube;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.Location = new Point(47, 147);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(361, 194);
+            pictureBox2.TabIndex = 11;
+            pictureBox2.TabStop = false;
+            // 
+            // lblMensaje
+            // 
+            lblMensaje.AutoSize = true;
+            lblMensaje.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMensaje.ForeColor = SystemColors.ControlDarkDark;
+            lblMensaje.Location = new Point(37, 86);
+            lblMensaje.Name = "lblMensaje";
+            lblMensaje.Size = new Size(70, 17);
+            lblMensaje.TabIndex = 17;
+            lblMensaje.Text = "Mensaje";
             // 
             // CargaSube
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(389, 321);
-            Controls.Add(panel2);
+            ClientSize = new Size(846, 464);
+            Controls.Add(lblMensaje);
+            Controls.Add(pictureBox2);
+            Controls.Add(groupBox1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CargaSube";
@@ -217,8 +244,9 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -226,14 +254,16 @@
         private Button btnSalir;
         private Panel panel1;
         private GroupBox groupBox1;
+        private TextBox textBox1;
+        private Button btnCargar;
         private Label label3;
+        private PictureBox pictureBox1;
         private Label label1;
         private Label label2;
         private Label lblSaldo;
         private TextBox txtCarga;
-        private Panel panel2;
-        private Button btnCargar;
-        private PictureBox pictureBox1;
-        private TextBox textBox1;
+        private PictureBox pictureBox2;
+        private Label lblMensaje;
+        private Label lblContinuar;
     }
 }

@@ -61,8 +61,20 @@ namespace Sube
             try
             {
                 CargaSube cargarSube = CargaSube.VentanaUnica(passenger, dictionaryPassengers);
-                cargarSube.Show();
-                cargarSube.BringToFront();
+                cargarSube.ShowDialog();
+                if(cargarSube.DialogResult == DialogResult.OK)
+                {
+                    string amount = cargarSube.DevolverMonto();
+
+                    FormCargaCompleta subeCargada = FormCargaCompleta.VentanaUnica(passenger, amount, dictionaryPassengers);
+                    subeCargada.ShowDialog();
+
+                    if(subeCargada.DialogResult == DialogResult.OK)
+                    {
+                        InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
+                        Show();
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -97,26 +97,21 @@ namespace Biblioteca_Usuarios
 
             return sb.ToString();
         }
-
-        public string PassengerPassword(Pasajero passenger)
+        public Pasajero FindPassengerByEmail(Dictionary<string, Pasajero> dictionaryPassengers, string email)
         {
-            return passenger.password;
-        }
-        public string FindNameByKey(Dictionary<string, Pasajero> dictionaryPassengers, Pasajero pasajero)
-        {
-            string name = string.Empty;
+            Pasajero pasajero = null;
             foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
             {
                 if (kvp.Value is Pasajero passenger)
                 {
-                    if(pasajero.Name == passenger.Name && pasajero.LastName == passenger.LastName)
+                    if(passenger.Email == email)
                     {
-                        name = passenger.Name + " " + passenger.LastName;
+                        pasajero = passenger;
                         break;
                     }
                 }
             }
-            return name;
+            return pasajero;
         }
         public Pasajero FindPassenger(Dictionary<string, Pasajero> dictionaryPassengers)
         {
@@ -130,10 +125,6 @@ namespace Biblioteca_Usuarios
                 }
             }
             return pasajero;
-        }
-        public override string DevolverClave()
-        {
-            throw new NotImplementedException();
         }
     }
 }

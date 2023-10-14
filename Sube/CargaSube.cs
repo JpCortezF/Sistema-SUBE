@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sube
 {
@@ -32,13 +33,12 @@ namespace Sube
             this.passenger = passenger;
             this.dictionaryPassengers = dictionaryPassengers;
         }
-
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void lblContinuar_Click(object sender, EventArgs e)
         {
             Close();
             instancia = null;
+            DialogResult = DialogResult.Cancel;
         }
-
         private void txtCarga_TextChanged(object sender, EventArgs e)
         {
             txtCarga.Text = Regex.Replace(txtCarga.Text, @"[^0-9]", "");
@@ -46,27 +46,34 @@ namespace Sube
 
         private void CargaSube_Load(object sender, EventArgs e)
         {
+            lblMensaje.Text = "Carga tu SUBE de forma virtual desde Mercado Pago";
             lblSaldo.Text = $"$ {passenger.MySube.Balance}";
-            txtCarga.TextChanged += txtCarga_TextChanged;
-            groupBox1.Parent = panel2;
-        }
 
+            txtCarga.TextChanged += txtCarga_TextChanged;
+        }
+        public string DevolverMonto()
+        {
+            return txtCarga.Text;
+        }
         private void btnCargar_Click(object sender, EventArgs e)
         {
             try
             {
                 float balance = passenger.MySube.Balance;
-                if (float.TryParse(txtCarga.Text, out balance))
+                if (!string.IsNullOrEmpty(txtCarga.Text))
                 {
-                    passenger.MySube.Balance += balance;
+                    DialogResult = DialogResult.OK;
+                    if (float.TryParse(txtCarga.Text, out balance))
+                    {
+                        passenger.MySube.Balance += balance;
+                    }
+                    instancia = null;
+                    Close();
                 }
-
-                FormCargaCompleta formCargaCompleta = FormCargaCompleta.VentanaUnica(passenger, txtCarga.Text, dictionaryPassengers);
-
-                formCargaCompleta.Show();
-                formCargaCompleta.BringToFront();
-                instancia = null;
-                Close();
+                else
+                {
+                    txtCarga.BackColor = Color.RosyBrown;
+                }
             }
             catch (Exception ex)
             {

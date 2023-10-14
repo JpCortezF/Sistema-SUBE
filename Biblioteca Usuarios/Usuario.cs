@@ -34,6 +34,6 @@ namespace Biblioteca_Usuarios
         [JsonProperty("Lastname")]
         public string LastName { get => lastname; set => lastname = value; }
 
-        public abstract string DevolverClave();
+        //public abstract string DevolverClave(Usuario user);
     }
 }

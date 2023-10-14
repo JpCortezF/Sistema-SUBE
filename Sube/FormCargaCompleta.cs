@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,15 +33,6 @@ namespace Sube
             this.dictionaryPassengers = dictionaryPassengers;
             lblAcreditado.Text = "Saldo acreditado $" + amount;
         }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-            instancia = null;
-            FormSubePasajero sube = new FormSubePasajero(passenger, dictionaryPassengers);
-            sube.Show();
-        }
-
         private void FormCargaCompleta_Load(object sender, EventArgs e)
         {
             string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -48,7 +40,20 @@ namespace Sube
             string path = ruta + nombre;
 
             lblSaldo.Text = $"$ {passenger.MySube.Balance}";
+
             Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+        }
+
+        private void lblContinuar_Click(object sender, EventArgs e)
+        {
+            instancia = null;
+            DialogResult = DialogResult.OK;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            instancia = null;
+            DialogResult = DialogResult.OK;
         }
     }
 }

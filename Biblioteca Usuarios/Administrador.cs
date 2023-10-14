@@ -9,9 +9,5 @@ namespace Biblioteca_Usuarios
 
         public Usuario Usuario { get; set; }
 
-        public override string DevolverClave()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

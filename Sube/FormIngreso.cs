@@ -15,7 +15,6 @@ namespace Sube
     public partial class FormIngreso : Form
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
-
         public FormIngreso(Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
@@ -48,7 +47,7 @@ namespace Sube
                 {
                     if (kvp.Value is Pasajero passenger)
                     {
-                        if (txtDni.Text == kvp.Key && txtPass.Text == passenger.PassengerPassword(passenger))
+                        if (txtDni.Text == kvp.Key && txtPass.Text == passenger.Password)
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -92,7 +91,13 @@ namespace Sube
 
         private void lblOlvideClave_Click(object sender, EventArgs e)
         {
-
+            VentanaPassword ventanaPassword = new VentanaPassword(dictionaryPassengers);
+            ventanaPassword.ShowDialog();
+            if(ventanaPassword.DialogResult == DialogResult.OK)
+            {
+                string clave = ventanaPassword.DevolverPass();
+                MessageBox.Show($"La clave es:\n     {clave}","Ok",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
