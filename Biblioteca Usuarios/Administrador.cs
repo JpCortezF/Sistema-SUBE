@@ -7,12 +7,6 @@ namespace Biblioteca_Usuarios
         {
         }
 
-
-        public override string DevolverClave()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool AdminExist(Administrador admin, Dictionary<string, Administrador> dictionaryAdmins, string document)
         {
             bool exists = false;
