@@ -38,7 +38,7 @@
             label5 = new Label();
             lblClave = new Label();
             btnMostrarPass = new Button();
-            lblRegistro = new Label();
+            lblRegistroAdmin = new Label();
             btnIngresar = new Button();
             label6 = new Label();
             txtPass = new TextBox();
@@ -77,7 +77,7 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(lblClave);
             groupBox1.Controls.Add(btnMostrarPass);
-            groupBox1.Controls.Add(lblRegistro);
+            groupBox1.Controls.Add(lblRegistroAdmin);
             groupBox1.Controls.Add(btnIngresar);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(txtPass);
@@ -158,17 +158,18 @@
             btnMostrarPass.TabIndex = 4;
             btnMostrarPass.UseVisualStyleBackColor = true;
             // 
-            // lblRegistro
+            // lblRegistroAdmin
             // 
-            lblRegistro.AutoSize = true;
-            lblRegistro.Cursor = Cursors.Hand;
-            lblRegistro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblRegistro.ForeColor = Color.LimeGreen;
-            lblRegistro.Location = new Point(231, 305);
-            lblRegistro.Name = "lblRegistro";
-            lblRegistro.Size = new Size(76, 17);
-            lblRegistro.TabIndex = 6;
-            lblRegistro.Text = "Registrarse";
+            lblRegistroAdmin.AutoSize = true;
+            lblRegistroAdmin.Cursor = Cursors.Hand;
+            lblRegistroAdmin.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRegistroAdmin.ForeColor = Color.LimeGreen;
+            lblRegistroAdmin.Location = new Point(231, 305);
+            lblRegistroAdmin.Name = "lblRegistroAdmin";
+            lblRegistroAdmin.Size = new Size(76, 17);
+            lblRegistroAdmin.TabIndex = 6;
+            lblRegistroAdmin.Text = "Registrarse";
+            lblRegistroAdmin.Click += lblRegistroAdmin_Click;
             // 
             // btnIngresar
             // 
@@ -274,7 +275,7 @@
         private GroupBox groupBox1;
         private Label lblClave;
         private Button btnMostrarPass;
-        private Label lblRegistro;
+        private Label lblRegistroAdmin;
         private Button btnIngresar;
         private Label label6;
         private TextBox txtPass;
