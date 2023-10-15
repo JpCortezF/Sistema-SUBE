@@ -14,18 +14,9 @@ namespace Sube
 {
     public partial class FormSubePasajero : Form
     {
-        private static FormSubePasajero instancia = null;
         Dictionary<string, Pasajero> dictionaryPassengers;
         Pasajero passenger;
 
-        public static FormSubePasajero VentanaUnica(Pasajero passenger, Dictionary<string, Pasajero> passengers)
-        {
-            if (instancia == null)
-            {
-                instancia = new FormSubePasajero(passenger, passengers);
-            }
-            return instancia;
-        }
         public FormSubePasajero(Pasajero passenger, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
@@ -36,7 +27,6 @@ namespace Sube
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
-            instancia = null;
         }
 
         private void FormSubePasajero_Load(object sender, EventArgs e)
@@ -51,25 +41,24 @@ namespace Sube
             lblName.Location = new Point(30, 158);
             pictureBox1.Controls.Add(lblTarjeta);
             pictureBox1.Controls.Add(lblName);
-            
+
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
             Close();
-            instancia = null;
             try
             {
                 CargaSube cargarSube = CargaSube.VentanaUnica(passenger, dictionaryPassengers);
                 cargarSube.ShowDialog();
-                if(cargarSube.DialogResult == DialogResult.OK)
+                if (cargarSube.DialogResult == DialogResult.OK)
                 {
                     string amount = cargarSube.DevolverMonto();
 
                     FormCargaCompleta subeCargada = FormCargaCompleta.VentanaUnica(passenger, amount, dictionaryPassengers);
                     subeCargada.ShowDialog();
 
-                    if(subeCargada.DialogResult == DialogResult.OK)
+                    if (subeCargada.DialogResult == DialogResult.OK)
                     {
                         InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                         Show();
@@ -81,6 +70,36 @@ namespace Sube
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void cmbBaja_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBajaUsuario bajaUser = new FormBajaUsuario(dictionaryPassengers, passenger);
+            bajaUser.ShowDialog();
+            if (bajaUser.DialogResult == DialogResult.OK)
+            {
+                try
+                {
+                    string key = passenger.ReturnrKey(dictionaryPassengers, passenger);
+                    dictionaryPassengers.Remove(key);
+
+                    string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    string nombre = @".\MisPasajeros.Json";
+                    string path = ruta + nombre;
+
+                    Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                    this.MdiParent.Close();
+                    this.Close();
+
+                    FormIngreso ingreso = new FormIngreso(dictionaryPassengers);
+                    ingreso.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
         }
     }
 }

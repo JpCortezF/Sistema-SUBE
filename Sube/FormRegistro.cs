@@ -50,12 +50,6 @@ namespace Sube
             lblDni.Text = "El número de documento debe tener 8 dígitos";
             lblCorreo.Text = "Por favor, ingresá tu correo electrónico.";
             lblClave.Text = "Las claves no coinciden";
-            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Ninguna);
-            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Jubilado);
-            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Estudiantil);
-            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Malvinas);
-            cmbTipoPasajero.Items.Add(EnumTarifaSocial.Discapacitado);
-            cmbTipoPasajero.SelectedIndex = 0;
             txtTarjeta2.KeyPress += txtTarjeta_KeyPress;
             txtTarjeta3.KeyPress += txtTarjeta_KeyPress;
             txtTarjeta4.KeyPress += txtTarjeta_KeyPress;
@@ -85,9 +79,8 @@ namespace Sube
                 {
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
-                    EnumTarifaSocial tarifa = (EnumTarifaSocial)cmbTipoPasajero.SelectedItem;
 
-                    TarjetaSube newSube = new TarjetaSube(cardNumber, tarifa);
+                    TarjetaSube newSube = new TarjetaSube(cardNumber);
                     Pasajero passenger = new Pasajero(gender, email, password, name, lastname, newSube);
                     if (!passenger.PassengerExist(passenger, dictionaryPassengers, document))
                     {

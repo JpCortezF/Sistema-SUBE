@@ -34,8 +34,6 @@
             label6 = new Label();
             txtLastname = new TextBox();
             txtName = new TextBox();
-            label12 = new Label();
-            cmbTipoPasajero = new ComboBox();
             label11 = new Label();
             txtRepetirClave = new TextBox();
             lblClave = new Label();
@@ -81,8 +79,6 @@
             grpDatos.Controls.Add(label6);
             grpDatos.Controls.Add(txtLastname);
             grpDatos.Controls.Add(txtName);
-            grpDatos.Controls.Add(label12);
-            grpDatos.Controls.Add(cmbTipoPasajero);
             grpDatos.Controls.Add(label11);
             grpDatos.Controls.Add(txtRepetirClave);
             grpDatos.Controls.Add(lblClave);
@@ -144,25 +140,6 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(388, 26);
             txtName.TabIndex = 45;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(32, 656);
-            label12.Name = "label12";
-            label12.Size = new Size(106, 16);
-            label12.TabIndex = 44;
-            label12.Text = "* Tarifa Social";
-            // 
-            // cmbTipoPasajero
-            // 
-            cmbTipoPasajero.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbTipoPasajero.FormattingEnabled = true;
-            cmbTipoPasajero.Location = new Point(32, 675);
-            cmbTipoPasajero.Name = "cmbTipoPasajero";
-            cmbTipoPasajero.Size = new Size(173, 28);
-            cmbTipoPasajero.TabIndex = 12;
             // 
             // label11
             // 
@@ -562,8 +539,6 @@
         private Label lblClave;
         private Label label8;
         private TextBox txtClave;
-        private Label label12;
-        private ComboBox cmbTipoPasajero;
         private Panel panelDatos;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem iNICIOToolStripMenuItem;

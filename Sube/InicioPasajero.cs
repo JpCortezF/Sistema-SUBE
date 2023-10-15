@@ -31,6 +31,7 @@ namespace Sube
             itemSalir.BackColor = SystemColors.Control;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
+            lblNombre.Text = $"¡Hola {passenger.Name + " " + passenger.LastName}!";
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {
@@ -43,23 +44,33 @@ namespace Sube
                 formPrincipal.Show();
             }
         }
-        private void iNICIOToolStripMenuItem_Click(object sender, EventArgs e)
+        private void vIAJARToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Show();
+            TomarTransporte transporte = new TomarTransporte();
+            transporte.ShowDialog();
+            if(transporte.DialogResult == DialogResult.OK)
+            {
+
+            }
         }
         private void subeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSubePasajero miSube = FormSubePasajero.VentanaUnica(passenger, dictionaryPassengers);
+            lblNombre.Visible = false;
+            FormSubePasajero miSube = new FormSubePasajero(passenger, dictionaryPassengers);
 
             miSube.MdiParent = this;
 
             miSube.Show();
-            miSube.BringToFront();
         }
-
         private void viajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            lblNombre.Visible = false;
+            FormViajes viajes = new FormViajes();
+            viajes.ShowDialog();
+            if (viajes.DialogResult == DialogResult.OK)
+            {
 
+            }
         }
     }
 }

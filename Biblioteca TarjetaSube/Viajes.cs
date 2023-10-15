@@ -8,26 +8,34 @@ namespace Biblioteca_TarjetaSube
 {
     public class Viajes
     {
-        EnumTransporte tipoTransporte;
-        double cantidadViajes;
+        List<string> lineasTransporte;
+        ETransporte tipoTransporte;
+        static int cantidadViajes;
         float ticketCost;
         float kilometres;
         DateTime date;
 
-        public Viajes(float ticketCost, float kilometres, DateTime date, EnumTransporte tipoTransporte)
+        public static int CantidadViajes()
         {
-            this.cantidadViajes = 0;
-            this.ticketCost = ticketCost;
+            return cantidadViajes++;
+        }
+        public Viajes(float kilometres, DateTime date, ETransporte tipoTransporte, List<string> lineasTransporte)
+        {
             this.kilometres = kilometres;
             this.date = date;
             this.tipoTransporte = tipoTransporte;
+            this.lineasTransporte = lineasTransporte;
+        }
+        public Viajes(float ticketCost, float kilometres, DateTime date, ETransporte tipoTransporte, List<string> lineasTransporte)
+            : this(kilometres, date, tipoTransporte, lineasTransporte)
+        {
+            this.ticketCost = ticketCost;
         }
 
         public float TicketCost { get => ticketCost; set => ticketCost = value; }
         public float Kilometres { get => kilometres; set => kilometres = value; }
         public DateTime Date { get => date; set => date = value; }
-        public double CantidadViajes { get => cantidadViajes; set => cantidadViajes = value; }
-        public EnumTransporte TipoTransporte { get => tipoTransporte; set => tipoTransporte = value; }
-
+        public ETransporte TipoTransporte { get => tipoTransporte; set => tipoTransporte = value; }
+        public List<string> LineasTransporte { get => lineasTransporte; set => lineasTransporte = value; }
     }
 }

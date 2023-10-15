@@ -17,11 +17,18 @@ namespace Sube
         public FormViajes()
         {
             InitializeComponent();
+            queueTravels = new Queue<Viajes>();
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
             dataGridViajes.Parent = panel1;
-            
+
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

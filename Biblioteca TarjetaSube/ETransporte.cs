@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_TarjetaSube
 {
-    public enum EnumTransporte
+    public enum ETransporte
     {
         Colectivo,
         Subte,

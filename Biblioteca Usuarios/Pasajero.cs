@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 
 namespace Biblioteca_Usuarios
 {
@@ -61,42 +62,6 @@ namespace Biblioteca_Usuarios
             }
             return exists;
         }
-        public string ShowUsers(Dictionary<string, Pasajero> dictionaryPassengers)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-            {
-                if (kvp.Value is Pasajero passenger)
-                {
-                    sb.AppendLine($"Name: {passenger.name}");
-                    sb.AppendLine($"Lastname: {passenger.lastname}");
-                    sb.AppendLine($"Email: {passenger.email}");
-                    sb.AppendLine($"Password: {passenger.password}");
-                    sb.AppendLine($"Gender: {passenger.gender}");
-                    sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
-                    sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
-                    sb.AppendLine();
-                }
-            }
-            return sb.ToString();
-        }
-
-        public string ShowUser(Pasajero passenger)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Name: {passenger.name}");
-            sb.AppendLine($"Lastname: {passenger.lastname}");
-            sb.AppendLine($"Email: {passenger.email}");
-            sb.AppendLine($"Password: {passenger.password}");
-            sb.AppendLine($"Gender: {passenger.gender}");
-            sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
-            sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
-            sb.AppendLine();
-
-            return sb.ToString();
-        }
         public Pasajero FindPassengerByEmail(Dictionary<string, Pasajero> dictionaryPassengers, string email)
         {
             Pasajero pasajero = null;
@@ -126,5 +91,57 @@ namespace Biblioteca_Usuarios
             }
             return pasajero;
         }
+        public string ReturnrKey(Dictionary<string, Pasajero> dictionaryPassengers, Pasajero pasajero)
+        {
+            string keyPasajero = null;
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            {
+                if (kvp.Value == pasajero)
+                {
+                    keyPasajero = kvp.Key;
+                    break;
+                }
+            }
+            return keyPasajero;
+        }
     }
 }
+
+
+
+//public string ShowUsers(Dictionary<string, Pasajero> dictionaryPassengers)
+//{
+//    StringBuilder sb = new StringBuilder();
+
+//    foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+//    {
+//        if (kvp.Value is Pasajero passenger)
+//        {
+//            sb.AppendLine($"Name: {passenger.name}");
+//            sb.AppendLine($"Lastname: {passenger.lastname}");
+//            sb.AppendLine($"Email: {passenger.email}");
+//            sb.AppendLine($"Password: {passenger.password}");
+//            sb.AppendLine($"Gender: {passenger.gender}");
+//            sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
+//            sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
+//            sb.AppendLine();
+//        }
+//    }
+//    return sb.ToString();
+//}
+
+//public string ShowUser(Pasajero passenger)
+//{
+//    StringBuilder sb = new StringBuilder();
+
+//    sb.AppendLine($"Name: {passenger.name}");
+//    sb.AppendLine($"Lastname: {passenger.lastname}");
+//    sb.AppendLine($"Email: {passenger.email}");
+//    sb.AppendLine($"Password: {passenger.password}");
+//    sb.AppendLine($"Gender: {passenger.gender}");
+//    sb.AppendLine($"Sube id: {passenger.MySube.CardNumber}");
+//    sb.AppendLine($"Tarifa social: {passenger.MySube.TarifaSocial}");
+//    sb.AppendLine();
+
+//    return sb.ToString();
+//}

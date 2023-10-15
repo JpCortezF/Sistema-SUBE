@@ -82,6 +82,7 @@
             cmbBaja.Name = "cmbBaja";
             cmbBaja.Size = new Size(94, 23);
             cmbBaja.TabIndex = 6;
+            cmbBaja.SelectedIndexChanged += cmbBaja_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -147,6 +148,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(689, 310);
             ControlBox = false;
             Controls.Add(btnCargar);

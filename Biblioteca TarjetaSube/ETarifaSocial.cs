@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_TarjetaSube
 {
-    public enum EnumTarifaSocial
+    public enum ETarifaSocial
     {
         Ninguna,
         Jubilado,
         Estudiantil,
-        Malvinas,
+        ExComatienteDeMalvinas,
         Discapacitado,        
     }
 }
