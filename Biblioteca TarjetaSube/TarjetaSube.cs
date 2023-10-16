@@ -30,34 +30,11 @@ namespace Biblioteca_TarjetaSube
         public string CardNumber { get => _cardNumber; set => _cardNumber = value; }
         public float Balance { get => _balance; set => _balance = value; }
         public Queue<Viajes> QueueTravels { get => queueTravels; set => queueTravels = value; }
-
-        [JsonIgnore]
-        public float CostoTicketPorColectivo { get { return ReturnTicketCost(ETransporte.Colectivo); } }
-        [JsonIgnore]
-        public float CostoTicketPorSubte { get { return ReturnTicketCost(ETransporte.Subte); } }
-        [JsonIgnore]
-        public float CostoTicketPorTren { get { return ReturnTicketCost(ETransporte.Tren); } }
+        public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
 
 
-        private float ReturnTicketCost(ETransporte transporte)
-        {
-            float ticket = 0;
 
-            switch (transporte)
-            {
-                case ETransporte.Colectivo:
-                    ticket = 60.50f;
-                    break;
-                case ETransporte.Subte:
-                    ticket = 70.50f;
-                    break;
-                case ETransporte.Tren:
-                    ticket = 70.25f;
-                    break;
-            }
-                       
-            return ticket;
-        }
+
 
         public Queue<Viajes> historialViajes(Viajes viaje)
         {

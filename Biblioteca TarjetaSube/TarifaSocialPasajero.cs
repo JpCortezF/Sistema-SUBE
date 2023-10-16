@@ -9,44 +9,72 @@ namespace Biblioteca_TarjetaSube
     public class TarifaSocialPasajero : Viajes
     {
         ETarifaSocial tarifaSocial;
-
-        public float CostoBoleto { get { return CostByTarifaSocial(); } }
-
-        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, List<string> lineasTransporte) 
+        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, string lineasTransporte) 
             : base(kilometres, date, tipoTransporte, lineasTransporte)
         {
             this.tarifaSocial = miTarifa;
         }
-        //public TarifaSocialPasajero(ETarifaSocial tarifaSocial, Viajes viaje)
-        //    :this(viaje.Kilometres, viaje.Date, viaje.TipoTransporte, tarifaSocial)
-        //{
-        //}
-
-        private float CostByTarifaSocial()
+        public TarifaSocialPasajero(ETarifaSocial tarifaSocial, Viajes viaje)
+            : this(viaje.Kilometres, viaje.Date, viaje.TipoTransporte, tarifaSocial, viaje.LineasTransporte)
         {
-            float cost = 0;
+        }
 
+        public override float CostByKilometres()
+        {
+            float cost = base.CostByKilometres();
+
+            CostByTarifa(cost);
+            return cost;
+        }
+        public float ReturnTicketCost(ETransporte transporte)
+        {
+            float ticket = 0;
+
+            switch (transporte)
+            {
+                case ETransporte.Colectivo:
+                    ticket = CostByKilometres();
+                    break;
+                case ETransporte.Subte:
+                    ticket = CostByTarifa(80);
+                    break;
+                case ETransporte.Tren:
+                    ticket = CostByTarifa(90);
+                    break;
+            }
+            return ticket;
+        }
+        public float CostByTarifa(float ticket)
+        {
             switch (tarifaSocial)
             {
                 case ETarifaSocial.Ninguna:
-                    cost = TicketCost;
                     break;
                 case ETarifaSocial.Jubilado:
-                    cost = TicketCost * 0.55f;
+                    ticket = ticket * 0.55f;
                     break;
                 case ETarifaSocial.Estudiantil:
-                    cost = TicketCost * 0.80f;
+                    ticket = ticket * 0.80f;
                     break;
                 case ETarifaSocial.ExComatienteDeMalvinas:
-                    cost = 0;
+                    ticket = 0;
                     break;
                 case ETarifaSocial.Discapacitado:
-                    cost = 0;
+                    ticket = 0;
                     break;
                 default:
                     break;
             }
-            return cost;
+            return ticket;
+        }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Tarifa Social: {this.tarifaSocial}");
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Boleto: {ReturnTicketCost(TipoTransporte)}");
+
+            return sb.ToString();
         }
     }
 }

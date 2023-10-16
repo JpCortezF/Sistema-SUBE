@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
+            vIAJARToolStripMenuItem = new ToolStripMenuItem();
             mISUBEToolStripMenuItem = new ToolStripMenuItem();
             subeToolStripMenuItem = new ToolStripMenuItem();
             viajesToolStripMenuItem = new ToolStripMenuItem();
             tarifaSocialToolStripMenuItem = new ToolStripMenuItem();
             lblNombre = new Label();
-            vIAJARToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,6 +48,13 @@
             menuStrip1.Size = new Size(934, 37);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // vIAJARToolStripMenuItem
+            // 
+            vIAJARToolStripMenuItem.Name = "vIAJARToolStripMenuItem";
+            vIAJARToolStripMenuItem.Size = new Size(111, 33);
+            vIAJARToolStripMenuItem.Text = "VIAJAR";
+            vIAJARToolStripMenuItem.Click += vIAJARToolStripMenuItem_Click;
             // 
             // mISUBEToolStripMenuItem
             // 
@@ -82,20 +89,14 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
+            lblNombre.BackColor = Color.Transparent;
             lblNombre.Font = new Font("Lucida Sans", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(354, 89);
+            lblNombre.Location = new Point(198, 86);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(93, 31);
             lblNombre.TabIndex = 3;
             lblNombre.Text = "¡Hola!";
-            // 
-            // vIAJARToolStripMenuItem
-            // 
-            vIAJARToolStripMenuItem.Name = "vIAJARToolStripMenuItem";
-            vIAJARToolStripMenuItem.Size = new Size(111, 33);
-            vIAJARToolStripMenuItem.Text = "VIAJAR";
-            vIAJARToolStripMenuItem.Click += vIAJARToolStripMenuItem_Click;
             // 
             // InicioPasajero
             // 

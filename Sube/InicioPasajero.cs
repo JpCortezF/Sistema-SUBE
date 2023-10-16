@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -39,16 +40,21 @@ namespace Sube
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                Close();
+                string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string nombre = @".\MisPasajeros.Json";
+                string path = ruta + nombre;
+
+                Serializador.WriteJsonPassenger(path, dictionaryPassengers);
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
+                Close();
             }
         }
         private void vIAJARToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TomarTransporte transporte = new TomarTransporte();
+            TomarTransporte transporte = new TomarTransporte(passenger);
             transporte.ShowDialog();
-            if(transporte.DialogResult == DialogResult.OK)
+            if (transporte.DialogResult == DialogResult.OK)
             {
 
             }

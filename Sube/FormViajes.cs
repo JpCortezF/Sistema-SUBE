@@ -30,5 +30,10 @@ namespace Sube
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
     }
 }

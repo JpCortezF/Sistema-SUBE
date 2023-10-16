@@ -90,6 +90,7 @@
             btnSalir.TabIndex = 4;
             btnSalir.Text = "X";
             btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click_1;
             // 
             // comboBox1
             // 

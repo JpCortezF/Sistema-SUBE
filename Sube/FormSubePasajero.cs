@@ -55,7 +55,7 @@ namespace Sube
                 {
                     string amount = cargarSube.DevolverMonto();
 
-                    FormCargaCompleta subeCargada = FormCargaCompleta.VentanaUnica(passenger, amount, dictionaryPassengers);
+                    FormCargaCompleta subeCargada = new FormCargaCompleta(passenger, amount);
                     subeCargada.ShowDialog();
 
                     if (subeCargada.DialogResult == DialogResult.OK)
@@ -83,11 +83,6 @@ namespace Sube
                     string key = passenger.ReturnrKey(dictionaryPassengers, passenger);
                     dictionaryPassengers.Remove(key);
 
-                    string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    string nombre = @".\MisPasajeros.Json";
-                    string path = ruta + nombre;
-
-                    Serializador.WriteJsonPassenger(path, dictionaryPassengers);
                     this.MdiParent.Close();
                     this.Close();
 
