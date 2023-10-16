@@ -64,11 +64,11 @@
             // 
             // txtBusqueda
             // 
-            txtBusqueda.Font = new Font("Lucida Sans", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBusqueda.Location = new Point(87, 103);
+            txtBusqueda.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBusqueda.Location = new Point(87, 106);
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.PlaceholderText = "Línea...";
-            txtBusqueda.Size = new Size(197, 25);
+            txtBusqueda.Size = new Size(197, 23);
             txtBusqueda.TabIndex = 2;
             // 
             // label2
@@ -88,9 +88,9 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Candara", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.Black;
-            btnSalir.Location = new Point(752, 0);
+            btnSalir.Location = new Point(766, 0);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(48, 42);
+            btnSalir.Size = new Size(34, 27);
             btnSalir.TabIndex = 4;
             btnSalir.Text = "X";
             btnSalir.UseVisualStyleBackColor = false;
@@ -122,10 +122,10 @@
             // 
             btnBuscar.BackColor = SystemColors.ActiveCaption;
             btnBuscar.FlatStyle = FlatStyle.Flat;
-            btnBuscar.Location = new Point(313, 103);
+            btnBuscar.Location = new Point(313, 106);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(86, 26);
-            btnBuscar.TabIndex = 8;
+            btnBuscar.Size = new Size(86, 23);
+            btnBuscar.TabIndex = 0;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = false;
             // 
@@ -144,7 +144,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Menu;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(800, 415);
             ControlBox = false;
             Controls.Add(label3);

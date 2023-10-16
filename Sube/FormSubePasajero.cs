@@ -34,6 +34,8 @@ namespace Sube
             lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
             lblSaldo.Text = $"$ {passenger.MySube.Balance}";
+            lblActualTarifa.Text = $"Tarifa Social: {passenger.MySube.TarifaSocial}";
+            lblTarifa.Text = "Acceder a tarifa social --->";
             cmbBaja.Items.Add("Perdida");
             cmbBaja.Items.Add("Robo");
             cmbBaja.Items.Add("Rotura");
@@ -95,6 +97,18 @@ namespace Sube
                 }
 
             }
+        }
+        private void lblTarifa_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
+            tarifaSocial.ShowDialog();
+            if (tarifaSocial.DialogResult == DialogResult.OK)
+            {
+
+            }
+
         }
     }
 }

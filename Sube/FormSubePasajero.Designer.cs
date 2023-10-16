@@ -37,6 +37,8 @@
             label1 = new Label();
             lblSaldo = new Label();
             btnCargar = new Button();
+            lblTarifa = new Label();
+            lblActualTarifa = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -87,10 +89,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Candara", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(389, 37);
+            label2.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(389, 40);
             label2.Name = "label2";
-            label2.Size = new Size(116, 19);
+            label2.Size = new Size(117, 15);
             label2.TabIndex = 7;
             label2.Text = "Dar de baja por:";
             // 
@@ -101,9 +103,9 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Candara", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.Black;
-            btnSalir.Location = new Point(641, 0);
+            btnSalir.Location = new Point(657, 0);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(48, 42);
+            btnSalir.Size = new Size(32, 28);
             btnSalir.TabIndex = 0;
             btnSalir.Text = "X";
             btnSalir.UseVisualStyleBackColor = false;
@@ -144,6 +146,29 @@
             btnCargar.UseVisualStyleBackColor = false;
             btnCargar.Click += btnCargar_Click;
             // 
+            // lblTarifa
+            // 
+            lblTarifa.AutoSize = true;
+            lblTarifa.Cursor = Cursors.Hand;
+            lblTarifa.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTarifa.ForeColor = SystemColors.ActiveCaption;
+            lblTarifa.Location = new Point(464, 286);
+            lblTarifa.Name = "lblTarifa";
+            lblTarifa.Size = new Size(129, 15);
+            lblTarifa.TabIndex = 11;
+            lblTarifa.Text = "Acceder tarifa --->";
+            lblTarifa.Click += lblTarifa_Click;
+            // 
+            // lblActualTarifa
+            // 
+            lblActualTarifa.AutoSize = true;
+            lblActualTarifa.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblActualTarifa.Location = new Point(464, 251);
+            lblActualTarifa.Name = "lblActualTarifa";
+            lblActualTarifa.Size = new Size(65, 15);
+            lblActualTarifa.TabIndex = 12;
+            lblActualTarifa.Text = "Mi tarifa";
+            // 
             // FormSubePasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -151,6 +176,8 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(689, 310);
             ControlBox = false;
+            Controls.Add(lblActualTarifa);
+            Controls.Add(lblTarifa);
             Controls.Add(btnCargar);
             Controls.Add(lblSaldo);
             Controls.Add(label1);
@@ -181,5 +208,7 @@
         private Label label1;
         private Label lblSaldo;
         private Button btnCargar;
+        private Label lblTarifa;
+        private Label lblActualTarifa;
     }
 }

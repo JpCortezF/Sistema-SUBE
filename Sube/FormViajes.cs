@@ -15,7 +15,6 @@ namespace Sube
 {
     public partial class FormViajes : Form
     {
-        TarjetaSube sube;
         Pasajero passenger;
         Queue<Viajes> queueViajes;
         public FormViajes(Pasajero passenger, Queue<Viajes> queueTravels)
@@ -23,7 +22,6 @@ namespace Sube
             InitializeComponent();
             this.passenger = passenger;
             queueViajes = queueTravels;
-            sube = new TarjetaSube();
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
@@ -39,7 +37,7 @@ namespace Sube
             {
                 dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost);
             }
-            
+
             dataGridViajes.DataSource = dt;
         }
         private void btnSalir_Click_1(object sender, EventArgs e)

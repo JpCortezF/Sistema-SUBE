@@ -78,5 +78,15 @@ namespace Sube
 
             }
         }
+
+        private void tarifaSocialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
+            tarifaSocial.ShowDialog();
+            if (tarifaSocial.DialogResult == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }
