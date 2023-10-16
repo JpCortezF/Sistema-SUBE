@@ -33,17 +33,21 @@
             txtBusqueda = new TextBox();
             label2 = new Label();
             btnSalir = new Button();
-            comboBox1 = new ComboBox();
             panel1 = new Panel();
+            lblSaldo = new Label();
+            btnBuscar = new Button();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViajes).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViajes
             // 
+            dataGridViajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViajes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViajes.Location = new Point(0, 0);
             dataGridViajes.Name = "dataGridViajes";
+            dataGridViajes.RowHeadersVisible = false;
             dataGridViajes.RowTemplate.Height = 25;
             dataGridViajes.Size = new Size(776, 268);
             dataGridViajes.TabIndex = 0;
@@ -60,11 +64,11 @@
             // 
             // txtBusqueda
             // 
-            txtBusqueda.Font = new Font("Lucida Sans", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBusqueda.Font = new Font("Lucida Sans", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtBusqueda.Location = new Point(87, 103);
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.PlaceholderText = "Línea...";
-            txtBusqueda.Size = new Size(197, 26);
+            txtBusqueda.Size = new Size(197, 25);
             txtBusqueda.TabIndex = 2;
             // 
             // label2
@@ -92,14 +96,6 @@
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click_1;
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(334, 103);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 5;
-            // 
             // panel1
             // 
             panel1.AutoScroll = true;
@@ -111,14 +107,50 @@
             panel1.Size = new Size(776, 268);
             panel1.TabIndex = 6;
             // 
+            // lblSaldo
+            // 
+            lblSaldo.AutoSize = true;
+            lblSaldo.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSaldo.ForeColor = Color.SeaGreen;
+            lblSaldo.Location = new Point(693, 109);
+            lblSaldo.Name = "lblSaldo";
+            lblSaldo.Size = new Size(66, 17);
+            lblSaldo.TabIndex = 7;
+            lblSaldo.Text = "$ Saldo";
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.BackColor = SystemColors.ActiveCaption;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Location = new Point(313, 103);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(86, 26);
+            btnBuscar.TabIndex = 8;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(708, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(51, 17);
+            label3.TabIndex = 9;
+            label3.Text = "Saldo";
+            // 
             // FormViajes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Menu;
             ClientSize = new Size(800, 415);
             ControlBox = false;
+            Controls.Add(label3);
+            Controls.Add(btnBuscar);
+            Controls.Add(lblSaldo);
             Controls.Add(panel1);
-            Controls.Add(comboBox1);
             Controls.Add(btnSalir);
             Controls.Add(label2);
             Controls.Add(txtBusqueda);
@@ -141,7 +173,9 @@
         private TextBox txtBusqueda;
         private Label label2;
         private Button btnSalir;
-        private ComboBox comboBox1;
         private Panel panel1;
+        private Label lblSaldo;
+        private Button btnBuscar;
+        private Label label3;
     }
 }

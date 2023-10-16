@@ -17,12 +17,10 @@ namespace Sube
     {
         Pasajero passenger;
         Viajes miViaje;
-        List<string> lineas;
         ETransporte miTransporte;
         public TomarTransporte(Pasajero passenger)
         {
             InitializeComponent();
-            lineas = new List<string>();
             this.passenger = passenger;
         }
 
@@ -53,14 +51,17 @@ namespace Sube
 
                     if (float.TryParse(txtKilometros.Text, out float kilometros))
                     {
+                        TarjetaSube sube = new TarjetaSube();
                         string lineaTransporte = txtLinea.Text;
                         miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, lineaTransporte);
-                        //miViaje.TicketCost = miViaje.ReturnTicketCost(miTransporte);
 
                         TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(passenger.MySube.TarifaSocial, miViaje);
-                        passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
-                        MessageBox.Show(boletoViaje.ToString());
+                        miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
 
+                        passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
+                        passenger.MySube.QueueTravels.Enqueue(miViaje);
+                        MessageBox.Show(boletoViaje.ToString());
+                        MessageBox.Show(sube.MostrarQueue(passenger.MySube.QueueTravels));
                         DialogResult = DialogResult.OK;
                     }
                 }

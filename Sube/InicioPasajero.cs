@@ -71,7 +71,7 @@ namespace Sube
         private void viajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             lblNombre.Visible = false;
-            FormViajes viajes = new FormViajes();
+            FormViajes viajes = new FormViajes(passenger, passenger.MySube.QueueTravels);
             viajes.ShowDialog();
             if (viajes.DialogResult == DialogResult.OK)
             {

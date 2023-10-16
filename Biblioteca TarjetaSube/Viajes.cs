@@ -25,7 +25,10 @@ namespace Biblioteca_TarjetaSube
             this.tipoTransporte = tipoTransporte;
             this.lineasTransporte = lineasTransporte;
         }
-
+        public Viajes(float kilometres, DateTime date, ETransporte tipoTransporte, string lineasTransporte, float ticketCost) : this(kilometres, date, tipoTransporte, lineasTransporte)
+        {
+            this.ticketCost = ticketCost;
+        }
         public float TicketCost { get => ticketCost; set => ticketCost = value; }
         public float Kilometres { get => kilometres; set => kilometres = value; }
         public DateTime Date { get => date; set => date = value; }
@@ -60,7 +63,6 @@ namespace Biblioteca_TarjetaSube
             sb.AppendLine($"Linea: {this.lineasTransporte}");
             sb.AppendLine($"Transporte: {this.tipoTransporte}");
             sb.AppendLine($"Km: {this.kilometres}");
-
             return sb.ToString();
         }
     }

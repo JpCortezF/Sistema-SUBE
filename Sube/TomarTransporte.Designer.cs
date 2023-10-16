@@ -96,7 +96,7 @@
             // 
             txtLinea.Location = new Point(271, 60);
             txtLinea.Name = "txtLinea";
-            txtLinea.PlaceholderText = "Linea A, Linea 85...";
+            txtLinea.PlaceholderText = "Subte A, Linea 85, Roca...";
             txtLinea.Size = new Size(195, 23);
             txtLinea.TabIndex = 2;
             // 
@@ -143,6 +143,7 @@
             Controls.Add(lblTitulo);
             Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            MaximizeBox = false;
             Name = "TomarTransporte";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Viajá con tu SUBE";

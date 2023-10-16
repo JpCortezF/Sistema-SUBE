@@ -33,16 +33,19 @@ namespace Biblioteca_TarjetaSube
         public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
 
 
-
-
-
-        public Queue<Viajes> historialViajes(Viajes viaje)
+        public string MostrarQueue(Queue<Viajes> queueViajes)
         {
-            Queue<Viajes> miQueue = new Queue<Viajes>();
-
-            miQueue.Enqueue(viaje);
-
-            return miQueue;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Mis viajes: ");
+            foreach (Viajes viaje in queueViajes)
+            {
+                 sb.Append($"{viaje}, "); 
+            }
+            if (queueViajes.Count > 0)
+            {
+                sb.Length -= 2;
+            }
+            return sb.ToString();
         }
     }
 }

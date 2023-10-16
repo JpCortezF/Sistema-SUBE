@@ -9,13 +9,13 @@ namespace Biblioteca_TarjetaSube
     public class TarifaSocialPasajero : Viajes
     {
         ETarifaSocial tarifaSocial;
-        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, string lineasTransporte) 
-            : base(kilometres, date, tipoTransporte, lineasTransporte)
+        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, string lineasTransporte, float ticketCost) 
+            : base(kilometres, date, tipoTransporte, lineasTransporte, ticketCost)
         {
             this.tarifaSocial = miTarifa;
         }
         public TarifaSocialPasajero(ETarifaSocial tarifaSocial, Viajes viaje)
-            : this(viaje.Kilometres, viaje.Date, viaje.TipoTransporte, tarifaSocial, viaje.LineasTransporte)
+            : this(viaje.Kilometres, viaje.Date, viaje.TipoTransporte, tarifaSocial, viaje.LineasTransporte, viaje.TicketCost)
         {
         }
 
@@ -42,10 +42,11 @@ namespace Biblioteca_TarjetaSube
                     ticket = CostByTarifa(90);
                     break;
             }
+            TicketCost = ticket;
             return ticket;
         }
         public float CostByTarifa(float ticket)
-        {
+        {            
             switch (tarifaSocial)
             {
                 case ETarifaSocial.Ninguna:
