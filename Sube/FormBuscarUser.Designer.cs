@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblErrorDni = new Label();
             txtDni = new TextBox();
             label2 = new Label();
             btnIngresar = new Button();
-            listBox1 = new ListBox();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // lblErrorDni
-            // 
-            lblErrorDni.AutoSize = true;
-            lblErrorDni.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblErrorDni.ForeColor = Color.DarkRed;
-            lblErrorDni.Location = new Point(31, 75);
-            lblErrorDni.Name = "lblErrorDni";
-            lblErrorDni.Size = new Size(57, 16);
-            lblErrorDni.TabIndex = 9;
-            lblErrorDni.Text = "MsjError";
-            lblErrorDni.Visible = false;
             // 
             // txtDni
             // 
@@ -78,38 +66,40 @@
             btnIngresar.TabIndex = 10;
             btnIngresar.Text = "Buscar";
             btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
-            // listBox1
+            // dataGridView1
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(30, 98);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(919, 319);
-            listBox1.TabIndex = 11;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(30, 97);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1015, 391);
+            dataGridView1.TabIndex = 11;
             // 
-            // Form1
+            // FormBuscarUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(987, 450);
-            Controls.Add(listBox1);
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
+            ClientSize = new Size(1080, 518);
+            Controls.Add(dataGridView1);
             Controls.Add(btnIngresar);
-            Controls.Add(lblErrorDni);
             Controls.Add(txtDni);
             Controls.Add(label2);
-            Name = "Form1";
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormBuscarUser";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label lblErrorDni;
         private TextBox txtDni;
         private Label label2;
         private Button btnIngresar;
-        private ListBox listBox1;
+        private DataGridView dataGridView1;
     }
 }

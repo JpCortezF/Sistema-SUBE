@@ -352,6 +352,7 @@
             hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
             hOMEToolStripMenuItem.Size = new Size(84, 28);
             hOMEToolStripMenuItem.Text = "HOME";
+            hOMEToolStripMenuItem.Click += hOMEToolStripMenuItem_Click;
             // 
             // FormRegistroAdmin
             // 
