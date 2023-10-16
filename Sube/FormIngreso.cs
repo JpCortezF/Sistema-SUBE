@@ -93,10 +93,10 @@ namespace Sube
         {
             VentanaPassword ventanaPassword = new VentanaPassword(dictionaryPassengers);
             ventanaPassword.ShowDialog();
-            if(ventanaPassword.DialogResult == DialogResult.OK)
+            if (ventanaPassword.DialogResult == DialogResult.OK)
             {
                 string clave = ventanaPassword.DevolverPass();
-                MessageBox.Show($"La clave es:\n     {clave}","Ok",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"La clave es:\n     {clave}", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
