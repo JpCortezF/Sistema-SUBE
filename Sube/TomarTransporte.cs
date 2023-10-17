@@ -60,8 +60,7 @@ namespace Sube
 
                         passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
                         passenger.MySube.QueueTravels.Enqueue(miViaje);
-                        MessageBox.Show(boletoViaje.ToString());
-                        MessageBox.Show(sube.MostrarQueue(passenger.MySube.QueueTravels));
+
                         DialogResult = DialogResult.OK;
                     }
                 }

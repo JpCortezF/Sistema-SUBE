@@ -13,13 +13,11 @@ namespace Sube
 {
     public partial class FormBajaUsuario : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
         Pasajero passenger;
-        public FormBajaUsuario(Dictionary<string, Pasajero> passengers, Pasajero passenger)
+        public FormBajaUsuario(Pasajero passenger)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.dictionaryPassengers = passengers;
         }
 
         private void FormBajaUsuario_Load(object sender, EventArgs e)

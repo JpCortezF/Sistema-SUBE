@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIngreso));
             iNICIOToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
-            atrasToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             groupBox1 = new GroupBox();
             lblClave = new Label();
@@ -66,18 +65,12 @@
             // 
             menuStrip1.BackColor = SystemColors.ActiveCaption;
             menuStrip1.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, atrasToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(934, 39);
+            menuStrip1.Size = new Size(933, 39);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // atrasToolStripMenuItem
-            // 
-            atrasToolStripMenuItem.Name = "atrasToolStripMenuItem";
-            atrasToolStripMenuItem.Size = new Size(117, 35);
-            atrasToolStripMenuItem.Text = "VOLVER";
             // 
             // label1
             // 
@@ -244,7 +237,7 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(0, 37);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(464, 331);
+            pictureBox1.Size = new Size(467, 331);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
@@ -261,13 +254,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(934, 367);
+            ClientSize = new Size(933, 367);
             ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
-            IsMdiContainer = true;
             Name = "FormIngreso";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormIngreso";
@@ -300,7 +292,6 @@
         private Label label2;
         private ComboBox cmbDni;
         private PictureBox pictureBox1;
-        private ToolStripMenuItem atrasToolStripMenuItem;
         private Panel panel1;
     }
 }

@@ -37,6 +37,7 @@
             lblSaldo = new Label();
             btnBuscar = new Button();
             label3 = new Label();
+            lblFiltro = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViajes).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -121,13 +122,16 @@
             // btnBuscar
             // 
             btnBuscar.BackColor = SystemColors.ActiveCaption;
+            btnBuscar.BackgroundImage = Properties.Resources.magnifying_glass;
+            btnBuscar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnBuscar.Cursor = Cursors.Hand;
             btnBuscar.FlatStyle = FlatStyle.Flat;
-            btnBuscar.Location = new Point(313, 106);
+            btnBuscar.Location = new Point(290, 106);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(86, 23);
+            btnBuscar.Size = new Size(31, 23);
             btnBuscar.TabIndex = 0;
-            btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // label3
             // 
@@ -140,6 +144,20 @@
             label3.TabIndex = 9;
             label3.Text = "Saldo";
             // 
+            // lblFiltro
+            // 
+            lblFiltro.AutoSize = true;
+            lblFiltro.Cursor = Cursors.Hand;
+            lblFiltro.FlatStyle = FlatStyle.Flat;
+            lblFiltro.Font = new Font("Lucida Sans", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFiltro.Location = new Point(327, 111);
+            lblFiltro.Name = "lblFiltro";
+            lblFiltro.Size = new Size(74, 14);
+            lblFiltro.TabIndex = 10;
+            lblFiltro.Text = "Quitar filtros";
+            lblFiltro.Visible = false;
+            lblFiltro.Click += lblFiltro_Click;
+            // 
             // FormViajes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -147,6 +165,7 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(800, 415);
             ControlBox = false;
+            Controls.Add(lblFiltro);
             Controls.Add(label3);
             Controls.Add(btnBuscar);
             Controls.Add(lblSaldo);
@@ -177,5 +196,6 @@
         private Label lblSaldo;
         private Button btnBuscar;
         private Label label3;
+        private Label lblFiltro;
     }
 }

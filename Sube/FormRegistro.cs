@@ -31,18 +31,6 @@ namespace Sube
             InitializeComponent();
             this.dictionaryPassengers = passengers;
         }
-        private void sUBEToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            FormPasajero formPasajero = new FormPasajero();
-            formPasajero.Show();
-            Close();
-        }
-        private void iNGRESARToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            FormIngreso formIngreso = new FormIngreso(dictionaryPassengers);
-            formIngreso.Show();
-            Close();
-        }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
             grpDatos.Parent = panelDatos;
@@ -75,7 +63,7 @@ namespace Sube
                 string password = txtClave.Text;
                 string name = txtName.Text;
                 string lastname = txtLastname.Text;
-                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname))
+                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
                 {
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
@@ -87,6 +75,8 @@ namespace Sube
                         dictionaryPassengers[document] = passenger;
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                        DialogResult = DialogResult.OK;
+                        Close();
                     }
                     else
                     {
@@ -214,16 +204,20 @@ namespace Sube
 
         private void iNICIOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormPasajero formPasajero = new FormPasajero();
-            formPasajero.Show();
             Close();
         }
-        private void atrasToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void btnMostrarPass_Click_1(object sender, EventArgs e)
         {
-            FormIngreso frmIngreso = new FormIngreso(dictionaryPassengers);
-            frmIngreso.Show();
-            Close();
+            if (txtClave.PasswordChar == '•')
+            {
+                txtClave.PasswordChar = '\0';
+                btnMostrarPass.BackgroundImage = Properties.Resources.ojo_tachado;
+            }
+            else
+            {
+                txtClave.PasswordChar = '•';
+                btnMostrarPass.BackgroundImage = Properties.Resources.view;
+            }
         }
-
     }
 }

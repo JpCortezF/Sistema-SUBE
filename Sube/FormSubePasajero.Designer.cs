@@ -151,7 +151,7 @@
             lblTarifa.AutoSize = true;
             lblTarifa.Cursor = Cursors.Hand;
             lblTarifa.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTarifa.ForeColor = SystemColors.ActiveCaption;
+            lblTarifa.ForeColor = Color.SkyBlue;
             lblTarifa.Location = new Point(464, 286);
             lblTarifa.Name = "lblTarifa";
             lblTarifa.Size = new Size(129, 15);

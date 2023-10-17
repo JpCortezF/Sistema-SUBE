@@ -30,75 +30,57 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPasajero));
             label3 = new Label();
-            button2 = new Button();
-            pictureBox1 = new PictureBox();
+            btnOnline = new Button();
             label2 = new Label();
-            btnTitularidad = new Button();
             btnRegistrar = new Button();
-            btnSalir = new Button();
             lblIngresar = new Label();
             btnIngresar = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            menuStrip1 = new MenuStrip();
+            iNGRESOToolStripMenuItem = new ToolStripMenuItem();
+            rEGISTRALAToolStripMenuItem = new ToolStripMenuItem();
+            cOMPRAONLINEToolStripMenuItem = new ToolStripMenuItem();
+            panel1 = new Panel();
+            menuStrip1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.DarkGray;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.Gray;
-            label3.Location = new Point(126, 412);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(663, 132);
             label3.Name = "label3";
             label3.Size = new Size(120, 16);
             label3.TabIndex = 32;
             label3.Text = "Comprala online";
             // 
-            // button2
+            // btnOnline
             // 
-            button2.BackColor = Color.LightSkyBlue;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.BackgroundImageLayout = ImageLayout.Zoom;
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(42, 374);
-            button2.Name = "button2";
-            button2.Size = new Size(277, 35);
-            button2.TabIndex = 26;
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(367, 209);
-            pictureBox1.TabIndex = 31;
-            pictureBox1.TabStop = false;
+            btnOnline.BackColor = Color.LightSkyBlue;
+            btnOnline.BackgroundImage = (Image)resources.GetObject("btnOnline.BackgroundImage");
+            btnOnline.BackgroundImageLayout = ImageLayout.Zoom;
+            btnOnline.Cursor = Cursors.Hand;
+            btnOnline.FlatStyle = FlatStyle.Flat;
+            btnOnline.Location = new Point(663, 12);
+            btnOnline.Name = "btnOnline";
+            btnOnline.Size = new Size(114, 114);
+            btnOnline.TabIndex = 26;
+            btnOnline.UseVisualStyleBackColor = false;
+            btnOnline.Click += btnOnline_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.DarkGray;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Gray;
-            label2.Location = new Point(142, 340);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(389, 132);
             label2.Name = "label2";
             label2.Size = new Size(79, 16);
             label2.TabIndex = 30;
             label2.Text = "Registrala";
-            // 
-            // btnTitularidad
-            // 
-            btnTitularidad.BackColor = Color.LightSkyBlue;
-            btnTitularidad.Cursor = Cursors.Hand;
-            btnTitularidad.FlatStyle = FlatStyle.Flat;
-            btnTitularidad.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTitularidad.ForeColor = Color.Black;
-            btnTitularidad.Location = new Point(42, 474);
-            btnTitularidad.Name = "btnTitularidad";
-            btnTitularidad.Size = new Size(277, 35);
-            btnTitularidad.TabIndex = 28;
-            btnTitularidad.Text = "Consultá titularidad";
-            btnTitularidad.UseVisualStyleBackColor = false;
             // 
             // btnRegistrar
             // 
@@ -107,34 +89,20 @@
             btnRegistrar.BackgroundImageLayout = ImageLayout.Zoom;
             btnRegistrar.Cursor = Cursors.Hand;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(42, 302);
+            btnRegistrar.Location = new Point(369, 15);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(277, 35);
+            btnRegistrar.Size = new Size(114, 114);
             btnRegistrar.TabIndex = 25;
             btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click_1;
             // 
-            // btnSalir
-            // 
-            btnSalir.BackColor = SystemColors.ActiveCaptionText;
-            btnSalir.Cursor = Cursors.Hand;
-            btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSalir.ForeColor = SystemColors.ButtonHighlight;
-            btnSalir.Location = new Point(42, 526);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(277, 37);
-            btnSalir.TabIndex = 29;
-            btnSalir.Text = "SALIR";
-            btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += btnSalir_Click;
-            // 
             // lblIngresar
             // 
             lblIngresar.AutoSize = true;
+            lblIngresar.BackColor = Color.DarkGray;
             lblIngresar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblIngresar.ForeColor = Color.Gray;
-            lblIngresar.Location = new Point(108, 275);
+            lblIngresar.ForeColor = Color.Black;
+            lblIngresar.Location = new Point(37, 132);
             lblIngresar.Name = "lblIngresar";
             lblIngresar.Size = new Size(138, 16);
             lblIngresar.TabIndex = 23;
@@ -148,33 +116,77 @@
             btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(42, 237);
+            btnIngresar.Location = new Point(52, 12);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(277, 35);
+            btnIngresar.Size = new Size(114, 114);
             btnIngresar.TabIndex = 22;
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click_1;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = SystemColors.ActiveCaption;
+            menuStrip1.Font = new Font("Lucida Sans", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNGRESOToolStripMenuItem, rEGISTRALAToolStripMenuItem, cOMPRAONLINEToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(934, 35);
+            menuStrip1.TabIndex = 33;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // iNGRESOToolStripMenuItem
+            // 
+            iNGRESOToolStripMenuItem.Name = "iNGRESOToolStripMenuItem";
+            iNGRESOToolStripMenuItem.Size = new Size(152, 31);
+            iNGRESOToolStripMenuItem.Text = "| INGRESO";
+            iNGRESOToolStripMenuItem.Click += iNGRESOToolStripMenuItem_Click;
+            // 
+            // rEGISTRALAToolStripMenuItem
+            // 
+            rEGISTRALAToolStripMenuItem.Name = "rEGISTRALAToolStripMenuItem";
+            rEGISTRALAToolStripMenuItem.Size = new Size(204, 31);
+            rEGISTRALAToolStripMenuItem.Text = "| REGISTRALA ";
+            rEGISTRALAToolStripMenuItem.Click += rEGISTRALAToolStripMenuItem_Click;
+            // 
+            // cOMPRAONLINEToolStripMenuItem
+            // 
+            cOMPRAONLINEToolStripMenuItem.Name = "cOMPRAONLINEToolStripMenuItem";
+            cOMPRAONLINEToolStripMenuItem.Size = new Size(265, 31);
+            cOMPRAONLINEToolStripMenuItem.Text = "| COMPRA ONLINE ";
+            cOMPRAONLINEToolStripMenuItem.Click += cOMPRAONLINEToolStripMenuItem_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnIngresar);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(lblIngresar);
+            panel1.Controls.Add(btnOnline);
+            panel1.Controls.Add(btnRegistrar);
+            panel1.Controls.Add(label2);
+            panel1.Location = new Point(33, 232);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(859, 152);
+            panel1.TabIndex = 35;
             // 
             // FormPasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(367, 579);
+            BackColor = Color.DarkGray;
+            ClientSize = new Size(934, 579);
             ControlBox = false;
-            Controls.Add(label3);
-            Controls.Add(button2);
-            Controls.Add(pictureBox1);
-            Controls.Add(label2);
-            Controls.Add(btnTitularidad);
-            Controls.Add(btnRegistrar);
-            Controls.Add(btnSalir);
-            Controls.Add(lblIngresar);
-            Controls.Add(btnIngresar);
+            Controls.Add(panel1);
+            Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
+            MainMenuStrip = menuStrip1;
             Name = "FormPasajero";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPasajero";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += FormPasajero_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,13 +194,15 @@
         #endregion
 
         private Label label3;
-        private Button button2;
-        private PictureBox pictureBox1;
+        private Button btnOnline;
         private Label label2;
-        private Button btnTitularidad;
         private Button btnRegistrar;
-        private Button btnSalir;
         private Label lblIngresar;
         private Button btnIngresar;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem iNGRESOToolStripMenuItem;
+        private ToolStripMenuItem rEGISTRALAToolStripMenuItem;
+        private ToolStripMenuItem cOMPRAONLINEToolStripMenuItem;
+        private Panel panel1;
     }
 }

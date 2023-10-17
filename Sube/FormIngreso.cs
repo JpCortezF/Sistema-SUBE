@@ -34,9 +34,8 @@ namespace Sube
         }
         private void iNICIOToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FormPasajero formPasajero = new FormPasajero();
-            formPasajero.Show();
             Close();
+            DialogResult = DialogResult.Cancel;
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -51,9 +50,11 @@ namespace Sube
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult = DialogResult.OK;
+                            Close();
+
                             InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                             inicio.Show();
-                            this.Close();
                             break;
                         }
                     }
@@ -66,9 +67,10 @@ namespace Sube
         }
         private void lblRegistro_Click_1(object sender, EventArgs e)
         {
-            FormRegistro frm = new FormRegistro(dictionaryPassengers);
-            frm.Show();
             Close();
+
+            FormRegistro frm = new FormRegistro(dictionaryPassengers);
+            frm.ShowDialog();
         }
         private void btnMostrarPass_Click_1(object sender, EventArgs e)
         {
@@ -96,7 +98,7 @@ namespace Sube
             if (ventanaPassword.DialogResult == DialogResult.OK)
             {
                 string clave = ventanaPassword.DevolverPass();
-                MessageBox.Show($"La clave es:\n     {clave}", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"La clave es:\n     {clave}", "Recuperar Clave!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

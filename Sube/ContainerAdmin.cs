@@ -32,7 +32,7 @@ namespace Sube
             ToolStripMenuItem itemSalir = new ToolStripMenuItem("SALIR");
             menuStrip1.Items.Add(itemSalir);
             itemSalir.Alignment = ToolStripItemAlignment.Right;
-            itemSalir.BackColor = SystemColors.Control;
+            itemSalir.BackColor = SystemColors.ActiveCaption;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
         }

@@ -51,7 +51,7 @@ namespace Sube
             Close();
             try
             {
-                CargaSube cargarSube = CargaSube.VentanaUnica(passenger, dictionaryPassengers);
+                CargaSube cargarSube = new CargaSube(passenger);
                 cargarSube.ShowDialog();
                 if (cargarSube.DialogResult == DialogResult.OK)
                 {
@@ -76,7 +76,7 @@ namespace Sube
 
         private void cmbBaja_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBajaUsuario bajaUser = new FormBajaUsuario(dictionaryPassengers, passenger);
+            FormBajaUsuario bajaUser = new FormBajaUsuario(passenger);
             bajaUser.ShowDialog();
             if (bajaUser.DialogResult == DialogResult.OK)
             {

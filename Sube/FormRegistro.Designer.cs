@@ -65,6 +65,7 @@
             iNICIOToolStripMenuItem = new ToolStripMenuItem();
             atrasToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            btnMostrarPass = new Button();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             panelDatos.SuspendLayout();
@@ -75,6 +76,7 @@
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
+            grpDatos.Controls.Add(btnMostrarPass);
             grpDatos.Controls.Add(label7);
             grpDatos.Controls.Add(label6);
             grpDatos.Controls.Add(txtLastname);
@@ -187,11 +189,11 @@
             // txtClave
             // 
             txtClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtClave.Location = new Point(34, 535);
+            txtClave.Location = new Point(31, 536);
             txtClave.MaxLength = 4;
             txtClave.Name = "txtClave";
             txtClave.PasswordChar = '•';
-            txtClave.Size = new Size(387, 26);
+            txtClave.Size = new Size(388, 26);
             txtClave.TabIndex = 10;
             txtClave.TextChanged += txtClave_TextChanged;
             // 
@@ -468,9 +470,7 @@
             // atrasToolStripMenuItem
             // 
             atrasToolStripMenuItem.Name = "atrasToolStripMenuItem";
-            atrasToolStripMenuItem.Size = new Size(130, 35);
-            atrasToolStripMenuItem.Text = "INGRESO";
-            atrasToolStripMenuItem.Click += atrasToolStripMenuItem_Click_1;
+            atrasToolStripMenuItem.Size = new Size(12, 35);
             // 
             // pictureBox1
             // 
@@ -481,6 +481,18 @@
             pictureBox1.Size = new Size(464, 331);
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
+            // 
+            // btnMostrarPass
+            // 
+            btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
+            btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMostrarPass.Cursor = Cursors.Hand;
+            btnMostrarPass.Location = new Point(367, 536);
+            btnMostrarPass.Name = "btnMostrarPass";
+            btnMostrarPass.Size = new Size(53, 27);
+            btnMostrarPass.TabIndex = 11;
+            btnMostrarPass.UseVisualStyleBackColor = true;
+            btnMostrarPass.Click += btnMostrarPass_Click_1;
             // 
             // FormRegistro
             // 
@@ -548,5 +560,6 @@
         private Label label6;
         private TextBox txtLastname;
         private TextBox txtName;
+        private Button btnMostrarPass;
     }
 }

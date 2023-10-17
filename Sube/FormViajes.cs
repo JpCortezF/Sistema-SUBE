@@ -17,6 +17,7 @@ namespace Sube
     {
         Pasajero passenger;
         Queue<Viajes> queueViajes;
+
         public FormViajes(Pasajero passenger, Queue<Viajes> queueTravels)
         {
             InitializeComponent();
@@ -27,6 +28,33 @@ namespace Sube
         {
             lblSaldo.Text = $"${passenger.MySube.Balance}";
             dataGridViajes.Parent = panel1;
+            LoadDataGridView();
+        }
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("FECHA", typeof(DateTime));
+            dt.Columns.Add("Linea", typeof(string));
+            dt.Columns.Add("Transporte", typeof(ETransporte));
+            dt.Columns.Add("Kilometros", typeof(int));
+            dt.Columns.Add("Costo del boleto", typeof(float));
+            foreach (Viajes viajes in queueViajes)
+            {
+                if (txtBusqueda.Text == viajes.LineasTransporte)
+                {
+                    dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost);
+                }
+            }
+            lblFiltro.Visible = true;
+            dataGridViajes.DataSource = dt;
+        }
+        private void LoadDataGridView()
+        {
             DataTable dt = new DataTable();
             dt.Columns.Add("FECHA", typeof(DateTime));
             dt.Columns.Add("Linea", typeof(string));
@@ -40,9 +68,12 @@ namespace Sube
 
             dataGridViajes.DataSource = dt;
         }
-        private void btnSalir_Click_1(object sender, EventArgs e)
+
+        private void lblFiltro_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            LoadDataGridView();
+            lblFiltro.Visible = false;
+            txtBusqueda.Text = string.Empty;
         }
     }
 }

@@ -15,28 +15,15 @@ namespace Sube
 {
     public partial class CargaSube : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
-        private static CargaSube instancia = null;
         Pasajero passenger;
 
-        public static CargaSube VentanaUnica(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers)
-        {
-            if (instancia == null)
-            {
-                instancia = new CargaSube(passenger, dictionaryPassengers);
-            }
-            return instancia;
-        }
-        public CargaSube(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers)
+        public CargaSube(Pasajero passenger)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.dictionaryPassengers = dictionaryPassengers;
         }
         private void lblContinuar_Click(object sender, EventArgs e)
         {
-            Close();
-            instancia = null;
             DialogResult = DialogResult.Cancel;
         }
         private void txtCarga_TextChanged(object sender, EventArgs e)
@@ -67,7 +54,6 @@ namespace Sube
                     {
                         passenger.MySube.Balance += balance;
                     }
-                    instancia = null;
                     Close();
                 }
                 else

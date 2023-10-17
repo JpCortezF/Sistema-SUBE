@@ -39,6 +39,7 @@ namespace Sube
 
         private void btnTramite_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("¡Trámite reliazado!\nEn los próximos minutos vas a poder gozar de los descuentos", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;
         }
     }
