@@ -26,6 +26,11 @@ namespace Biblioteca_TarjetaSube
             cost = CostByTarifa(cost);
             return cost;
         }
+        /// <summary>
+        /// Calcula el costo de un boleto de transporte público en base al tipo de transporte especificado.
+        /// </summary>
+        /// <param name="transporte">El tipo de transporte, que puede ser Colectivo, Subte o Tren.</param>
+        /// <returns>El costo del boleto calculado.</returns>
         public float ReturnTicketCost(ETransporte transporte)
         {
             float ticket = 0;
@@ -45,6 +50,11 @@ namespace Biblioteca_TarjetaSube
             TicketCost = ticket;
             return ticket;
         }
+        /// <summary>
+        /// Calcula el costo de un boleto de transporte público en base a una tarifa social específica.
+        /// </summary>
+        /// <param name="ticket">El costo base del boleto antes de aplicar la tarifa social.</param>
+        /// <returns>El costo del boleto después de aplicar la tarifa social correspondiente.</returns>
         public float CostByTarifa(float ticket)
         {            
             switch (tarifaSocial)
