@@ -363,6 +363,7 @@
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormRegistroAdmin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegistroAdmin";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
