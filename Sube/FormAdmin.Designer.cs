@@ -32,6 +32,7 @@
             menuStrip1 = new MenuStrip();
             hOMEToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
+            button2 = new Button();
             label3 = new Label();
             txtDni = new TextBox();
             label7 = new Label();
@@ -74,6 +75,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ButtonFace;
+            groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtDni);
             groupBox1.Controls.Add(label7);
@@ -97,6 +99,21 @@
             groupBox1.Size = new Size(467, 491);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.IndianRed;
+            button2.Cursor = Cursors.Hand;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.Control;
+            button2.Location = new Point(172, 431);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 39);
+            button2.TabIndex = 28;
+            button2.Text = "Hardcode";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label3
             // 
@@ -328,5 +345,6 @@
         private Label label3;
         private TextBox txtDni;
         private Label label7;
+        private Button button2;
     }
 }

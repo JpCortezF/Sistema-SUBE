@@ -63,5 +63,13 @@ namespace Sube
                 MessageBox.Show("No se encontro al usuario.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtEmail.Text = "eze@hotmail.com";
+            txtDni.Text = "41709030";
+            txtPassword.Text = "1234";
+            txtRepeatPassword.Text = "1234";
+        }
     }
 }

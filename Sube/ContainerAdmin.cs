@@ -58,7 +58,7 @@ namespace Sube
                 string rutaT = @"..\..\..\Data";
                 string nombreT = "MisTramites.Json";
                 string pathT = Path.Combine(rutaT, nombreT);
-                Serializador.WriteJsonTramites(path, tramites);
+                Serializador.WriteJsonTramites(pathT, tramites);
                 Close();
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
@@ -82,9 +82,9 @@ namespace Sube
 
         private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isBuscadorFormOpen)
+            if (!isNotificacionesFormClosed)
             {
-                FormTramites notificaciones = new FormTramites(tramites);
+                FormTramites notificaciones = new FormTramites(tramites, dictionaryPassengers);
                 notificaciones.MdiParent = this;
                 notificaciones.Show();
                 isNotificacionesFormClosed = true;

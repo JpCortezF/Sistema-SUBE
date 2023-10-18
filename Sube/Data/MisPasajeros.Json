@@ -1,1 +1,245 @@
-[]
+{
+  "42645815": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061479570300912",
+      "Balance": 2064.0579,
+      "QueueTravels": [
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 6.0,
+          "Date": "2023-10-16T14:47:46.0635487-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 106"
+        },
+        {
+          "TicketCost": 72.0,
+          "Kilometres": 12.0,
+          "Date": "2023-10-16T14:52:12.396696-03:00",
+          "TipoTransporte": 2,
+          "LineasTransporte": "Roca"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 6.0,
+          "Date": "2023-10-16T14:52:21.928535-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "Subte C"
+        },
+        {
+          "TicketCost": 0.0,
+          "Kilometres": 36.0,
+          "Date": "2023-10-17T21:08:37.4669557-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 85"
+        },
+        {
+          "TicketCost": 68.09,
+          "Kilometres": 14.0,
+          "Date": "2023-10-17T21:09:53.7791943-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 166"
+        }
+      ],
+      "TarifaSocial": 2
+    },
+    "Email": "juanpactz@gmail.com",
+    "Password": "9272",
+    "Name": "Juan Pablo",
+    "Lastname": "Cortez Fernandez"
+  },
+  "41709030": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061198209121100",
+      "Balance": -150.504,
+      "QueueTravels": [],
+      "TarifaSocial": 1
+    },
+    "Email": "ezequiel@hotmail.com",
+    "Password": "1234",
+    "Name": "Ezequiel ",
+    "Lastname": "Melo"
+  },
+  "42260908": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061103047609047",
+      "Balance": 6600.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "julialvarez@gmail.com",
+    "Password": "9012",
+    "Name": "Julian",
+    "Lastname": "Alvarez"
+  },
+  "16332087": {
+    "Gender": "Femenino",
+    "MySube": {
+      "CardNumber": "6061202115460021",
+      "Balance": 856.46,
+      "QueueTravels": [
+        {
+          "TicketCost": 63.54,
+          "Kilometres": 7.0,
+          "Date": "2023-10-16T19:06:27.2585077-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "85"
+        },
+        {
+          "TicketCost": 80.0,
+          "Kilometres": 6.0,
+          "Date": "2023-10-17T11:03:38.0905479-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "Subte A"
+        }
+      ],
+      "TarifaSocial": 0
+    },
+    "Email": "ma.isabel63@gmail.com",
+    "Password": "0737",
+    "Name": "maria isabel",
+    "Lastname": "fernandez"
+  },
+  "42000000": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061187289121278",
+      "Balance": -164.71994,
+      "QueueTravels": [
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 2.0,
+          "Date": "2023-10-17T19:52:06.5249785-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 85"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 5.0,
+          "Date": "2023-10-17T19:54:16.6191229-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "Subte A"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-17T19:54:52.6893204-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "Subte A"
+        },
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-17T19:57:53.0484341-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 53"
+        },
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 2.0,
+          "Date": "2023-10-17T19:58:11.6982553-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 106"
+        },
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 2.0,
+          "Date": "2023-10-17T19:58:20.174107-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 106"
+        }
+      ],
+      "TarifaSocial": 2
+    },
+    "Email": "jpbushin@gmail.com",
+    "Password": "9272",
+    "Name": "Bushin",
+    "Lastname": "Delmark"
+  },
+  "33208388": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061143134255327",
+      "Balance": 410.40002,
+      "QueueTravels": [
+        {
+          "TicketCost": 47.2,
+          "Kilometres": 5.0,
+          "Date": "2023-10-17T23:44:10.1268478-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "33"
+        },
+        {
+          "TicketCost": 47.2,
+          "Kilometres": 4.0,
+          "Date": "2023-10-17T23:44:21.859293-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Subte A"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 6.0,
+          "Date": "2023-10-17T23:44:29.9210727-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "Subte D"
+        },
+        {
+          "TicketCost": 47.2,
+          "Kilometres": 6.0,
+          "Date": "2023-10-17T23:44:38.5373774-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 68"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 2.0,
+          "Date": "2023-10-17T23:51:32.3401503-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "a"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 2.0,
+          "Date": "2023-10-17T23:51:36.7268864-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "a"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 3.0,
+          "Date": "2023-10-17T23:51:41.6460809-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "a"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 2.0,
+          "Date": "2023-10-17T23:51:47.3799992-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "a"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-17T23:51:55.4255887-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "d"
+        },
+        {
+          "TicketCost": 64.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-17T23:52:01.2980164-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "a"
+        }
+      ],
+      "TarifaSocial": 1
+    },
+    "Email": "AleHardcode@gmail.com",
+    "Password": "8388",
+    "Name": "Alejandro",
+    "Lastname": "Heidenreich"
+  }
+}
