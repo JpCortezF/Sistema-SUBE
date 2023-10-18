@@ -56,8 +56,15 @@ namespace Biblioteca_Usuarios
         {
             try
             {
-                string json = JsonConvert.SerializeObject(dictionaryAdmins, Newtonsoft.Json.Formatting.Indented);
-                File.WriteAllText(path, json);
+                if (File.Exists(path))
+                {
+                    string json = JsonConvert.SerializeObject(dictionaryAdmins, Newtonsoft.Json.Formatting.Indented);
+                    File.WriteAllText(path, json);
+                }
+                else
+                {
+                    Console.WriteLine("El archivo JSON no existe.");
+                }
             }
             catch (Exception ex)
             {

@@ -108,7 +108,7 @@ namespace Sube
         {
             Close();
 
-            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, dictionaryPassengers);
             tarifaSocial.ShowDialog();
         }
     }

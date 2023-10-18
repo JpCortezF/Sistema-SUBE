@@ -14,11 +14,13 @@ namespace Sube
 {
     public partial class FormTarifaSocial : Form
     {
+        Dictionary<string, Pasajero> dictionaryPassengers;
         Pasajero passenger;
-        public FormTarifaSocial(Pasajero passenger)
+        public FormTarifaSocial(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers)
         {
             InitializeComponent();
             this.passenger = passenger;
+            this.dictionaryPassengers = dictionaryPassengers;
         }
 
         private void FormTarifaSocial_Load(object sender, EventArgs e)
@@ -47,12 +49,23 @@ namespace Sube
 
             if (radioButtonSeleccionado != null)
             {
-                MessageBox.Show("¡Trámite reliazado!\nEn los próximos minutos vas a poder gozar de los descuentos", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                List<Tramites> listaTramites = new List<Tramites>();
+                string ruta = @"..\..\..\Data";
+                string nombre = @".\MisTramites.Json";
+                string path = ruta + nombre;
 
+                MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string radioButtonTarifa = radioButtonSeleccionado.Text;
-                if(Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
+
+
+                if (Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
                 {
-                    passenger.MySube.TarifaSocial = tarifaSocial;
+                    Random rnd = new Random();
+                    int _rnd = rnd.Next(1, 99999);
+
+                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}\n" + txtClaim.Text, DateTime.Now);
+                    listaTramites.Add(miTramite);
+                    Serializador.WriteJsonTramites(path, listaTramites);
                     DialogResult = DialogResult.OK;
                 }
             }
