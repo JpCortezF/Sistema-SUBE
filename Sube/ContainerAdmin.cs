@@ -90,7 +90,7 @@ namespace Sube
                 isNotificacionesFormClosed = true;
                 notificaciones.FormClosed += (s, args) =>
                 {
-                    isBuscadorFormOpen = false;
+                    isNotificacionesFormClosed = false;
                 };
             }
         }

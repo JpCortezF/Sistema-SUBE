@@ -32,11 +32,14 @@ namespace Sube
             dt.Columns.Add("N° de Tarjeta", typeof(string));
             dt.Columns.Add("Saldo actual", typeof(string));
 
-            foreach (var entry in dictionaryPassengers)
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
             {
-                if (entry.Key.Contains(txtDni.Text, StringComparison.OrdinalIgnoreCase) || entry.Value.Name.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || entry.Value.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
+                if(kvp.Value is Pasajero pasajero)
                 {
-                    dt.Rows.Add(entry.Key, entry.Value.Name, entry.Value.LastName, entry.Value.Gender, entry.Value.MySube.CardNumber, entry.Value.MySube.Balance);
+                    if (kvp.Key.Contains(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.MySube.CardNumber.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
+                    {
+                        dt.Rows.Add(kvp.Key, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
+                    }
                 }
             }
 
@@ -49,12 +52,14 @@ namespace Sube
             {
                 case 0:
                     label2.Text = "N° de documento a buscar:";
+
                     break;
                 case 1:
                     label2.Text = "Ingrese nombre o apellido a buscar:";
                     break;
                 case 2:
                     label2.Text = "N° de tarjeta a buscar:";
+
                     break;
             }
         }
@@ -78,9 +83,30 @@ namespace Sube
                 }
             }
         }
+        private void LoadDataGridView()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("DNI", typeof(string));
+            dt.Columns.Add("Nombre", typeof(string));
+            dt.Columns.Add("Apellido", typeof(string));
+            dt.Columns.Add("Genero", typeof(string));
+            dt.Columns.Add("N° de Tarjeta", typeof(string));
+            dt.Columns.Add("Saldo actual", typeof(string));
+
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            {
+                if (kvp.Value is Pasajero pasajero)
+                {
+                    dt.Rows.Add(kvp.Key, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
+                }
+            }
+            dataGridView.DataSource = dt;
+            dataGridView.Parent = panel1;
+        }
+
         private void FormBuscarUser_Load(object sender, EventArgs e)
         {
-            dataGridView.Parent = panel1;
+            LoadDataGridView();
         }
     }
 }

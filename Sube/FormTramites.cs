@@ -31,51 +31,39 @@ namespace Sube
             this.dataGridView1.DataSource = tramites;
             lblCount.Text = tramites.Count.ToString();
         }
-        /*
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            try
             {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+                string selectedDni = null;
+                int selectedIndex = -1;
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
-                    if (kvp.Value is Pasajero passenger)
+                    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                    if (selectedRow.Cells["DniClaimer"].Value != null && selectedRow.Cells["DniClaimer"].Value != null)
                     {
-                        if (selectedRow.Cells["DniClaimer"].Value.ToString() == kvp.Key)
-                        {               
+                        selectedDni = selectedRow.Cells["DniClaimer"].Value.ToString();
+                        selectedIndex = listTramites.FindIndex(tramite => tramite.DniClaimer == selectedDni);
+                    }/*
+                    foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+                    {
+                        if (kvp.Value is Pasajero passenger && selectedDni == kvp.Key)
+                        {
                             FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
                             editarUsuario.Show();
+                            break;
                         }
-                    }
-                }
-                listTramites.RemoveAt(selectedRow.Index);
-            }
-
-        }
-        */
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-                string selectedDni = selectedRow.Cells["DniClaimer"].Value.ToString();
-                int selectedIndex = listTramites.FindIndex(tramite => tramite.DniClaimer == selectedDni);
-
-                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-                {
-                    if (kvp.Value is Pasajero passenger && selectedDni == kvp.Key)
+                    }*/
+                    if (selectedIndex >= 0 && selectedIndex < listTramites.Count)
                     {
-                        FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
-                        editarUsuario.Show();
-                        break;
+                        listTramites.RemoveAt(selectedIndex);
+                        Hide();
                     }
                 }
-                if(selectedRow.Cells is not null)
-                {
-                    listTramites.RemoveAt(selectedIndex);
-                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
