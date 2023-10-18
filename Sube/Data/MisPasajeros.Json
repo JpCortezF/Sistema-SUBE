@@ -54,7 +54,7 @@
       "CardNumber": "6061198209121100",
       "Balance": -150.504,
       "QueueTravels": [],
-      "TarifaSocial": 1
+      "TarifaSocial": 2
     },
     "Email": "ezequiel@hotmail.com",
     "Password": "1234",
@@ -235,7 +235,7 @@
           "LineasTransporte": "a"
         }
       ],
-      "TarifaSocial": 1
+      "TarifaSocial": 2
     },
     "Email": "AleHardcode@gmail.com",
     "Password": "8388",

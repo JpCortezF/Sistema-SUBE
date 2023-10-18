@@ -34,8 +34,8 @@ namespace Sube
         private void CargaSube_Load(object sender, EventArgs e)
         {
             lblMensaje.Text = "Carga tu SUBE de forma virtual desde Mercado Pago";
-            lblSaldo.Text = $"$ {passenger.MySube.Balance}";
-
+            double balance = passenger.MySube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
             txtCarga.TextChanged += txtCarga_TextChanged;
         }
         public string DevolverMonto()

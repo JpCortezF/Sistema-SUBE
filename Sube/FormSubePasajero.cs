@@ -33,7 +33,8 @@ namespace Sube
         {
             lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
-            lblSaldo.Text = $"$ {passenger.MySube.Balance}";
+            double balance = passenger.MySube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
             lblActualTarifa.Text = $"Tarifa Social: {passenger.MySube.TarifaSocial}";
             lblTarifa.Text = "Acceder a tarifa social --->";
             cmbBaja.Items.Add("Perdida");

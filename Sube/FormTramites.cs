@@ -44,7 +44,7 @@ namespace Sube
                     {
                         selectedDni = selectedRow.Cells["DniClaimer"].Value.ToString();
                         selectedIndex = listTramites.FindIndex(tramite => tramite.DniClaimer == selectedDni);
-                    }/*
+                    }
                     foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
                     {
                         if (kvp.Value is Pasajero passenger && selectedDni == kvp.Key)
@@ -53,7 +53,7 @@ namespace Sube
                             editarUsuario.Show();
                             break;
                         }
-                    }*/
+                    }
                     if (selectedIndex >= 0 && selectedIndex < listTramites.Count)
                     {
                         listTramites.RemoveAt(selectedIndex);

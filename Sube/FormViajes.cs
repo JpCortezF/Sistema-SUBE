@@ -26,7 +26,8 @@ namespace Sube
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
-            lblSaldo.Text = $"${passenger.MySube.Balance}";
+            double balance = passenger.MySube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
             dataGridViajes.Parent = panel1;
             LoadDataGridView();
         }

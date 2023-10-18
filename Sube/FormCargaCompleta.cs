@@ -24,7 +24,8 @@ namespace Sube
         }
         private void FormCargaCompleta_Load(object sender, EventArgs e)
         {
-            lblSaldo.Text = $"$ {passenger.MySube.Balance}";
+            double balance = passenger.MySube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
         }
 
         private void lblContinuar_Click(object sender, EventArgs e)
