@@ -63,7 +63,7 @@ namespace Sube
                     Random rnd = new Random();
                     int _rnd = rnd.Next(1, 99999);
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}\n" + txtClaim.Text, DateTime.Now);
+                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}  " + txtClaim.Text, DateTime.Now);
                     listaTramites.Add(miTramite);
                     Serializador.WriteJsonTramites(path, listaTramites);
                     DialogResult = DialogResult.OK;
