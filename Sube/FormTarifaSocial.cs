@@ -30,6 +30,10 @@ namespace Sube
             label3.Text = $"• {ETarifaSocial.ExComatienteDeMalvinas}";
             label4.Text = $"• {ETarifaSocial.Discapacitado}";
             lblCosto.Text = "¿Cuál es el costo del trámito?";
+            rdbEstudiantil.Text = $"{ETarifaSocial.Estudiantil}";
+            rdbJubilado.Text = $"{ETarifaSocial.Jubilado}";
+            rdbCombatiente.Text = $"{ETarifaSocial.ExComatienteDeMalvinas}";
+            rdbDiscapacitado.Text = $"{ETarifaSocial.Discapacitado}";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,8 +43,24 @@ namespace Sube
 
         private void btnTramite_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("¡Trámite reliazado!\nEn los próximos minutos vas a poder gozar de los descuentos", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DialogResult = DialogResult.OK;
+            RadioButton radioButtonSeleccionado = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+
+            if (radioButtonSeleccionado != null)
+            {
+                MessageBox.Show("¡Trámite reliazado!\nEn los próximos minutos vas a poder gozar de los descuentos", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                string radioButtonTarifa = radioButtonSeleccionado.Text;
+                if(Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
+                {
+                    passenger.MySube.TarifaSocial = tarifaSocial;
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            else
+            {
+                passenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+            }
+
         }
     }
 }

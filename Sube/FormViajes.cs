@@ -43,11 +43,12 @@ namespace Sube
             dt.Columns.Add("Transporte", typeof(ETransporte));
             dt.Columns.Add("Kilometros", typeof(int));
             dt.Columns.Add("Costo del boleto", typeof(float));
+            dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
             foreach (Viajes viajes in queueViajes)
             {
                 if (txtBusqueda.Text == viajes.LineasTransporte)
                 {
-                    dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost);
+                    dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
                 }
             }
             lblFiltro.Visible = true;
@@ -61,9 +62,10 @@ namespace Sube
             dt.Columns.Add("Transporte", typeof(ETransporte));
             dt.Columns.Add("Kilometros", typeof(int));
             dt.Columns.Add("Costo del boleto", typeof(float));
+            dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
             foreach (Viajes viajes in queueViajes)
             {
-                dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost);
+                dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
             }
 
             dataGridViajes.DataSource = dt;

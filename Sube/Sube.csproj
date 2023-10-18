@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj" />
     <ProjectReference Include="..\Biblioteca Usuarios\Biblioteca Usuarios.csproj" />
+    <ProjectReference Include="..\MyExceptions\MyExceptions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -23,7 +23,7 @@ namespace Biblioteca_TarjetaSube
         {
             float cost = base.CostByKilometres();
 
-            CostByTarifa(cost);
+            cost = CostByTarifa(cost);
             return cost;
         }
         public float ReturnTicketCost(ETransporte transporte)

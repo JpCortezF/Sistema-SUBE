@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
+            btnMostrarPass = new Button();
             label7 = new Label();
             label6 = new Label();
             txtLastname = new TextBox();
@@ -65,7 +66,7 @@
             iNICIOToolStripMenuItem = new ToolStripMenuItem();
             atrasToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
-            btnMostrarPass = new Button();
+            btnHardcode = new Button();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             panelDatos.SuspendLayout();
@@ -76,6 +77,7 @@
             // grpDatos
             // 
             grpDatos.BackColor = SystemColors.ButtonFace;
+            grpDatos.Controls.Add(btnHardcode);
             grpDatos.Controls.Add(btnMostrarPass);
             grpDatos.Controls.Add(label7);
             grpDatos.Controls.Add(label6);
@@ -106,6 +108,18 @@
             grpDatos.Size = new Size(458, 744);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
+            // 
+            // btnMostrarPass
+            // 
+            btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
+            btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMostrarPass.Cursor = Cursors.Hand;
+            btnMostrarPass.Location = new Point(367, 536);
+            btnMostrarPass.Name = "btnMostrarPass";
+            btnMostrarPass.Size = new Size(53, 27);
+            btnMostrarPass.TabIndex = 11;
+            btnMostrarPass.UseVisualStyleBackColor = true;
+            btnMostrarPass.Click += btnMostrarPass_Click_1;
             // 
             // label7
             // 
@@ -193,6 +207,7 @@
             txtClave.MaxLength = 4;
             txtClave.Name = "txtClave";
             txtClave.PasswordChar = '•';
+            txtClave.PlaceholderText = "Ej. 9030";
             txtClave.Size = new Size(388, 26);
             txtClave.TabIndex = 10;
             txtClave.TextChanged += txtClave_TextChanged;
@@ -427,6 +442,7 @@
             btnDni.Size = new Size(53, 27);
             btnDni.TabIndex = 5;
             btnDni.UseVisualStyleBackColor = true;
+            btnDni.Click += btnDni_Click;
             // 
             // label1
             // 
@@ -482,17 +498,20 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
-            // btnMostrarPass
+            // btnHardcode
             // 
-            btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
-            btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
-            btnMostrarPass.Cursor = Cursors.Hand;
-            btnMostrarPass.Location = new Point(367, 536);
-            btnMostrarPass.Name = "btnMostrarPass";
-            btnMostrarPass.Size = new Size(53, 27);
-            btnMostrarPass.TabIndex = 11;
-            btnMostrarPass.UseVisualStyleBackColor = true;
-            btnMostrarPass.Click += btnMostrarPass_Click_1;
+            btnHardcode.BackColor = Color.IndianRed;
+            btnHardcode.Cursor = Cursors.Hand;
+            btnHardcode.FlatStyle = FlatStyle.Flat;
+            btnHardcode.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHardcode.ForeColor = SystemColors.Control;
+            btnHardcode.Location = new Point(32, 674);
+            btnHardcode.Name = "btnHardcode";
+            btnHardcode.Size = new Size(147, 41);
+            btnHardcode.TabIndex = 50;
+            btnHardcode.Text = "HARDCODE ->";
+            btnHardcode.UseVisualStyleBackColor = false;
+            btnHardcode.Click += btnHardcode_Click;
             // 
             // FormRegistro
             // 
@@ -561,5 +580,6 @@
         private TextBox txtLastname;
         private TextBox txtName;
         private Button btnMostrarPass;
+        private Button btnHardcode;
     }
 }

@@ -38,6 +38,12 @@
             lblGratuito = new Label();
             button1 = new Button();
             lblDescuento = new Label();
+            rdbEstudiantil = new RadioButton();
+            rdbDiscapacitado = new RadioButton();
+            rdbCombatiente = new RadioButton();
+            rdbJubilado = new RadioButton();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lblDirigido
@@ -97,7 +103,7 @@
             btnTramite.FlatStyle = FlatStyle.Flat;
             btnTramite.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnTramite.ForeColor = SystemColors.Control;
-            btnTramite.Location = new Point(533, 263);
+            btnTramite.Location = new Point(466, 263);
             btnTramite.Name = "btnTramite";
             btnTramite.Size = new Size(144, 35);
             btnTramite.TabIndex = 6;
@@ -148,6 +154,67 @@
             lblDescuento.TabIndex = 10;
             lblDescuento.Text = "Descuento";
             // 
+            // rdbEstudiantil
+            // 
+            rdbEstudiantil.AutoSize = true;
+            rdbEstudiantil.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbEstudiantil.Location = new Point(6, 19);
+            rdbEstudiantil.Name = "rdbEstudiantil";
+            rdbEstudiantil.Size = new Size(89, 19);
+            rdbEstudiantil.TabIndex = 11;
+            rdbEstudiantil.TabStop = true;
+            rdbEstudiantil.Text = "Estudiantil";
+            rdbEstudiantil.UseVisualStyleBackColor = true;
+            // 
+            // rdbDiscapacitado
+            // 
+            rdbDiscapacitado.AutoSize = true;
+            rdbDiscapacitado.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbDiscapacitado.Location = new Point(6, 142);
+            rdbDiscapacitado.Name = "rdbDiscapacitado";
+            rdbDiscapacitado.Size = new Size(113, 19);
+            rdbDiscapacitado.TabIndex = 12;
+            rdbDiscapacitado.TabStop = true;
+            rdbDiscapacitado.Text = "Discapacitado";
+            rdbDiscapacitado.UseVisualStyleBackColor = true;
+            // 
+            // rdbCombatiente
+            // 
+            rdbCombatiente.AutoSize = true;
+            rdbCombatiente.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbCombatiente.Location = new Point(6, 98);
+            rdbCombatiente.Name = "rdbCombatiente";
+            rdbCombatiente.Size = new Size(200, 19);
+            rdbCombatiente.TabIndex = 13;
+            rdbCombatiente.TabStop = true;
+            rdbCombatiente.Text = "Ex combatiente de Malvinas";
+            rdbCombatiente.UseVisualStyleBackColor = true;
+            // 
+            // rdbJubilado
+            // 
+            rdbJubilado.AutoSize = true;
+            rdbJubilado.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbJubilado.Location = new Point(6, 57);
+            rdbJubilado.Name = "rdbJubilado";
+            rdbJubilado.Size = new Size(188, 19);
+            rdbJubilado.TabIndex = 14;
+            rdbJubilado.TabStop = true;
+            rdbJubilado.Text = "Jubilado y / o pensionado";
+            rdbJubilado.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(rdbJubilado);
+            groupBox1.Controls.Add(rdbEstudiantil);
+            groupBox1.Controls.Add(rdbCombatiente);
+            groupBox1.Controls.Add(rdbDiscapacitado);
+            groupBox1.Location = new Point(435, 47);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(207, 178);
+            groupBox1.TabIndex = 15;
+            groupBox1.TabStop = false;
+            groupBox1.UseCompatibleTextRendering = true;
+            // 
             // FormTarifaSocial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -155,6 +222,7 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(689, 310);
             ControlBox = false;
+            Controls.Add(groupBox1);
             Controls.Add(lblDescuento);
             Controls.Add(button1);
             Controls.Add(lblGratuito);
@@ -170,6 +238,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormTarifaSocial";
             Load += FormTarifaSocial_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,5 +256,10 @@
         private Label lblGratuito;
         private Button button1;
         private Label lblDescuento;
+        private RadioButton rdbEstudiantil;
+        private RadioButton rdbDiscapacitado;
+        private RadioButton rdbCombatiente;
+        private RadioButton rdbJubilado;
+        private GroupBox groupBox1;
     }
 }

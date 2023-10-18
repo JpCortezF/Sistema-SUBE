@@ -95,11 +95,42 @@ namespace Sube
         {
             VentanaPassword ventanaPassword = new VentanaPassword(dictionaryPassengers);
             ventanaPassword.ShowDialog();
-            if (ventanaPassword.DialogResult == DialogResult.OK)
+            if (ventanaPassword.DialogResult == DialogResult.Continue)
             {
                 string clave = ventanaPassword.DevolverPass();
-                MessageBox.Show($"La clave es:\n     {clave}", "Recuperar Clave!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (ventanaPassword.DialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show($"La clave es:\n     {clave}", "Recuperar Clave!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"{clave}", "Recuperar Clave!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+        }
+
+        private void btnHardcoce_Click(object sender, EventArgs e)
+        {
+            Pasajero passenger = new Pasajero();
+            try
+            {
+                passenger = passenger.FindPassengerByEmail(dictionaryPassengers, "AleHardcode@gmail.com");
+                if(passenger is not null)
+                {
+                    string dni = passenger.ReturnrKey(dictionaryPassengers, passenger);
+                    txtDni.Text = dni;
+                    txtPass.Text = passenger.Password;
+                }
+                else
+                {
+                    MessageBox.Show("Primero deberias registrarte", "Error ingreso hardcode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

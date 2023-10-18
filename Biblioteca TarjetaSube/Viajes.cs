@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyExceptions;
 
 namespace Biblioteca_TarjetaSube
 {
@@ -35,6 +36,11 @@ namespace Biblioteca_TarjetaSube
         public ETransporte TipoTransporte { get => tipoTransporte; set => tipoTransporte = value; }
         public string LineasTransporte { get => lineasTransporte; set => lineasTransporte = value; }
 
+        /// <summary>
+        /// Calcula el costo de un servicio basado en la distancia en kilómetros.
+        /// </summary>
+        /// <returns>El costo del servicio calculado en función de la cantidad de kilómetros. Si la cantidad de kilómetros no está dentro de los rangos especificados, se lanza una excepción.</returns>
+
         public virtual float CostByKilometres()
         {
             float cost = 0;
@@ -53,6 +59,8 @@ namespace Biblioteca_TarjetaSube
                 case float k when k >= 12 && k <= 27:
                     cost = 68.09f;
                     break;
+                default:
+                    throw new KilometrosExcedeLimiteException();
             }
             return cost;
         }

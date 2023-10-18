@@ -219,5 +219,29 @@ namespace Sube
                 btnMostrarPass.BackgroundImage = Properties.Resources.view;
             }
         }
+
+        private void btnDni_Click(object sender, EventArgs e)
+        {
+            txtDni.PlaceholderText = "42102030";
+        }
+
+        private void btnHardcode_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int _rnd = rnd.Next(1000, 9999);
+            txtTarjeta2.Text = $"{_rnd}";
+            _rnd = rnd.Next(1000, 9999);
+            txtTarjeta3.Text = $"{_rnd}";
+            _rnd = rnd.Next(1000, 9999);
+            txtTarjeta4.Text = $"{_rnd}";
+            txtName.Text = "Alejandro";
+            txtLastname.Text = "Heidenreich";
+            _rnd = rnd.Next(1000, 9999);
+            txtDni.Text = $"3320{_rnd}";
+            gender = "Masculino";
+            txtCorreo.Text = $"AleHardcode@gmail.com";
+            txtClave.Text = $"{_rnd}";
+            txtRepetirClave.Text = $"{_rnd}";
+        }
     }
 }

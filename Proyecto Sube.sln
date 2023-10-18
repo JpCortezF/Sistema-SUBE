@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca Usuarios", "Bibl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sube", "Sube\Sube.csproj", "{0878E9F1-951A-4E1E-B0E8-6680297F4487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca TarjetaSube", "Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj", "{E4F5D6CF-7F29-4419-B912-9130FBBE08ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca TarjetaSube", "Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj", "{E4F5D6CF-7F29-4419-B912-9130FBBE08ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExceptions", "MyExceptions\MyExceptions.csproj", "{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E4F5D6CF-7F29-4419-B912-9130FBBE08ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4F5D6CF-7F29-4419-B912-9130FBBE08ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4F5D6CF-7F29-4419-B912-9130FBBE08ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

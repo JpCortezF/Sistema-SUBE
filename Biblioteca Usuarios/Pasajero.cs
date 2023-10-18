@@ -62,6 +62,13 @@ namespace Biblioteca_Usuarios
             }
             return exists;
         }
+        /// <summary>
+        /// Busca un pasajero por su dirección de correo electrónico en un diccionario de pasajeros y devuelve el pasajero encontrado.
+        /// </summary>
+        /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
+        /// <param name="email">La dirección de correo electrónico del pasajero que se desea encontrar.</param>
+        /// <returns>El objeto Pasajero que coincide con la dirección de correo electrónico especificada. Si no se encuentra, devuelve null.</returns>
+
         public Pasajero FindPassengerByEmail(Dictionary<string, Pasajero> dictionaryPassengers, string email)
         {
             Pasajero pasajero = null;
@@ -78,19 +85,13 @@ namespace Biblioteca_Usuarios
             }
             return pasajero;
         }
-        public Pasajero FindPassenger(Dictionary<string, Pasajero> dictionaryPassengers)
-        {
-            Pasajero pasajero = null;
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-            {
-                if (kvp.Value is Pasajero passenger)
-                {
-                    pasajero = kvp.Value;
-                    break;
-                }
-            }
-            return pasajero;
-        }
+        /// <summary>
+        /// Busca una clave en un diccionario que corresponde a un objeto Pasajero específico y la devuelve.
+        /// </summary>
+        /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
+        /// <param name="pasajero">El objeto Pasajero que se desea encontrar en el diccionario.</param>
+        /// <returns>La clave del diccionario que se asocia con el objeto Pasajero especificado. Si el pasajero no se encuentra, devuelve null.</returns>
+
         public string ReturnrKey(Dictionary<string, Pasajero> dictionaryPassengers, Pasajero pasajero)
         {
             string keyPasajero = null;

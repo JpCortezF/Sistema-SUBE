@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using MyExceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,12 +44,10 @@ namespace Sube
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (ValidarIngresoTextBox())
             {
-                if (ValidarIngresoTextBox())
+                try
                 {
-
                     if (float.TryParse(txtKilometros.Text, out float kilometros))
                     {
                         TarjetaSube sube = new TarjetaSube();
@@ -59,17 +58,24 @@ namespace Sube
                         miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
 
                         passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
-                        passenger.MySube.QueueTravels.Enqueue(miViaje);
-
-                        DialogResult = DialogResult.OK;
+                        if (passenger.MySube.Balance > -211.84)
+                        {
+                            passenger.MySube.QueueTravels.Enqueue(miViaje);
+                            MessageBox.Show("¡Viaje realizado con éxito!", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            passenger.MySube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
+                            MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                }     
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
         }
         private bool ValidarIngresoTextBox()
         {

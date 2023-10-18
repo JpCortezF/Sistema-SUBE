@@ -46,6 +46,7 @@
             cmbDni = new ComboBox();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            btnHardcoce = new Button();
             menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -85,6 +86,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ButtonFace;
+            groupBox1.Controls.Add(btnHardcoce);
             groupBox1.Controls.Add(lblClave);
             groupBox1.Controls.Add(btnMostrarPass);
             groupBox1.Controls.Add(lblRegistro);
@@ -134,7 +136,7 @@
             lblRegistro.Cursor = Cursors.Hand;
             lblRegistro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistro.ForeColor = Color.LimeGreen;
-            lblRegistro.Location = new Point(221, 285);
+            lblRegistro.Location = new Point(272, 285);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(121, 17);
             lblRegistro.TabIndex = 6;
@@ -148,7 +150,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(117, 274);
+            btnIngresar.Location = new Point(168, 274);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(89, 39);
             btnIngresar.TabIndex = 0;
@@ -249,6 +251,21 @@
             panel1.Size = new Size(470, 336);
             panel1.TabIndex = 13;
             // 
+            // btnHardcoce
+            // 
+            btnHardcoce.BackColor = Color.IndianRed;
+            btnHardcoce.Cursor = Cursors.Hand;
+            btnHardcoce.FlatStyle = FlatStyle.Flat;
+            btnHardcoce.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHardcoce.ForeColor = SystemColors.Control;
+            btnHardcoce.Location = new Point(65, 274);
+            btnHardcoce.Name = "btnHardcoce";
+            btnHardcoce.Size = new Size(97, 39);
+            btnHardcoce.TabIndex = 20;
+            btnHardcoce.Text = "Hardcode";
+            btnHardcoce.UseVisualStyleBackColor = false;
+            btnHardcoce.Click += btnHardcoce_Click;
+            // 
             // FormIngreso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,5 +310,6 @@
         private ComboBox cmbDni;
         private PictureBox pictureBox1;
         private Panel panel1;
+        private Button btnHardcoce;
     }
 }

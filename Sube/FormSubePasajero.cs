@@ -5,10 +5,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Sube
 {
@@ -85,16 +85,22 @@ namespace Sube
                     string key = passenger.ReturnrKey(dictionaryPassengers, passenger);
                     dictionaryPassengers.Remove(key);
 
+                    string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    string nombre = @".\MisPasajeros.Json";
+                    string path = ruta + nombre;
+
+                    Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+
                     this.MdiParent.Close();
                     this.Close();
 
-                    FormIngreso ingreso = new FormIngreso(dictionaryPassengers);
-                    ingreso.Show();
+                    FormPasajero homePasajero = new FormPasajero();
+                    homePasajero.Show();
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
+                }   
 
             }
         }
@@ -104,11 +110,6 @@ namespace Sube
 
             FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
             tarifaSocial.ShowDialog();
-            if (tarifaSocial.DialogResult == DialogResult.OK)
-            {
-
-            }
-
         }
     }
 }

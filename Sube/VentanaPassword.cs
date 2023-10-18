@@ -34,6 +34,7 @@ namespace Sube
             if(passenger is not null)
             {
                 clave = passenger.Password;
+                DialogResult = DialogResult.OK;
             }
             else
             {
@@ -45,7 +46,7 @@ namespace Sube
         {
             if (ValidarEmail(txtCorreo.Text))
             {
-                DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.Continue;
             }
         }
         private bool ValidarEmail(string email)
