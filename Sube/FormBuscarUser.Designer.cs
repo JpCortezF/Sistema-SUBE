@@ -31,10 +31,12 @@
             txtDni = new TextBox();
             label2 = new Label();
             btnIngresar = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridView = new DataGridView();
             label1 = new Label();
             cmbBuscar = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1 = new Panel();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // txtDni
@@ -70,19 +72,19 @@
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(30, 136);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1015, 352);
-            dataGridView1.TabIndex = 11;
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(0, 0);
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowTemplate.Height = 25;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new Size(995, 352);
+            dataGridView.TabIndex = 11;
+            dataGridView.CellClick += dataGridView1_CellClick;
             // 
             // label1
             // 
@@ -106,15 +108,25 @@
             cmbBuscar.TabIndex = 13;
             cmbBuscar.SelectedIndexChanged += cmbBuscar_SelectedIndexChanged;
             // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.BackColor = Color.RosyBrown;
+            panel1.Controls.Add(dataGridView);
+            panel1.Location = new Point(30, 136);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1012, 350);
+            panel1.TabIndex = 14;
+            // 
             // FormBuscarUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
             ClientSize = new Size(1080, 518);
+            Controls.Add(panel1);
             Controls.Add(cmbBuscar);
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
             Controls.Add(btnIngresar);
             Controls.Add(txtDni);
             Controls.Add(label2);
@@ -122,7 +134,9 @@
             Name = "FormBuscarUser";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FormBuscarUser_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,8 +145,9 @@
         private TextBox txtDni;
         private Label label2;
         private Button btnIngresar;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridView;
         private Label label1;
         private ComboBox cmbBuscar;
+        private Panel panel1;
     }
 }

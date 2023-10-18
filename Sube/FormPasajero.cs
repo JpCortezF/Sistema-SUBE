@@ -19,7 +19,7 @@ namespace Sube
         {
             InitializeComponent();
             this.dictionaryPassengers = new Dictionary<string, Pasajero>();
-            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
             dictionaryPassengers = Serializador.ReadJsonPassenger(path);

@@ -42,20 +42,26 @@ namespace Biblioteca_Usuarios
         /// Recorre todos los valores dentro del Dictionary, y en cada iteracion guarda el valor en PassengerToCompare
         /// </summary>
         /// <param name="passenger"></param>
-        /// <returns> Retorna True si el pasajero se encuentra en el Dictionary. False si se encuentra. </returns>
+        /// <returns> Retorna True si el pasajero se encuentra en el Dictionary. False si no se encuentra. </returns>
         public bool PassengerExist(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers, string document)
         {
             bool exists = false;
 
             foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-            { 
-                if(kvp.Key.ToString() == document)
+            {
+                if(kvp.Key.ToString() != document)
                 {
                     foreach (Pasajero passengerToCompare in dictionaryPassengers.Values)
                     {
                         exists = ComparePassengers(passenger, passengerToCompare);
-                        break;
+                        if(exists)
+                        {
+                            break;
+                        }
                     }
+                }
+                else
+                {
                     exists = true;
                     break;
                 }

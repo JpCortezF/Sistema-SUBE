@@ -40,7 +40,7 @@ namespace Sube
                 }
             }
 
-            dataGridView1.DataSource = dt;
+            dataGridView.DataSource = dt;
         }
 
         private void cmbBuscar_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace Sube
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
 
                 foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
                 {
@@ -77,6 +77,10 @@ namespace Sube
                     }
                 }
             }
+        }
+        private void FormBuscarUser_Load(object sender, EventArgs e)
+        {
+            dataGridView.Parent = panel1;
         }
     }
 }
