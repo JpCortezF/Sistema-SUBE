@@ -17,8 +17,7 @@ namespace Sube
         Dictionary<string, Pasajero> dictionaryPassengers;
         List<Tramites> tramites;
 
-        private bool isBuscadorFormOpen = false;
-        private bool isNotificacionesFormClosed = false;
+        private Form currentChildForm = null;
 
         public ContainerAdmin()
         {
@@ -64,34 +63,51 @@ namespace Sube
                 formPrincipal.Show();
             }
         }
+        /// <summary>
+        /// Abre un formulario hijo en el formulario principal, asegurándose de que solo un formulario hijo esté abierto a la vez.
+        /// </summary>
+        /// <param name="childForm">El formulario hijo que se abrirá.</param>
+        private void OpenChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
 
+            currentChildForm = childForm;
+            childForm.MdiParent = this;
+            childForm.FormClosed += (s, args) =>
+            {
+                currentChildForm = null;
+            };
+            childForm.Show();
+        }
+
+        /// <summary>
+        /// Maneja el evento de hacer clic en el elemento de menú "Buscador". Abre el formulario de búsqueda de usuarios como un formulario hijo en el formulario principal, asegurándose de que solo un formulario hijo esté abierto a la vez.
+        /// </summary>
+        /// <param name="sender">El objeto que desencadenó el evento (en este caso, el elemento de menú "Buscador").</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void buscadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isBuscadorFormOpen)
+            if (currentChildForm is null || !(currentChildForm is FormBuscarUser))
             {
                 FormBuscarUser buscador = new FormBuscarUser(dictionaryPassengers);
-                buscador.MdiParent = this;
-                buscador.Show();
-                isBuscadorFormOpen = true;
-                buscador.FormClosed += (s, args) =>
-                {
-                    isBuscadorFormOpen = false;
-                };
+                OpenChildForm(buscador);
             }
         }
 
+        /// <summary>
+        /// Maneja el evento de hacer clic en el elemento de menú "Notificaciones". Abre el formulario de tramites como un formulario hijo en el formulario principal, asegurándose de que solo un formulario hijo esté abierto a la vez.
+        /// </summary>
+        /// <param name="sender">El objeto que desencadenó el evento (en este caso, el elemento de menú "Notificaciones").</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!isNotificacionesFormClosed)
+            if (currentChildForm is null || !(currentChildForm is FormTramites))
             {
                 FormTramites notificaciones = new FormTramites(tramites, dictionaryPassengers);
-                notificaciones.MdiParent = this;
-                notificaciones.Show();
-                isNotificacionesFormClosed = true;
-                notificaciones.FormClosed += (s, args) =>
-                {
-                    isNotificacionesFormClosed = false;
-                };
+                OpenChildForm(notificaciones);
             }
         }
     }
