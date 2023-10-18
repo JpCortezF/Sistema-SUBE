@@ -152,7 +152,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.BackColor = SystemColors.ControlDark;
+            txtNombre.BackColor = SystemColors.ControlLight;
             txtNombre.Enabled = false;
             txtNombre.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtNombre.Location = new Point(35, 116);
@@ -163,7 +163,7 @@
             // 
             // txtNumTarjeta
             // 
-            txtNumTarjeta.BackColor = SystemColors.ControlDark;
+            txtNumTarjeta.BackColor = SystemColors.ControlLight;
             txtNumTarjeta.Enabled = false;
             txtNumTarjeta.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtNumTarjeta.Location = new Point(285, 116);
@@ -174,7 +174,7 @@
             // 
             // txtApellido
             // 
-            txtApellido.BackColor = SystemColors.ControlDark;
+            txtApellido.BackColor = SystemColors.ControlLight;
             txtApellido.Enabled = false;
             txtApellido.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtApellido.Location = new Point(35, 199);
@@ -185,7 +185,7 @@
             // 
             // txtMail
             // 
-            txtMail.BackColor = SystemColors.ControlDark;
+            txtMail.BackColor = SystemColors.ControlLight;
             txtMail.Enabled = false;
             txtMail.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtMail.Location = new Point(35, 280);
@@ -196,7 +196,7 @@
             // 
             // txtCredito
             // 
-            txtCredito.BackColor = SystemColors.ControlDark;
+            txtCredito.BackColor = SystemColors.ControlLight;
             txtCredito.Enabled = false;
             txtCredito.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtCredito.Location = new Point(285, 280);
@@ -226,6 +226,7 @@
             dataGridView1.Location = new Point(509, 94);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(479, 271);
             dataGridView1.TabIndex = 28;

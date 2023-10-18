@@ -18,7 +18,7 @@ namespace Sube
         {
             InitializeComponent();
             this.dictionaryAdmins = new Dictionary<string, Administrador>();
-            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string ruta = @"..\..\..\Data";
             string nombre = "MisAdmins.Json";
             string path = Path.Combine(ruta, nombre);
             dictionaryAdmins = Serializador.ReadJsonAdmin(path);

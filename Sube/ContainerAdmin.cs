@@ -21,7 +21,7 @@ namespace Sube
         {
             InitializeComponent();
             this.dictionaryPassengers = new Dictionary<string, Pasajero>();
-            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
             dictionaryPassengers = Serializador.ReadJsonPassenger(path);
@@ -43,6 +43,10 @@ namespace Sube
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
+                string ruta = @"..\..\..\Data";
+                string nombre = "MisPasajeros.Json";
+                string path = Path.Combine(ruta, nombre);
+                Serializador.WriteJsonPassenger(path, dictionaryPassengers);
                 Close();
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();

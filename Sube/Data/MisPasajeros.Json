@@ -54,7 +54,7 @@
       "CardNumber": "6061198209121100",
       "Balance": -150.504,
       "QueueTravels": [],
-      "TarifaSocial": 2
+      "TarifaSocial": 1
     },
     "Email": "ezequiel@hotmail.com",
     "Password": "1234",
@@ -241,5 +241,5 @@
     "Password": "8388",
     "Name": "Alejandro",
     "Lastname": "Heidenreich"
-  },
+  }
 }

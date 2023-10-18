@@ -24,7 +24,7 @@ namespace Sube
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string ruta = @"..\..\..\Data";
             string nombre = @".\MisAdmins.Json";
             string path = ruta + nombre;
 
