@@ -152,6 +152,8 @@
             // 
             // txtNombre
             // 
+            txtNombre.BackColor = SystemColors.ControlDark;
+            txtNombre.Enabled = false;
             txtNombre.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtNombre.Location = new Point(35, 116);
             txtNombre.MaxLength = 8;
@@ -161,6 +163,8 @@
             // 
             // txtNumTarjeta
             // 
+            txtNumTarjeta.BackColor = SystemColors.ControlDark;
+            txtNumTarjeta.Enabled = false;
             txtNumTarjeta.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtNumTarjeta.Location = new Point(285, 116);
             txtNumTarjeta.MaxLength = 8;
@@ -170,6 +174,8 @@
             // 
             // txtApellido
             // 
+            txtApellido.BackColor = SystemColors.ControlDark;
+            txtApellido.Enabled = false;
             txtApellido.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtApellido.Location = new Point(35, 199);
             txtApellido.MaxLength = 8;
@@ -179,6 +185,8 @@
             // 
             // txtMail
             // 
+            txtMail.BackColor = SystemColors.ControlDark;
+            txtMail.Enabled = false;
             txtMail.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtMail.Location = new Point(35, 280);
             txtMail.MaxLength = 8;
@@ -188,6 +196,8 @@
             // 
             // txtCredito
             // 
+            txtCredito.BackColor = SystemColors.ControlDark;
+            txtCredito.Enabled = false;
             txtCredito.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
             txtCredito.Location = new Point(285, 280);
             txtCredito.MaxLength = 8;
@@ -211,12 +221,13 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(509, 94);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(280, 271);
+            dataGridView1.Size = new Size(479, 271);
             dataGridView1.TabIndex = 28;
             // 
             // btnBajaTarjeta
@@ -250,7 +261,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(820, 394);
+            ClientSize = new Size(1024, 394);
             Controls.Add(button1);
             Controls.Add(btnBajaTarjeta);
             Controls.Add(dataGridView1);

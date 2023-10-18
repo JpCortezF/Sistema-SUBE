@@ -59,13 +59,14 @@ namespace Sube
             selectedPassenger.Name = txtNombre.Text;
             selectedPassenger.LastName = txtApellido.Text;
             selectedPassenger.Email = txtMail.Text;
-            if (form.ShowDialog()==DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 selectedPassenger.Name = txtNombre.Text;
                 selectedPassenger.LastName = txtApellido.Text;
                 selectedPassenger.Email = txtMail.Text;
+                Close();
             }
-            Close();        
+
         }
     }
 }
