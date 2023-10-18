@@ -81,7 +81,7 @@ namespace Sube
 
         private void tarifaSocialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, dictionaryPassengers);
             tarifaSocial.ShowDialog();
             if (tarifaSocial.DialogResult == DialogResult.OK)
             {

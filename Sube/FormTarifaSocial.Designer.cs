@@ -43,6 +43,7 @@
             rdbCombatiente = new RadioButton();
             rdbJubilado = new RadioButton();
             groupBox1 = new GroupBox();
+            txtClaim = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -103,7 +104,7 @@
             btnTramite.FlatStyle = FlatStyle.Flat;
             btnTramite.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnTramite.ForeColor = SystemColors.Control;
-            btnTramite.Location = new Point(466, 263);
+            btnTramite.Location = new Point(717, 263);
             btnTramite.Name = "btnTramite";
             btnTramite.Size = new Size(144, 35);
             btnTramite.TabIndex = 6;
@@ -136,7 +137,7 @@
             button1.BackColor = Color.RosyBrown;
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(659, 0);
+            button1.Location = new Point(870, 0);
             button1.Name = "button1";
             button1.Size = new Size(30, 26);
             button1.TabIndex = 9;
@@ -208,20 +209,31 @@
             groupBox1.Controls.Add(rdbEstudiantil);
             groupBox1.Controls.Add(rdbCombatiente);
             groupBox1.Controls.Add(rdbDiscapacitado);
-            groupBox1.Location = new Point(435, 47);
+            groupBox1.Location = new Point(348, 47);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(207, 178);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.UseCompatibleTextRendering = true;
             // 
+            // txtClaim
+            // 
+            txtClaim.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtClaim.Location = new Point(601, 65);
+            txtClaim.MaxLength = 138;
+            txtClaim.Multiline = true;
+            txtClaim.Name = "txtClaim";
+            txtClaim.Size = new Size(260, 160);
+            txtClaim.TabIndex = 16;
+            // 
             // FormTarifaSocial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(689, 310);
+            ClientSize = new Size(900, 310);
             ControlBox = false;
+            Controls.Add(txtClaim);
             Controls.Add(groupBox1);
             Controls.Add(lblDescuento);
             Controls.Add(button1);
@@ -261,5 +273,6 @@
         private RadioButton rdbCombatiente;
         private RadioButton rdbJubilado;
         private GroupBox groupBox1;
+        private TextBox txtClaim;
     }
 }
