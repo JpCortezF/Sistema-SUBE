@@ -1,4 +1,5 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,17 +15,24 @@ namespace Sube
     public partial class ContainerAdmin : Form
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Tramites> tramites;
 
         private bool isBuscadorFormOpen = false;
+        private bool isNotificacionesFormClosed = false;
 
         public ContainerAdmin()
         {
             InitializeComponent();
             this.dictionaryPassengers = new Dictionary<string, Pasajero>();
+            this.tramites = new List<Tramites>();
             string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
             dictionaryPassengers = Serializador.ReadJsonPassenger(path);
+            string rutaT = @"..\..\..\Data";
+            string nombreT = "MisTramites.Json";
+            string pathT = Path.Combine(rutaT, nombreT);
+            tramites = Serializador.ReadJsonTramites(pathT);
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)
@@ -47,6 +55,10 @@ namespace Sube
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
                 Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                string rutaT = @"..\..\..\Data";
+                string nombreT = "MisTramites.Json";
+                string pathT = Path.Combine(rutaT, nombreT);
+                Serializador.WriteJsonTramites(path, tramites);
                 Close();
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
@@ -68,5 +80,19 @@ namespace Sube
             }
         }
 
+        private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isBuscadorFormOpen)
+            {
+                FormTramites notificaciones = new FormTramites(tramites);
+                notificaciones.MdiParent = this;
+                notificaciones.Show();
+                isNotificacionesFormClosed = true;
+                notificaciones.FormClosed += (s, args) =>
+                {
+                    isBuscadorFormOpen = false;
+                };
+            }
+        }
     }
 }

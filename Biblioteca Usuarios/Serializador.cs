@@ -81,7 +81,7 @@ namespace Biblioteca_Usuarios
             return dictionary;
         }
 
-        public static void WriteJson(string ruta, List<Tramites> lista)
+        public static void WriteJsonTramites(string ruta, List<Tramites> lista)
         {
             try
             {

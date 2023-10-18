@@ -66,6 +66,7 @@
             notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
             notificacionesToolStripMenuItem.Size = new Size(223, 35);
             notificacionesToolStripMenuItem.Text = "NOTIFICACIONES";
+            notificacionesToolStripMenuItem.Click += notificacionesToolStripMenuItem_Click;
             // 
             // ContainerAdmin
             // 

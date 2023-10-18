@@ -13,7 +13,7 @@ namespace Biblioteca_TarjetaSube
         string claimMessage;
         DateTime claimTime;
 
-        public Tramites(long claimId, string dniClaimer, string claimMessage, DateTime claimTime, List<Tramites> tramites)
+        public Tramites(long claimId, string dniClaimer, string claimMessage, DateTime claimTime)
         {
             this.claimId = claimId;
             this.dniClaimer = dniClaimer;
