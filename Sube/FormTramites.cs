@@ -72,7 +72,7 @@ namespace Sube
                         break;
                     }
                 }
-                if(selectedRow.Cells is not null)
+                if (selectedRow.Cells is not null)
                 {
                     listTramites.RemoveAt(selectedIndex);
                 }
