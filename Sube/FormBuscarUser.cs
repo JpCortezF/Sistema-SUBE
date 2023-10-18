@@ -19,6 +19,7 @@ namespace Sube
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
+            cmbBuscar.SelectedIndex = 0;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -26,13 +27,56 @@ namespace Sube
             DataTable dt = new DataTable();
             dt.Columns.Add("DNI", typeof(string));
             dt.Columns.Add("Nombre", typeof(string));
-            dt.Columns.Add("Apellido", typeof (string));
+            dt.Columns.Add("Apellido", typeof(string));
+            dt.Columns.Add("Genero", typeof(string));
+            dt.Columns.Add("N° de Tarjeta", typeof(string));
+            dt.Columns.Add("Saldo actual", typeof(string));
+
             foreach (var entry in dictionaryPassengers)
             {
-                dt.Rows.Add(entry.Key, entry.Value.Name, entry.Value.LastName);
+                if (entry.Key.Contains(txtDni.Text, StringComparison.OrdinalIgnoreCase) || entry.Value.Name.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || entry.Value.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
+                {
+                    dt.Rows.Add(entry.Key, entry.Value.Name, entry.Value.LastName, entry.Value.Gender, entry.Value.MySube.CardNumber, entry.Value.MySube.Balance);
+                }
             }
 
             dataGridView1.DataSource = dt;
+        }
+
+        private void cmbBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbBuscar.SelectedIndex)
+            {
+                case 0:
+                    label2.Text = "N° de documento a buscar:";
+                    break;
+                case 1:
+                    label2.Text = "Ingrese nombre o apellido a buscar:";
+                    break;
+                case 2:
+                    label2.Text = "N° de tarjeta a buscar:";
+                    break;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+                {
+                    if (kvp.Value is Pasajero passenger)
+                    {
+                        if (selectedRow.Cells["DNI"].Value.ToString() == kvp.Key)
+                        {
+                            FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
+                            editarUsuario.Show();
+                        }
+                    }
+                }
+            }
         }
     }
 }
