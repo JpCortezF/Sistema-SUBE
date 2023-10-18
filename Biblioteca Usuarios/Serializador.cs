@@ -6,6 +6,7 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Biblioteca_TarjetaSube;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -72,6 +73,35 @@ namespace Biblioteca_Usuarios
             {
                 string json = File.ReadAllText(path);
                 dictionary = JsonConvert.DeserializeObject<Dictionary<string, Administrador>>(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return dictionary;
+        }
+
+        public static void WriteJson(string ruta, List<Tramites> lista)
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(lista, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(ruta, json);
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
+        }
+
+        public static List<Tramites> ReadJsonTramites(string path)
+        {
+            List<Tramites> dictionary = new List<Tramites>();
+
+            try
+            {
+                string json = File.ReadAllText(path);
+                dictionary = JsonConvert.DeserializeObject<List<Tramites>>(json);
             }
             catch (Exception ex)
             {

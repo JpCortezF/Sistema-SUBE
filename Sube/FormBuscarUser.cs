@@ -13,7 +13,6 @@ namespace Sube
 {
     public partial class FormBuscarUser : Form
     {
-        private FormAdminVistaUsuario adminVistaUsuario;
         Dictionary<string, Pasajero> dictionaryPassengers;
 
         public FormBuscarUser(Dictionary<string, Pasajero> passengers)

@@ -20,7 +20,7 @@ namespace Sube
     public partial class FormRegistro : Form
     {
         private string gender = "";
-        private bool buttonGenderClicked;
+        //private bool buttonGenderClicked;
 
         Dictionary<string, Pasajero> dictionaryPassengers;
         string userCardNumber = "";
@@ -103,7 +103,7 @@ namespace Sube
             {
                 this.gender = clickedButton.Text;
                 clickedButton.BackColor = Color.LightGray;
-                this.buttonGenderClicked = true;
+                //this.buttonGenderClicked = true;
             }
         }
 
