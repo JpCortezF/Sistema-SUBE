@@ -35,13 +35,11 @@
             btnRegistrar = new Button();
             lblIngresar = new Label();
             btnIngresar = new Button();
-            menuStrip1 = new MenuStrip();
-            iNGRESOToolStripMenuItem = new ToolStripMenuItem();
-            rEGISTRALAToolStripMenuItem = new ToolStripMenuItem();
-            cOMPRAONLINEToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
-            menuStrip1.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            iNICIOToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label3
@@ -76,7 +74,7 @@
             label2.BackColor = Color.DarkGray;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(389, 132);
+            label2.Location = new Point(372, 129);
             label2.Name = "label2";
             label2.Size = new Size(79, 16);
             label2.TabIndex = 30;
@@ -89,7 +87,7 @@
             btnRegistrar.BackgroundImageLayout = ImageLayout.Zoom;
             btnRegistrar.Cursor = Cursors.Hand;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(369, 15);
+            btnRegistrar.Location = new Point(352, 12);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(114, 114);
             btnRegistrar.TabIndex = 25;
@@ -123,38 +121,6 @@
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click_1;
             // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.ActiveCaption;
-            menuStrip1.Font = new Font("Lucida Sans", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iNGRESOToolStripMenuItem, rEGISTRALAToolStripMenuItem, cOMPRAONLINEToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(934, 35);
-            menuStrip1.TabIndex = 33;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // iNGRESOToolStripMenuItem
-            // 
-            iNGRESOToolStripMenuItem.Name = "iNGRESOToolStripMenuItem";
-            iNGRESOToolStripMenuItem.Size = new Size(152, 31);
-            iNGRESOToolStripMenuItem.Text = "| INGRESO";
-            iNGRESOToolStripMenuItem.Click += iNGRESOToolStripMenuItem_Click;
-            // 
-            // rEGISTRALAToolStripMenuItem
-            // 
-            rEGISTRALAToolStripMenuItem.Name = "rEGISTRALAToolStripMenuItem";
-            rEGISTRALAToolStripMenuItem.Size = new Size(204, 31);
-            rEGISTRALAToolStripMenuItem.Text = "| REGISTRALA ";
-            rEGISTRALAToolStripMenuItem.Click += rEGISTRALAToolStripMenuItem_Click;
-            // 
-            // cOMPRAONLINEToolStripMenuItem
-            // 
-            cOMPRAONLINEToolStripMenuItem.Name = "cOMPRAONLINEToolStripMenuItem";
-            cOMPRAONLINEToolStripMenuItem.Size = new Size(265, 31);
-            cOMPRAONLINEToolStripMenuItem.Text = "| COMPRA ONLINE ";
-            cOMPRAONLINEToolStripMenuItem.Click += cOMPRAONLINEToolStripMenuItem_Click;
-            // 
             // panel1
             // 
             panel1.Controls.Add(btnIngresar);
@@ -163,30 +129,49 @@
             panel1.Controls.Add(btnOnline);
             panel1.Controls.Add(btnRegistrar);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(33, 232);
+            panel1.Location = new Point(59, 122);
             panel1.Name = "panel1";
-            panel1.Size = new Size(859, 152);
+            panel1.Size = new Size(807, 161);
             panel1.TabIndex = 35;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = SystemColors.ActiveCaption;
+            menuStrip1.Font = new Font("Lucida Sans", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(933, 35);
+            menuStrip1.TabIndex = 33;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // iNICIOToolStripMenuItem
+            // 
+            iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
+            iNICIOToolStripMenuItem.Size = new Size(136, 31);
+            iNICIOToolStripMenuItem.Text = "| INICIO |";
+            iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click;
             // 
             // FormPasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
-            ClientSize = new Size(934, 579);
+            ClientSize = new Size(933, 402);
             ControlBox = false;
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
+            IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "FormPasajero";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPasajero";
             Load += FormPasajero_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,10 +184,8 @@
         private Button btnRegistrar;
         private Label lblIngresar;
         private Button btnIngresar;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem iNGRESOToolStripMenuItem;
-        private ToolStripMenuItem rEGISTRALAToolStripMenuItem;
-        private ToolStripMenuItem cOMPRAONLINEToolStripMenuItem;
         private Panel panel1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem iNICIOToolStripMenuItem;
     }
 }

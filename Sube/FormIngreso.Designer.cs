@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIngreso));
-            iNICIOToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1 = new MenuStrip();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            btnHardcoce = new Button();
             lblClave = new Label();
             btnMostrarPass = new Button();
             lblRegistro = new Label();
@@ -45,39 +44,15 @@
             label2 = new Label();
             cmbDni = new ComboBox();
             pictureBox1 = new PictureBox();
-            panel1 = new Panel();
-            btnHardcoce = new Button();
-            menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // iNICIOToolStripMenuItem
-            // 
-            iNICIOToolStripMenuItem.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            iNICIOToolStripMenuItem.ForeColor = Color.Black;
-            iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
-            iNICIOToolStripMenuItem.Size = new Size(102, 35);
-            iNICIOToolStripMenuItem.Text = "INICIO";
-            iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click_1;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.ActiveCaption;
-            menuStrip1.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(933, 39);
-            menuStrip1.TabIndex = 8;
-            menuStrip1.Text = "menuStrip1";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(74, 14);
+            label1.Location = new Point(67, 58);
             label1.Name = "label1";
             label1.Size = new Size(164, 19);
             label1.TabIndex = 0;
@@ -99,19 +74,34 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(cmbDni);
-            groupBox1.Location = new Point(0, 0);
+            groupBox1.Location = new Point(460, 0);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(470, 331);
+            groupBox1.Size = new Size(467, 371);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
+            // 
+            // btnHardcoce
+            // 
+            btnHardcoce.BackColor = Color.IndianRed;
+            btnHardcoce.Cursor = Cursors.Hand;
+            btnHardcoce.FlatStyle = FlatStyle.Flat;
+            btnHardcoce.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHardcoce.ForeColor = SystemColors.Control;
+            btnHardcoce.Location = new Point(67, 309);
+            btnHardcoce.Name = "btnHardcoce";
+            btnHardcoce.Size = new Size(97, 39);
+            btnHardcoce.TabIndex = 20;
+            btnHardcoce.Text = "Hardcode";
+            btnHardcoce.UseVisualStyleBackColor = false;
+            btnHardcoce.Click += btnHardcoce_Click;
             // 
             // lblClave
             // 
             lblClave.AutoSize = true;
             lblClave.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblClave.ForeColor = Color.DarkRed;
-            lblClave.Location = new Point(76, 221);
+            lblClave.Location = new Point(68, 254);
             lblClave.Name = "lblClave";
             lblClave.Size = new Size(63, 16);
             lblClave.TabIndex = 19;
@@ -123,7 +113,7 @@
             btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
             btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
             btnMostrarPass.Cursor = Cursors.Hand;
-            btnMostrarPass.Location = new Point(338, 192);
+            btnMostrarPass.Location = new Point(330, 225);
             btnMostrarPass.Name = "btnMostrarPass";
             btnMostrarPass.Size = new Size(53, 27);
             btnMostrarPass.TabIndex = 4;
@@ -136,7 +126,7 @@
             lblRegistro.Cursor = Cursors.Hand;
             lblRegistro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistro.ForeColor = Color.LimeGreen;
-            lblRegistro.Location = new Point(272, 285);
+            lblRegistro.Location = new Point(274, 320);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(121, 17);
             lblRegistro.TabIndex = 6;
@@ -150,7 +140,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(168, 274);
+            btnIngresar.Location = new Point(170, 309);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(89, 39);
             btnIngresar.TabIndex = 0;
@@ -164,7 +154,7 @@
             lblOlvideClave.Cursor = Cursors.Hand;
             lblOlvideClave.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
             lblOlvideClave.ForeColor = Color.DodgerBlue;
-            lblOlvideClave.Location = new Point(75, 221);
+            lblOlvideClave.Location = new Point(67, 254);
             lblOlvideClave.Name = "lblOlvideClave";
             lblOlvideClave.Size = new Size(89, 15);
             lblOlvideClave.TabIndex = 5;
@@ -174,7 +164,7 @@
             // txtPass
             // 
             txtPass.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPass.Location = new Point(75, 192);
+            txtPass.Location = new Point(67, 225);
             txtPass.MaxLength = 4;
             txtPass.Name = "txtPass";
             txtPass.PasswordChar = '•';
@@ -186,7 +176,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(75, 170);
+            label4.Location = new Point(67, 203);
             label4.Name = "label4";
             label4.Size = new Size(58, 19);
             label4.TabIndex = 12;
@@ -197,7 +187,7 @@
             lblErrorDni.AutoSize = true;
             lblErrorDni.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblErrorDni.ForeColor = Color.DarkRed;
-            lblErrorDni.Location = new Point(75, 135);
+            lblErrorDni.Location = new Point(68, 179);
             lblErrorDni.Name = "lblErrorDni";
             lblErrorDni.Size = new Size(57, 16);
             lblErrorDni.TabIndex = 6;
@@ -207,7 +197,7 @@
             // txtDni
             // 
             txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDni.Location = new Point(74, 106);
+            txtDni.Location = new Point(67, 150);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(316, 26);
@@ -218,7 +208,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(74, 84);
+            label2.Location = new Point(67, 128);
             label2.Name = "label2";
             label2.Size = new Size(147, 19);
             label2.TabIndex = 4;
@@ -228,7 +218,7 @@
             // 
             cmbDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDni.FormattingEnabled = true;
-            cmbDni.Location = new Point(74, 36);
+            cmbDni.Location = new Point(67, 80);
             cmbDni.Name = "cmbDni";
             cmbDni.Size = new Size(316, 28);
             cmbDni.TabIndex = 1;
@@ -237,64 +227,33 @@
             // 
             pictureBox1.BackgroundImage = Properties.Resources.SubeIngreso;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 37);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(467, 331);
+            pictureBox1.Size = new Size(456, 375);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(groupBox1);
-            panel1.Location = new Point(464, 37);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(470, 336);
-            panel1.TabIndex = 13;
-            // 
-            // btnHardcoce
-            // 
-            btnHardcoce.BackColor = Color.IndianRed;
-            btnHardcoce.Cursor = Cursors.Hand;
-            btnHardcoce.FlatStyle = FlatStyle.Flat;
-            btnHardcoce.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnHardcoce.ForeColor = SystemColors.Control;
-            btnHardcoce.Location = new Point(65, 274);
-            btnHardcoce.Name = "btnHardcoce";
-            btnHardcoce.Size = new Size(97, 39);
-            btnHardcoce.TabIndex = 20;
-            btnHardcoce.Text = "Hardcode";
-            btnHardcoce.UseVisualStyleBackColor = false;
-            btnHardcoce.Click += btnHardcoce_Click;
             // 
             // FormIngreso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(933, 367);
+            ClientSize = new Size(927, 360);
             ControlBox = false;
-            Controls.Add(panel1);
+            Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
-            Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormIngreso";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormIngreso";
             Load += FormIngreso_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private ToolStripMenuItem iNICIOToolStripMenuItem;
-        private MenuStrip menuStrip1;
         private Label label1;
         private GroupBox groupBox1;
         private Label lblClave;
@@ -309,7 +268,6 @@
         private Label label2;
         private ComboBox cmbDni;
         private PictureBox pictureBox1;
-        private Panel panel1;
         private Button btnHardcoce;
     }
 }

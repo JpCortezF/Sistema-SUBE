@@ -31,15 +31,13 @@ namespace Sube
 
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {
+            lblTransportes.Text = "Información sobre los transportes";
             lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
             double balance = passenger.MySube.Balance;
             lblSaldo.Text = $"${balance.ToString("F2")}";
             lblActualTarifa.Text = $"Tarifa Social: {passenger.MySube.TarifaSocial}";
             lblTarifa.Text = "Acceder a tarifa social --->";
-            cmbBaja.Items.Add("Perdida");
-            cmbBaja.Items.Add("Robo");
-            cmbBaja.Items.Add("Rotura");
             lblTarjeta.Location = new Point(30, 120);
             lblName.Location = new Point(30, 158);
             pictureBox1.Controls.Add(lblTarjeta);
@@ -49,7 +47,7 @@ namespace Sube
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
             try
             {
                 CargaSube cargarSube = new CargaSube(passenger);
@@ -98,10 +96,10 @@ namespace Sube
                     FormPasajero homePasajero = new FormPasajero();
                     homePasajero.Show();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }   
+                }
 
             }
         }

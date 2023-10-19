@@ -28,7 +28,7 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
-            this.dataGridView1.DataSource = tramites;
+            this.dataGridView1.DataSource = tramites;           
             lblCount.Text = tramites.Count.ToString();
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

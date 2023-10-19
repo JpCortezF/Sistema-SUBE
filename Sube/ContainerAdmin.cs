@@ -76,6 +76,7 @@ namespace Sube
 
             currentChildForm = childForm;
             childForm.MdiParent = this;
+            childForm.Location = new Point(0, 0);
             childForm.FormClosed += (s, args) =>
             {
                 currentChildForm = null;

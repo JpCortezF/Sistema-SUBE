@@ -20,8 +20,6 @@ namespace Sube
     public partial class FormRegistro : Form
     {
         private string gender = "";
-        //private bool buttonGenderClicked;
-
         Dictionary<string, Pasajero> dictionaryPassengers;
         string userCardNumber = "";
 
@@ -75,7 +73,6 @@ namespace Sube
                         dictionaryPassengers[document] = passenger;
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-                        DialogResult = DialogResult.OK;
                         Close();
                     }
                     else

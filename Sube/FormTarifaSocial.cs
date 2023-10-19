@@ -31,7 +31,7 @@ namespace Sube
             label2.Text = $"• {ETarifaSocial.Jubilado} y/o pensionados";
             label3.Text = $"• {ETarifaSocial.ExComatienteDeMalvinas}";
             label4.Text = $"• {ETarifaSocial.Discapacitado}";
-            lblCosto.Text = "¿Cuál es el costo del trámito?";
+            lblCosto.Text = "¿Cuál es el costo del trámite?";
             rdbEstudiantil.Text = $"{ETarifaSocial.Estudiantil}";
             rdbJubilado.Text = $"{ETarifaSocial.Jubilado}";
             rdbCombatiente.Text = $"{ETarifaSocial.ExComatienteDeMalvinas}";
@@ -40,7 +40,7 @@ namespace Sube
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void btnTramite_Click(object sender, EventArgs e)

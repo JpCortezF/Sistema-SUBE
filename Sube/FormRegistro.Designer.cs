@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistro));
             grpDatos = new GroupBox();
+            btnHardcode = new Button();
             btnMostrarPass = new Button();
             label7 = new Label();
             label6 = new Label();
@@ -62,15 +63,10 @@
             btnDni = new Button();
             label1 = new Label();
             panelDatos = new Panel();
-            menuStrip1 = new MenuStrip();
-            iNICIOToolStripMenuItem = new ToolStripMenuItem();
-            atrasToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
-            btnHardcode = new Button();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             panelDatos.SuspendLayout();
-            menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -103,11 +99,26 @@
             grpDatos.Controls.Add(txtDni);
             grpDatos.Controls.Add(btnDni);
             grpDatos.Controls.Add(label1);
-            grpDatos.Location = new Point(3, 0);
+            grpDatos.Location = new Point(3, 3);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(458, 744);
+            grpDatos.Size = new Size(445, 752);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
+            // 
+            // btnHardcode
+            // 
+            btnHardcode.BackColor = Color.IndianRed;
+            btnHardcode.Cursor = Cursors.Hand;
+            btnHardcode.FlatStyle = FlatStyle.Flat;
+            btnHardcode.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHardcode.ForeColor = SystemColors.Control;
+            btnHardcode.Location = new Point(32, 674);
+            btnHardcode.Name = "btnHardcode";
+            btnHardcode.Size = new Size(147, 41);
+            btnHardcode.TabIndex = 50;
+            btnHardcode.Text = "HARDCODE ->";
+            btnHardcode.UseVisualStyleBackColor = false;
+            btnHardcode.Click += btnHardcode_Click;
             // 
             // btnMostrarPass
             // 
@@ -458,70 +469,29 @@
             // 
             panelDatos.AutoScroll = true;
             panelDatos.Controls.Add(grpDatos);
-            panelDatos.Location = new Point(454, 42);
+            panelDatos.Location = new Point(459, 2);
             panelDatos.Name = "panelDatos";
-            panelDatos.Size = new Size(480, 331);
+            panelDatos.Size = new Size(468, 369);
             panelDatos.TabIndex = 5;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.ActiveCaption;
-            menuStrip1.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, atrasToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(934, 39);
-            menuStrip1.TabIndex = 9;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // iNICIOToolStripMenuItem
-            // 
-            iNICIOToolStripMenuItem.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            iNICIOToolStripMenuItem.ForeColor = Color.Black;
-            iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
-            iNICIOToolStripMenuItem.Size = new Size(102, 35);
-            iNICIOToolStripMenuItem.Text = "INICIO";
-            iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click;
-            // 
-            // atrasToolStripMenuItem
-            // 
-            atrasToolStripMenuItem.Name = "atrasToolStripMenuItem";
-            atrasToolStripMenuItem.Size = new Size(12, 35);
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Properties.Resources.SubeIngreso;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 37);
+            pictureBox1.Location = new Point(0, -4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(464, 331);
+            pictureBox1.Size = new Size(456, 375);
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
-            // 
-            // btnHardcode
-            // 
-            btnHardcode.BackColor = Color.IndianRed;
-            btnHardcode.Cursor = Cursors.Hand;
-            btnHardcode.FlatStyle = FlatStyle.Flat;
-            btnHardcode.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnHardcode.ForeColor = SystemColors.Control;
-            btnHardcode.Location = new Point(32, 674);
-            btnHardcode.Name = "btnHardcode";
-            btnHardcode.Size = new Size(147, 41);
-            btnHardcode.TabIndex = 50;
-            btnHardcode.Text = "HARDCODE ->";
-            btnHardcode.UseVisualStyleBackColor = false;
-            btnHardcode.Click += btnHardcode_Click;
             // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(934, 368);
+            ClientSize = new Size(927, 360);
             ControlBox = false;
             Controls.Add(pictureBox1);
-            Controls.Add(menuStrip1);
             Controls.Add(panelDatos);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -534,11 +504,8 @@
             grpTarjeta.ResumeLayout(false);
             grpTarjeta.PerformLayout();
             panelDatos.ResumeLayout(false);
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -571,9 +538,6 @@
         private Label label8;
         private TextBox txtClave;
         private Panel panelDatos;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem iNICIOToolStripMenuItem;
-        private ToolStripMenuItem atrasToolStripMenuItem;
         private PictureBox pictureBox1;
         private Label label7;
         private Label label6;
