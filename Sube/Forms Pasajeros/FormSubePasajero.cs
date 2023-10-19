@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -42,7 +43,23 @@ namespace Sube
             lblName.Location = new Point(30, 158);
             pictureBox1.Controls.Add(lblTarjeta);
             pictureBox1.Controls.Add(lblName);
+        }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            // Crea una región con esquinas redondeadas
+            GraphicsPath path = new GraphicsPath();
+            int radio = 15; // Ajusta el radio según tus preferencias
+
+            path.AddArc(0, 0, radio * 2, radio * 2, 180, 90); // Esquina superior izquierda
+            path.AddArc(this.Width - (radio * 2), 0, radio * 2, radio * 2, 270, 90); // Esquina superior derecha
+            path.AddArc(this.Width - (radio * 2), this.Height - (radio * 2), radio * 2, radio * 2, 0, 90); // Esquina inferior derecha
+            path.AddArc(0, this.Height - (radio * 2), radio * 2, radio * 2, 90, 90); // Esquina inferior izquierda
+            path.CloseFigure();
+
+            this.Region = new Region(path);
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
