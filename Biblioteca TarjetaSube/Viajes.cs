@@ -48,16 +48,16 @@ namespace Biblioteca_TarjetaSube
             switch (Kilometres)
             {
                 case float k when k>=0 && k<=3:
-                    cost = 52.96f;
+                    cost = PrecioViajes.ValorColectivo0To3Km;
                     break;
                 case float k when k >= 3 && k <= 6:
-                    cost = 59.00f;
+                    cost = PrecioViajes.ValorColectivo3To6Km;
                     break;
                 case float k when k >= 6 && k <= 12:
-                    cost = 63.54f;
+                    cost = PrecioViajes.ValorColectivo6To12Km;
                     break;
                 case float k when k >= 12 && k <= 27:
-                    cost = 68.09f;
+                    cost = PrecioViajes.ValorColectivo12To27Km;
                     break;
                 default:
                     throw new KilometrosExcedeLimiteException();
