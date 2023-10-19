@@ -97,7 +97,6 @@ namespace Biblioteca_Usuarios
         /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
         /// <param name="pasajero">El objeto Pasajero que se desea encontrar en el diccionario.</param>
         /// <returns>La clave del diccionario que se asocia con el objeto Pasajero especificado. Si el pasajero no se encuentra, devuelve null.</returns>
-
         public string ReturnrKey(Dictionary<string, Pasajero> dictionaryPassengers, Pasajero pasajero)
         {
             string keyPasajero = null;
@@ -110,6 +109,22 @@ namespace Biblioteca_Usuarios
                 }
             }
             return keyPasajero;
+        }
+        public bool CardNumberExist(Dictionary<string, Pasajero> dictionaryPassengers, string newCardNumber)
+        {
+            bool exist = false;
+            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            {
+                if (kvp.Value is Pasajero passenger)
+                {
+                    if (passenger.MySube.CardNumber == newCardNumber)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+            }
+            return exist;
         }
     }
 }

@@ -50,9 +50,9 @@
             label3.ForeColor = Color.Black;
             label3.Location = new Point(663, 132);
             label3.Name = "label3";
-            label3.Size = new Size(120, 16);
+            label3.Size = new Size(122, 16);
             label3.TabIndex = 32;
-            label3.Text = "Comprala online";
+            label3.Text = "Compra tu SUBE";
             // 
             // btnOnline
             // 
