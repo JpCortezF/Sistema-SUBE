@@ -110,16 +110,17 @@
             mISTRÁMITESToolStripMenuItem.Name = "mISTRÁMITESToolStripMenuItem";
             mISTRÁMITESToolStripMenuItem.Size = new Size(211, 29);
             mISTRÁMITESToolStripMenuItem.Text = "| MIS TRÁMITES |";
+            mISTRÁMITESToolStripMenuItem.Click += mISTRÁMITESToolStripMenuItem_Click;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.BackColor = Color.Transparent;
-            lblNombre.Font = new Font("Lucida Sans", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
             lblNombre.Location = new Point(260, 92);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(93, 31);
+            lblNombre.Size = new Size(92, 31);
             lblNombre.TabIndex = 3;
             lblNombre.Text = "¡Hola!";
             // 

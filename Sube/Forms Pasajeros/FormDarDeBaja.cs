@@ -49,6 +49,7 @@ namespace Sube
                     string nombre = "MisTramites.xml";
                     string path = Path.Combine(ruta, nombre);
                     List<Tramites> listaTramites = new List<Tramites>();
+                    listaTramites = Serializador.ReadXMLTramites(path);
 
                     string radioButtonTramite = radioButtonSeleccionado.Text;
 
@@ -56,7 +57,7 @@ namespace Sube
                     int _rnd = rnd.Next(1, 99999);
 
    
-                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, false);
+                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, "En revision");
                     listaTramites.Add(miTramite);
 
                     Serializador.WriteXMLTramites(path, listaTramites);

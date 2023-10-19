@@ -12,11 +12,11 @@ namespace Biblioteca_TarjetaSube
         string dniClaimer;
         string claimMessage;
         DateTime claimTime;
-        bool claimComplete;
+        string claimComplete;
 
         public Tramites() { }
 
-        public Tramites(long claimId, string dniClaimer, string claimMessage, DateTime claimTime, bool claimComplete)
+        public Tramites(long claimId, string dniClaimer, string claimMessage, DateTime claimTime, string claimComplete)
         {
             this.claimId = claimId;
             this.dniClaimer = dniClaimer;
@@ -29,6 +29,6 @@ namespace Biblioteca_TarjetaSube
         public string DniClaimer { get => dniClaimer; set => dniClaimer = value; }
         public string ClaimMessage { get => claimMessage; set => claimMessage = value; }
         public DateTime ClaimTime { get => claimTime; set => claimTime = value; }
-        public bool ClaimComplete { get => claimComplete; set => claimComplete = value; }
+        public string ClaimComplete { get => claimComplete; set => claimComplete = value; }
     }
 }

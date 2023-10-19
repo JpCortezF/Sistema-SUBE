@@ -53,6 +53,7 @@ namespace Sube
                 string ruta = @"..\..\..\Data";
                 string nombre = @".\MisTramites.xml";
                 string path = ruta + nombre;
+                listaTramites = Serializador.ReadXMLTramites(path);
 
                 MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string radioButtonTarifa = radioButtonSeleccionado.Text;
@@ -63,7 +64,7 @@ namespace Sube
                     Random rnd = new Random();
                     int _rnd = rnd.Next(1, 99999);
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}  " + txtClaim.Text, DateTime.Now, false);
+                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}  " + txtClaim.Text, DateTime.Now, "En revision");
                     listaTramites.Add(miTramite);
                     Serializador.WriteXMLTramites(path, listaTramites);
                 }

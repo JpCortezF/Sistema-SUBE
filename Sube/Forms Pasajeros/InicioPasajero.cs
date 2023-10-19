@@ -131,5 +131,14 @@ namespace Sube
                 OpenChildForm(DeBaja);
             }
         }
+
+        private void mISTRÁMITESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentChildForm is null || !(currentChildForm is FormPasajeroTramites))
+            {
+                FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger, dictionaryPassengers);
+                OpenChildForm(Tramites);
+            }
+        }
     }
 }
