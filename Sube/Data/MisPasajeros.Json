@@ -51,8 +51,8 @@
   "41709030": {
     "Gender": "Masculino",
     "MySube": {
-      "CardNumber": "6061198209121100",
-      "Balance": -150.504,
+      "CardNumber": "6061346621651542",
+      "Balance": 0.0,
       "QueueTravels": [],
       "TarifaSocial": 2
     },
@@ -161,7 +161,7 @@
   "33208388": {
     "Gender": "Masculino",
     "MySube": {
-      "CardNumber": "6061582033422862",
+      "CardNumber": "DeBaja",
       "Balance": 0.0,
       "QueueTravels": [],
       "TarifaSocial": 2

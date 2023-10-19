@@ -1,17 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfTramites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Tramites>
-    <ClaimId>96541</ClaimId>
-    <DniClaimer>41709030</DniClaimer>
-    <ClaimMessage>Reclamo:Robo  Me robaron en LaFerrere un desastre</ClaimMessage>
-    <ClaimTime>2023-10-19T16:36:18.8849135-03:00</ClaimTime>
-    <ClaimComplete>En revision</ClaimComplete>
-  </Tramites>
-  <Tramites>
-    <ClaimId>39971</ClaimId>
-    <DniClaimer>41709030</DniClaimer>
-    <ClaimMessage>Reclamo:Perdida  Che para en realidad la perdi, pasa que no lo podia decir porque me estaban viendo mis amigos generar la queja, listo todo bien disculpa</ClaimMessage>
-    <ClaimTime>2023-10-19T16:41:13.9602669-03:00</ClaimTime>
-    <ClaimComplete>En revision</ClaimComplete>
-  </Tramites>
-</ArrayOfTramites>
+<ArrayOfTramites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />

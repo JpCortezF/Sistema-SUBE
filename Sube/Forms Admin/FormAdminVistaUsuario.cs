@@ -84,6 +84,7 @@ namespace Sube
                 selectedPassenger.MySube.CardNumber = "DeBaja";
                 selectedPassenger.MySube.QueueTravels.Clear();
                 selectedPassenger.MySube.Balance = 0;
+                selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
             }
         }
     }
