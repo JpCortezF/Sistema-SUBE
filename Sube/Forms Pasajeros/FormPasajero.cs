@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Sube.Forms_Pasajeros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,7 +75,11 @@ namespace Sube
 
         private void btnOnline_Click(object sender, EventArgs e)
         {
-
+            if (currentChildForm is null || !(currentChildForm is FormCompraOnline))
+            {
+                FormCompraOnline compraSube = new FormCompraOnline(dictionaryPassengers);
+                OpenChildForm(compraSube);
+            }
         }
         private void OpenChildForm(Form childForm)
         {

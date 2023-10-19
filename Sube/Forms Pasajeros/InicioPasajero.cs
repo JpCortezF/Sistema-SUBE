@@ -39,22 +39,25 @@ namespace Sube
             itemSalir.Click += itemSalir_Click;
             lblNombre.Text = $"¡Hola {passenger.Name + " " + passenger.LastName}!";
         }
+        private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
 
+            path.AddArc(0, 0, radio * 2, radio * 2, 180, 90); // Esquina superior izquierda
+            path.AddArc(width - (radio * 2), 0, radio * 2, radio * 2, 270, 90); // Esquina superior derecha
+            path.AddArc(width - (radio * 2), height - (radio * 2), radio * 2, radio * 2, 0, 90); // Esquina inferior derecha
+            path.AddArc(0, height - (radio * 2), radio * 2, radio * 2, 90, 90); // Esquina inferior izquierda
+            path.CloseFigure();
+
+            return path;
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
-            // Crea una región con esquinas redondeadas
-            GraphicsPath path = new GraphicsPath();
             int radio = 15; // Ajusta el radio según tus preferencias
 
-            path.AddArc(0, 0, radio * 2, radio * 2, 180, 90); // Esquina superior izquierda
-            path.AddArc(this.Width - (radio * 2), 0, radio * 2, radio * 2, 270, 90); // Esquina superior derecha
-            path.AddArc(this.Width - (radio * 2), this.Height - (radio * 2), radio * 2, radio * 2, 0, 90); // Esquina inferior derecha
-            path.AddArc(0, this.Height - (radio * 2), radio * 2, radio * 2, 90, 90); // Esquina inferior izquierda
-            path.CloseFigure();
-
-            this.Region = new Region(path);
+            this.Region = new Region(CrearRegionConEsquinasRedondeadas(this.Width, this.Height, radio));
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {
@@ -65,7 +68,7 @@ namespace Sube
                 string ruta = @"..\..\..\Data";
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
-
+                
                 dictionaryPassengers = Serializador.ReadJsonPassenger(path);
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
