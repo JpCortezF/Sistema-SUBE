@@ -50,7 +50,7 @@
             dataGridViajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -59,7 +59,7 @@
             dataGridViajes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.GradientActiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -69,7 +69,7 @@
             dataGridViajes.Name = "dataGridViajes";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -83,29 +83,29 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Lucida Sans", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(12, 48);
             label1.Name = "label1";
-            label1.Size = new Size(153, 23);
+            label1.Size = new Size(144, 25);
             label1.TabIndex = 1;
             label1.Text = "Movimientos";
             // 
             // txtBusqueda
             // 
-            txtBusqueda.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBusqueda.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtBusqueda.Location = new Point(87, 106);
             txtBusqueda.Name = "txtBusqueda";
             txtBusqueda.PlaceholderText = "Línea...";
-            txtBusqueda.Size = new Size(197, 23);
+            txtBusqueda.Size = new Size(197, 22);
             txtBusqueda.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(12, 109);
             label2.Name = "label2";
-            label2.Size = new Size(69, 15);
+            label2.Size = new Size(69, 16);
             label2.TabIndex = 3;
             label2.Text = "Búsqueda";
             // 
@@ -129,7 +129,7 @@
             panel1.AutoScroll = true;
             panel1.BackColor = Color.RosyBrown;
             panel1.Controls.Add(dataGridViajes);
-            panel1.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            panel1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             panel1.Location = new Point(12, 140);
             panel1.Name = "panel1";
             panel1.Size = new Size(776, 268);
@@ -138,11 +138,11 @@
             // lblSaldo
             // 
             lblSaldo.AutoSize = true;
-            lblSaldo.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSaldo.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblSaldo.ForeColor = Color.SeaGreen;
             lblSaldo.Location = new Point(693, 109);
             lblSaldo.Name = "lblSaldo";
-            lblSaldo.Size = new Size(66, 17);
+            lblSaldo.Size = new Size(65, 18);
             lblSaldo.TabIndex = 7;
             lblSaldo.Text = "$ Saldo";
             // 
@@ -163,11 +163,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(708, 81);
             label3.Name = "label3";
-            label3.Size = new Size(51, 17);
+            label3.Size = new Size(51, 18);
             label3.TabIndex = 9;
             label3.Text = "Saldo";
             // 
@@ -176,10 +176,10 @@
             lblFiltro.AutoSize = true;
             lblFiltro.Cursor = Cursors.Hand;
             lblFiltro.FlatStyle = FlatStyle.Flat;
-            lblFiltro.Font = new Font("Lucida Sans", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFiltro.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFiltro.Location = new Point(327, 111);
             lblFiltro.Name = "lblFiltro";
-            lblFiltro.Size = new Size(74, 14);
+            lblFiltro.Size = new Size(62, 13);
             lblFiltro.TabIndex = 10;
             lblFiltro.Text = "Quitar filtros";
             lblFiltro.Visible = false;
