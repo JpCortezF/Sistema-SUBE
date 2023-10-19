@@ -51,7 +51,7 @@ namespace Sube
             {
                 List<Tramites> listaTramites = new List<Tramites>();
                 string ruta = @"..\..\..\Data";
-                string nombre = @".\MisTramites.Json";
+                string nombre = @".\MisTramites.xml";
                 string path = ruta + nombre;
 
                 MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -65,7 +65,7 @@ namespace Sube
 
                     Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}  " + txtClaim.Text, DateTime.Now);
                     listaTramites.Add(miTramite);
-                    Serializador.WriteJsonTramites(path, listaTramites);
+                    Serializador.WriteXMLTramites(path, listaTramites);
                     DialogResult = DialogResult.OK;
                 }
             }

@@ -29,9 +29,9 @@ namespace Sube
             string path = Path.Combine(ruta, nombre);
             dictionaryPassengers = Serializador.ReadJsonPassenger(path);
             string rutaT = @"..\..\..\Data";
-            string nombreT = "MisTramites.Json";
+            string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
-            tramites = Serializador.ReadJsonTramites(pathT);
+            tramites = Serializador.ReadXMLTramites(pathT);
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)
@@ -55,9 +55,9 @@ namespace Sube
                 string path = Path.Combine(ruta, nombre);
                 Serializador.WriteJsonPassenger(path, dictionaryPassengers);
                 string rutaT = @"..\..\..\Data";
-                string nombreT = "MisTramites.Json";
+                string nombreT = "MisTramites.xml";
                 string pathT = Path.Combine(rutaT, nombreT);
-                Serializador.WriteJsonTramites(pathT, tramites);
+                Serializador.WriteXMLTramites(pathT, tramites);
                 Close();
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
