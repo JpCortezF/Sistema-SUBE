@@ -13,10 +13,11 @@ namespace Sube
     public partial class FormEmergente : Form
     {
         string message;
-        public FormEmergente(string message)
+        public FormEmergente(string message, string tittle)
         {
             InitializeComponent();
             this.message = message;
+            this.Text = tittle;
         }
 
         private void FormEmergente_Load(object sender, EventArgs e)

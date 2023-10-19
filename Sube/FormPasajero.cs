@@ -35,7 +35,7 @@ namespace Sube
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {
-            FormEmergente emergente = new FormEmergente("¿Está seguro que desea salir?");
+            FormEmergente emergente = new FormEmergente("¿Está seguro que desea salir?", "Salir");
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {

@@ -243,6 +243,7 @@
             btnBajaTarjeta.TabIndex = 29;
             btnBajaTarjeta.Text = "Baja Tarjeta";
             btnBajaTarjeta.UseVisualStyleBackColor = false;
+            btnBajaTarjeta.Click += btnBajaTarjeta_Click;
             // 
             // button1
             // 
