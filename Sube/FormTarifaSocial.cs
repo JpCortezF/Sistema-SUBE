@@ -66,7 +66,6 @@ namespace Sube
                     Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}  " + txtClaim.Text, DateTime.Now, false);
                     listaTramites.Add(miTramite);
                     Serializador.WriteXMLTramites(path, listaTramites);
-                    DialogResult = DialogResult.OK;
                 }
             }
             else

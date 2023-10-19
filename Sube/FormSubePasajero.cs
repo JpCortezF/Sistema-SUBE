@@ -72,37 +72,6 @@ namespace Sube
             }
 
         }
-
-        private void cmbBaja_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FormBajaUsuario bajaUser = new FormBajaUsuario(passenger);
-            bajaUser.ShowDialog();
-            if (bajaUser.DialogResult == DialogResult.OK)
-            {
-                try
-                {
-                    string key = passenger.ReturnrKey(dictionaryPassengers, passenger);
-                    dictionaryPassengers.Remove(key);
-
-                    string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    string nombre = @".\MisPasajeros.Json";
-                    string path = ruta + nombre;
-
-                    Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-
-                    this.MdiParent.Close();
-                    this.Close();
-
-                    FormPasajero homePasajero = new FormPasajero();
-                    homePasajero.Show();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
-        }
         private void lblTarifa_Click(object sender, EventArgs e)
         {
             Close();

@@ -76,6 +76,7 @@
             btnTramite.TabIndex = 17;
             btnTramite.Text = "Iniciar trámite";
             btnTramite.UseVisualStyleBackColor = false;
+            btnTramite.Click += btnTramite_Click;
             // 
             // groupBox1
             // 

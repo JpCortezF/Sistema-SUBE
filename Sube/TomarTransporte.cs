@@ -32,6 +32,9 @@ namespace Sube
             comboBox1.Items.Add(ETransporte.Colectivo);
             comboBox1.Items.Add(ETransporte.Subte);
             comboBox1.Items.Add(ETransporte.Tren);
+            pictureBox1.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox3.Visible = false;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -44,7 +47,7 @@ namespace Sube
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
-            if (ValidarIngresoTextBox())
+            if (ValidarIngresoTextBox() && passenger.MySube.CardNumber != "DeBaja")
             {
                 try
                 {
@@ -61,8 +64,25 @@ namespace Sube
                         if (passenger.MySube.Balance > -211.84)
                         {
                             passenger.MySube.QueueTravels.Enqueue(miViaje);
+                            switch (miTransporte)
+                            {
+                                case ETransporte.Colectivo:
+                                    pictureBox1.Visible = true;
+                                    pictureBox2.Visible = false;
+                                    pictureBox3.Visible = false;
+                                    break;
+                                case ETransporte.Subte:
+                                    pictureBox2.Visible = true;
+                                    pictureBox1.Visible = false;
+                                    pictureBox3.Visible = false;
+                                    break;
+                                case ETransporte.Tren:
+                                    pictureBox3.Visible = true;
+                                    pictureBox2.Visible = false;
+                                    pictureBox1.Visible = false;
+                                    break;
+                            }
                             MessageBox.Show("¡Viaje realizado con éxito!", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DialogResult = DialogResult.OK;
                         }
                         else
                         {
@@ -70,11 +90,15 @@ namespace Sube
                             MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                }     
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Su SUBE se encuentra dada de baja...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private bool ValidarIngresoTextBox()

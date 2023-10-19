@@ -37,7 +37,13 @@
             lblLinea = new Label();
             label1 = new Label();
             grpTransporte = new GroupBox();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             grpTransporte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -84,7 +90,7 @@
             btnViajar.BackColor = Color.MediumAquamarine;
             btnViajar.Cursor = Cursors.Hand;
             btnViajar.FlatStyle = FlatStyle.Flat;
-            btnViajar.Location = new Point(634, 251);
+            btnViajar.Location = new Point(634, 370);
             btnViajar.Name = "btnViajar";
             btnViajar.Size = new Size(101, 29);
             btnViajar.TabIndex = 0;
@@ -132,12 +138,46 @@
             grpTransporte.TabIndex = 12;
             grpTransporte.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Image = Properties.Resources.busGif;
+            pictureBox1.Location = new Point(218, 230);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(292, 169);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.subwayGif;
+            pictureBox2.Location = new Point(165, 230);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(381, 169);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 14;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.trainGif;
+            pictureBox3.Location = new Point(218, 230);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(292, 169);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 15;
+            pictureBox3.TabStop = false;
+            // 
             // TomarTransporte
             // 
             AutoScaleDimensions = new SizeF(8F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(763, 302);
+            ClientSize = new Size(767, 411);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
             Controls.Add(grpTransporte);
             Controls.Add(btnViajar);
             Controls.Add(lblTitulo);
@@ -150,6 +190,9 @@
             Load += TomarTransporte_Load;
             grpTransporte.ResumeLayout(false);
             grpTransporte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -164,5 +207,8 @@
         private Label lblLinea;
         private Label label1;
         private GroupBox grpTransporte;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }

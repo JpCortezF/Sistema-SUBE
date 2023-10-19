@@ -161,81 +161,10 @@
   "33208388": {
     "Gender": "Masculino",
     "MySube": {
-      "CardNumber": "6061143134255327",
-      "Balance": 410.40002,
-      "QueueTravels": [
-        {
-          "TicketCost": 47.2,
-          "Kilometres": 5.0,
-          "Date": "2023-10-17T23:44:10.1268478-03:00",
-          "TipoTransporte": 0,
-          "LineasTransporte": "33"
-        },
-        {
-          "TicketCost": 47.2,
-          "Kilometres": 4.0,
-          "Date": "2023-10-17T23:44:21.859293-03:00",
-          "TipoTransporte": 0,
-          "LineasTransporte": "Subte A"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 6.0,
-          "Date": "2023-10-17T23:44:29.9210727-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "Subte D"
-        },
-        {
-          "TicketCost": 47.2,
-          "Kilometres": 6.0,
-          "Date": "2023-10-17T23:44:38.5373774-03:00",
-          "TipoTransporte": 0,
-          "LineasTransporte": "Linea 68"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 2.0,
-          "Date": "2023-10-17T23:51:32.3401503-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "a"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 2.0,
-          "Date": "2023-10-17T23:51:36.7268864-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "a"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 3.0,
-          "Date": "2023-10-17T23:51:41.6460809-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "a"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 2.0,
-          "Date": "2023-10-17T23:51:47.3799992-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "a"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 4.0,
-          "Date": "2023-10-17T23:51:55.4255887-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "d"
-        },
-        {
-          "TicketCost": 64.0,
-          "Kilometres": 4.0,
-          "Date": "2023-10-17T23:52:01.2980164-03:00",
-          "TipoTransporte": 1,
-          "LineasTransporte": "a"
-        }
-      ],
-      "TarifaSocial": 3
+      "CardNumber": "DeBaja",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 2
     },
     "Email": "AleHardcode@gmail.com",
     "Password": "8388",

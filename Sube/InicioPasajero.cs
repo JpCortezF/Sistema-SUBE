@@ -44,11 +44,11 @@ namespace Sube
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                string ruta = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string nombre = @".\MisPasajeros.Json";
-                string path = ruta + nombre;
+                string ruta = @"..\..\..\Data";
+                string nombre = "MisPasajeros.Json";
+                string path = Path.Combine(ruta, nombre);
 
-                Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                dictionaryPassengers = Serializador.ReadJsonPassenger(path);
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
                 Close();
@@ -56,11 +56,10 @@ namespace Sube
         }
         private void vIAJARToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TomarTransporte transporte = new TomarTransporte(passenger);
-            transporte.ShowDialog();
-            if (transporte.DialogResult == DialogResult.OK)
+            if (currentChildForm is null || !(currentChildForm is TomarTransporte))
             {
-
+                TomarTransporte transporte = new TomarTransporte(passenger);
+                OpenChildForm(transporte);
             }
         }
         private void subeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -128,7 +127,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormDarDeBaja))
             {
-                FormDarDeBaja DeBaja = new FormDarDeBaja(passenger);
+                FormDarDeBaja DeBaja = new FormDarDeBaja(passenger, dictionaryPassengers);
                 OpenChildForm(DeBaja);
             }
         }

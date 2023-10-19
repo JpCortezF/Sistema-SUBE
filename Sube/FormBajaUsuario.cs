@@ -14,6 +14,7 @@ namespace Sube
     public partial class FormBajaUsuario : Form
     {
         Pasajero passenger;
+
         public FormBajaUsuario(Pasajero passenger)
         {
             InitializeComponent();

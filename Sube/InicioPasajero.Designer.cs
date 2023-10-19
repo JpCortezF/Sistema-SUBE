@@ -77,7 +77,7 @@
             // 
             subeToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             subeToolStripMenuItem.Name = "subeToolStripMenuItem";
-            subeToolStripMenuItem.Size = new Size(180, 24);
+            subeToolStripMenuItem.Size = new Size(168, 24);
             subeToolStripMenuItem.Text = "Sube";
             subeToolStripMenuItem.Click += subeToolStripMenuItem_Click;
             // 
@@ -85,7 +85,7 @@
             // 
             viajesToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             viajesToolStripMenuItem.Name = "viajesToolStripMenuItem";
-            viajesToolStripMenuItem.Size = new Size(180, 24);
+            viajesToolStripMenuItem.Size = new Size(168, 24);
             viajesToolStripMenuItem.Text = "Viajes";
             viajesToolStripMenuItem.Click += viajesToolStripMenuItem_Click;
             // 
@@ -93,7 +93,7 @@
             // 
             tarifaSocialToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             tarifaSocialToolStripMenuItem.Name = "tarifaSocialToolStripMenuItem";
-            tarifaSocialToolStripMenuItem.Size = new Size(180, 24);
+            tarifaSocialToolStripMenuItem.Size = new Size(168, 24);
             tarifaSocialToolStripMenuItem.Text = "Tarifa Social";
             tarifaSocialToolStripMenuItem.Click += tarifaSocialToolStripMenuItem_Click;
             // 
@@ -101,7 +101,7 @@
             // 
             darDeBajaToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             darDeBajaToolStripMenuItem.Name = "darDeBajaToolStripMenuItem";
-            darDeBajaToolStripMenuItem.Size = new Size(180, 24);
+            darDeBajaToolStripMenuItem.Size = new Size(168, 24);
             darDeBajaToolStripMenuItem.Text = "Dar de baja";
             darDeBajaToolStripMenuItem.Click += darDeBajaToolStripMenuItem_Click;
             // 
@@ -128,7 +128,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.headerShortMiSube;
-            ClientSize = new Size(950, 477);
+            ClientSize = new Size(950, 500);
             ControlBox = false;
             Controls.Add(lblNombre);
             Controls.Add(menuStrip1);

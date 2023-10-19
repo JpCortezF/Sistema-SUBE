@@ -63,6 +63,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap busGif {
+            get {
+                object obj = ResourceManager.GetObject("busGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap cargaSube {
             get {
                 object obj = ResourceManager.GetObject("cargaSube", resourceCulture);
@@ -186,6 +196,26 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap SubeIngreso {
             get {
                 object obj = ResourceManager.GetObject("SubeIngreso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap subwayGif {
+            get {
+                object obj = ResourceManager.GetObject("subwayGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap trainGif {
+            get {
+                object obj = ResourceManager.GetObject("trainGif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
