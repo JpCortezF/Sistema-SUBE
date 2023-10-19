@@ -144,7 +144,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cambria", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(509, 57);
+            label1.Location = new Point(509, 17);
             label1.Name = "label1";
             label1.Size = new Size(155, 25);
             label1.TabIndex = 21;
@@ -223,12 +223,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(509, 94);
+            dataGridView1.Location = new Point(509, 57);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(479, 271);
+            dataGridView1.Size = new Size(479, 252);
             dataGridView1.TabIndex = 28;
             // 
             // btnBajaTarjeta
