@@ -15,15 +15,17 @@ namespace Sube
     public partial class FormIngreso : Form
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
-        public FormIngreso(Dictionary<string, Pasajero> passengers)
+        private FormPasajero parentForm;
+
+        public FormIngreso(FormPasajero parent, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
+            parentForm = parent;
         }
 
         private void FormIngreso_Load(object sender, EventArgs e)
         {
-            groupBox1.Parent = panel1;
             cmbDni.Items.Add("DNI - Documento Nacional de Identidad");
             cmbDni.Items.Add("LE - Libreta Enrolamiento");
             cmbDni.Items.Add("LC - Libreta Cívica");
@@ -31,11 +33,6 @@ namespace Sube
             txtDni.TextChanged += txt_TextChanged;
             txtPass.TextChanged += txt_TextChanged;
             cmbDni.SelectedIndex = 0;
-        }
-        private void iNICIOToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            Close();
-            DialogResult = DialogResult.Cancel;
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -50,11 +47,10 @@ namespace Sube
                         {
                             exist = true;
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DialogResult = DialogResult.OK;
-                            Close();
-
                             InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                             inicio.Show();
+                            MdiParent.Close();
+                            Close();
                             break;
                         }
                     }
@@ -67,10 +63,9 @@ namespace Sube
         }
         private void lblRegistro_Click_1(object sender, EventArgs e)
         {
-            Close();
-
-            FormRegistro frm = new FormRegistro(dictionaryPassengers);
-            frm.ShowDialog();
+            FormRegistro registro = new FormRegistro(dictionaryPassengers);
+            registro.MdiParent = parentForm;
+            registro.Show();
         }
         private void btnMostrarPass_Click_1(object sender, EventArgs e)
         {
@@ -115,7 +110,7 @@ namespace Sube
             try
             {
                 passenger = passenger.FindPassengerByEmail(dictionaryPassengers, "AleHardcode@gmail.com");
-                if(passenger is not null)
+                if (passenger is not null)
                 {
                     string dni = passenger.ReturnrKey(dictionaryPassengers, passenger);
                     txtDni.Text = dni;

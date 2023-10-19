@@ -83,6 +83,7 @@
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormTramites";
+            StartPosition = FormStartPosition.Manual;
             Text = "FormTramites";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

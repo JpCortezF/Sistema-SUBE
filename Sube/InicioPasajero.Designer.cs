@@ -29,39 +29,49 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
+            iNICIOToolStripMenuItem = new ToolStripMenuItem();
             vIAJARToolStripMenuItem = new ToolStripMenuItem();
             mISUBEToolStripMenuItem = new ToolStripMenuItem();
             subeToolStripMenuItem = new ToolStripMenuItem();
             viajesToolStripMenuItem = new ToolStripMenuItem();
             tarifaSocialToolStripMenuItem = new ToolStripMenuItem();
+            darDeBajaToolStripMenuItem = new ToolStripMenuItem();
+            mISTRÁMITESToolStripMenuItem = new ToolStripMenuItem();
             lblNombre = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = SystemColors.Control;
-            menuStrip1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { vIAJARToolStripMenuItem, mISUBEToolStripMenuItem });
+            menuStrip1.BackColor = SystemColors.ActiveCaption;
+            menuStrip1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, vIAJARToolStripMenuItem, mISUBEToolStripMenuItem, mISTRÁMITESToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(934, 37);
+            menuStrip1.Size = new Size(950, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // iNICIOToolStripMenuItem
+            // 
+            iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
+            iNICIOToolStripMenuItem.Size = new Size(117, 29);
+            iNICIOToolStripMenuItem.Text = "| INICIO |";
+            iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click;
             // 
             // vIAJARToolStripMenuItem
             // 
             vIAJARToolStripMenuItem.Name = "vIAJARToolStripMenuItem";
-            vIAJARToolStripMenuItem.Size = new Size(111, 33);
-            vIAJARToolStripMenuItem.Text = "VIAJAR";
+            vIAJARToolStripMenuItem.Size = new Size(129, 29);
+            vIAJARToolStripMenuItem.Text = "| VIAJAR |";
             vIAJARToolStripMenuItem.Click += vIAJARToolStripMenuItem_Click;
             // 
             // mISUBEToolStripMenuItem
             // 
-            mISUBEToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { subeToolStripMenuItem, viajesToolStripMenuItem, tarifaSocialToolStripMenuItem });
+            mISUBEToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { subeToolStripMenuItem, viajesToolStripMenuItem, tarifaSocialToolStripMenuItem, darDeBajaToolStripMenuItem });
             mISUBEToolStripMenuItem.Name = "mISUBEToolStripMenuItem";
-            mISUBEToolStripMenuItem.Size = new Size(129, 33);
-            mISUBEToolStripMenuItem.Text = "MI SUBE";
+            mISUBEToolStripMenuItem.Size = new Size(143, 29);
+            mISUBEToolStripMenuItem.Text = "| MI SUBE |";
             // 
             // subeToolStripMenuItem
             // 
@@ -87,13 +97,27 @@
             tarifaSocialToolStripMenuItem.Text = "Tarifa Social";
             tarifaSocialToolStripMenuItem.Click += tarifaSocialToolStripMenuItem_Click;
             // 
+            // darDeBajaToolStripMenuItem
+            // 
+            darDeBajaToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            darDeBajaToolStripMenuItem.Name = "darDeBajaToolStripMenuItem";
+            darDeBajaToolStripMenuItem.Size = new Size(180, 24);
+            darDeBajaToolStripMenuItem.Text = "Dar de baja";
+            darDeBajaToolStripMenuItem.Click += darDeBajaToolStripMenuItem_Click;
+            // 
+            // mISTRÁMITESToolStripMenuItem
+            // 
+            mISTRÁMITESToolStripMenuItem.Name = "mISTRÁMITESToolStripMenuItem";
+            mISTRÁMITESToolStripMenuItem.Size = new Size(211, 29);
+            mISTRÁMITESToolStripMenuItem.Text = "| MIS TRÁMITES |";
+            // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.BackColor = Color.Transparent;
             lblNombre.Font = new Font("Lucida Sans", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(198, 86);
+            lblNombre.Location = new Point(260, 92);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(93, 31);
             lblNombre.TabIndex = 3;
@@ -104,7 +128,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.headerShortMiSube;
-            ClientSize = new Size(934, 477);
+            ClientSize = new Size(950, 477);
             ControlBox = false;
             Controls.Add(lblNombre);
             Controls.Add(menuStrip1);
@@ -130,5 +154,8 @@
         private ToolStripMenuItem subeToolStripMenuItem;
         private Label lblNombre;
         private ToolStripMenuItem vIAJARToolStripMenuItem;
+        private ToolStripMenuItem iNICIOToolStripMenuItem;
+        private ToolStripMenuItem darDeBajaToolStripMenuItem;
+        private ToolStripMenuItem mISTRÁMITESToolStripMenuItem;
     }
 }

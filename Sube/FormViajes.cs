@@ -33,27 +33,30 @@ namespace Sube
         }
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("FECHA", typeof(DateTime));
-            dt.Columns.Add("Linea", typeof(string));
-            dt.Columns.Add("Transporte", typeof(ETransporte));
-            dt.Columns.Add("Kilometros", typeof(int));
-            dt.Columns.Add("Costo del boleto", typeof(float));
-            dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
-            foreach (Viajes viajes in queueViajes)
+            if (txtBusqueda.Text != string.Empty)
             {
-                if (txtBusqueda.Text == viajes.LineasTransporte)
+                DataTable dt = new DataTable();
+                dt.Columns.Add("FECHA", typeof(DateTime));
+                dt.Columns.Add("Linea", typeof(string));
+                dt.Columns.Add("Transporte", typeof(ETransporte));
+                dt.Columns.Add("Kilometros", typeof(int));
+                dt.Columns.Add("Costo del boleto", typeof(float));
+                dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
+                foreach (Viajes viajes in queueViajes)
                 {
-                    dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
+                    if (txtBusqueda.Text == viajes.LineasTransporte)
+                    {
+                        dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
+                    }
                 }
+                lblFiltro.Visible = true;
+                dataGridViajes.DataSource = dt;
             }
-            lblFiltro.Visible = true;
-            dataGridViajes.DataSource = dt;
         }
         private void LoadDataGridView()
         {

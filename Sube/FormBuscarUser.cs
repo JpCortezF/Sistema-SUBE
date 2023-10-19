@@ -34,7 +34,7 @@ namespace Sube
 
             foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
             {
-                if(kvp.Value is Pasajero pasajero)
+                if (kvp.Value is Pasajero pasajero)
                 {
                     if (kvp.Key.Contains(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.MySube.CardNumber.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
                     {

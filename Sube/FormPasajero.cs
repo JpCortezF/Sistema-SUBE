@@ -1,4 +1,5 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace Sube
     public partial class FormPasajero : Form
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
+        private Form currentChildForm = null;
 
         public FormPasajero()
         {
@@ -44,41 +46,60 @@ namespace Sube
                 Close();
             }
         }
+        /// <summary>
+        /// Abre un formulario hijo en el formulario principal, asegurándose de que solo un formulario hijo esté abierto a la vez.
+        /// </summary>
+        /// <param name="childForm">El formulario hijo que se abrirá.</param>
         private void btnIngresar_Click_1(object sender, EventArgs e)
         {
-            FormIngreso formIngreso = new FormIngreso(dictionaryPassengers);
-            formIngreso.ShowDialog();
-            if(formIngreso.DialogResult == DialogResult.OK)
+            if (currentChildForm is null || !(currentChildForm is FormIngreso))
             {
-                Close();
+                FormIngreso formIngreso = new FormIngreso(this, dictionaryPassengers);
+                OpenChildForm(formIngreso);
             }
         }
+        /// <summary>
+        /// Maneja el evento de hacer clic en el elemento de menú "Notificaciones". Abre el formulario de tramites como un formulario hijo en el formulario principal, asegurándose de que solo un formulario hijo esté abierto a la vez.
+        /// </summary>
+        /// <param name="sender">El objeto que desencadenó el evento (en este caso, el elemento de menú "Notificaciones").</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void btnRegistrar_Click_1(object sender, EventArgs e)
         {
-            FormRegistro formRegistro = new FormRegistro(dictionaryPassengers);
-            formRegistro.ShowDialog();
+            if (currentChildForm is null || !(currentChildForm is FormRegistro))
+            {
+                FormRegistro formRegistro = new FormRegistro(dictionaryPassengers);
+                OpenChildForm(formRegistro);
+            }
         }
 
         private void btnOnline_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void cOMPRAONLINEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenChildForm(Form childForm)
         {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
 
+            currentChildForm = childForm;
+            childForm.MdiParent = this;
+            childForm.Location = new Point(0, 0);
+            panel1.Visible = false;
+            childForm.FormClosed += (s, args) =>
+            {
+                currentChildForm = null;
+            };
+            childForm.Show();
         }
-
-        private void iNGRESOToolStripMenuItem_Click(object sender, EventArgs e)
+        private void iNICIOToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormIngreso formIngreso = new FormIngreso(dictionaryPassengers);
-            formIngreso.ShowDialog();
-        }
-
-        private void rEGISTRALAToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormRegistro formRegistro = new FormRegistro(dictionaryPassengers);
-            formRegistro.ShowDialog();
+            foreach (Form childForm in this.MdiChildren)
+            {
+                childForm.Close();
+                panel1.Visible = true;
+            }
         }
     }
 }

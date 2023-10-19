@@ -133,7 +133,7 @@
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormBuscarUser";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.Manual;
             Text = "Form1";
             Load += FormBuscarUser_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();

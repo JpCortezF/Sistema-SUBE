@@ -130,7 +130,7 @@
             panel1.BackColor = Color.RosyBrown;
             panel1.Controls.Add(dataGridViajes);
             panel1.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            panel1.Location = new Point(12, 135);
+            panel1.Location = new Point(12, 140);
             panel1.Name = "panel1";
             panel1.Size = new Size(776, 268);
             panel1.TabIndex = 6;
@@ -190,7 +190,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(800, 415);
+            ClientSize = new Size(800, 420);
             ControlBox = false;
             Controls.Add(lblFiltro);
             Controls.Add(label3);
