@@ -152,7 +152,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.subwayGif;
-            pictureBox2.Location = new Point(165, 230);
+            pictureBox2.Location = new Point(173, 230);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(381, 169);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
