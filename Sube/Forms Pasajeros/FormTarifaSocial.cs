@@ -25,6 +25,7 @@ namespace Sube
 
         private void FormTarifaSocial_Load(object sender, EventArgs e)
         {
+
             lblDescuento.Text = "Conocé todo sobre el descuento en transporte.";
             lblDirigido.Text = "¿A quién está dirigido?";
             label1.Text = $"• {ETarifaSocial.Estudiantil}";
@@ -36,6 +37,8 @@ namespace Sube
             rdbJubilado.Text = $"{ETarifaSocial.Jubilado}";
             rdbCombatiente.Text = $"{ETarifaSocial.ExComatienteDeMalvinas}";
             rdbDiscapacitado.Text = $"{ETarifaSocial.Discapacitado}";
+            rdbSinSubsidio.Text = $"{ETarifaSocial.SinSubsidio}";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -64,7 +67,7 @@ namespace Sube
                     Random rnd = new Random();
                     int _rnd = rnd.Next(1, 99999);
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{tarifaSocial}  " + txtClaim.Text, DateTime.Now, "En revision");
+                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo: {tarifaSocial}  \n" + txtClaim.Text, DateTime.Now, "En revision");
                     listaTramites.Add(miTramite);
                     Serializador.WriteXMLTramites(path, listaTramites);
                 }

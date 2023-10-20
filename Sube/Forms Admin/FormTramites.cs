@@ -45,6 +45,7 @@ namespace Sube
             this.dataGridView1.DataSource = listTramitesAux;
             lblCount.Text = listTramitesAux.Count.ToString();
         }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -81,6 +82,7 @@ namespace Sube
                             FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramitesAux[selectedIndex], listTramites);
                             editarUsuario.MdiParent = parentForm;
                             editarUsuario.Show();
+                            Close();
                             break;
                         }
                     }
@@ -96,6 +98,10 @@ namespace Sube
                 }
             }
             catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (IndexOutOfRangeException ex)
             {
                 MessageBox.Show(ex.Message);
             }

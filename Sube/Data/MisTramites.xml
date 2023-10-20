@@ -54,7 +54,7 @@
     <DniClaimer>33208388</DniClaimer>
     <ClaimMessage>Reclamo:ExComatienteDeMalvinas  Soy 1000-y tal</ClaimMessage>
     <ClaimTime>2023-10-20T03:26:04.8902967-03:00</ClaimTime>
-    <ClaimComplete>En proceso</ClaimComplete>
+    <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
   <Tramites>
     <ClaimId>3711</ClaimId>
@@ -62,5 +62,37 @@
     <ClaimMessage>Reclamo:Discapacitado  De verdad necesito que me pongan como discacitado </ClaimMessage>
     <ClaimTime>2023-10-20T04:41:08.443188-03:00</ClaimTime>
     <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>39609</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo: SinSubsidio  
+Nada, me canse de este pais</ClaimMessage>
+    <ClaimTime>2023-10-20T05:59:58.0034135-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>17006</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo: Estudiantil  
+Euu re caro al final, no pude hacer dos viajes que me quede sin saldo, haceme estudiantil pls</ClaimMessage>
+    <ClaimTime>2023-10-20T06:08:18.8252119-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>7095</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo: ExComatienteDeMalvinas  
+son 30.000</ClaimMessage>
+    <ClaimTime>2023-10-20T06:16:03.8091228-03:00</ClaimTime>
+    <ClaimComplete>Rechazado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>7707</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo: Jubilado  
+Ahora soy jubilado porque tardaron una banda en aprobarme lo de ser estudiantil</ClaimMessage>
+    <ClaimTime>2023-10-20T06:46:48.0596487-03:00</ClaimTime>
+    <ClaimComplete>Rechazado</ClaimComplete>
   </Tramites>
 </ArrayOfTramites>

@@ -92,14 +92,19 @@ namespace Sube.Forms_Admin
 
         private void btnDenegate_Click(object sender, EventArgs e)
         {
-            tramiteAuxACambiar.ClaimComplete = "Rechazado";
-            foreach (Tramites list in tramitesReales)
+            FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)
+                tramiteAuxACambiar.ClaimComplete = "Rechazado";
+                foreach (Tramites list in tramitesReales)
                 {
-                    list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
+                    if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)
+                    {
+                        list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
+                    }
                 }
             }
         }
+
     }
 }
