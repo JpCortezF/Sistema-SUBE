@@ -103,6 +103,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap fondoPasajero {
+            get {
+                object obj = ResourceManager.GetObject("fondoPasajero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fondoSube {
             get {
                 object obj = ResourceManager.GetObject("fondoSube", resourceCulture);

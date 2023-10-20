@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,12 +37,35 @@ namespace Sube
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
 
-            Image backgroundImage = Properties.Resources.logo_sube_blanco_sombra_web;
+            Image backgroundImage = Properties.Resources.fondoPasajero;
 
             // Establece la imagen como fondo del Panel
             panel1.BackgroundImage = backgroundImage;
 
-            panel1.BackgroundImageLayout = ImageLayout.Zoom;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+        private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
+
+            path.AddArc(0, 0, radio * 2, radio * 2, 180, 90); // Esquina superior izquierda
+            path.AddArc(width - (radio * 2), 0, radio * 2, radio * 2, 270, 90); // Esquina superior derecha
+            path.AddArc(width - (radio * 2), height - (radio * 2), radio * 2, radio * 2, 0, 90); // Esquina inferior derecha
+            path.AddArc(0, height - (radio * 2), radio * 2, radio * 2, 90, 90); // Esquina inferior izquierda
+            path.CloseFigure();
+
+            return path;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            int radio = 10; // Ajusta el radio según tus preferencias
+
+            btnIngresar.Region = new Region(CrearRegionConEsquinasRedondeadas(btnIngresar.Width, btnIngresar.Height, radio));
+            btnRegistrar.Region = new Region(CrearRegionConEsquinasRedondeadas(btnRegistrar.Width, btnRegistrar.Height, radio));
+            btnOnline.Region = new Region(CrearRegionConEsquinasRedondeadas(btnOnline.Width, btnOnline.Height, radio));
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {

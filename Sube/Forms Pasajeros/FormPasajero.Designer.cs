@@ -47,12 +47,12 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.Black;
+            label3.ForeColor = Color.White;
             label3.Location = new Point(712, 320);
             label3.Name = "label3";
-            label3.Size = new Size(122, 16);
+            label3.Size = new Size(126, 16);
             label3.TabIndex = 32;
-            label3.Text = "Compra tu SUBE";
+            label3.Text = "Compra tu SUBE ";
             // 
             // btnOnline
             // 
@@ -60,6 +60,7 @@
             btnOnline.BackgroundImage = (Image)resources.GetObject("btnOnline.BackgroundImage");
             btnOnline.BackgroundImageLayout = ImageLayout.Zoom;
             btnOnline.Cursor = Cursors.Hand;
+            btnOnline.FlatAppearance.BorderSize = 0;
             btnOnline.FlatStyle = FlatStyle.Flat;
             btnOnline.Location = new Point(712, 200);
             btnOnline.Name = "btnOnline";
@@ -73,12 +74,12 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(428, 317);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(399, 320);
             label2.Name = "label2";
-            label2.Size = new Size(79, 16);
+            label2.Size = new Size(132, 16);
             label2.TabIndex = 30;
-            label2.Text = "Registrala";
+            label2.Text = "Registra tu cuenta";
             // 
             // btnRegistrar
             // 
@@ -86,6 +87,7 @@
             btnRegistrar.BackgroundImage = (Image)resources.GetObject("btnRegistrar.BackgroundImage");
             btnRegistrar.BackgroundImageLayout = ImageLayout.Zoom;
             btnRegistrar.Cursor = Cursors.Hand;
+            btnRegistrar.FlatAppearance.BorderSize = 0;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
             btnRegistrar.Location = new Point(408, 200);
             btnRegistrar.Name = "btnRegistrar";
@@ -99,7 +101,7 @@
             lblIngresar.AutoSize = true;
             lblIngresar.BackColor = Color.Transparent;
             lblIngresar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblIngresar.ForeColor = Color.Black;
+            lblIngresar.ForeColor = Color.White;
             lblIngresar.Location = new Point(86, 320);
             lblIngresar.Name = "lblIngresar";
             lblIngresar.Size = new Size(138, 16);
@@ -112,6 +114,7 @@
             btnIngresar.BackgroundImage = (Image)resources.GetObject("btnIngresar.BackgroundImage");
             btnIngresar.BackgroundImageLayout = ImageLayout.Zoom;
             btnIngresar.Cursor = Cursors.Hand;
+            btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnIngresar.Location = new Point(101, 200);
@@ -130,7 +133,6 @@
             panel1.Controls.Add(btnOnline);
             panel1.Controls.Add(btnRegistrar);
             panel1.Controls.Add(label2);
-            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(933, 500);
@@ -159,8 +161,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
-            BackgroundImage = Properties.Resources.logo_sube_blanco_sombra_web;
-            BackgroundImageLayout = ImageLayout.Zoom;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(933, 500);
             ControlBox = false;
             Controls.Add(menuStrip1);
