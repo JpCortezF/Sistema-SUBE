@@ -97,6 +97,7 @@
             btnSalir.TabIndex = 5;
             btnSalir.Text = "X";
             btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // panel1
             // 

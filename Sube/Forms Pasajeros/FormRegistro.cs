@@ -100,7 +100,6 @@ namespace Sube
             {
                 this.gender = clickedButton.Text;
                 clickedButton.BackColor = Color.LightGray;
-                //this.buttonGenderClicked = true;
             }
         }
 

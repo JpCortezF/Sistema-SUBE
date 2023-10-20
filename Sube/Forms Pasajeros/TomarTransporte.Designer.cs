@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TomarTransporte));
             lblTitulo = new Label();
             comboBox1 = new ComboBox();
             txtKilometros = new TextBox();
@@ -40,10 +41,13 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            btnContinuar = new Button();
             grpTransporte.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -169,12 +173,39 @@
             pictureBox3.TabIndex = 15;
             pictureBox3.TabStop = false;
             // 
+            // pictureBox4
+            // 
+            pictureBox4.Dock = DockStyle.Fill;
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(0, 0);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(767, 411);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 16;
+            pictureBox4.TabStop = false;
+            // 
+            // btnContinuar
+            // 
+            btnContinuar.BackColor = Color.Transparent;
+            btnContinuar.BackgroundImage = (Image)resources.GetObject("btnContinuar.BackgroundImage");
+            btnContinuar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnContinuar.Cursor = Cursors.Hand;
+            btnContinuar.Font = new Font("Lucida Sans", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnContinuar.Location = new Point(735, 230);
+            btnContinuar.Name = "btnContinuar";
+            btnContinuar.Size = new Size(20, 66);
+            btnContinuar.TabIndex = 18;
+            btnContinuar.UseVisualStyleBackColor = false;
+            btnContinuar.Click += btnContinuar_Click_1;
+            // 
             // TomarTransporte
             // 
             AutoScaleDimensions = new SizeF(8F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveBorder;
+            BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(767, 411);
+            Controls.Add(btnContinuar);
+            Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -193,6 +224,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,5 +242,7 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
+        private Button btnContinuar;
     }
 }

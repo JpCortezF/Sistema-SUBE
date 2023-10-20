@@ -48,7 +48,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem, vIAJARToolStripMenuItem, mISUBEToolStripMenuItem, mISTRÁMITESToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(950, 33);
+            menuStrip1.Size = new Size(1000, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -129,7 +129,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.headerShortMiSube;
-            ClientSize = new Size(950, 500);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1000, 550);
             ControlBox = false;
             Controls.Add(lblNombre);
             Controls.Add(menuStrip1);

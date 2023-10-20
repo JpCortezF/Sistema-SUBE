@@ -1,4 +1,5 @@
 ﻿using Biblioteca_Usuarios;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,11 +17,13 @@ namespace Sube.Forms_Pasajeros
     public partial class FormCompraOnline : Form
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
+        private FormPasajero parentForm;
 
-        public FormCompraOnline(Dictionary<string, Pasajero> passengers)
+        public FormCompraOnline(FormPasajero parent, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
+            parentForm = parent;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -40,15 +43,9 @@ namespace Sube.Forms_Pasajeros
 
                         if (!passenger.CardNumberExist(dictionaryPassengers, newCardNumber))
                         {
-                            passenger.MySube.CardNumber = newCardNumber;
-
-                            string ruta = @"..\..\..\Data";
-                            string nombre = "MisPasajeros.Json";
-                            string path = Path.Combine(ruta, nombre);
-
-                            Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-
-                            MessageBox.Show($"Tu nueva tarjeta es: {passenger.MySube.CardNumber}", "Nueva SUBE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            SubeONLINE subeOnline = new SubeONLINE(dictionaryPassengers, passenger, newCardNumber);
+                            subeOnline.MdiParent = parentForm;
+                            subeOnline.Show();
                         }
                         compraOnline = true;
                     }

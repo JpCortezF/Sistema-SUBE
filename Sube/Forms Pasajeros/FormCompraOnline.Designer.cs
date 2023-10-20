@@ -45,7 +45,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(603, 254);
+            btnIngresar.Location = new Point(616, 386);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(201, 49);
             btnIngresar.TabIndex = 20;
@@ -93,10 +93,11 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(927, 375);
+            pictureBox2.Size = new Size(925, 458);
             pictureBox2.TabIndex = 32;
             pictureBox2.TabStop = false;
             // 
@@ -105,7 +106,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(927, 375);
+            ClientSize = new Size(925, 458);
             ControlBox = false;
             Controls.Add(btnIngresar);
             Controls.Add(txtDni);
@@ -115,7 +116,7 @@
             Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormCompraOnline";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormCompraOnline";
             Load += FormCompraOnline_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

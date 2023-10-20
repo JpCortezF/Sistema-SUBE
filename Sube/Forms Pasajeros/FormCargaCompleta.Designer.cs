@@ -47,17 +47,17 @@
             panel1.Controls.Add(lblTitulo);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(934, 44);
+            panel1.Size = new Size(846, 36);
             panel1.TabIndex = 12;
             // 
             // lblContinuar
             // 
             lblContinuar.AutoSize = true;
             lblContinuar.Cursor = Cursors.Hand;
-            lblContinuar.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            lblContinuar.Location = new Point(778, 3);
+            lblContinuar.Font = new Font("Lucida Sans", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblContinuar.Location = new Point(776, 2);
             lblContinuar.Name = "lblContinuar";
-            lblContinuar.Size = new Size(67, 37);
+            lblContinuar.Size = new Size(58, 33);
             lblContinuar.TabIndex = 17;
             lblContinuar.Text = "--->";
             lblContinuar.Click += lblContinuar_Click;
@@ -66,7 +66,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTitulo.Location = new Point(334, 10);
+            lblTitulo.Location = new Point(314, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(219, 29);
             lblTitulo.TabIndex = 1;
@@ -133,7 +133,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(846, 464);
+            ClientSize = new Size(846, 438);
             ControlBox = false;
             Controls.Add(pictureBox1);
             Controls.Add(linkLabel1);

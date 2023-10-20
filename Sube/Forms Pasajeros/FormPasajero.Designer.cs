@@ -45,10 +45,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = Color.DarkGray;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(663, 132);
+            label3.Location = new Point(712, 320);
             label3.Name = "label3";
             label3.Size = new Size(122, 16);
             label3.TabIndex = 32;
@@ -61,7 +61,7 @@
             btnOnline.BackgroundImageLayout = ImageLayout.Zoom;
             btnOnline.Cursor = Cursors.Hand;
             btnOnline.FlatStyle = FlatStyle.Flat;
-            btnOnline.Location = new Point(663, 12);
+            btnOnline.Location = new Point(712, 200);
             btnOnline.Name = "btnOnline";
             btnOnline.Size = new Size(114, 114);
             btnOnline.TabIndex = 26;
@@ -71,10 +71,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.DarkGray;
+            label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(372, 129);
+            label2.Location = new Point(428, 317);
             label2.Name = "label2";
             label2.Size = new Size(79, 16);
             label2.TabIndex = 30;
@@ -87,7 +87,7 @@
             btnRegistrar.BackgroundImageLayout = ImageLayout.Zoom;
             btnRegistrar.Cursor = Cursors.Hand;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(352, 12);
+            btnRegistrar.Location = new Point(408, 200);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(114, 114);
             btnRegistrar.TabIndex = 25;
@@ -97,10 +97,10 @@
             // lblIngresar
             // 
             lblIngresar.AutoSize = true;
-            lblIngresar.BackColor = Color.DarkGray;
+            lblIngresar.BackColor = Color.Transparent;
             lblIngresar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblIngresar.ForeColor = Color.Black;
-            lblIngresar.Location = new Point(37, 132);
+            lblIngresar.Location = new Point(86, 320);
             lblIngresar.Name = "lblIngresar";
             lblIngresar.Size = new Size(138, 16);
             lblIngresar.TabIndex = 23;
@@ -114,7 +114,7 @@
             btnIngresar.Cursor = Cursors.Hand;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(52, 12);
+            btnIngresar.Location = new Point(101, 200);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(114, 114);
             btnIngresar.TabIndex = 22;
@@ -123,15 +123,17 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(btnIngresar);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(lblIngresar);
             panel1.Controls.Add(btnOnline);
             panel1.Controls.Add(btnRegistrar);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(59, 122);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(807, 161);
+            panel1.Size = new Size(933, 500);
             panel1.TabIndex = 35;
             // 
             // menuStrip1
@@ -157,10 +159,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
-            ClientSize = new Size(933, 402);
+            BackgroundImage = Properties.Resources.logo_sube_blanco_sombra_web;
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(933, 500);
             ControlBox = false;
-            Controls.Add(panel1);
             Controls.Add(menuStrip1);
+            Controls.Add(panel1);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;

@@ -121,5 +121,10 @@ namespace Sube
         {
             txtKilometros.Text = Regex.Replace(txtKilometros.Text, @"[^0-9]", "");
         }
+        private void btnContinuar_Click_1(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = false;
+            btnContinuar.Visible = false;
+        }
     }
 }

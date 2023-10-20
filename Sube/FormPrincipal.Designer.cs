@@ -42,9 +42,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Location = new Point(204, 88);
+            pictureBox1.Location = new Point(267, 101);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(314, 334);
+            pictureBox1.Size = new Size(295, 334);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -56,7 +56,7 @@
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = SystemColors.Control;
-            btnSalir.Location = new Point(269, 326);
+            btnSalir.Location = new Point(332, 339);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(164, 34);
             btnSalir.TabIndex = 13;
@@ -71,7 +71,7 @@
             btnPasajero.FlatAppearance.BorderSize = 0;
             btnPasajero.FlatStyle = FlatStyle.Flat;
             btnPasajero.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnPasajero.Location = new Point(269, 267);
+            btnPasajero.Location = new Point(332, 280);
             btnPasajero.Name = "btnPasajero";
             btnPasajero.Size = new Size(164, 34);
             btnPasajero.TabIndex = 11;
@@ -86,7 +86,7 @@
             btnAdmin.FlatAppearance.BorderSize = 0;
             btnAdmin.FlatStyle = FlatStyle.Flat;
             btnAdmin.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAdmin.Location = new Point(269, 209);
+            btnAdmin.Location = new Point(332, 222);
             btnAdmin.Name = "btnAdmin";
             btnAdmin.Size = new Size(164, 34);
             btnAdmin.TabIndex = 10;
@@ -100,7 +100,7 @@
             lblPrincipal.BackColor = Color.Transparent;
             lblPrincipal.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblPrincipal.ForeColor = SystemColors.Control;
-            lblPrincipal.Location = new Point(23, 131);
+            lblPrincipal.Location = new Point(69, 132);
             lblPrincipal.Name = "lblPrincipal";
             lblPrincipal.Size = new Size(141, 18);
             lblPrincipal.TabIndex = 9;
@@ -110,7 +110,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = Properties.Resources.logo_sube_blanco_sombra_web;
-            pictureBox2.Location = new Point(242, 12);
+            pictureBox2.Location = new Point(305, 25);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(215, 91);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -123,7 +123,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(710, 434);
+            ClientSize = new Size(817, 447);
             ControlBox = false;
             Controls.Add(pictureBox2);
             Controls.Add(btnSalir);

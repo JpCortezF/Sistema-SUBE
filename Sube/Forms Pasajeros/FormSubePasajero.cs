@@ -29,7 +29,6 @@ namespace Sube
         {
             Close();
         }
-
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {
             lblTransportes.Text = "Información sobre los transportes";
@@ -44,29 +43,12 @@ namespace Sube
             pictureBox1.Controls.Add(lblTarjeta);
             pictureBox1.Controls.Add(lblName);
         }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            // Crea una región con esquinas redondeadas
-            GraphicsPath path = new GraphicsPath();
-            int radio = 15; // Ajusta el radio según tus preferencias
-
-            path.AddArc(0, 0, radio * 2, radio * 2, 180, 90); // Esquina superior izquierda
-            path.AddArc(this.Width - (radio * 2), 0, radio * 2, radio * 2, 270, 90); // Esquina superior derecha
-            path.AddArc(this.Width - (radio * 2), this.Height - (radio * 2), radio * 2, radio * 2, 0, 90); // Esquina inferior derecha
-            path.AddArc(0, this.Height - (radio * 2), radio * 2, radio * 2, 90, 90); // Esquina inferior izquierda
-            path.CloseFigure();
-
-            this.Region = new Region(path);
-        }
-
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
             try
             {
+                Hide();
+
                 CargaSube cargarSube = new CargaSube(passenger);
                 cargarSube.ShowDialog();
                 if (cargarSube.DialogResult == DialogResult.OK)
@@ -75,12 +57,15 @@ namespace Sube
 
                     FormCargaCompleta subeCargada = new FormCargaCompleta(passenger, amount);
                     subeCargada.ShowDialog();
-
                     if (subeCargada.DialogResult == DialogResult.OK)
                     {
-                        InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                         Show();
+                        Close();
                     }
+                }
+                else
+                {
+                    Show();
                 }
             }
             catch (Exception ex)

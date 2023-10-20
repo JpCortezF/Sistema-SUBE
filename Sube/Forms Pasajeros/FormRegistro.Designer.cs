@@ -63,11 +63,9 @@
             btnDni = new Button();
             label1 = new Label();
             panelDatos = new Panel();
-            pictureBox1 = new PictureBox();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             panelDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // grpDatos
@@ -99,9 +97,9 @@
             grpDatos.Controls.Add(txtDni);
             grpDatos.Controls.Add(btnDni);
             grpDatos.Controls.Add(label1);
-            grpDatos.Location = new Point(3, 3);
+            grpDatos.Location = new Point(3, 0);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(445, 752);
+            grpDatos.Size = new Size(445, 755);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
             // 
@@ -469,29 +467,18 @@
             // 
             panelDatos.AutoScroll = true;
             panelDatos.Controls.Add(grpDatos);
-            panelDatos.Location = new Point(459, 2);
+            panelDatos.Location = new Point(459, 0);
             panelDatos.Name = "panelDatos";
-            panelDatos.Size = new Size(468, 369);
+            panelDatos.Size = new Size(468, 458);
             panelDatos.TabIndex = 5;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = Properties.Resources.SubeIngreso;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, -4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(456, 375);
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
             // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(927, 360);
+            BackgroundImage = Properties.Resources.SubeIngreso;
+            ClientSize = new Size(927, 458);
             ControlBox = false;
-            Controls.Add(pictureBox1);
             Controls.Add(panelDatos);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -504,7 +491,6 @@
             grpTarjeta.ResumeLayout(false);
             grpTarjeta.PerformLayout();
             panelDatos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -538,7 +524,6 @@
         private Label label8;
         private TextBox txtClave;
         private Panel panelDatos;
-        private PictureBox pictureBox1;
         private Label label7;
         private Label label6;
         private TextBox txtLastname;

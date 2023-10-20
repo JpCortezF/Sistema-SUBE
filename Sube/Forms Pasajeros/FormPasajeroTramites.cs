@@ -51,5 +51,10 @@ namespace Sube
             dataGridTramites.DataSource = dataTable;
 
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

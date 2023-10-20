@@ -35,6 +35,13 @@ namespace Sube
             itemSalir.BackColor = SystemColors.ActiveCaption;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
+
+            Image backgroundImage = Properties.Resources.logo_sube_blanco_sombra_web;
+
+            // Establece la imagen como fondo del Panel
+            panel1.BackgroundImage = backgroundImage;
+
+            panel1.BackgroundImageLayout = ImageLayout.Zoom;
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {
@@ -77,7 +84,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormCompraOnline))
             {
-                FormCompraOnline compraSube = new FormCompraOnline(dictionaryPassengers);
+                FormCompraOnline compraSube = new FormCompraOnline(this, dictionaryPassengers);
                 OpenChildForm(compraSube);
             }
         }
