@@ -39,7 +39,14 @@
             lblTarifa = new Label();
             lblActualTarifa = new Label();
             label2 = new Label();
+            lbl0to3Km = new Label();
+            lbl3to6Km = new Label();
+            lbl6to12km = new Label();
+            lbl12to27km = new Label();
             label3 = new Label();
+            label4 = new Label();
+            lblSubte = new Label();
+            lblTren = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -57,11 +64,11 @@
             // 
             lblTarjeta.AutoSize = true;
             lblTarjeta.BackColor = Color.Transparent;
-            lblTarjeta.Font = new Font("Lucida Sans", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTarjeta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTarjeta.ForeColor = Color.Black;
             lblTarjeta.Location = new Point(39, 169);
             lblTarjeta.Name = "lblTarjeta";
-            lblTarjeta.Size = new Size(198, 22);
+            lblTarjeta.Size = new Size(185, 24);
             lblTarjeta.TabIndex = 4;
             lblTarjeta.Text = "Card Number 6061";
             // 
@@ -80,10 +87,10 @@
             // lblTransportes
             // 
             lblTransportes.AutoSize = true;
-            lblTransportes.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTransportes.Location = new Point(443, 51);
+            lblTransportes.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTransportes.Location = new Point(466, 52);
             lblTransportes.Name = "lblTransportes";
-            lblTransportes.Size = new Size(122, 18);
+            lblTransportes.Size = new Size(127, 20);
             lblTransportes.TabIndex = 7;
             lblTransportes.Text = "Informacion ---";
             // 
@@ -115,11 +122,11 @@
             // lblSaldo
             // 
             lblSaldo.AutoSize = true;
-            lblSaldo.Font = new Font("Lucida Bright", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSaldo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblSaldo.ForeColor = Color.Green;
             lblSaldo.Location = new Point(22, 374);
             lblSaldo.Name = "lblSaldo";
-            lblSaldo.Size = new Size(72, 18);
+            lblSaldo.Size = new Size(72, 20);
             lblSaldo.TabIndex = 9;
             lblSaldo.Text = "$ pesos";
             // 
@@ -141,11 +148,11 @@
             // 
             lblTarifa.AutoSize = true;
             lblTarifa.Cursor = Cursors.Hand;
-            lblTarifa.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTarifa.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblTarifa.ForeColor = Color.CadetBlue;
             lblTarifa.Location = new Point(655, 384);
             lblTarifa.Name = "lblTarifa";
-            lblTarifa.Size = new Size(148, 18);
+            lblTarifa.Size = new Size(155, 20);
             lblTarifa.TabIndex = 11;
             lblTarifa.Text = "Acceder tarifa --->";
             lblTarifa.Click += lblTarifa_Click;
@@ -153,32 +160,102 @@
             // lblActualTarifa
             // 
             lblActualTarifa.AutoSize = true;
-            lblActualTarifa.Font = new Font("Lucida Sans", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblActualTarifa.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblActualTarifa.Location = new Point(596, 344);
             lblActualTarifa.Name = "lblActualTarifa";
-            lblActualTarifa.Size = new Size(76, 18);
+            lblActualTarifa.Size = new Size(74, 20);
             lblActualTarifa.TabIndex = 12;
             lblActualTarifa.Text = "Mi tarifa";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Lucida Sans", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(459, 87);
+            label2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(482, 88);
             label2.Name = "label2";
-            label2.Size = new Size(137, 17);
+            label2.Size = new Size(135, 18);
             label2.TabIndex = 13;
             label2.Text = "Boleto colectivo:";
+            // 
+            // lbl0to3Km
+            // 
+            lbl0to3Km.AutoSize = true;
+            lbl0to3Km.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl0to3Km.Location = new Point(482, 116);
+            lbl0to3Km.Name = "lbl0to3Km";
+            lbl0to3Km.Size = new Size(15, 16);
+            lbl0to3Km.TabIndex = 14;
+            lbl0to3Km.Text = "0";
+            // 
+            // lbl3to6Km
+            // 
+            lbl3to6Km.AutoSize = true;
+            lbl3to6Km.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl3to6Km.Location = new Point(482, 149);
+            lbl3to6Km.Name = "lbl3to6Km";
+            lbl3to6Km.Size = new Size(15, 16);
+            lbl3to6Km.TabIndex = 15;
+            lbl3to6Km.Text = "0";
+            // 
+            // lbl6to12km
+            // 
+            lbl6to12km.AutoSize = true;
+            lbl6to12km.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl6to12km.Location = new Point(482, 178);
+            lbl6to12km.Name = "lbl6to12km";
+            lbl6to12km.Size = new Size(15, 16);
+            lbl6to12km.TabIndex = 16;
+            lbl6to12km.Text = "0";
+            // 
+            // lbl12to27km
+            // 
+            lbl12to27km.AutoSize = true;
+            lbl12to27km.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl12to27km.Location = new Point(482, 212);
+            lbl12to27km.Name = "lbl12to27km";
+            lbl12to27km.Size = new Size(15, 16);
+            lbl12to27km.TabIndex = 17;
+            lbl12to27km.Text = "0";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(459, 117);
+            label3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(676, 88);
             label3.Name = "label3";
-            label3.Size = new Size(182, 15);
-            label3.TabIndex = 14;
-            label3.Text = "Min: $52, 96 | Max: $68, 09";
+            label3.Size = new Size(117, 18);
+            label3.TabIndex = 18;
+            label3.Text = "Boleto subtes:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(676, 149);
+            label4.Name = "label4";
+            label4.Size = new Size(96, 18);
+            label4.TabIndex = 19;
+            label4.Text = "Boleto tren:";
+            // 
+            // lblSubte
+            // 
+            lblSubte.AutoSize = true;
+            lblSubte.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSubte.Location = new Point(676, 116);
+            lblSubte.Name = "lblSubte";
+            lblSubte.Size = new Size(15, 16);
+            lblSubte.TabIndex = 20;
+            lblSubte.Text = "0";
+            // 
+            // lblTren
+            // 
+            lblTren.AutoSize = true;
+            lblTren.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTren.Location = new Point(676, 178);
+            lblTren.Name = "lblTren";
+            lblTren.Size = new Size(15, 16);
+            lblTren.TabIndex = 21;
+            lblTren.Text = "0";
             // 
             // FormSubePasajero
             // 
@@ -187,7 +264,14 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(900, 430);
             ControlBox = false;
+            Controls.Add(lblTren);
+            Controls.Add(lblSubte);
+            Controls.Add(label4);
             Controls.Add(label3);
+            Controls.Add(lbl12to27km);
+            Controls.Add(lbl6to12km);
+            Controls.Add(lbl3to6Km);
+            Controls.Add(lbl0to3Km);
             Controls.Add(label2);
             Controls.Add(lblActualTarifa);
             Controls.Add(lblTarifa);
@@ -223,6 +307,13 @@
         private Label lblTarifa;
         private Label lblActualTarifa;
         private Label label2;
+        private Label lbl0to3Km;
+        private Label lbl3to6Km;
+        private Label lbl6to12km;
+        private Label lbl12to27km;
         private Label label3;
+        private Label label4;
+        private Label lblSubte;
+        private Label lblTren;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,12 @@ namespace Sube
             lblName.Location = new Point(30, 158);
             pictureBox1.Controls.Add(lblTarjeta);
             pictureBox1.Controls.Add(lblName);
+            lbl0to3Km.Text = $"De 0 a 3Km: ${PrecioViajes.ValorColectivo0To3Km}";
+            lbl3to6Km.Text = $"De 3 a 6Km: ${PrecioViajes.ValorColectivo3To6Km}";
+            lbl6to12km.Text = $"De 6 a 12Km: ${PrecioViajes.ValorColectivo6To12Km}";
+            lbl12to27km.Text = $"De 12 a 27: ${PrecioViajes.ValorColectivo12To27Km}";
+            lblSubte.Text = $"Todas las lineas: ${PrecioViajes.ValorSubte}";
+            lblTren.Text = $"Todas las lineas: ${PrecioViajes.ValorTren}";
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {

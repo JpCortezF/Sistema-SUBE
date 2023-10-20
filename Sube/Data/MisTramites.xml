@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfTramites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Tramites>
-    <ClaimId>96541</ClaimId>
-    <DniClaimer>41709030</DniClaimer>
-    <ClaimMessage>Reclamo:Robo  Me robaron en LaFerrere un desastre</ClaimMessage>
-    <ClaimTime>2023-10-19T16:36:18.8849135-03:00</ClaimTime>
+    <ClaimId>65443</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:Jubilado  che loco soy jubi</ClaimMessage>
+    <ClaimTime>2023-10-19T23:11:58.4684239-03:00</ClaimTime>
     <ClaimComplete>En revision</ClaimComplete>
   </Tramites>
   <Tramites>
-    <ClaimId>39971</ClaimId>
+    <ClaimId>79637</ClaimId>
     <DniClaimer>41709030</DniClaimer>
-    <ClaimMessage>Reclamo:Perdida  Che para en realidad la perdi, pasa que no lo podia decir porque me estaban viendo mis amigos generar la queja, listo todo bien disculpa</ClaimMessage>
-    <ClaimTime>2023-10-19T16:41:13.9602669-03:00</ClaimTime>
+    <ClaimMessage>Reclamo:Discapacitado  soy disca</ClaimMessage>
+    <ClaimTime>2023-10-19T23:13:54.4136326-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>41498</ClaimId>
+    <DniClaimer>41709030</DniClaimer>
+    <ClaimMessage>Reclamo:Rotura  Se me cayo al agua</ClaimMessage>
+    <ClaimTime>2023-10-19T23:14:11.0776065-03:00</ClaimTime>
+    <ClaimComplete>Rechazado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>89383</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:Robo  Me han robao</ClaimMessage>
+    <ClaimTime>2023-10-19T23:14:32.7000538-03:00</ClaimTime>
     <ClaimComplete>En revision</ClaimComplete>
   </Tramites>
 </ArrayOfTramites>

@@ -41,10 +41,10 @@ namespace Biblioteca_TarjetaSube
                     ticket = CostByKilometres();
                     break;
                 case ETransporte.Subte:
-                    ticket = CostByTarifa(80);
+                    ticket = CostByTarifa(PrecioViajes.ValorSubte);
                     break;
                 case ETransporte.Tren:
-                    ticket = CostByTarifa(90);
+                    ticket = CostByTarifa(PrecioViajes.ValorTren);
                     break;
             }
             TicketCost = ticket;
