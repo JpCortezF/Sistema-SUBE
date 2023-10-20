@@ -80,14 +80,6 @@ Euu re caro al final, no pude hacer dos viajes que me quede sin saldo, haceme es
     <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
   <Tramites>
-    <ClaimId>7095</ClaimId>
-    <DniClaimer>33208388</DniClaimer>
-    <ClaimMessage>Reclamo: ExComatienteDeMalvinas  
-son 30.000</ClaimMessage>
-    <ClaimTime>2023-10-20T06:16:03.8091228-03:00</ClaimTime>
-    <ClaimComplete>Rechazado</ClaimComplete>
-  </Tramites>
-  <Tramites>
     <ClaimId>7707</ClaimId>
     <DniClaimer>33208388</DniClaimer>
     <ClaimMessage>Reclamo: Jubilado  

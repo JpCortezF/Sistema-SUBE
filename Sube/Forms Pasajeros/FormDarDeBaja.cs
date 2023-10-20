@@ -37,13 +37,14 @@ namespace Sube
 
         private void btnTramite_Click(object sender, EventArgs e)
         {
-            FormBajaUsuario bajaUsuario = new FormBajaUsuario(passenger);
-            bajaUsuario.ShowDialog();
-            if(bajaUsuario.DialogResult == DialogResult.OK)
-            {
-                RadioButton radioButtonSeleccionado = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
-                if (radioButtonSeleccionado != null)
+            RadioButton radioButtonSeleccionado = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+
+            if (radioButtonSeleccionado != null)
+            {
+                FormBajaUsuario bajaUsuario = new FormBajaUsuario(passenger);
+                bajaUsuario.ShowDialog();
+                if (bajaUsuario.DialogResult == DialogResult.OK)
                 {
                     string ruta = @"..\..\..\Data";
                     string nombre = "MisTramites.xml";

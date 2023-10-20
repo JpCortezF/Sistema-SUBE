@@ -63,9 +63,9 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap adminContainer {
+        public static System.Drawing.Bitmap busGif {
             get {
-                object obj = ResourceManager.GetObject("adminContainer", resourceCulture);
+                object obj = ResourceManager.GetObject("busGif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap busGif {
+        public static System.Drawing.Bitmap camionGif {
             get {
-                object obj = ResourceManager.GetObject("busGif", resourceCulture);
+                object obj = ResourceManager.GetObject("camionGif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +113,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap computerGif {
+            get {
+                object obj = ResourceManager.GetObject("computerGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fondoPasajero {
             get {
                 object obj = ResourceManager.GetObject("fondoPasajero", resourceCulture);
@@ -123,9 +133,29 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap fondoPrincipal {
+            get {
+                object obj = ResourceManager.GetObject("fondoPrincipal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fondoSube {
             get {
                 object obj = ResourceManager.GetObject("fondoSube", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Gps_Product {
+            get {
+                object obj = ResourceManager.GetObject("Gps_Product", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
