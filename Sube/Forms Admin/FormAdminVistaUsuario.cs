@@ -15,6 +15,7 @@ namespace Sube
     public partial class FormAdminVistaUsuario : Form
     {
         Pasajero selectedPassenger;
+        bool bajaTarjeta;
         public FormAdminVistaUsuario(Pasajero pasajero)
         {
             InitializeComponent();
@@ -70,6 +71,14 @@ namespace Sube
                 {
                     selectedPassenger.MySube.TarifaSocial = tarifaSocial;
                 }
+                if(bajaTarjeta==true)
+                {
+                    this.bajaTarjeta = true;
+                    selectedPassenger.MySube.CardNumber = "DeBaja";
+                    selectedPassenger.MySube.QueueTravels.Clear();
+                    selectedPassenger.MySube.Balance = 0;
+                    selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+                }
                 Close();
             }
 
@@ -77,14 +86,11 @@ namespace Sube
 
         private void btnBajaTarjeta_Click(object sender, EventArgs e)
         {
-            FormEmergente emergente = new FormEmergente("¿Esta seguro de eliminar?", "Eliminar");
+            FormEmergente emergente = new FormEmergente("¿Esta seguro dar de baja?\nRecuerde Guardar los cambios", "Baja de Tarjeta");
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                selectedPassenger.MySube.CardNumber = "DeBaja";
-                selectedPassenger.MySube.QueueTravels.Clear();
-                selectedPassenger.MySube.Balance = 0;
-                selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+                this.bajaTarjeta = true;
             }
         }
     }

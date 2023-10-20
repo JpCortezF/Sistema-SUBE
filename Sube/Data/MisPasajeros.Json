@@ -54,7 +54,7 @@
       "CardNumber": "6061346621651542",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 2
+      "TarifaSocial": 4
     },
     "Email": "ezequiel@hotmail.com",
     "Password": "1234",
@@ -164,7 +164,7 @@
       "CardNumber": "DeBaja",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 2
+      "TarifaSocial": 1
     },
     "Email": "AleHardcode@gmail.com",
     "Password": "8388",

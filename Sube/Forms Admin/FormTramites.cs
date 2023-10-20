@@ -16,6 +16,7 @@ namespace Sube
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
         List<Tramites> listTramites = new List<Tramites>();
+        List<Tramites> listTramitesAux = new List<Tramites>();
         public FormTramites(List<Tramites> tramites, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
@@ -28,22 +29,45 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
-            this.dataGridView1.DataSource = tramites;           
-            lblCount.Text = tramites.Count.ToString();
+
+            foreach (Tramites tramite in tramites)
+            {
+                if (tramite.ClaimComplete == "En proceso" || tramite.ClaimComplete == "En revision")
+                {
+                    listTramitesAux.Add(tramite);   
+                    
+                }
+            }
+            this.dataGridView1.DataSource = listTramitesAux;
+            lblCount.Text = listTramitesAux.Count.ToString();
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
+                
                 string selectedDni = null;
                 int selectedIndex = -1;
+                long selectedClaimId = 0;
+                listTramitesAux.Clear();
+                foreach (Tramites tramite in listTramites)
+                {
+                    if (tramite.ClaimComplete == "En proceso" || tramite.ClaimComplete == "En revision")
+                    {
+                        listTramitesAux.Add(tramite);
+
+                    }
+                }
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
                     DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-                    if (selectedRow.Cells["DniClaimer"].Value != null && selectedRow.Cells["DniClaimer"].Value != null)
+                    if (selectedRow.Cells["DniClaimer"].Value != null)
                     {
                         selectedDni = selectedRow.Cells["DniClaimer"].Value.ToString();
-                        selectedIndex = listTramites.FindIndex(tramite => tramite.DniClaimer == selectedDni);
+                        selectedClaimId = (long)(selectedRow.Cells["ClaimId"].Value);
+                        selectedIndex = listTramitesAux.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
+                        listTramitesAux[selectedIndex].ClaimComplete = "En proceso";
                     }
                     foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
                     {
@@ -51,20 +75,26 @@ namespace Sube
                         {
                             FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
                             editarUsuario.Show();
+                            Hide();
                             break;
                         }
                     }
-                    if (selectedIndex >= 0 && selectedIndex < listTramites.Count)
+
+                    foreach (Tramites list in listTramites)
                     {
-                        listTramites.RemoveAt(selectedIndex);
-                        Hide();
+                        if (listTramitesAux[selectedIndex].ClaimId == list.ClaimId && listTramitesAux[selectedIndex].ClaimComplete != list.ClaimComplete)
+                        {
+                            list.ClaimComplete = listTramitesAux[selectedIndex].ClaimComplete;
+                        }
                     }
+
                 }
             }
             catch (InvalidOperationException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
     }
