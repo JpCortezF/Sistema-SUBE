@@ -35,7 +35,6 @@
             txtDni = new TextBox();
             label7 = new Label();
             label1 = new Label();
-            button1 = new Button();
             txtRepeatPassword = new TextBox();
             label5 = new Label();
             lblClave = new Label();
@@ -59,7 +58,6 @@
             groupBox1.Controls.Add(txtDni);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(txtRepeatPassword);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(lblClave);
@@ -138,17 +136,6 @@
             label1.Text = "MsjClave";
             label1.Visible = false;
             // 
-            // button1
-            // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.Cursor = Cursors.Hand;
-            button1.Location = new Point(339, 300);
-            button1.Name = "button1";
-            button1.Size = new Size(53, 27);
-            button1.TabIndex = 21;
-            button1.UseVisualStyleBackColor = true;
-            // 
             // txtRepeatPassword
             // 
             txtRepeatPassword.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -156,7 +143,7 @@
             txtRepeatPassword.MaxLength = 0;
             txtRepeatPassword.Name = "txtRepeatPassword";
             txtRepeatPassword.PasswordChar = '•';
-            txtRepeatPassword.Size = new Size(267, 26);
+            txtRepeatPassword.Size = new Size(314, 26);
             txtRepeatPassword.TabIndex = 20;
             // 
             // label5
@@ -191,6 +178,7 @@
             btnMostrarPass.Size = new Size(53, 27);
             btnMostrarPass.TabIndex = 4;
             btnMostrarPass.UseVisualStyleBackColor = true;
+            btnMostrarPass.Click += btnMostrarPass_Click;
             // 
             // lblRegistroAdmin
             // 
@@ -316,7 +304,6 @@
         private TextBox txtEmail;
         private Label label2;
         private Label label1;
-        private Button button1;
         private TextBox txtRepeatPassword;
         private Label label5;
         private Label label3;

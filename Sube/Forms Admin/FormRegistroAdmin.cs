@@ -35,7 +35,7 @@ namespace Sube
                 string name = txtName.Text;
                 string lastname = txtLastName.Text;
                 string password = txtPassword.Text;
-                if (ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname))
+                if (ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
                 {
                     string document = txtDNI.Text;
                     Administrador admin = new Administrador(email, password, name, lastname);
@@ -110,6 +110,18 @@ namespace Sube
             return Regex.IsMatch(texto, "^[a-zA-Z ]+$");
         }
 
-
+        private void btnMostrarPass_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '•')
+            {
+                txtPassword.PasswordChar = '\0';
+                btnMostrarPass.BackgroundImage = Properties.Resources.ojo_tachado;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                btnMostrarPass.BackgroundImage = Properties.Resources.view;
+            }
+        }
     }
 }

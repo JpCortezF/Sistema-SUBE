@@ -94,5 +94,19 @@ namespace Sube
             txtPassword.Text = "1234";
             txtRepeatPassword.Text = "1234";
         }
+
+        private void btnMostrarPass_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '•')
+            {
+                txtPassword.PasswordChar = '\0';
+                btnMostrarPass.BackgroundImage = Properties.Resources.ojo_tachado;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                btnMostrarPass.BackgroundImage = Properties.Resources.view;
+            }
+        }
     }
 }

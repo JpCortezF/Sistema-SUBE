@@ -87,4 +87,12 @@ Ahora soy jubilado porque tardaron una banda en aprobarme lo de ser estudiantil<
     <ClaimTime>2023-10-20T06:46:48.0596487-03:00</ClaimTime>
     <ClaimComplete>Rechazado</ClaimComplete>
   </Tramites>
+  <Tramites>
+    <ClaimId>26954</ClaimId>
+    <DniClaimer>41709030</DniClaimer>
+    <ClaimMessage>Reclamo: SinSubsidio  
+Voy a sacar el pais adelante</ClaimMessage>
+    <ClaimTime>2023-10-20T14:25:45.2216897-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
 </ArrayOfTramites>
