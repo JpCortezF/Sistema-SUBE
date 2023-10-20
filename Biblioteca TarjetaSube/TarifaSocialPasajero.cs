@@ -74,6 +74,7 @@ namespace Biblioteca_TarjetaSube
                     ticket = 0;
                     break;
                 default:
+                    ticket = 700;
                     break;
             }
             return ticket;

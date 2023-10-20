@@ -43,6 +43,7 @@
             rdbCombatiente = new RadioButton();
             rdbJubilado = new RadioButton();
             groupBox1 = new GroupBox();
+            rdbSinSubsidio = new RadioButton();
             txtClaim = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -50,50 +51,50 @@
             // lblDirigido
             // 
             lblDirigido.AutoSize = true;
-            lblDirigido.Font = new Font("Lucida Sans", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDirigido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblDirigido.Location = new Point(12, 47);
             lblDirigido.Name = "lblDirigido";
-            lblDirigido.Size = new Size(86, 22);
+            lblDirigido.Size = new Size(83, 24);
             lblDirigido.TabIndex = 0;
             lblDirigido.Text = "A quien";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(12, 175);
             label1.Name = "label1";
-            label1.Size = new Size(44, 15);
+            label1.Size = new Size(44, 16);
             label1.TabIndex = 2;
             label1.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(12, 145);
             label2.Name = "label2";
-            label2.Size = new Size(44, 15);
+            label2.Size = new Size(44, 16);
             label2.TabIndex = 3;
             label2.Text = "label1";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(12, 115);
             label3.Name = "label3";
-            label3.Size = new Size(44, 15);
+            label3.Size = new Size(44, 16);
             label3.TabIndex = 4;
             label3.Text = "label1";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(12, 85);
             label4.Name = "label4";
-            label4.Size = new Size(44, 15);
+            label4.Size = new Size(44, 16);
             label4.TabIndex = 5;
             label4.Text = "label1";
             // 
@@ -102,7 +103,7 @@
             btnTramite.BackColor = Color.ForestGreen;
             btnTramite.Cursor = Cursors.Hand;
             btnTramite.FlatStyle = FlatStyle.Flat;
-            btnTramite.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTramite.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnTramite.ForeColor = SystemColors.Control;
             btnTramite.Location = new Point(717, 263);
             btnTramite.Name = "btnTramite";
@@ -115,20 +116,20 @@
             // lblCosto
             // 
             lblCosto.AutoSize = true;
-            lblCosto.Font = new Font("Lucida Sans", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCosto.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblCosto.Location = new Point(12, 223);
             lblCosto.Name = "lblCosto";
-            lblCosto.Size = new Size(68, 22);
+            lblCosto.Size = new Size(63, 24);
             lblCosto.TabIndex = 7;
             lblCosto.Text = "Costo";
             // 
             // lblGratuito
             // 
             lblGratuito.AutoSize = true;
-            lblGratuito.Font = new Font("Lucida Sans", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblGratuito.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblGratuito.Location = new Point(12, 258);
             lblGratuito.Name = "lblGratuito";
-            lblGratuito.Size = new Size(66, 17);
+            lblGratuito.Size = new Size(61, 18);
             lblGratuito.TabIndex = 8;
             lblGratuito.Text = "Gratuito";
             // 
@@ -148,20 +149,20 @@
             // lblDescuento
             // 
             lblDescuento.AutoSize = true;
-            lblDescuento.Font = new Font("Lucida Sans", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDescuento.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDescuento.Location = new Point(12, 9);
             lblDescuento.Name = "lblDescuento";
-            lblDescuento.Size = new Size(85, 17);
+            lblDescuento.Size = new Size(80, 18);
             lblDescuento.TabIndex = 10;
             lblDescuento.Text = "Descuento";
             // 
             // rdbEstudiantil
             // 
             rdbEstudiantil.AutoSize = true;
-            rdbEstudiantil.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbEstudiantil.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             rdbEstudiantil.Location = new Point(6, 19);
             rdbEstudiantil.Name = "rdbEstudiantil";
-            rdbEstudiantil.Size = new Size(89, 19);
+            rdbEstudiantil.Size = new Size(86, 20);
             rdbEstudiantil.TabIndex = 11;
             rdbEstudiantil.TabStop = true;
             rdbEstudiantil.Text = "Estudiantil";
@@ -170,10 +171,10 @@
             // rdbDiscapacitado
             // 
             rdbDiscapacitado.AutoSize = true;
-            rdbDiscapacitado.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbDiscapacitado.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             rdbDiscapacitado.Location = new Point(6, 142);
             rdbDiscapacitado.Name = "rdbDiscapacitado";
-            rdbDiscapacitado.Size = new Size(113, 19);
+            rdbDiscapacitado.Size = new Size(113, 20);
             rdbDiscapacitado.TabIndex = 12;
             rdbDiscapacitado.TabStop = true;
             rdbDiscapacitado.Text = "Discapacitado";
@@ -182,10 +183,10 @@
             // rdbCombatiente
             // 
             rdbCombatiente.AutoSize = true;
-            rdbCombatiente.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbCombatiente.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             rdbCombatiente.Location = new Point(6, 98);
             rdbCombatiente.Name = "rdbCombatiente";
-            rdbCombatiente.Size = new Size(200, 19);
+            rdbCombatiente.Size = new Size(193, 20);
             rdbCombatiente.TabIndex = 13;
             rdbCombatiente.TabStop = true;
             rdbCombatiente.Text = "Ex combatiente de Malvinas";
@@ -194,10 +195,10 @@
             // rdbJubilado
             // 
             rdbJubilado.AutoSize = true;
-            rdbJubilado.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbJubilado.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             rdbJubilado.Location = new Point(6, 57);
             rdbJubilado.Name = "rdbJubilado";
-            rdbJubilado.Size = new Size(188, 19);
+            rdbJubilado.Size = new Size(180, 20);
             rdbJubilado.TabIndex = 14;
             rdbJubilado.TabStop = true;
             rdbJubilado.Text = "Jubilado y / o pensionado";
@@ -205,16 +206,29 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(rdbSinSubsidio);
             groupBox1.Controls.Add(rdbJubilado);
             groupBox1.Controls.Add(rdbEstudiantil);
             groupBox1.Controls.Add(rdbCombatiente);
             groupBox1.Controls.Add(rdbDiscapacitado);
             groupBox1.Location = new Point(348, 47);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(207, 178);
+            groupBox1.Size = new Size(207, 211);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.UseCompatibleTextRendering = true;
+            // 
+            // rdbSinSubsidio
+            // 
+            rdbSinSubsidio.AutoSize = true;
+            rdbSinSubsidio.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            rdbSinSubsidio.Location = new Point(6, 180);
+            rdbSinSubsidio.Name = "rdbSinSubsidio";
+            rdbSinSubsidio.Size = new Size(154, 20);
+            rdbSinSubsidio.TabIndex = 15;
+            rdbSinSubsidio.TabStop = true;
+            rdbSinSubsidio.Text = "Renuncio a subsidios";
+            rdbSinSubsidio.UseVisualStyleBackColor = true;
             // 
             // txtClaim
             // 
@@ -274,5 +288,6 @@
         private RadioButton rdbJubilado;
         private GroupBox groupBox1;
         private TextBox txtClaim;
+        private RadioButton rdbSinSubsidio;
     }
 }

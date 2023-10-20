@@ -12,6 +12,7 @@ namespace Biblioteca_TarjetaSube
         Jubilado,
         Estudiantil,
         ExComatienteDeMalvinas,
-        Discapacitado,        
+        Discapacitado, 
+        SinSubsidio,
     }
 }
