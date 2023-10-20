@@ -35,6 +35,7 @@
             label1 = new Label();
             cmbBuscar = new ComboBox();
             panel1 = new Panel();
+            txtName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -47,6 +48,7 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(316, 29);
             txtDni.TabIndex = 7;
+            txtDni.TextChanged += txtDni_TextChanged;
             // 
             // label2
             // 
@@ -119,12 +121,24 @@
             panel1.Size = new Size(1012, 350);
             panel1.TabIndex = 14;
             // 
+            // txtName
+            // 
+            txtName.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(30, 92);
+            txtName.MaxLength = 8;
+            txtName.Name = "txtName";
+            txtName.Size = new Size(316, 29);
+            txtName.TabIndex = 15;
+            txtName.Visible = false;
+            txtName.TextChanged += txtName_TextChanged;
+            // 
             // FormBuscarUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
             ClientSize = new Size(1080, 518);
+            Controls.Add(txtName);
             Controls.Add(panel1);
             Controls.Add(cmbBuscar);
             Controls.Add(label1);
@@ -150,5 +164,6 @@
         private Label label1;
         private ComboBox cmbBuscar;
         private Panel panel1;
+        private TextBox txtName;
     }
 }

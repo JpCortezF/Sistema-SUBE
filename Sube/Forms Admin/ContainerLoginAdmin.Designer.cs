@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContainerLoginAdmin));
             menuStrip1 = new MenuStrip();
             inicioToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
@@ -58,6 +59,7 @@
             ClientSize = new Size(1084, 561);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "ContainerLoginAdmin";

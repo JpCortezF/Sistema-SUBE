@@ -298,7 +298,6 @@
         private PictureBox pictureBox1;
         private Label lblTarjeta;
         private Label lblName;
-        private ComboBox cmbBaja;
         private Label lblTransportes;
         private Button btnSalir;
         private Label label1;

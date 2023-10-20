@@ -12,7 +12,6 @@ namespace Sube.Forms_Admin
 {
     public partial class ContainerLoginAdmin : Form
     {
-        private int childFormNumber = 0;
         private Form currentChildForm = null;
 
         public ContainerLoginAdmin()

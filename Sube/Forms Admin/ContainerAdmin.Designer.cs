@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContainerAdmin));
             menuStrip1 = new MenuStrip();
             inicioToolStripMenuItem = new ToolStripMenuItem();
             buscadorToolStripMenuItem = new ToolStripMenuItem();
@@ -73,9 +74,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.adminContainer;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1084, 561);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "ContainerAdmin";

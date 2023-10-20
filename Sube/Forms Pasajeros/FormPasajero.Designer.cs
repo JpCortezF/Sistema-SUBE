@@ -141,18 +141,18 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ActiveCaption;
-            menuStrip1.Font = new Font("Lucida Sans", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(933, 35);
+            menuStrip1.Size = new Size(933, 37);
             menuStrip1.TabIndex = 33;
             menuStrip1.Text = "menuStrip1";
             // 
             // iNICIOToolStripMenuItem
             // 
             iNICIOToolStripMenuItem.Name = "iNICIOToolStripMenuItem";
-            iNICIOToolStripMenuItem.Size = new Size(136, 31);
+            iNICIOToolStripMenuItem.Size = new Size(131, 33);
             iNICIOToolStripMenuItem.Text = "| INICIO |";
             iNICIOToolStripMenuItem.Click += iNICIOToolStripMenuItem_Click;
             // 
@@ -169,6 +169,7 @@
             Controls.Add(panel1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "FormPasajero";

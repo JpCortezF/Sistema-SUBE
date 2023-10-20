@@ -15,7 +15,6 @@ namespace Sube
     public partial class FormAdminVistaUsuario : Form
     {
         Pasajero selectedPassenger;
-        bool bajaTarjeta;
         public FormAdminVistaUsuario(Pasajero pasajero)
         {
             InitializeComponent();

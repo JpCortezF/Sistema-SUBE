@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioPasajero));
             menuStrip1 = new MenuStrip();
             iNICIOToolStripMenuItem = new ToolStripMenuItem();
             vIAJARToolStripMenuItem = new ToolStripMenuItem();
@@ -135,6 +136,7 @@
             Controls.Add(lblNombre);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "InicioPasajero";

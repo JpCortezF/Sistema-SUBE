@@ -162,7 +162,7 @@
     "Gender": "Masculino",
     "MySube": {
       "CardNumber": "6061449781035009",
-      "Balance": 77.04001,
+      "Balance": -55.91999,
       "QueueTravels": [
         {
           "TicketCost": 52.96,
@@ -184,9 +184,23 @@
           "Date": "2023-10-20T04:43:31.7487303-03:00",
           "TipoTransporte": 1,
           "LineasTransporte": "A"
+        },
+        {
+          "TicketCost": 80.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-20T04:53:01.1845425-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "A"
+        },
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 3.0,
+          "Date": "2023-10-20T04:53:24.679602-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "152"
         }
       ],
-      "TarifaSocial": 0
+      "TarifaSocial": 4
     },
     "Email": "AleHardcode@gmail.com",
     "Password": "8388",

@@ -53,21 +53,21 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Lucida Sans", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitulo.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitulo.ForeColor = SystemColors.ActiveCaptionText;
             lblTitulo.Location = new Point(283, 9);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(82, 27);
+            lblTitulo.Size = new Size(80, 29);
             lblTitulo.TabIndex = 4;
             lblTitulo.Text = "Titulo";
             // 
             // comboBox1
             // 
-            comboBox1.Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBox1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(6, 60);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(181, 23);
+            comboBox1.Size = new Size(181, 24);
             comboBox1.TabIndex = 1;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -76,7 +76,7 @@
             txtKilometros.Location = new Point(552, 60);
             txtKilometros.Name = "txtKilometros";
             txtKilometros.PlaceholderText = "Ejemplo: 7";
-            txtKilometros.Size = new Size(100, 23);
+            txtKilometros.Size = new Size(100, 22);
             txtKilometros.TabIndex = 3;
             txtKilometros.TextChanged += txtKilometros_TextChanged;
             // 
@@ -85,7 +85,7 @@
             lblKilometres.AutoSize = true;
             lblKilometres.Location = new Point(484, 28);
             lblKilometres.Name = "lblKilometres";
-            lblKilometres.Size = new Size(82, 15);
+            lblKilometres.Size = new Size(80, 16);
             lblKilometres.TabIndex = 7;
             lblKilometres.Text = "Kilometros";
             // 
@@ -107,7 +107,7 @@
             txtLinea.Location = new Point(271, 60);
             txtLinea.Name = "txtLinea";
             txtLinea.PlaceholderText = "Subte A, Linea 85, Roca...";
-            txtLinea.Size = new Size(195, 23);
+            txtLinea.Size = new Size(195, 22);
             txtLinea.TabIndex = 2;
             // 
             // lblLinea
@@ -115,7 +115,7 @@
             lblLinea.AutoSize = true;
             lblLinea.Location = new Point(292, 28);
             lblLinea.Name = "lblLinea";
-            lblLinea.Size = new Size(146, 15);
+            lblLinea.Size = new Size(145, 16);
             lblLinea.TabIndex = 10;
             lblLinea.Text = "Linea del transporte";
             // 
@@ -124,7 +124,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(6, 28);
             label1.Name = "label1";
-            label1.Size = new Size(178, 15);
+            label1.Size = new Size(175, 16);
             label1.TabIndex = 11;
             label1.Text = "Seleccioná tu transporte";
             // 
@@ -186,21 +186,23 @@
             // 
             // btnContinuar
             // 
-            btnContinuar.BackColor = Color.Transparent;
+            btnContinuar.BackColor = Color.Gainsboro;
             btnContinuar.BackgroundImage = (Image)resources.GetObject("btnContinuar.BackgroundImage");
             btnContinuar.BackgroundImageLayout = ImageLayout.Stretch;
             btnContinuar.Cursor = Cursors.Hand;
-            btnContinuar.Font = new Font("Lucida Sans", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnContinuar.Location = new Point(735, 230);
+            btnContinuar.FlatAppearance.BorderSize = 0;
+            btnContinuar.FlatStyle = FlatStyle.Flat;
+            btnContinuar.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnContinuar.Location = new Point(721, 163);
             btnContinuar.Name = "btnContinuar";
-            btnContinuar.Size = new Size(20, 66);
+            btnContinuar.Size = new Size(34, 66);
             btnContinuar.TabIndex = 18;
             btnContinuar.UseVisualStyleBackColor = false;
             btnContinuar.Click += btnContinuar_Click_1;
             // 
             // TomarTransporte
             // 
-            AutoScaleDimensions = new SizeF(8F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(767, 411);
@@ -212,7 +214,7 @@
             Controls.Add(grpTransporte);
             Controls.Add(btnViajar);
             Controls.Add(lblTitulo);
-            Font = new Font("Lucida Sans", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;
             Name = "TomarTransporte";

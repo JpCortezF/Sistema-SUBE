@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
@@ -55,14 +56,21 @@ namespace Sube
             {
                 case 0:
                     label2.Text = "N° de documento a buscar:";
-
+                    txtDni.MaxLength = 8;
+                    txtName.Visible = false;
+                    txtDni.Visible = true;
                     break;
                 case 1:
                     label2.Text = "Ingrese nombre o apellido a buscar:";
+                    txtName.MaxLength = 50;
+                    txtDni.Visible = false;
+                    txtName.Visible = true;
                     break;
                 case 2:
                     label2.Text = "N° de tarjeta a buscar:";
-
+                    txtDni.MaxLength = 16;
+                    txtName.Visible = false;
+                    txtDni.Visible = true;
                     break;
             }
         }
@@ -111,6 +119,16 @@ namespace Sube
         private void FormBuscarUser_Load(object sender, EventArgs e)
         {
             LoadDataGridView();
+        }
+
+        private void txtDni_TextChanged(object sender, EventArgs e)
+        {
+            txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            txtName.Text = Regex.Replace(txtName.Text, "[^a-zA-Z ]", "");
         }
     }
 }
