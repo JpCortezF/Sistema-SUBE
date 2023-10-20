@@ -14,6 +14,7 @@ namespace Biblioteca_TarjetaSube
         public static float ValorColectivo12To27Km { get; private set; }
         public static float ValorSubte { get; private set; }
         public static float ValorTren { get; private set; }
+        public static float ValorSinSubsidio { get; private set; }
 
         static PrecioViajes()
         {
@@ -23,6 +24,7 @@ namespace Biblioteca_TarjetaSube
             ValorColectivo12To27Km = 68.09f;
             ValorSubte = 80f;
             ValorTren = 90f;
+            ValorSinSubsidio = 700;
         }
     }
 }

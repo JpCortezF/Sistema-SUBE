@@ -49,6 +49,7 @@ namespace Sube
             lbl12to27km.Text = $"De 12 a 27: ${PrecioViajes.ValorColectivo12To27Km}";
             lblSubte.Text = $"Todas las lineas: ${PrecioViajes.ValorSubte}";
             lblTren.Text = $"Todas las lineas: ${PrecioViajes.ValorTren}";
+            lblSubsidio.Text = $"Sin subsidio: ${PrecioViajes.ValorSinSubsidio}";
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {

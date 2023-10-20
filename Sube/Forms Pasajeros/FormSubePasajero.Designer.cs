@@ -47,6 +47,8 @@
             label4 = new Label();
             lblSubte = new Label();
             lblTren = new Label();
+            label5 = new Label();
+            lblSubsidio = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -231,7 +233,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(676, 149);
+            label4.Location = new Point(676, 147);
             label4.Name = "label4";
             label4.Size = new Size(96, 18);
             label4.TabIndex = 19;
@@ -257,6 +259,26 @@
             lblTren.TabIndex = 21;
             lblTren.Text = "0";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(676, 206);
+            label5.Name = "label5";
+            label5.Size = new Size(157, 18);
+            label5.TabIndex = 22;
+            label5.Text = "Boleto sin subsidio:";
+            // 
+            // lblSubsidio
+            // 
+            lblSubsidio.AutoSize = true;
+            lblSubsidio.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSubsidio.Location = new Point(676, 240);
+            lblSubsidio.Name = "lblSubsidio";
+            lblSubsidio.Size = new Size(15, 16);
+            lblSubsidio.TabIndex = 23;
+            lblSubsidio.Text = "0";
+            // 
             // FormSubePasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -264,6 +286,8 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(900, 430);
             ControlBox = false;
+            Controls.Add(lblSubsidio);
+            Controls.Add(label5);
             Controls.Add(lblTren);
             Controls.Add(lblSubte);
             Controls.Add(label4);
@@ -314,5 +338,7 @@
         private Label label4;
         private Label lblSubte;
         private Label lblTren;
+        private Label label5;
+        private Label lblSubsidio;
     }
 }

@@ -74,7 +74,7 @@ namespace Biblioteca_TarjetaSube
                     ticket = 0;
                     break;
                 default:
-                    ticket = 700;
+                    ticket = PrecioViajes.ValorSinSubsidio;
                     break;
             }
             return ticket;
