@@ -29,31 +29,34 @@ namespace Sube.Forms_Pasajeros
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             bool compraOnline = false;
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            if(txtDni.Text != string.Empty)
             {
-                if (kvp.Value is Pasajero passenger)
+                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
                 {
-                    if (txtDni.Text == kvp.Key && passenger.MySube.CardNumber == "DeBaja")
+                    if (kvp.Value is Pasajero passenger)
                     {
-                        Random rnd = new Random();
-                        int _rnd = rnd.Next(1000, 9999);
-                        int _rnd2 = rnd.Next(1000, 9999);
-                        int _rnd3 = rnd.Next(1000, 9999);
-                        string newCardNumber = $"6061{_rnd}{_rnd2}{_rnd3}";
-
-                        if (!passenger.CardNumberExist(dictionaryPassengers, newCardNumber))
+                        if (txtDni.Text == kvp.Key && passenger.MySube.CardNumber == "DeBaja")
                         {
-                            SubeONLINE subeOnline = new SubeONLINE(dictionaryPassengers, passenger, newCardNumber);
-                            subeOnline.MdiParent = parentForm;
-                            subeOnline.Show();
+                            Random rnd = new Random();
+                            int _rnd = rnd.Next(1000, 9999);
+                            int _rnd2 = rnd.Next(1000, 9999);
+                            int _rnd3 = rnd.Next(1000, 9999);
+                            string newCardNumber = $"6061{_rnd}{_rnd2}{_rnd3}";
+
+                            if (!passenger.CardNumberExist(dictionaryPassengers, newCardNumber))
+                            {
+                                SubeONLINE subeOnline = new SubeONLINE(dictionaryPassengers, passenger, newCardNumber);
+                                subeOnline.MdiParent = parentForm;
+                                subeOnline.Show();
+                            }
+                            compraOnline = true;
                         }
-                        compraOnline = true;
                     }
                 }
-            }
-            if (compraOnline == false)
-            {
-                MessageBox.Show("No puede tener más de una SUBE a su nombre", "Nueva SUBE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (compraOnline == false)
+                {
+                    MessageBox.Show("No puede tener más de una SUBE a su nombre", "Nueva SUBE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void FormCompraOnline_Load(object sender, EventArgs e)
