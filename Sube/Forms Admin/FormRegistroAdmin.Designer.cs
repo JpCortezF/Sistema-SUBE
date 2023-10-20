@@ -40,7 +40,6 @@
             txtDNI = new TextBox();
             label8 = new Label();
             label1 = new Label();
-            button1 = new Button();
             label3 = new Label();
             txtRepeatPassword = new TextBox();
             label5 = new Label();
@@ -69,7 +68,6 @@
             groupBox1.Controls.Add(txtDNI);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtRepeatPassword);
             groupBox1.Controls.Add(label5);
@@ -194,16 +192,6 @@
             label1.Text = "MsjClave";
             label1.Visible = false;
             // 
-            // button1
-            // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.Location = new Point(616, 188);
-            button1.Name = "button1";
-            button1.Size = new Size(53, 27);
-            button1.TabIndex = 21;
-            button1.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -222,7 +210,7 @@
             txtRepeatPassword.MaxLength = 0;
             txtRepeatPassword.Name = "txtRepeatPassword";
             txtRepeatPassword.PasswordChar = '•';
-            txtRepeatPassword.Size = new Size(267, 26);
+            txtRepeatPassword.Size = new Size(316, 26);
             txtRepeatPassword.TabIndex = 20;
             // 
             // label5
@@ -256,6 +244,7 @@
             btnMostrarPass.Size = new Size(53, 27);
             btnMostrarPass.TabIndex = 4;
             btnMostrarPass.UseVisualStyleBackColor = true;
+            btnMostrarPass.Click += btnMostrarPass_Click;
             // 
             // btnIngresar
             // 
@@ -355,7 +344,6 @@
         private TextBox txtDNI;
         private Label label8;
         private Label label1;
-        private Button button1;
         private Label label3;
         private TextBox txtRepeatPassword;
         private Label label5;

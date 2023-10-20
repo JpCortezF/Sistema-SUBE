@@ -59,9 +59,24 @@
     "Gender": "Masculino",
     "MySube": {
       "CardNumber": "6061346621651542",
-      "Balance": 0.0,
-      "QueueTravels": [],
-      "TarifaSocial": 4
+      "Balance": -200.0,
+      "QueueTravels": [
+        {
+          "TicketCost": 0.0,
+          "Kilometres": 5.0,
+          "Date": "2023-10-20T14:25:18.2575982-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 33"
+        },
+        {
+          "TicketCost": 700.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-20T14:26:57.1147409-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "Subte A"
+        }
+      ],
+      "TarifaSocial": 5
     },
     "Email": "ezequiel@hotmail.com",
     "Password": "1234",

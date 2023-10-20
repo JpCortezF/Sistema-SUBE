@@ -70,12 +70,20 @@ namespace Sube
                 float balance = passenger.MySube.Balance;
                 if (!string.IsNullOrEmpty(txtCarga.Text))
                 {
-                    DialogResult = DialogResult.OK;
                     if (float.TryParse(txtCarga.Text, out balance))
                     {
                         passenger.MySube.Balance += balance;
+                        if(passenger.MySube.Balance < 0)
+                        {
+                            passenger.MySube.Balance -= balance;
+                            MessageBox.Show("El saldo de la SUBE no puede quedar en NEGATIVO", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            DialogResult = DialogResult.OK;
+                            Close();
+                        }
                     }
-                    Close();
                 }
                 else
                 {

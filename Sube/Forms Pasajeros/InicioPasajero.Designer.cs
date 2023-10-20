@@ -119,7 +119,7 @@
             lblNombre.BackColor = Color.Transparent;
             lblNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(260, 92);
+            lblNombre.Location = new Point(228, 105);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(92, 31);
             lblNombre.TabIndex = 3;
