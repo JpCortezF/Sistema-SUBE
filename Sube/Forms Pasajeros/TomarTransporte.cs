@@ -61,6 +61,7 @@ namespace Sube
                         miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
 
                         passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
+                        double balance = passenger.MySube.Balance;
                         if (passenger.MySube.Balance > -211.84)
                         {
                             passenger.MySube.QueueTravels.Enqueue(miViaje);
@@ -82,7 +83,7 @@ namespace Sube
                                     pictureBox1.Visible = false;
                                     break;
                             }
-                            MessageBox.Show("¡Viaje realizado con éxito!", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO\n${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: $700", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -121,7 +122,7 @@ namespace Sube
         {
             txtKilometros.Text = Regex.Replace(txtKilometros.Text, @"[^0-9]", "");
         }
-        private void btnContinuar_Click_1(object sender, EventArgs e)
+        private void btnContinuar_Click(object sender, EventArgs e)
         {
             pictureBox4.Visible = false;
             btnContinuar.Visible = false;

@@ -193,12 +193,12 @@
             btnContinuar.FlatAppearance.BorderSize = 0;
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnContinuar.Location = new Point(721, 163);
+            btnContinuar.Location = new Point(721, 177);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(34, 66);
-            btnContinuar.TabIndex = 18;
+            btnContinuar.TabIndex = 19;
             btnContinuar.UseVisualStyleBackColor = false;
-            btnContinuar.Click += btnContinuar_Click_1;
+            btnContinuar.Click += btnContinuar_Click;
             // 
             // TomarTransporte
             // 

@@ -198,6 +198,34 @@
           "Date": "2023-10-20T04:53:24.679602-03:00",
           "TipoTransporte": 0,
           "LineasTransporte": "152"
+        },
+        {
+          "TicketCost": 0.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-20T06:48:41.7153942-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 85"
+        },
+        {
+          "TicketCost": 0.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-20T06:49:32.9350603-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 85"
+        },
+        {
+          "TicketCost": 0.0,
+          "Kilometres": 5.0,
+          "Date": "2023-10-20T06:51:15.9037635-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 85"
+        },
+        {
+          "TicketCost": 0.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-20T06:53:04.7530121-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 33"
         }
       ],
       "TarifaSocial": 4
