@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,11 +110,6 @@ namespace Sube
             return Regex.IsMatch(texto, "^[a-zA-Z ]+$");
         }
 
-        private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAdmin frm = new FormAdmin();
-            frm.Show();
-            Close();
-        }
+
     }
 }

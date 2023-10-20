@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
-            menuStrip1 = new MenuStrip();
-            hOMEToolStripMenuItem = new ToolStripMenuItem();
             groupBox1 = new GroupBox();
             button2 = new Button();
             label3 = new Label();
@@ -50,27 +48,8 @@
             lblErrorDni = new Label();
             txtEmail = new TextBox();
             label2 = new Label();
-            menuStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.LightSkyBlue;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { hOMEToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(784, 32);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // hOMEToolStripMenuItem
-            // 
-            hOMEToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
-            hOMEToolStripMenuItem.Size = new Size(84, 28);
-            hOMEToolStripMenuItem.Text = "HOME";
-            hOMEToolStripMenuItem.Click += hOMEToolStripMenuItem_Click_1;
             // 
             // groupBox1
             // 
@@ -93,10 +72,10 @@
             groupBox1.Controls.Add(lblErrorDni);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(159, 60);
+            groupBox1.Location = new Point(9, 9);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(467, 491);
+            groupBox1.Size = new Size(467, 427);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             // 
@@ -107,7 +86,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(172, 431);
+            button2.Location = new Point(280, 361);
             button2.Name = "button2";
             button2.Size = new Size(112, 39);
             button2.TabIndex = 28;
@@ -218,7 +197,7 @@
             lblRegistroAdmin.Cursor = Cursors.Hand;
             lblRegistroAdmin.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistroAdmin.ForeColor = Color.LimeGreen;
-            lblRegistroAdmin.Location = new Point(231, 383);
+            lblRegistroAdmin.Location = new Point(188, 372);
             lblRegistroAdmin.Name = "lblRegistroAdmin";
             lblRegistroAdmin.Size = new Size(76, 17);
             lblRegistroAdmin.TabIndex = 6;
@@ -232,7 +211,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(125, 372);
+            btnIngresar.Location = new Point(77, 361);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(89, 39);
             btnIngresar.TabIndex = 0;
@@ -307,26 +286,19 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 599);
+            ClientSize = new Size(490, 445);
             ControlBox = false;
             Controls.Add(groupBox1);
-            Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAdmin";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem hOMEToolStripMenuItem;
         private GroupBox groupBox1;
         private Label lblClave;
         private Button btnMostrarPass;

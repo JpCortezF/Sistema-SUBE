@@ -8,18 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Sube
 {
     public partial class FormBuscarUser : Form
     {
         Dictionary<string, Pasajero> dictionaryPassengers;
+        private ContainerAdmin parentForm;
 
-        public FormBuscarUser(Dictionary<string, Pasajero> passengers)
+        public FormBuscarUser(ContainerAdmin parent, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
             this.dictionaryPassengers = passengers;
             cmbBuscar.SelectedIndex = 0;
+            parentForm = parent;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -77,6 +80,7 @@ namespace Sube
                         if (selectedRow.Cells["DNI"].Value.ToString() == kvp.Key)
                         {
                             FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
+                            editarUsuario.MdiParent = parentForm;
                             editarUsuario.Show();
                         }
                     }

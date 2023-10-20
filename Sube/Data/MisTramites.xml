@@ -49,4 +49,18 @@
     <ClaimTime>2023-10-20T03:14:46.6798161-03:00</ClaimTime>
     <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
+  <Tramites>
+    <ClaimId>23681</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:ExComatienteDeMalvinas  Soy 1000-y tal</ClaimMessage>
+    <ClaimTime>2023-10-20T03:26:04.8902967-03:00</ClaimTime>
+    <ClaimComplete>En proceso</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>3711</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:Discapacitado  De verdad necesito que me pongan como discacitado </ClaimMessage>
+    <ClaimTime>2023-10-20T04:41:08.443188-03:00</ClaimTime>
+    <ClaimComplete>En revision</ClaimComplete>
+  </Tramites>
 </ArrayOfTramites>

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Sube
 {
@@ -18,9 +19,11 @@ namespace Sube
         Dictionary<string, Pasajero> dictionaryPassengers;
         List<Tramites> listTramites = new List<Tramites>();
         List<Tramites> listTramitesAux = new List<Tramites>();
-        public FormTramites(List<Tramites> tramites, Dictionary<string, Pasajero> passengers)
+        private ContainerAdmin parentForm;
+        public FormTramites(ContainerAdmin parent, List<Tramites> tramites, Dictionary<string, Pasajero> passengers)
         {
             InitializeComponent();
+            parentForm = parent;
             this.dictionaryPassengers = passengers;
             this.listTramites = tramites;
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -74,9 +77,10 @@ namespace Sube
                     {
                         if (kvp.Value is Pasajero passenger && selectedDni == kvp.Key)
                         {
+
                             FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramitesAux[selectedIndex], listTramites);
+                            editarUsuario.MdiParent = parentForm;
                             editarUsuario.Show();
-                            Hide();
                             break;
                         }
                     }

@@ -53,10 +53,7 @@
             lblEmail = new Label();
             txtEmail = new TextBox();
             label2 = new Label();
-            menuStrip1 = new MenuStrip();
-            hOMEToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -85,7 +82,7 @@
             groupBox1.Controls.Add(lblEmail);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(159, 75);
+            groupBox1.Location = new Point(9, 7);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(467, 556);
@@ -336,41 +333,19 @@
             label2.TabIndex = 4;
             label2.Text = "* Email";
             // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = Color.LightSkyBlue;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { hOMEToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 32);
-            menuStrip1.TabIndex = 11;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // hOMEToolStripMenuItem
-            // 
-            hOMEToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
-            hOMEToolStripMenuItem.Size = new Size(84, 28);
-            hOMEToolStripMenuItem.Text = "HOME";
-            hOMEToolStripMenuItem.Click += hOMEToolStripMenuItem_Click;
-            // 
             // FormRegistroAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 655);
+            ClientSize = new Size(488, 572);
             Controls.Add(groupBox1);
-            Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormRegistroAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegistroAdmin";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -393,8 +368,6 @@
         private Label lblEmail;
         private TextBox txtEmail;
         private Label label2;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem hOMEToolStripMenuItem;
         private Label label11;
         private TextBox txtLastName;
         private Label label12;

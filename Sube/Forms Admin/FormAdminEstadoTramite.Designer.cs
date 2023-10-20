@@ -87,7 +87,7 @@
             cmbTarifa.Items.AddRange(new object[] { "DNI", "Nombre y Apellido", "N° de Tarjeta" });
             cmbTarifa.Location = new Point(297, 201);
             cmbTarifa.Name = "cmbTarifa";
-            cmbTarifa.Size = new Size(117, 29);
+            cmbTarifa.Size = new Size(190, 29);
             cmbTarifa.TabIndex = 46;
             // 
             // txtCredito
@@ -261,7 +261,7 @@
             // 
             // txtReclamo
             // 
-            txtReclamo.Font = new Font("Sans Serif Collection", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
+            txtReclamo.Font = new Font("Sans Serif Collection", 9F, FontStyle.Bold, GraphicsUnit.Point);
             txtReclamo.Location = new Point(521, 59);
             txtReclamo.Multiline = true;
             txtReclamo.Name = "txtReclamo";
@@ -295,6 +295,7 @@
             Controls.Add(lblDatos);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "FormAdminEstadoTramite";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Verificar Tramite";
             Load += FormAdminEstadoTramite_Load;
             ResumeLayout(false);

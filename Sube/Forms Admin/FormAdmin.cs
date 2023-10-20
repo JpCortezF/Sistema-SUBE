@@ -1,4 +1,5 @@
 ﻿using Biblioteca_Usuarios;
+using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,13 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Sube
 {
     public partial class FormAdmin : Form
     {
         Dictionary<string, Administrador> dictionaryAdmins;
-        public FormAdmin()
+
+        public FormAdmin(ContainerLoginAdmin parent)
         {
             InitializeComponent();
             this.dictionaryAdmins = new Dictionary<string, Administrador>();
@@ -33,6 +36,7 @@ namespace Sube
         private void lblRegistroAdmin_Click(object sender, EventArgs e)
         {
             FormRegistroAdmin frm = new FormRegistroAdmin(dictionaryAdmins);
+            frm.MdiParent = this.MdiParent;
             frm.Show();
             Close();
         }
@@ -52,6 +56,7 @@ namespace Sube
                             MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ContainerAdmin inicio = new ContainerAdmin();
                             inicio.Show();
+                            MdiParent.Close();
                             this.Close();
                             break;
                         }

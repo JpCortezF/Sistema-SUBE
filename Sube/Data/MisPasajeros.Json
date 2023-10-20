@@ -162,8 +162,30 @@
     "Gender": "Masculino",
     "MySube": {
       "CardNumber": "6061449781035009",
-      "Balance": 0.0,
-      "QueueTravels": [],
+      "Balance": 77.04001,
+      "QueueTravels": [
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 2.0,
+          "Date": "2023-10-20T04:42:05.5954623-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "57"
+        },
+        {
+          "TicketCost": 90.0,
+          "Kilometres": 23.0,
+          "Date": "2023-10-20T04:42:46.2338465-03:00",
+          "TipoTransporte": 2,
+          "LineasTransporte": "Roca"
+        },
+        {
+          "TicketCost": 80.0,
+          "Kilometres": 3.0,
+          "Date": "2023-10-20T04:43:31.7487303-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": "A"
+        }
+      ],
       "TarifaSocial": 0
     },
     "Email": "AleHardcode@gmail.com",

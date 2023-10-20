@@ -1,6 +1,6 @@
-﻿namespace Sube
+﻿namespace Sube.Forms_Admin
 {
-    partial class ContainerAdmin
+    partial class ContainerLoginAdmin
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -30,8 +30,6 @@
         {
             menuStrip1 = new MenuStrip();
             inicioToolStripMenuItem = new ToolStripMenuItem();
-            buscadorToolStripMenuItem = new ToolStripMenuItem();
-            notificacionesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -39,37 +37,21 @@
             // 
             menuStrip1.BackColor = SystemColors.ActiveCaption;
             menuStrip1.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { inicioToolStripMenuItem, buscadorToolStripMenuItem, notificacionesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { inicioToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1084, 39);
-            menuStrip1.TabIndex = 9;
+            menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
             // inicioToolStripMenuItem
             // 
-            inicioToolStripMenuItem.Font = new Font("Microsoft Tai Le", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            inicioToolStripMenuItem.ForeColor = Color.Black;
             inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             inicioToolStripMenuItem.Size = new Size(102, 35);
             inicioToolStripMenuItem.Text = "INICIO";
             inicioToolStripMenuItem.Click += inicioToolStripMenuItem_Click;
             // 
-            // buscadorToolStripMenuItem
-            // 
-            buscadorToolStripMenuItem.Name = "buscadorToolStripMenuItem";
-            buscadorToolStripMenuItem.Size = new Size(155, 35);
-            buscadorToolStripMenuItem.Text = "BUSCADOR";
-            buscadorToolStripMenuItem.Click += buscadorToolStripMenuItem_Click;
-            // 
-            // notificacionesToolStripMenuItem
-            // 
-            notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
-            notificacionesToolStripMenuItem.Size = new Size(223, 35);
-            notificacionesToolStripMenuItem.Text = "NOTIFICACIONES";
-            notificacionesToolStripMenuItem.Click += notificacionesToolStripMenuItem_Click;
-            // 
-            // ContainerAdmin
+            // ContainerLoginAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -78,10 +60,10 @@
             FormBorderStyle = FormBorderStyle.None;
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "ContainerAdmin";
+            Name = "ContainerLoginAdmin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ContainterAdmin";
-            Load += ContainerAdmin_Load;
+            Text = "ContainerLoginAdmin";
+            Load += ContainerLoginAdmin_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -92,8 +74,6 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem inicioToolStripMenuItem;
-        private ToolStripMenuItem buscadorToolStripMenuItem;
-        private ToolStripMenuItem notificacionesToolStripMenuItem;
     }
 }
 

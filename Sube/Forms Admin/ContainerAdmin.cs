@@ -46,7 +46,7 @@ namespace Sube
 
         private void itemSalir_Click(object sender, EventArgs e)
         {
-            FormEmergente emergente = new FormEmergente("¿Está seguro que desea salir?","Salir");
+            FormEmergente emergente = new FormEmergente("¿Está seguro que desea salir?", "Salir");
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
@@ -93,7 +93,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormBuscarUser))
             {
-                FormBuscarUser buscador = new FormBuscarUser(dictionaryPassengers);
+                FormBuscarUser buscador = new FormBuscarUser(this, dictionaryPassengers);
                 OpenChildForm(buscador);
             }
         }
@@ -107,8 +107,16 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormTramites))
             {
-                FormTramites notificaciones = new FormTramites(tramites, dictionaryPassengers);
+                FormTramites notificaciones = new FormTramites(this, tramites, dictionaryPassengers);
                 OpenChildForm(notificaciones);
+            }
+        }
+
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form childForm in this.MdiChildren)
+            {
+                childForm.Close();
             }
         }
     }

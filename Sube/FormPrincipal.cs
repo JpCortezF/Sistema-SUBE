@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sube.Forms_Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,7 +51,7 @@ namespace Sube
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            FormAdmin admin = new FormAdmin();
+            ContainerLoginAdmin admin = new ContainerLoginAdmin();
             admin.Show();
             Hide();
         }
