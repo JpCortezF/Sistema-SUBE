@@ -95,4 +95,27 @@ Voy a sacar el pais adelante</ClaimMessage>
     <ClaimTime>2023-10-20T14:25:45.2216897-03:00</ClaimTime>
     <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
+  <Tramites>
+    <ClaimId>47427</ClaimId>
+    <DniClaimer>12345678</DniClaimer>
+    <ClaimMessage>Reclamo: Estudiantil  
+</ClaimMessage>
+    <ClaimTime>2023-10-20T15:19:53.9392124-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>83567</ClaimId>
+    <DniClaimer>12345678</DniClaimer>
+    <ClaimMessage>Reclamo: SinSubsidio  
+</ClaimMessage>
+    <ClaimTime>2023-10-20T15:20:36.3300128-03:00</ClaimTime>
+    <ClaimComplete>En revision</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>11215</ClaimId>
+    <DniClaimer>12345678</DniClaimer>
+    <ClaimMessage>Reclamo:Rotura  Se me rompio :(</ClaimMessage>
+    <ClaimTime>2023-10-20T15:21:20.4694272-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
 </ArrayOfTramites>

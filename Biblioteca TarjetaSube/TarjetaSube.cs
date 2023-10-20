@@ -30,22 +30,6 @@ namespace Biblioteca_TarjetaSube
         public string CardNumber { get => _cardNumber; set => _cardNumber = value; }
         public float Balance { get => _balance; set => _balance = value; }
         public Queue<Viajes> QueueTravels { get => queueTravels; set => queueTravels = value; }
-        public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
-
-
-        public string MostrarQueue(Queue<Viajes> queueViajes)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Mis viajes: ");
-            foreach (Viajes viaje in queueViajes)
-            {
-                 sb.Append($"{viaje}, "); 
-            }
-            if (queueViajes.Count > 0)
-            {
-                sb.Length -= 2;
-            }
-            return sb.ToString();
-        }
+        public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }     
     }
 }

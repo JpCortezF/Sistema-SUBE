@@ -74,6 +74,7 @@
             // txtKilometros
             // 
             txtKilometros.Location = new Point(552, 60);
+            txtKilometros.MaxLength = 4;
             txtKilometros.Name = "txtKilometros";
             txtKilometros.PlaceholderText = "Ejemplo: 7";
             txtKilometros.Size = new Size(100, 22);
@@ -193,12 +194,12 @@
             btnContinuar.FlatAppearance.BorderSize = 0;
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnContinuar.Location = new Point(721, 177);
+            btnContinuar.Location = new Point(721, 192);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(34, 66);
-            btnContinuar.TabIndex = 19;
+            btnContinuar.TabIndex = 21;
             btnContinuar.UseVisualStyleBackColor = false;
-            btnContinuar.Click += btnContinuar_Click;
+            btnContinuar.Click += btnContinuar_Click_1;
             // 
             // TomarTransporte
             // 
