@@ -55,43 +55,5 @@ namespace Sube
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FormEmergente form = new FormEmergente("Quiere guardar los cambios?", "Guardar");
-            selectedPassenger.Name = txtNombre.Text;
-            selectedPassenger.LastName = txtApellido.Text;
-            selectedPassenger.Email = txtMail.Text;
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                selectedPassenger.Name = txtNombre.Text;
-                selectedPassenger.LastName = txtApellido.Text;
-                selectedPassenger.Email = txtMail.Text;
-                if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
-                {
-                    selectedPassenger.MySube.TarifaSocial = tarifaSocial;
-                }
-                if(bajaTarjeta==true)
-                {
-                    this.bajaTarjeta = true;
-                    selectedPassenger.MySube.CardNumber = "DeBaja";
-                    selectedPassenger.MySube.QueueTravels.Clear();
-                    selectedPassenger.MySube.Balance = 0;
-                    selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
-                }
-                Close();
-            }
-
-        }
-
-        private void btnBajaTarjeta_Click(object sender, EventArgs e)
-        {
-            FormEmergente emergente = new FormEmergente("¿Esta seguro dar de baja?\nRecuerde Guardar los cambios", "Baja de Tarjeta");
-            emergente.ShowDialog();
-            if (emergente.DialogResult == DialogResult.OK)
-            {
-                this.bajaTarjeta = true;
-            }
-        }
     }
 }

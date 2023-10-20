@@ -5,7 +5,7 @@
     <DniClaimer>33208388</DniClaimer>
     <ClaimMessage>Reclamo:Jubilado  che loco soy jubi</ClaimMessage>
     <ClaimTime>2023-10-19T23:11:58.4684239-03:00</ClaimTime>
-    <ClaimComplete>En revision</ClaimComplete>
+    <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
   <Tramites>
     <ClaimId>79637</ClaimId>
@@ -26,6 +26,27 @@
     <DniClaimer>33208388</DniClaimer>
     <ClaimMessage>Reclamo:Robo  Me han robao</ClaimMessage>
     <ClaimTime>2023-10-19T23:14:32.7000538-03:00</ClaimTime>
-    <ClaimComplete>En revision</ClaimComplete>
+    <ClaimComplete>Rechazado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>65591</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:Robo  s</ClaimMessage>
+    <ClaimTime>2023-10-20T02:41:31.9708829-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>78152</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:Robo  cha de suma</ClaimMessage>
+    <ClaimTime>2023-10-20T03:13:12.3212636-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
+  <Tramites>
+    <ClaimId>72412</ClaimId>
+    <DniClaimer>33208388</DniClaimer>
+    <ClaimMessage>Reclamo:Perdida  </ClaimMessage>
+    <ClaimTime>2023-10-20T03:14:46.6798161-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
 </ArrayOfTramites>

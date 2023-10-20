@@ -33,12 +33,10 @@
             txtDomicilio = new TextBox();
             label7 = new Label();
             txtCarga = new TextBox();
-            pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             btnComprar = new Button();
             txtClaim = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox2
@@ -81,17 +79,6 @@
             txtCarga.Size = new Size(180, 45);
             txtCarga.TabIndex = 50;
             txtCarga.TextAlign = HorizontalAlignment.Center;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(297, 79);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(362, 269);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 51;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
             // 
             // textBox1
             // 
@@ -137,7 +124,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(925, 458);
             ControlBox = false;
-            Controls.Add(pictureBox1);
             Controls.Add(txtClaim);
             Controls.Add(btnComprar);
             Controls.Add(textBox1);
@@ -151,7 +137,6 @@
             Text = "SubeONLINE";
             Load += SubeONLINE_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,7 +147,6 @@
         private TextBox txtDomicilio;
         private Label label7;
         private TextBox txtCarga;
-        private PictureBox pictureBox1;
         private TextBox textBox1;
         private Button btnComprar;
         private TextBox txtClaim;

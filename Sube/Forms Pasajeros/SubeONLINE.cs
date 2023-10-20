@@ -52,11 +52,12 @@ namespace Sube.Forms_Pasajeros
         {
             if (txtDomicilio.Text != string.Empty)
             {
+                CamionEmergente camion = new CamionEmergente();
+                camion.ShowDialog();
                 string ruta = @"..\..\..\Data";
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
 
-                pictureBox1.Visible = true;
                 Serializador.WriteJsonPassenger(path, dictionaryPassengers);
             }
         }
