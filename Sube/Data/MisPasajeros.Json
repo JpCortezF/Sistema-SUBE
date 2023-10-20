@@ -235,5 +235,33 @@
     "Password": "8388",
     "Name": "Alejandro",
     "Lastname": "Heidenreich"
+  },
+  "12345678": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061457457456456",
+      "Balance": 851.0,
+      "QueueTravels": [
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 4.0,
+          "Date": "2023-10-20T15:10:37.662823-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "105"
+        },
+        {
+          "TicketCost": 90.0,
+          "Kilometres": 10.0,
+          "Date": "2023-10-20T15:11:29.3130008-03:00",
+          "TipoTransporte": 2,
+          "LineasTransporte": "Roca"
+        }
+      ],
+      "TarifaSocial": 0
+    },
+    "Email": "pepe@hotmail.com",
+    "Password": "1234",
+    "Name": "Pepe",
+    "Lastname": "Peposo"
   }
 }
