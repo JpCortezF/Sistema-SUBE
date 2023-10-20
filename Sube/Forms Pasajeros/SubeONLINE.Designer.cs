@@ -73,7 +73,7 @@
             txtCarga.BorderStyle = BorderStyle.FixedSingle;
             txtCarga.Enabled = false;
             txtCarga.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            txtCarga.Location = new Point(665, 323);
+            txtCarga.Location = new Point(624, 328);
             txtCarga.Name = "txtCarga";
             txtCarga.PlaceholderText = "500";
             txtCarga.Size = new Size(180, 45);
@@ -86,7 +86,7 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Enabled = false;
             textBox1.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.Location = new Point(563, 325);
+            textBox1.Location = new Point(522, 330);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "$ARS";
             textBox1.Size = new Size(96, 38);

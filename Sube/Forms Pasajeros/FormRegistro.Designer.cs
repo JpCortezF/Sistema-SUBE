@@ -477,7 +477,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.SubeIngreso;
-            ClientSize = new Size(927, 458);
+            ClientSize = new Size(927, 430);
             ControlBox = false;
             Controls.Add(panelDatos);
             DoubleBuffered = true;

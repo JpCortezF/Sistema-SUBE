@@ -75,7 +75,7 @@
             groupBox1.Location = new Point(460, 0);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(467, 459);
+            groupBox1.Size = new Size(467, 429);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             // 
@@ -226,7 +226,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.SubeIngreso;
-            ClientSize = new Size(927, 458);
+            ClientSize = new Size(927, 430);
             ControlBox = false;
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
