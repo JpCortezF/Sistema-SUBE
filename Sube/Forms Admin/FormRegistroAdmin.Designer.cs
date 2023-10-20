@@ -58,7 +58,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = SystemColors.ButtonFace;
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(txtLastName);
             groupBox1.Controls.Add(label12);
@@ -260,6 +260,7 @@
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.LimeGreen;
+            btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
@@ -337,6 +338,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.nubes1;
             ClientSize = new Size(702, 326);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;

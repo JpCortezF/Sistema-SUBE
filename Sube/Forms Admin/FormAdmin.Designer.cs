@@ -53,7 +53,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = SystemColors.ButtonFace;
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtDni);
@@ -83,6 +83,7 @@
             // 
             button2.BackColor = Color.IndianRed;
             button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.Control;
@@ -208,6 +209,7 @@
             // 
             btnIngresar.BackColor = Color.LimeGreen;
             btnIngresar.Cursor = Cursors.Hand;
+            btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
@@ -286,6 +288,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
+            BackgroundImage = Properties.Resources.nubes1;
+            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(490, 445);
             ControlBox = false;
             Controls.Add(groupBox1);

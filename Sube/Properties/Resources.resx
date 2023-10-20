@@ -163,6 +163,9 @@
   <data name="mercado_pago" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\mercado-pago.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nubes1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nubes1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ojo_tachado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\ojo-tachado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
