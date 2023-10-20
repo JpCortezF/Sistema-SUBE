@@ -12,14 +12,14 @@
     <DniClaimer>41709030</DniClaimer>
     <ClaimMessage>Reclamo:Discapacitado  soy disca</ClaimMessage>
     <ClaimTime>2023-10-19T23:13:54.4136326-03:00</ClaimTime>
-    <ClaimComplete>En revision</ClaimComplete>
+    <ClaimComplete>Aprobado</ClaimComplete>
   </Tramites>
   <Tramites>
     <ClaimId>41498</ClaimId>
     <DniClaimer>41709030</DniClaimer>
     <ClaimMessage>Reclamo:Rotura  Se me cayo al agua</ClaimMessage>
     <ClaimTime>2023-10-19T23:14:11.0776065-03:00</ClaimTime>
-    <ClaimComplete>En proceso</ClaimComplete>
+    <ClaimComplete>Rechazado</ClaimComplete>
   </Tramites>
   <Tramites>
     <ClaimId>89383</ClaimId>

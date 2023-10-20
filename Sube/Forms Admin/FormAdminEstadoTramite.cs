@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,92 @@ namespace Sube.Forms_Admin
 {
     public partial class FormAdminEstadoTramite : Form
     {
-        public FormAdminEstadoTramite()
+        bool bajaTarjeta;
+        Pasajero selectedPassenger;
+        Tramites tramiteAuxACambiar;
+        List<Tramites> tramitesReales;
+        public FormAdminEstadoTramite(Pasajero pasajero, Tramites tramiteAux, List<Tramites> tramites)
         {
             InitializeComponent();
+            selectedPassenger = pasajero;
+            tramiteAuxACambiar = tramiteAux;
+            tramitesReales = tramites;
+        }
+
+        private void FormAdminEstadoTramite_Load(object sender, EventArgs e)
+        {
+            cmbTarifa.Items.Clear();
+            txtNombre.Text = selectedPassenger.Name;
+            txtApellido.Text = selectedPassenger.LastName;
+            txtMail.Text = selectedPassenger.Email;
+            txtNumTarjeta.Text = selectedPassenger.MySube.CardNumber;
+            txtCredito.Text = selectedPassenger.MySube.Balance.ToString();
+            txtReclamo.Text = tramiteAuxACambiar.ClaimMessage;
+            foreach (ETarifaSocial item in Enum.GetValues(typeof(ETarifaSocial)))
+            {
+                string itemString = Enum.GetName(typeof(ETarifaSocial), item);
+                cmbTarifa.Items.Add(itemString);
+            }
+            for (int i = 0; i < cmbTarifa.Items.Count; i++)
+            {
+                if (cmbTarifa.Items[i].ToString() == selectedPassenger.MySube.TarifaSocial.ToString())
+                {
+                    cmbTarifa.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void btnBajaTarjeta_Click(object sender, EventArgs e)
+        {
+            FormEmergente emergente = new FormEmergente("¿Esta seguro dar de baja?\nRecuerde Aprobar los cambios", "Baja de Tarjeta");
+            emergente.ShowDialog();
+            if (emergente.DialogResult == DialogResult.OK)
+            {
+                this.bajaTarjeta = true;
+            }
+        }
+
+        private void btnAprobe_Click(object sender, EventArgs e)
+        {
+            FormEmergente form = new FormEmergente("Quiere aprobar los cambios?", "Guardar");
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                tramiteAuxACambiar.ClaimComplete = "Aprobado";
+                if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
+                {
+                    selectedPassenger.MySube.TarifaSocial = tarifaSocial;
+                }
+                if (bajaTarjeta == true)
+                {
+                    this.bajaTarjeta = true;
+                    selectedPassenger.MySube.CardNumber = "DeBaja";
+                    selectedPassenger.MySube.QueueTravels.Clear();
+                    selectedPassenger.MySube.Balance = 0;
+                    selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+                }
+                foreach (Tramites list in tramitesReales)
+                {
+                    if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)
+                    {
+                        list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
+                    }
+                }
+                Close();
+            }
+        }
+
+        private void btnDenegate_Click(object sender, EventArgs e)
+        {
+            tramiteAuxACambiar.ClaimComplete = "Rechazado";
+            foreach (Tramites list in tramitesReales)
+            {
+                if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)
+                {
+                    list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
+                }
+            }
         }
     }
 }

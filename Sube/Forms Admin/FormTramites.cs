@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,7 +74,7 @@ namespace Sube
                     {
                         if (kvp.Value is Pasajero passenger && selectedDni == kvp.Key)
                         {
-                            FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
+                            FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramitesAux[selectedIndex], listTramites);
                             editarUsuario.Show();
                             Hide();
                             break;

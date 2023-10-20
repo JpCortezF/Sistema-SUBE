@@ -30,7 +30,6 @@
         {
             btnAprobe = new Button();
             btnBajaTarjeta = new Button();
-            dataGridView1 = new DataGridView();
             cmbTarifa = new ComboBox();
             txtCredito = new TextBox();
             txtMail = new TextBox();
@@ -48,7 +47,7 @@
             lblNombre = new Label();
             lblDatos = new Label();
             btnDenegate = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            txtReclamo = new TextBox();
             SuspendLayout();
             // 
             // btnAprobe
@@ -63,6 +62,7 @@
             btnAprobe.TabIndex = 49;
             btnAprobe.Text = "Aprobar cambios";
             btnAprobe.UseVisualStyleBackColor = false;
+            btnAprobe.Click += btnAprobe_Click;
             // 
             // btnBajaTarjeta
             // 
@@ -76,20 +76,7 @@
             btnBajaTarjeta.TabIndex = 48;
             btnBajaTarjeta.Text = "Baja Tarjeta";
             btnBajaTarjeta.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(521, 59);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(479, 252);
-            dataGridView1.TabIndex = 47;
+            btnBajaTarjeta.Click += btnBajaTarjeta_Click;
             // 
             // cmbTarifa
             // 
@@ -164,9 +151,9 @@
             label1.Font = new Font("Cambria", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(521, 19);
             label1.Name = "label1";
-            label1.Size = new Size(155, 25);
+            label1.Size = new Size(101, 25);
             label1.TabIndex = 40;
-            label1.Text = "Ultimos viajes:";
+            label1.Text = "Reclamo:";
             // 
             // lblBalance
             // 
@@ -270,16 +257,26 @@
             btnDenegate.TabIndex = 50;
             btnDenegate.Text = "Denegar Cambios";
             btnDenegate.UseVisualStyleBackColor = false;
+            btnDenegate.Click += btnDenegate_Click;
+            // 
+            // txtReclamo
+            // 
+            txtReclamo.Font = new Font("Sans Serif Collection", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
+            txtReclamo.Location = new Point(521, 59);
+            txtReclamo.Multiline = true;
+            txtReclamo.Name = "txtReclamo";
+            txtReclamo.Size = new Size(479, 252);
+            txtReclamo.TabIndex = 51;
             // 
             // FormAdminEstadoTramite
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1024, 394);
+            Controls.Add(txtReclamo);
             Controls.Add(btnDenegate);
             Controls.Add(btnAprobe);
             Controls.Add(btnBajaTarjeta);
-            Controls.Add(dataGridView1);
             Controls.Add(cmbTarifa);
             Controls.Add(txtCredito);
             Controls.Add(txtMail);
@@ -299,7 +296,7 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "FormAdminEstadoTramite";
             Text = "Verificar Tramite";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FormAdminEstadoTramite_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,7 +305,6 @@
 
         private Button btnAprobe;
         private Button btnBajaTarjeta;
-        private DataGridView dataGridView1;
         private ComboBox cmbTarifa;
         private TextBox txtCredito;
         private TextBox txtMail;
@@ -326,5 +322,6 @@
         private Label lblNombre;
         private Label lblDatos;
         private Button btnDenegate;
+        private TextBox txtReclamo;
     }
 }
