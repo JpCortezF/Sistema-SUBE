@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,19 +18,35 @@ namespace Sube
     {
         Pasajero passenger;
         Queue<Viajes> queueViajes;
+        private InicioPasajero parentForm;
 
-        public FormViajes(Pasajero passenger, Queue<Viajes> queueTravels)
+        public FormViajes(InicioPasajero parent, Pasajero passenger, Queue<Viajes> queueTravels)
         {
             InitializeComponent();
             this.passenger = passenger;
             queueViajes = queueTravels;
+            parentForm = parent;
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
             double balance = passenger.MySube.Balance;
             lblSaldo.Text = $"${balance.ToString("F2")}";
-            dataGridViajes.Parent = panel1;
             LoadDataGridView();
+
+            if (queueViajes.Count == 0)
+            {
+                dataGridViajes.Visible = false;
+                pictureBox1.Visible = true;
+                lblViajes.Visible = true;
+                linkLabel1.Visible = true;
+            }
+            else
+            {
+                dataGridViajes.Visible = true;
+                pictureBox1.Visible = false;
+                lblViajes.Visible = false;
+                linkLabel1.Visible = false;
+            }
         }
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
@@ -80,6 +97,19 @@ namespace Sube
             LoadDataGridView();
             lblFiltro.Visible = false;
             txtBusqueda.Text = string.Empty;
+        }
+
+        private void lblViajes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TomarTransporte transporte = new TomarTransporte(passenger);
+            transporte.MdiParent = parentForm;
+            transporte.Show();
+            Close();
         }
     }
 }

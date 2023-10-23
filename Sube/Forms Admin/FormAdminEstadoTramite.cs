@@ -103,6 +103,7 @@ namespace Sube.Forms_Admin
                         list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
                     }
                 }
+                Close();
             }
         }
 

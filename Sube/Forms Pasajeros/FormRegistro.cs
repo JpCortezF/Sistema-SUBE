@@ -73,6 +73,9 @@ namespace Sube
                         dictionaryPassengers[document] = passenger;
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                        InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
+                        inicio.Show();
+                        MdiParent.Close();
                         Close();
                     }
                     else

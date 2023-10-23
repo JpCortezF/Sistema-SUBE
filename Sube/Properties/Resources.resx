@@ -136,6 +136,9 @@
   <data name="computerGif" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\computergif.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="correo_electronico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\correo-electronico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="fondoPasajero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\fondoPasajero.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,6 +166,9 @@
   <data name="mercado_pago" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\mercado-pago.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nothingToShow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nothingtoshow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="nubes1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\nubes1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -186,6 +192,9 @@
   </data>
   <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="viajaConNosotros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\viajaconnosotros.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

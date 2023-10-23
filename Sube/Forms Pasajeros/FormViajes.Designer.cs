@@ -31,54 +31,22 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            dataGridViajes = new DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormViajes));
             label1 = new Label();
             txtBusqueda = new TextBox();
             label2 = new Label();
             btnSalir = new Button();
-            panel1 = new Panel();
             lblSaldo = new Label();
             btnBuscar = new Button();
             label3 = new Label();
             lblFiltro = new Label();
+            dataGridViajes = new DataGridView();
+            pictureBox1 = new PictureBox();
+            lblViajes = new Label();
+            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViajes).BeginInit();
-            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridViajes
-            // 
-            dataGridViajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViajes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViajes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViajes.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViajes.Location = new Point(0, 0);
-            dataGridViajes.Name = "dataGridViajes";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViajes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViajes.RowHeadersVisible = false;
-            dataGridViajes.RowTemplate.Height = 25;
-            dataGridViajes.Size = new Size(776, 268);
-            dataGridViajes.TabIndex = 0;
             // 
             // label1
             // 
@@ -123,17 +91,6 @@
             btnSalir.Text = "X";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click_1;
-            // 
-            // panel1
-            // 
-            panel1.AutoScroll = true;
-            panel1.BackColor = Color.RosyBrown;
-            panel1.Controls.Add(dataGridViajes);
-            panel1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            panel1.Location = new Point(12, 140);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(776, 268);
-            panel1.TabIndex = 6;
             // 
             // lblSaldo
             // 
@@ -185,18 +142,96 @@
             lblFiltro.Visible = false;
             lblFiltro.Click += lblFiltro_Click;
             // 
+            // dataGridViajes
+            // 
+            dataGridViajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViajes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViajes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViajes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViajes.Location = new Point(12, 149);
+            dataGridViajes.Name = "dataGridViajes";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViajes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViajes.RowHeadersVisible = false;
+            dataGridViajes.RowTemplate.Height = 25;
+            dataGridViajes.Size = new Size(777, 268);
+            dataGridViajes.TabIndex = 0;
+            dataGridViajes.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 149);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(777, 268);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            // 
+            // lblViajes
+            // 
+            lblViajes.AutoSize = true;
+            lblViajes.BackColor = Color.White;
+            lblViajes.Cursor = Cursors.Hand;
+            lblViajes.FlatStyle = FlatStyle.Flat;
+            lblViajes.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblViajes.Location = new Point(233, 384);
+            lblViajes.Name = "lblViajes";
+            lblViajes.Size = new Size(189, 20);
+            lblViajes.TabIndex = 12;
+            lblViajes.Text = "Todavia no hay viajes! ";
+            lblViajes.Click += lblViajes_Click;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.BackColor = Color.White;
+            linkLabel1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            linkLabel1.LinkColor = Color.CornflowerBlue;
+            linkLabel1.Location = new Point(413, 384);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(163, 20);
+            linkLabel1.TabIndex = 13;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Viaja con nosotros!";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // FormViajes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(800, 420);
+            ClientSize = new Size(801, 430);
             ControlBox = false;
+            Controls.Add(linkLabel1);
+            Controls.Add(lblViajes);
+            Controls.Add(pictureBox1);
+            Controls.Add(dataGridViajes);
             Controls.Add(lblFiltro);
             Controls.Add(label3);
             Controls.Add(btnBuscar);
             Controls.Add(lblSaldo);
-            Controls.Add(panel1);
             Controls.Add(btnSalir);
             Controls.Add(label2);
             Controls.Add(txtBusqueda);
@@ -207,22 +242,23 @@
             Text = "FormViajes";
             Load += FormViajes_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViajes).EndInit();
-            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridViajes;
         private Label label1;
         private TextBox txtBusqueda;
         private Label label2;
         private Button btnSalir;
-        private Panel panel1;
         private Label lblSaldo;
         private Button btnBuscar;
         private Label label3;
         private Label lblFiltro;
+        private DataGridView dataGridViajes;
+        private PictureBox pictureBox1;
+        private Label lblViajes;
+        private LinkLabel linkLabel1;
     }
 }

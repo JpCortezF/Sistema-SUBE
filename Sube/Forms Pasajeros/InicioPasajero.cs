@@ -95,7 +95,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormViajes))
             {
-                FormViajes viajes = new FormViajes(passenger, passenger.MySube.QueueTravels);
+                FormViajes viajes = new FormViajes(this, passenger, passenger.MySube.QueueTravels);
                 OpenChildForm(viajes);
             }
         }

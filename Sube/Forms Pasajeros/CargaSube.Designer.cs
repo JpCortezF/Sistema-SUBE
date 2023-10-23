@@ -121,6 +121,7 @@
             txtCarga.BorderStyle = BorderStyle.FixedSingle;
             txtCarga.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
             txtCarga.Location = new Point(572, 146);
+            txtCarga.MaxLength = 4;
             txtCarga.Name = "txtCarga";
             txtCarga.Size = new Size(180, 45);
             txtCarga.TabIndex = 0;
