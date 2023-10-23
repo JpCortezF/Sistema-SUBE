@@ -201,7 +201,6 @@
             lblViajes.Size = new Size(189, 20);
             lblViajes.TabIndex = 12;
             lblViajes.Text = "Todavia no hay viajes! ";
-            lblViajes.Click += lblViajes_Click;
             // 
             // linkLabel1
             // 

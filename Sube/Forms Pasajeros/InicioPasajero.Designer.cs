@@ -39,7 +39,9 @@
             darDeBajaToolStripMenuItem = new ToolStripMenuItem();
             mISTRÁMITESToolStripMenuItem = new ToolStripMenuItem();
             lblNombre = new Label();
+            pictureBox1 = new PictureBox();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -119,21 +121,33 @@
             lblNombre.BackColor = Color.Transparent;
             lblNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(228, 105);
+            lblNombre.Location = new Point(253, 120);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(92, 31);
             lblNombre.TabIndex = 3;
             lblNombre.Text = "¡Hola!";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.homePasajeroGif;
+            pictureBox1.Location = new Point(0, 33);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1000, 517);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
             // InicioPasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.headerShortMiSube;
+            BackgroundImage = Properties.Resources.homePasajeroGif;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1000, 550);
             ControlBox = false;
             Controls.Add(lblNombre);
+            Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -145,6 +159,7 @@
             Load += InicioPasajero_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -161,5 +176,6 @@
         private ToolStripMenuItem iNICIOToolStripMenuItem;
         private ToolStripMenuItem darDeBajaToolStripMenuItem;
         private ToolStripMenuItem mISTRÁMITESToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }

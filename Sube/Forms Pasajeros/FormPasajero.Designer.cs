@@ -36,9 +36,11 @@
             lblIngresar = new Label();
             btnIngresar = new Button();
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             menuStrip1 = new MenuStrip();
             iNICIOToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(712, 320);
+            label3.Location = new Point(620, 409);
             label3.Name = "label3";
             label3.Size = new Size(126, 16);
             label3.TabIndex = 32;
@@ -62,9 +64,9 @@
             btnOnline.Cursor = Cursors.Hand;
             btnOnline.FlatAppearance.BorderSize = 0;
             btnOnline.FlatStyle = FlatStyle.Flat;
-            btnOnline.Location = new Point(712, 200);
+            btnOnline.Location = new Point(584, 355);
             btnOnline.Name = "btnOnline";
-            btnOnline.Size = new Size(114, 114);
+            btnOnline.Size = new Size(197, 51);
             btnOnline.TabIndex = 26;
             btnOnline.UseVisualStyleBackColor = false;
             btnOnline.Click += btnOnline_Click;
@@ -75,7 +77,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(399, 320);
+            label2.Location = new Point(620, 307);
             label2.Name = "label2";
             label2.Size = new Size(132, 16);
             label2.TabIndex = 30;
@@ -89,9 +91,9 @@
             btnRegistrar.Cursor = Cursors.Hand;
             btnRegistrar.FlatAppearance.BorderSize = 0;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(408, 200);
+            btnRegistrar.Location = new Point(584, 253);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(114, 114);
+            btnRegistrar.Size = new Size(197, 51);
             btnRegistrar.TabIndex = 25;
             btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click_1;
@@ -102,7 +104,7 @@
             lblIngresar.BackColor = Color.Transparent;
             lblIngresar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblIngresar.ForeColor = Color.White;
-            lblIngresar.Location = new Point(86, 320);
+            lblIngresar.Location = new Point(620, 203);
             lblIngresar.Name = "lblIngresar";
             lblIngresar.Size = new Size(138, 16);
             lblIngresar.TabIndex = 23;
@@ -117,9 +119,9 @@
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(101, 200);
+            btnIngresar.Location = new Point(583, 149);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(114, 114);
+            btnIngresar.Size = new Size(198, 51);
             btnIngresar.TabIndex = 22;
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click_1;
@@ -133,10 +135,22 @@
             panel1.Controls.Add(btnOnline);
             panel1.Controls.Add(btnRegistrar);
             panel1.Controls.Add(label2);
+            panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(933, 500);
             panel1.TabIndex = 35;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.brigdeTrainGif;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(933, 500);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 33;
+            pictureBox1.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -161,8 +175,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(933, 500);
             ControlBox = false;
             Controls.Add(menuStrip1);
@@ -178,6 +190,7 @@
             Load += FormPasajero_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -195,5 +208,6 @@
         private Panel panel1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem iNICIOToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }

@@ -50,6 +50,8 @@ namespace Sube
         }
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
             Close();
         }
 
@@ -98,12 +100,6 @@ namespace Sube
             lblFiltro.Visible = false;
             txtBusqueda.Text = string.Empty;
         }
-
-        private void lblViajes_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TomarTransporte transporte = new TomarTransporte(passenger);

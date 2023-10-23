@@ -221,6 +221,7 @@
             Name = "TomarTransporte";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Viajá con tu SUBE";
+            FormClosed += TomarTransporte_FormClosed;
             Load += TomarTransporte_Load;
             grpTransporte.ResumeLayout(false);
             grpTransporte.PerformLayout();

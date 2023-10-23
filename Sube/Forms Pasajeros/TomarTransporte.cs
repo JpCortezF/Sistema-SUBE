@@ -47,7 +47,7 @@ namespace Sube
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
-            if (ValidarIngresoTextBox() && passenger.MySube.CardNumber != "DeBaja")
+            if (ValidarIngresoTextBox() && passenger.MySube.CardNumber == "DeBaja")
             {
                 try
                 {
@@ -126,6 +126,12 @@ namespace Sube
         {
             pictureBox4.Visible = false;
             btnContinuar.Visible = false;
+        }
+
+        private void TomarTransporte_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
         }
     }
 }

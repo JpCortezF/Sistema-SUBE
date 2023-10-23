@@ -54,6 +54,8 @@ namespace Sube
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
             Close();
         }
     }

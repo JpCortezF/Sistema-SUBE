@@ -63,6 +63,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap brigdeTrainGif {
+            get {
+                object obj = ResourceManager.GetObject("brigdeTrainGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap busGif {
             get {
                 object obj = ResourceManager.GetObject("busGif", resourceCulture);
@@ -183,9 +193,29 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap homePasajeroGif {
+            get {
+                object obj = ResourceManager.GetObject("homePasajeroGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap iconPesos {
             get {
                 object obj = ResourceManager.GetObject("iconPesos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap inicioPasajero {
+            get {
+                object obj = ResourceManager.GetObject("inicioPasajero", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -296,6 +326,16 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap trainGif {
             get {
                 object obj = ResourceManager.GetObject("trainGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap trainStationGif {
+            get {
+                object obj = ResourceManager.GetObject("trainStationGif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

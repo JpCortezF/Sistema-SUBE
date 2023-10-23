@@ -127,6 +127,7 @@ namespace Sube
                 currentChildForm = null;
             };
             lblNombre.Visible = false;
+            pictureBox1.Visible = false;
             childForm.Show();
         }
         /// <summary>
@@ -160,6 +161,11 @@ namespace Sube
                 FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger, dictionaryPassengers);
                 OpenChildForm(Tramites);
             }
+        }
+        public void ItemsMdiParentVisibles()
+        {
+            lblNombre.Visible = true;
+            pictureBox1.Visible = true;
         }
     }
 }
