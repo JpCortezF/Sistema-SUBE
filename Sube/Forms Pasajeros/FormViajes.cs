@@ -50,8 +50,6 @@ namespace Sube
         }
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
-            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
-            inicio.ItemsMdiParentVisibles();
             Close();
         }
 
@@ -106,6 +104,12 @@ namespace Sube
             transporte.MdiParent = parentForm;
             transporte.Show();
             Close();
+        }
+
+        private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
         }
     }
 }

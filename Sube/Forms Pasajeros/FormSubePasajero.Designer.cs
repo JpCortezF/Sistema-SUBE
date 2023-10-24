@@ -311,6 +311,7 @@
             Name = "FormSubePasajero";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormSubePasajero";
+            FormClosed += FormSubePasajero_FormClosed;
             Load += FormSubePasajero_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

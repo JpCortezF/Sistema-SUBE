@@ -203,4 +203,11 @@ universitario</ClaimMessage>
     <ClaimTime>2023-10-22T18:43:34.1872424-03:00</ClaimTime>
     <ClaimComplete>Rechazado</ClaimComplete>
   </Tramites>
+  <Tramites>
+    <ClaimId>81367</ClaimId>
+    <DniClaimer>36584992</DniClaimer>
+    <ClaimMessage>Reclamo:Perdida  La perdi</ClaimMessage>
+    <ClaimTime>2023-10-23T15:49:00.8186839-03:00</ClaimTime>
+    <ClaimComplete>Aprobado</ClaimComplete>
+  </Tramites>
 </ArrayOfTramites>

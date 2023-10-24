@@ -28,8 +28,6 @@ namespace Sube
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
-            inicio.ItemsMdiParentVisibles();
             Close();
         }
         private void FormSubePasajero_Load(object sender, EventArgs e)
@@ -86,6 +84,12 @@ namespace Sube
 
             FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, dictionaryPassengers);
             tarifaSocial.ShowDialog();
+        }
+
+        private void FormSubePasajero_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
         }
     }
 }

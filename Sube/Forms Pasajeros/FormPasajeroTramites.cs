@@ -58,5 +58,11 @@ namespace Sube
             inicio.ItemsMdiParentVisibles();
             Close();
         }
+
+        private void FormPasajeroTramites_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
+        }
     }
 }

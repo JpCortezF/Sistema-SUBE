@@ -37,4 +37,9 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="SendEmail\SendEmail.csproj" />
+    <None Include="SendEmail\SendEmail.csproj.user" />
+  </ItemGroup>
+
 </Project>

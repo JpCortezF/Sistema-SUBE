@@ -80,5 +80,11 @@ namespace Sube
             }
 
         }
+
+        private void FormTarifaSocial_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
+        }
     }
 }

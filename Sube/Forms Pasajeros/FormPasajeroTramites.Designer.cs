@@ -122,6 +122,7 @@
             Name = "FormPasajeroTramites";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPasajeroTramites";
+            FormClosed += FormPasajeroTramites_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridTramites).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
