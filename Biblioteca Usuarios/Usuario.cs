@@ -7,23 +7,27 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_Usuarios
 {
-    public abstract class Usuario
+    public abstract class Usuario<T> : IComparator<Usuario<T>>
     {
         protected string email;
         protected string password;
         protected string name;
         protected string lastname;
+
+        public T MyType { get; protected set; }
+
         public Usuario()
         {
             this.password = string.Empty;
             this.email = string.Empty;
         }
-        protected Usuario(string email, string password, string name, string lastname)
+        protected Usuario(string email, string password, string name, string lastname, T userType)
         {
             this.email = email;
             this.password = password;
             this.name = name;
             this.lastname = lastname;
+            MyType = userType;
         }
         [JsonProperty("Email")]
         public string Email { get => email; set => email = value; }
@@ -34,6 +38,10 @@ namespace Biblioteca_Usuarios
         [JsonProperty("Lastname")]
         public string LastName { get => lastname; set => lastname = value; }
 
-        //public abstract string DevolverClave(Usuario user);
+        public virtual bool CompareUser(Usuario<T> user, Usuario<T> user2)
+        {
+            return user?.Email == user2?.Email;
+        }
+
     }
 }

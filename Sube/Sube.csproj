@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
@@ -35,11 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="SendEmail\SendEmail.csproj" />
-    <None Include="SendEmail\SendEmail.csproj.user" />
   </ItemGroup>
 
 </Project>

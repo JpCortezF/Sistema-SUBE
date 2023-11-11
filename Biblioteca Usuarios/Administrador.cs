@@ -1,9 +1,9 @@
 ﻿
 namespace Biblioteca_Usuarios
 {
-    public class Administrador : Usuario
+    public class Administrador : Usuario<string>
     {
-        public Administrador(string email, string password, string name, string lastname) : base(email, password, name, lastname)
+        public Administrador(string email, string password, string name, string lastname) : base(email, password, name, lastname, "Administrador")
         {
         }
         /// <summary>
@@ -23,7 +23,7 @@ namespace Biblioteca_Usuarios
                 {
                     foreach(Administrador adminToCompare in dictionaryAdmins.Values)
                     {
-                        exists = CompareAdmins(admin, adminToCompare);
+                        exists = CompareUser(admin, adminToCompare);
                         if (exists)
                         {
                             break;
@@ -44,9 +44,9 @@ namespace Biblioteca_Usuarios
         /// <param name="admin1">El primer administrador a comparar.</param>
         /// <param name="admin2">El segundo administrador a comparar.</param>
         /// <returns>True si ambos administradores tienen la misma dirección de correo electrónico, de lo contrario, False.</returns>
-        private bool CompareAdmins(Administrador admin1, Administrador admin2)
+        private bool CompareUser(Administrador admin1, Administrador admin2)
         {
-            return admin1.Email == admin2.Email;
+            return base.CompareUser(admin1, admin2);
         }
     }
 }

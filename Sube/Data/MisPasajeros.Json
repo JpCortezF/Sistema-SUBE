@@ -5,8 +5,9 @@
       "CardNumber": "6061608018113965",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 2
+      "TarifaSocial": 0
     },
+    "MyType": null,
     "Email": "juanpactz@gmail.com",
     "Password": "9272",
     "Name": "Juan Pablo",
@@ -35,6 +36,7 @@
       ],
       "TarifaSocial": 5
     },
+    "MyType": null,
     "Email": "ezequiel@hotmail.com",
     "Password": "1234",
     "Name": "Ezequiel ",
@@ -48,6 +50,7 @@
       "QueueTravels": [],
       "TarifaSocial": 0
     },
+    "MyType": null,
     "Email": "julialvarez@gmail.com",
     "Password": "0912",
     "Name": "Julian",
@@ -61,6 +64,7 @@
       "QueueTravels": [],
       "TarifaSocial": 0
     },
+    "MyType": null,
     "Email": "ma.isabel63@gmail.com",
     "Password": "0737",
     "Name": "maria isabel",
@@ -117,6 +121,7 @@
       ],
       "TarifaSocial": 2
     },
+    "MyType": null,
     "Email": "jpbushin@gmail.com",
     "Password": "9272",
     "Name": "Bushin",
@@ -173,6 +178,7 @@
       ],
       "TarifaSocial": 0
     },
+    "MyType": null,
     "Email": "AleHardcode@gmail.com",
     "Password": "8388",
     "Name": "Alejandro",
@@ -194,6 +200,7 @@
       ],
       "TarifaSocial": 5
     },
+    "MyType": null,
     "Email": "pepe@hotmail.com",
     "Password": "1234",
     "Name": "Pepe",
@@ -222,6 +229,7 @@
       ],
       "TarifaSocial": 5
     },
+    "MyType": null,
     "Email": "tobygol@hotmail.com",
     "Password": "0000",
     "Name": "Tobias ",
@@ -271,6 +279,7 @@
       ],
       "TarifaSocial": 2
     },
+    "MyType": null,
     "Email": "guadalupecortez@outlook.com",
     "Password": "1234",
     "Name": "Maria Guadalupe",
@@ -284,6 +293,7 @@
       "QueueTravels": [],
       "TarifaSocial": 0
     },
+    "MyType": null,
     "Email": "diecortez@gmail.com",
     "Password": "2525",
     "Name": "Diego Gabriel",
@@ -297,9 +307,24 @@
       "QueueTravels": [],
       "TarifaSocial": 0
     },
+    "MyType": null,
     "Email": "milei_el10@gmail.com",
     "Password": "2023",
     "Name": "Javier",
     "Lastname": "Milei"
+  },
+  "23521315": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061817217711110",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "MyType": "Pasajero",
+    "Email": "cambiomail@gmail.com",
+    "Password": "0202",
+    "Name": "Pepino",
+    "Lastname": "Aldentte"
   }
 }
