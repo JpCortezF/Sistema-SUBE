@@ -35,7 +35,7 @@ namespace Sube
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
             tramites = Serializador.ReadXMLTramites(pathT);
-
+            //:D
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)
