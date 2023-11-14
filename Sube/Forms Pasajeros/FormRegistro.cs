@@ -78,7 +78,7 @@ namespace Sube
                         SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
                         serializadorPasajero.Serialize(path, dictionaryPassengers);
 
-                        DataBase.Insert(passenger, newSube);
+                        DataBase.Insert(passenger, newSube, 1);
                         InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                         inicio.Show();
                         MdiParent.Close();

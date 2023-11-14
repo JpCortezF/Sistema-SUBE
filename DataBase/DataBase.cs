@@ -14,7 +14,7 @@ namespace Biblioteca_DataBase
 
         static DataBase()
         {
-            var mySqlStringConnection = @"Server=localhost;Port=3306;Database=proyectosube;Uid=root;Pwd=;";
+            var mySqlStringConnection = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
 
             connectionMySql = new MySqlConnection(mySqlStringConnection);
 
@@ -51,25 +51,26 @@ namespace Biblioteca_DataBase
             return lista;
         }
         */
-        public static void Insert(Pasajero passenger, TarjetaSube mySube)
+        public static void Insert(Pasajero passenger, TarjetaSube mySube, int method)
         {
             try
             {
-
                 connectionMySql.Open();
-                /*
-                string querySube = $"INSERT INTO tarjetas (id, balance, socialRate) VALUES('{mySube.CardNumber}', '{0}', '{1}')";
-                Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(querySube)}");
+                switch (method)
+                {
+                    case 1:                 
+                        string querySube = $"INSERT INTO tarjetas (id, balance, socialRate) VALUES('{mySube.CardNumber}', '{0}', '{1}')";
+                        Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(querySube)}");
 
-                string query = $"INSERT INTO pasajeros (dni, name, lastname, email, password, idGender, idSube) VALUES('{22222227}', '{passenger.Name}', '{passenger.LastName}', '{passenger.Email}', '{passenger.Password}', '{1}', '{mySube.CardNumber}')";
-                Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(query)}");
-                */
-                string queryViaje = $"INSERT INTO viajes (idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES('{6061103047601010}', '{1}', '{1020}', '{1}', '{64}', '{6}', '{DateTime.Now}')";
-                Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(queryViaje)}");
-
-
-
-
+                        string query = $"INSERT INTO pasajeros (dni, name, lastname, email, password, idGender, idSube) VALUES('{22222227}', '{passenger.Name}', '{passenger.LastName}', '{passenger.Email}', '{passenger.Password}', '{1}', '{mySube.CardNumber}')";
+                        Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(query)}");
+                        break;
+                    case 2:
+                        DateTime dt = DateTime.Now;
+                        string queryViaje = $"INSERT INTO viajes (idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES('{6061103047609000}', '{1}', '{1025}', '{4}', '{59}', '{4}', '{dt}')";
+                        Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(queryViaje)}");
+                        break;
+                }
             }
             catch (Exception ex)
             {

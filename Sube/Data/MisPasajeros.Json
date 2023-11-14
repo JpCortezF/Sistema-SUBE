@@ -126,7 +126,7 @@
     "Gender": "Masculino",
     "MySube": {
       "CardNumber": "6061449781035009",
-      "Balance": 262.08002,
+      "Balance": 1026.0801,
       "QueueTravels": [
         {
           "TicketCost": 52.96,
@@ -176,6 +176,34 @@
           "Date": "2023-11-14T17:42:37.8983069-03:00",
           "TipoTransporte": 0,
           "LineasTransporte": "105"
+        },
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 6.0,
+          "Date": "2023-11-14T18:33:51.1830503-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "85"
+        },
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 6.0,
+          "Date": "2023-11-14T18:34:49.9906523-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "85"
+        },
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 6.0,
+          "Date": "2023-11-14T18:40:27.8591454-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "85"
+        },
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 4.0,
+          "Date": "2023-11-14T18:48:31.5525721-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "85"
         }
       ],
       "TarifaSocial": 0

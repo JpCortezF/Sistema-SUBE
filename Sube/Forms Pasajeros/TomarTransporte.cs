@@ -87,7 +87,7 @@ namespace Sube
                                         break;
                                 }
                                 MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                DataBase.Insert(passenger, sube);
+                                DataBase.Insert(passenger, sube, 2);
 
                             }
                             else
