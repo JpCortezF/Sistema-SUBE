@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.9.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,11 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="SendEmail\SendEmail.csproj" />
-    <None Include="SendEmail\SendEmail.csproj.user" />
   </ItemGroup>
 
 </Project>
