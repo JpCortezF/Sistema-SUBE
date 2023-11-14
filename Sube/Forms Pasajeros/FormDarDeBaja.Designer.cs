@@ -163,6 +163,7 @@
             Name = "FormDarDeBaja";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormDarDeBaja";
+            FormClosed += FormDarDeBaja_FormClosed;
             Load += FormDarDeBaja_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

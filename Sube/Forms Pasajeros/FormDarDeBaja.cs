@@ -59,7 +59,7 @@ namespace Sube
                     Random rnd = new Random();
                     int _rnd = rnd.Next(1, 99999);
 
-   
+
                     Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, "En revision");
                     listaTramites.Add(miTramite);
 
@@ -67,6 +67,12 @@ namespace Sube
                     MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void FormDarDeBaja_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
+            inicio.ItemsMdiParentVisibles();
         }
     }
 }

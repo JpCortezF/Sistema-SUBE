@@ -47,59 +47,62 @@ namespace Sube
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
-            if (ValidarIngresoTextBox() && passenger.MySube.CardNumber == "DeBaja")
+            if (ValidarIngresoTextBox())
             {
-                try
+                if(passenger.MySube.CardNumber != "DeBaja")
                 {
-                    if (float.TryParse(txtKilometros.Text, out float kilometros))
+                    try
                     {
-                        TarjetaSube sube = new TarjetaSube();
-                        string lineaTransporte = txtLinea.Text;
-                        miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, lineaTransporte);
-
-                        TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(passenger.MySube.TarifaSocial, miViaje);
-                        miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
-
-                        passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
-                        double balance = passenger.MySube.Balance;
-                        if (passenger.MySube.Balance > -211.84)
+                        if (float.TryParse(txtKilometros.Text, out float kilometros))
                         {
-                            passenger.MySube.QueueTravels.Enqueue(miViaje);
-                            switch (miTransporte)
+                            TarjetaSube sube = new TarjetaSube();
+                            string lineaTransporte = txtLinea.Text;
+                            miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, lineaTransporte);
+
+                            TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(passenger.MySube.TarifaSocial, miViaje);
+                            miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
+
+                            passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
+                            double balance = passenger.MySube.Balance;
+                            if (passenger.MySube.Balance > -211.84)
                             {
-                                case ETransporte.Colectivo:
-                                    pictureBox1.Visible = true;
-                                    pictureBox2.Visible = false;
-                                    pictureBox3.Visible = false;
-                                    break;
-                                case ETransporte.Subte:
-                                    pictureBox2.Visible = true;
-                                    pictureBox1.Visible = false;
-                                    pictureBox3.Visible = false;
-                                    break;
-                                case ETransporte.Tren:
-                                    pictureBox3.Visible = true;
-                                    pictureBox2.Visible = false;
-                                    pictureBox1.Visible = false;
-                                    break;
+                                passenger.MySube.QueueTravels.Enqueue(miViaje);
+                                switch (miTransporte)
+                                {
+                                    case ETransporte.Colectivo:
+                                        pictureBox1.Visible = true;
+                                        pictureBox2.Visible = false;
+                                        pictureBox3.Visible = false;
+                                        break;
+                                    case ETransporte.Subte:
+                                        pictureBox2.Visible = true;
+                                        pictureBox1.Visible = false;
+                                        pictureBox3.Visible = false;
+                                        break;
+                                    case ETransporte.Tren:
+                                        pictureBox3.Visible = true;
+                                        pictureBox2.Visible = false;
+                                        pictureBox1.Visible = false;
+                                        break;
+                                }
+                                MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            passenger.MySube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
-                            MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                            {
+                                passenger.MySube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
+                                MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Su SUBE se encuentra dada de baja...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Su SUBE se encuentra dada de baja...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private bool ValidarIngresoTextBox()

@@ -239,6 +239,7 @@
             Name = "FormViajes";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormViajes";
+            FormClosed += FormViajes_FormClosed;
             Load += FormViajes_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViajes).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

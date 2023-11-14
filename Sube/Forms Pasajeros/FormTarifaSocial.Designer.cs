@@ -263,6 +263,7 @@
             Name = "FormTarifaSocial";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormTarifaSocial";
+            FormClosed += FormTarifaSocial_FormClosed;
             Load += FormTarifaSocial_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
