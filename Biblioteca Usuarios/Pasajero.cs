@@ -13,12 +13,11 @@ namespace Biblioteca_Usuarios
     {
         string gender;
         TarjetaSube mySube;
-
         public Pasajero()
         {
             
         }
-        public Pasajero(string gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(email, password, name, lastname, "Pasajero")
+        public Pasajero(string gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(email, password, name, lastname)
         {
             this.gender = gender;
             this.mySube = sube;

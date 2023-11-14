@@ -14,20 +14,17 @@ namespace Biblioteca_Usuarios
         protected string name;
         protected string lastname;
 
-        public T MyType { get; protected set; }
-
         public Usuario()
         {
             this.password = string.Empty;
             this.email = string.Empty;
         }
-        protected Usuario(string email, string password, string name, string lastname, T userType)
+        protected Usuario(string email, string password, string name, string lastname)
         {
             this.email = email;
             this.password = password;
             this.name = name;
             this.lastname = lastname;
-            MyType = userType;
         }
         [JsonProperty("Email")]
         public string Email { get => email; set => email = value; }

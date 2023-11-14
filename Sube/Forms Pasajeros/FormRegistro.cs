@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Biblioteca_Usuarios;
 using Biblioteca_TarjetaSube;
+using Biblioteca_DataBase;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
+using NPOI.SS.Formula.Functions;
 
 namespace Sube
 {
@@ -76,6 +78,7 @@ namespace Sube
                         SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
                         serializadorPasajero.Serialize(path, dictionaryPassengers);
 
+                        DataBase.Insert(passenger, newSube);
                         InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
                         inicio.Show();
                         MdiParent.Close();

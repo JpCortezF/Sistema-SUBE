@@ -3,7 +3,7 @@ namespace Biblioteca_Usuarios
 {
     public class Administrador : Usuario<string>
     {
-        public Administrador(string email, string password, string name, string lastname) : base(email, password, name, lastname, "Administrador")
+        public Administrador(string email, string password, string name, string lastname) : base(email, password, name, lastname)
         {
         }
         /// <summary>
