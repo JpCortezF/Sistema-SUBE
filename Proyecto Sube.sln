@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sube", "Sube\Sube.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca TarjetaSube", "Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj", "{E4F5D6CF-7F29-4419-B912-9130FBBE08ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExceptions", "MyExceptions\MyExceptions.csproj", "{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyExceptions", "MyExceptions\MyExceptions.csproj", "{EBB01F1D-6455-4ED1-A9A8-1F3309801FC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

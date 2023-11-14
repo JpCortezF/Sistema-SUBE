@@ -33,6 +33,7 @@
             inicioToolStripMenuItem = new ToolStripMenuItem();
             buscadorToolStripMenuItem = new ToolStripMenuItem();
             notificacionesToolStripMenuItem = new ToolStripMenuItem();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,6 +99,7 @@
         private ToolStripMenuItem inicioToolStripMenuItem;
         private ToolStripMenuItem buscadorToolStripMenuItem;
         private ToolStripMenuItem notificacionesToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

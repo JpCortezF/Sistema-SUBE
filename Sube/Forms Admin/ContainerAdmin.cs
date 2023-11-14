@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Sube
 {
@@ -33,6 +35,7 @@ namespace Sube
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
             tramites = Serializador.ReadXMLTramites(pathT);
+
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)
@@ -106,11 +109,17 @@ namespace Sube
         /// <param name="e">Argumentos del evento.</param>
         private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
+            ChartMenu notificaciones = new ChartMenu();
+            notificaciones.Show();
+            */
+            
             if (currentChildForm is null || !(currentChildForm is FormTramites))
             {
                 FormTramites notificaciones = new FormTramites(this, tramites, dictionaryPassengers);
                 OpenChildForm(notificaciones);
             }
+            
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
