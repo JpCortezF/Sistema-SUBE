@@ -9,16 +9,16 @@ using Biblioteca_Usuarios;
 
 namespace Biblioteca_Usuarios
 {
-    public class Pasajero : Usuario
+    public class Pasajero : Usuario<string>
     {
         string gender;
         TarjetaSube mySube;
 
         public Pasajero()
         {
-
+            
         }
-        public Pasajero(string gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(email, password, name, lastname)
+        public Pasajero(string gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(email, password, name, lastname, "Pasajero")
         {
             this.gender = gender;
             this.mySube = sube;
@@ -28,46 +28,31 @@ namespace Biblioteca_Usuarios
         public TarjetaSube MySube { get => mySube; set => mySube = value; }
 
         /// <summary>
-        /// Compara los atributos de 2 pasajeros, si encuentra alguna coincidencia entre sus atributos, retorna true.
+        /// Determina la existencia de un pasajero en un diccionario dado.
         /// </summary>
-        /// <param name="pasajero1"></param>
-        /// <param name="pasajero2"></param>
-        /// <returns> Retorna true si coincide algun atributo de los pasajeros. False si no encuentra coincidencia. </returns>
-        private bool ComparePassengers(Pasajero pasajero1, Pasajero pasajero2)
-        {
-            return pasajero1.Email == pasajero2.Email
-                || pasajero1.MySube.CardNumber == pasajero2.MySube.CardNumber;
-        }
-        /// <summary>
-        /// Recorre todos los valores dentro del Dictionary, y en cada iteracion guarda el valor en PassengerToCompare
-        /// </summary>
-        /// <param name="passenger"></param>
-        /// <returns> Retorna True si el pasajero se encuentra en el Dictionary. False si no se encuentra. </returns>
+        /// <param name="passenger">El pasajero que se desea verificar.</param>
+        /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
+        /// <param name="document">La clave del pasajero que se utilizará para la verificación.</param>
+        /// <returns>True si el pasajero existe en el diccionario, ya sea por la clave o por comparación de información. False si no existe.</returns>
         public bool PassengerExist(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers, string document)
         {
-            bool exists = false;
+            bool exists = dictionaryPassengers.ContainsKey(document);
 
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            if (!exists)
             {
-                if(kvp.Key.ToString() != document)
+                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
                 {
-                    foreach (Pasajero passengerToCompare in dictionaryPassengers.Values)
+                    if (CompareUser(passenger, kvp.Value))
                     {
-                        exists = ComparePassengers(passenger, passengerToCompare);
-                        if(exists)
-                        {
-                            break;
-                        }
+                        exists = true;
+                        break;
                     }
                 }
-                else
-                {
-                    exists = true;
-                    break;
-                }
             }
+
             return exists;
         }
+
         /// <summary>
         /// Busca un pasajero por su dirección de correo electrónico en un diccionario de pasajeros y devuelve el pasajero encontrado.
         /// </summary>
@@ -123,6 +108,15 @@ namespace Biblioteca_Usuarios
                         break;
                     }
                 }
+            }
+            return exist;
+        }
+        public bool CompareUser(Pasajero user1, Pasajero user2)
+        {
+            bool exist = false;
+            if (user1 != null && user2 != null)
+            {
+                exist = base.CompareUser(user1, user2) || user1.MySube.CardNumber == user2.MySube.CardNumber;
             }
             return exist;
         }

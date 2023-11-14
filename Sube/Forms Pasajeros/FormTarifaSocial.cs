@@ -55,10 +55,12 @@ namespace Sube
             if (radioButtonSeleccionado != null)
             {
                 List<Tramites> listaTramites = new List<Tramites>();
+                SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
                 string ruta = @"..\..\..\Data";
                 string nombre = @".\MisTramites.xml";
                 string path = ruta + nombre;
-                listaTramites = Serializador.ReadXMLTramites(path);
+                listaTramites = serializeTramites.Deserialize(path);
+                //listaTramites = Serializador.ReadXMLTramites(path);
 
                 MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string radioButtonTarifa = radioButtonSeleccionado.Text;
@@ -71,7 +73,8 @@ namespace Sube
 
                     Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo: {tarifaSocial}  \n" + txtClaim.Text, DateTime.Now, "En revision");
                     listaTramites.Add(miTramite);
-                    Serializador.WriteXMLTramites(path, listaTramites);
+                    serializeTramites.Serialize(path, listaTramites);
+                    //Serializador.WriteXMLTramites(path, listaTramites);
                 }
             }
             else

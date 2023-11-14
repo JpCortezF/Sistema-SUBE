@@ -43,7 +43,9 @@ namespace Sube
                     {
                         dictionaryAdmins[document] = admin;
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Serializador.WriteJsonAdmin(path, dictionaryAdmins);
+                        SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
+                        serializadorAdmin.Serialize(path, dictionaryAdmins);
+                        //Serializador.WriteJsonAdmin(path, dictionaryAdmins);
                     }
                     else
                     {

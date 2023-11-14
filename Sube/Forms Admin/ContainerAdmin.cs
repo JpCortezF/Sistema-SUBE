@@ -17,6 +17,8 @@ namespace Sube
 {
     public partial class ContainerAdmin : Form
     {
+        SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
+        SerializadorXML<List<Tramites>> serializeTramite = new SerializadorXML<List<Tramites>>();
         Dictionary<string, Pasajero> dictionaryPassengers;
         List<Tramites> tramites;
 
@@ -25,17 +27,16 @@ namespace Sube
         public ContainerAdmin()
         {
             InitializeComponent();
-            this.dictionaryPassengers = new Dictionary<string, Pasajero>();
             this.tramites = new List<Tramites>();
             string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
-            dictionaryPassengers = Serializador.ReadJsonPassenger(path);
+            //dictionaryPassengers = Serializador.ReadJsonPassenger(path);
+            dictionaryPassengers = serializadorPasajero.Deserialize(path);
             string rutaT = @"..\..\..\Data";
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
             tramites = Serializador.ReadXMLTramites(pathT);
-            //:D
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)
@@ -57,11 +58,13 @@ namespace Sube
                 string ruta = @"..\..\..\Data";
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
-                Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                serializadorPasajero.Serialize(path, dictionaryPassengers);
                 string rutaT = @"..\..\..\Data";
                 string nombreT = "MisTramites.xml";
                 string pathT = Path.Combine(rutaT, nombreT);
-                Serializador.WriteXMLTramites(pathT, tramites);
+                serializeTramite.Serialize(pathT, tramites);
+                //Serializador.WriteXMLTramites(pathT, tramites);
                 Close();
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();

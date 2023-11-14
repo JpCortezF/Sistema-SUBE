@@ -25,31 +25,35 @@ namespace Sube
             string rutaT = @"..\..\..\Data";
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
-            this.misTramites = Serializador.ReadXMLTramites(pathT);
+            SerializadorXML<List<Tramites>> serializeTramite = new SerializadorXML<List<Tramites>>();
 
-            dataGridTramites.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridTramites.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridTramites.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            foreach (DataGridViewColumn column in dataGridTramites.Columns)
+            //this.misTramites = Serializador.ReadXMLTramites(pathT);
+            this.misTramites = serializeTramite.Deserialize(pathT);
+            if (misTramites != null)
             {
-                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            }
-
-            string dniUserLoged = passenger.ReturnrKey(dictionaryPassengers, passenger);
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Estado", typeof(string));
-            dataTable.Columns.Add("Numero", typeof(string));
-            dataTable.Columns.Add("Mensaje", typeof(string));
-            dataTable.Columns.Add("Fecha", typeof(DateTime));
-            foreach (Tramites miTramite in misTramites)
-            {
-                if (miTramite.DniClaimer == dniUserLoged)
+                dataGridTramites.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridTramites.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+                dataGridTramites.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                foreach (DataGridViewColumn column in dataGridTramites.Columns)
                 {
-                    dataTable.Rows.Add(miTramite.ClaimComplete, miTramite.ClaimId, miTramite.ClaimMessage, miTramite.ClaimTime);
+                    column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 }
-            }
-            dataGridTramites.DataSource = dataTable;
 
+                string dniUserLoged = passenger.ReturnrKey(dictionaryPassengers, passenger);
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("Estado", typeof(string));
+                dataTable.Columns.Add("Numero", typeof(string));
+                dataTable.Columns.Add("Mensaje", typeof(string));
+                dataTable.Columns.Add("Fecha", typeof(DateTime));
+                foreach (Tramites miTramite in misTramites)
+                {
+                    if (miTramite.DniClaimer == dniUserLoged)
+                    {
+                        dataTable.Rows.Add(miTramite.ClaimComplete, miTramite.ClaimId, miTramite.ClaimMessage, miTramite.ClaimTime);
+                    }
+                }
+                dataGridTramites.DataSource = dataTable;
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
