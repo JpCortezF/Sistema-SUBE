@@ -321,10 +321,32 @@
       "QueueTravels": [],
       "TarifaSocial": 0
     },
-    "MyType": "Pasajero",
+    "MyType": null,
     "Email": "cambiomail@gmail.com",
     "Password": "0202",
     "Name": "Pepino",
     "Lastname": "Aldentte"
+  },
+  "22222222": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061215113132323",
+      "Balance": -52.96,
+      "QueueTravels": [
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 2.0,
+          "Date": "2023-11-12T00:39:42.5219807-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "Linea 85"
+        }
+      ],
+      "TarifaSocial": 0
+    },
+    "MyType": null,
+    "Email": "amamksmka@gmail.com",
+    "Password": "2020",
+    "Name": "ezequiel",
+    "Lastname": "mama"
   }
 }

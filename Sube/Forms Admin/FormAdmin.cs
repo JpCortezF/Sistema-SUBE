@@ -21,11 +21,11 @@ namespace Sube
         public FormAdmin(ContainerLoginAdmin parent)
         {
             InitializeComponent();
-            this.dictionaryAdmins = new Dictionary<string, Administrador>();
+            SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
             string ruta = @"..\..\..\Data";
             string nombre = "MisAdmins.Json";
             string path = Path.Combine(ruta, nombre);
-            dictionaryAdmins = Serializador.ReadJsonAdmin(path);
+            dictionaryAdmins = serializadorAdmin.Deserialize(path);
         }
 
         protected override void OnPaint(PaintEventArgs e)

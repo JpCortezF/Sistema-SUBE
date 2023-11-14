@@ -22,11 +22,12 @@ namespace Sube
         public FormPasajero()
         {
             InitializeComponent();
-            this.dictionaryPassengers = new Dictionary<string, Pasajero>();
+            SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
             string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
-            dictionaryPassengers = Serializador.ReadJsonPassenger(path);
+            //dictionaryPassengers = Serializador.ReadJsonPassenger(path);
+            dictionaryPassengers = serializadorPasajero.Deserialize(path);
         }
         private void FormPasajero_Load(object sender, EventArgs e)
         {

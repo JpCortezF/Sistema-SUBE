@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Biblioteca_Usuarios
 {
-    public static class Serializador
+    public abstract class Serializador
     {
         public static void WriteJsonPassenger(string path, Dictionary<string, Pasajero> dictionaryPassengers)
         {

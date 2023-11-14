@@ -69,7 +69,10 @@ namespace Sube
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
 
-                Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
+                SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
+                serializadorPasajero.Serialize(path, dictionaryPassengers);
+
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
                 Close();
