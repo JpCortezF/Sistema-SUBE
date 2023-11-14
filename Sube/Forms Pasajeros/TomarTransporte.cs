@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Biblioteca_DataBase;
 using MyExceptions;
 using System;
 using System.Collections.Generic;
@@ -86,6 +87,8 @@ namespace Sube
                                         break;
                                 }
                                 MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                DataBase.Insert(passenger, sube);
+
                             }
                             else
                             {

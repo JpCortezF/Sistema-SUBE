@@ -126,7 +126,7 @@
     "Gender": "Masculino",
     "MySube": {
       "CardNumber": "6061449781035009",
-      "Balance": 321.08002,
+      "Balance": 262.08002,
       "QueueTravels": [
         {
           "TicketCost": 52.96,
@@ -169,6 +169,13 @@
           "Date": "2023-10-20T07:19:49.7906181-03:00",
           "TipoTransporte": 2,
           "LineasTransporte": "Sarmiento"
+        },
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 6.0,
+          "Date": "2023-11-14T17:42:37.8983069-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": "105"
         }
       ],
       "TarifaSocial": 0
@@ -275,5 +282,135 @@
     "Password": "1234",
     "Name": "Maria Guadalupe",
     "Lastname": "Cortez"
+  },
+  "20342452": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061345453443453",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "eze@hot.com",
+    "Password": "1234",
+    "Name": "Eze",
+    "Lastname": "Mew"
+  },
+  "32545341": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061346324235235",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "tobi@hot.com",
+    "Password": "4321",
+    "Name": "Tobi",
+    "Lastname": "Gol"
+  },
+  "53453463": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061345325233252",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "juan@hotmail.com",
+    "Password": "1234",
+    "Name": "juan",
+    "Lastname": "perez"
+  },
+  "41793024": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061345252355123",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "eleze@gmail.com",
+    "Password": "1234",
+    "Name": "eze",
+    "Lastname": "melow"
+  },
+  "31244363": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061346423422342",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "1234@hotmail.com",
+    "Password": "1234",
+    "Name": "eze",
+    "Lastname": "kiel"
+  },
+  "34534536": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061342323623423",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "juanpi@hotmail.com",
+    "Password": "1234",
+    "Name": "JuanPablo",
+    "Lastname": "Cortez"
+  },
+  "56453346": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061346323425236",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "es@hotmall.com",
+    "Password": "1234",
+    "Name": "eze",
+    "Lastname": "meloso"
+  },
+  "62546547": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061345236346523",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "123@mel.com",
+    "Password": "1234",
+    "Name": "melina",
+    "Lastname": "garcia"
+  },
+  "64574545": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061563434633423",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "elAlbert@gmail.com",
+    "Password": "1234",
+    "Name": "joser",
+    "Lastname": "alberto"
+  },
+  "63456346": {
+    "Gender": "Masculino",
+    "MySube": {
+      "CardNumber": "6061464546236346",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "lamasi@hotmai.com",
+    "Password": "1234",
+    "Name": "Juanarberto",
+    "Lastname": "Illo"
   }
 }
