@@ -14,13 +14,13 @@ namespace Sube
 {
     public partial class FormIngreso : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         private FormPasajero parentForm;
 
-        public FormIngreso(FormPasajero parent, Dictionary<string, Pasajero> passengers)
+        public FormIngreso(FormPasajero parent, List<Pasajero> listPassengers)
         {
             InitializeComponent();
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
             parentForm = parent;
         }
 
@@ -39,21 +39,18 @@ namespace Sube
             bool exist = false;
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPass.Text))
             {
-                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-                {
-                    if (kvp.Value is Pasajero passenger)
+                foreach (Pasajero passenger in listPassengers)
+                {           
+                    if (txtDni.Text == passenger.Dni.ToString() && txtPass.Text == passenger.Password)
                     {
-                        if (txtDni.Text == kvp.Key && txtPass.Text == passenger.Password)
-                        {
-                            exist = true;
-                            MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
-                            inicio.Show();
-                            MdiParent.Close();
-                            Close();
-                            break;
-                        }
-                    }
+                        exist = true;
+                        MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        InicioPasajero inicio = new InicioPasajero(passenger, listPassengers);
+                        inicio.Show();
+                        MdiParent.Close();
+                        Close();
+                        break;
+                    }                   
                 }
             }
             if (!exist)
@@ -63,7 +60,7 @@ namespace Sube
         }
         private void lblRegistro_Click_1(object sender, EventArgs e)
         {
-            FormRegistro registro = new FormRegistro(dictionaryPassengers);
+            FormRegistro registro = new FormRegistro(listPassengers);
             registro.MdiParent = parentForm;
             registro.Show();
         }
@@ -88,7 +85,7 @@ namespace Sube
 
         private void lblOlvideClave_Click(object sender, EventArgs e)
         {
-            VentanaPassword ventanaPassword = new VentanaPassword(dictionaryPassengers);
+            VentanaPassword ventanaPassword = new VentanaPassword(listPassengers);
             ventanaPassword.ShowDialog();
             if (ventanaPassword.DialogResult == DialogResult.Continue)
             {
@@ -109,11 +106,10 @@ namespace Sube
             Pasajero passenger = new Pasajero();
             try
             {
-                passenger = passenger.FindPassengerByEmail(dictionaryPassengers, "AleHardcode@gmail.com");
+                passenger = passenger.FindPassengerByEmail(listPassengers, "AleHardcode@gmail.com");
                 if (passenger is not null)
                 {
-                    string dni = passenger.ReturnrKey(dictionaryPassengers, passenger);
-                    txtDni.Text = dni;
+                    txtDni.Text = passenger.Dni.ToString();
                     txtPass.Text = passenger.Password;
                 }
                 else

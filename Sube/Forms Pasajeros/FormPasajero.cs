@@ -16,18 +16,18 @@ namespace Sube
 {
     public partial class FormPasajero : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         private Form currentChildForm = null;
 
         public FormPasajero()
         {
             InitializeComponent();
-            SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
+            //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
             string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
-            //dictionaryPassengers = Serializador.ReadJsonPassenger(path);
-            dictionaryPassengers = serializadorPasajero.Deserialize(path);
+            listPassengers = Serializador.ReadJsonPassenger(path);
+            //listPassengers = serializadorPasajero.Deserialize(path);
         }
         private void FormPasajero_Load(object sender, EventArgs e)
         {
@@ -87,7 +87,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormIngreso))
             {
-                FormIngreso formIngreso = new FormIngreso(this, dictionaryPassengers);
+                FormIngreso formIngreso = new FormIngreso(this, listPassengers);
                 OpenChildForm(formIngreso);
             }
         }
@@ -100,7 +100,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormRegistro))
             {
-                FormRegistro formRegistro = new FormRegistro(dictionaryPassengers);
+                FormRegistro formRegistro = new FormRegistro(listPassengers);
                 OpenChildForm(formRegistro);
             }
         }
@@ -109,7 +109,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormCompraOnline))
             {
-                FormCompraOnline compraSube = new FormCompraOnline(this, dictionaryPassengers);
+                FormCompraOnline compraSube = new FormCompraOnline(this, listPassengers);
                 OpenChildForm(compraSube);
             }
         }

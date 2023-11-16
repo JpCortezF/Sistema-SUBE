@@ -17,16 +17,16 @@ namespace Sube
 {
     public partial class InicioPasajero : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         Pasajero passenger;
         private Form currentChildForm = null;
 
 
-        public InicioPasajero(Pasajero passenger, Dictionary<string, Pasajero> passengers)
-        {
+        public InicioPasajero(Pasajero passenger, List<Pasajero> listPassengers)
+        { 
             InitializeComponent();
             this.passenger = passenger;
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
         }
 
         private void InicioPasajero_Load(object sender, EventArgs e)
@@ -69,9 +69,9 @@ namespace Sube
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
 
-                //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-                SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
-                serializadorPasajero.Serialize(path, dictionaryPassengers);
+                Serializador.WriteJsonPassenger(path, listPassengers);
+                //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
+                //serializadorPasajero.Serialize(path, listPassengers);
 
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
@@ -90,7 +90,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormSubePasajero))
             {
-                FormSubePasajero miSube = new FormSubePasajero(passenger, dictionaryPassengers);
+                FormSubePasajero miSube = new FormSubePasajero(passenger, listPassengers);
                 OpenChildForm(miSube);
             }
         }
@@ -107,7 +107,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormTarifaSocial))
             {
-                FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, dictionaryPassengers);
+                FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, listPassengers);
                 OpenChildForm(tarifaSocial);
             }
         }
@@ -152,7 +152,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormDarDeBaja))
             {
-                FormDarDeBaja DeBaja = new FormDarDeBaja(passenger, dictionaryPassengers);
+                FormDarDeBaja DeBaja = new FormDarDeBaja(passenger, listPassengers);
                 OpenChildForm(DeBaja);
             }
         }
@@ -161,7 +161,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormPasajeroTramites))
             {
-                FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger, dictionaryPassengers);
+                FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger, listPassengers);
                 OpenChildForm(Tramites);
             }
         }

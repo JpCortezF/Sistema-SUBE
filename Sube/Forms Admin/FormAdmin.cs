@@ -16,16 +16,17 @@ namespace Sube
 {
     public partial class FormAdmin : Form
     {
-        Dictionary<string, Administrador> dictionaryAdmins;
+        List<Administrador> listAdmins;
 
         public FormAdmin(ContainerLoginAdmin parent)
         {
             InitializeComponent();
-            SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
+            //SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
             string ruta = @"..\..\..\Data";
             string nombre = "MisAdmins.Json";
             string path = Path.Combine(ruta, nombre);
-            dictionaryAdmins = serializadorAdmin.Deserialize(path);
+            listAdmins = Serializador.ReadJsonAdmin(path);
+            //dictionaryAdmins = serializadorAdmin.Deserialize(path);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -53,7 +54,7 @@ namespace Sube
 
         private void lblRegistroAdmin_Click(object sender, EventArgs e)
         {
-            FormRegistroAdmin frm = new FormRegistroAdmin(dictionaryAdmins);
+            FormRegistroAdmin frm = new FormRegistroAdmin(listAdmins);
             frm.MdiParent = this.MdiParent;
             frm.Show();
             Close();
@@ -64,21 +65,19 @@ namespace Sube
             bool exist = false;
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtEmail.Text))
             {
-                foreach (KeyValuePair<string, Administrador> kvp in dictionaryAdmins)
+                foreach (Administrador admin in listAdmins)
                 {
-                    if (kvp.Value is Administrador admin)
+                    if (txtDni.Text == admin.Dni.ToString() && txtPassword.Text == admin.Password && txtEmail.Text == admin.Email)
                     {
-                        if (txtDni.Text == kvp.Key && txtPassword.Text == admin.Password && txtEmail.Text == admin.Email)
-                        {
-                            exist = true;
-                            MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ContainerAdmin inicio = new ContainerAdmin();
-                            inicio.Show();
-                            MdiParent.Close();
-                            this.Close();
-                            break;
-                        }
+                        exist = true;
+                        MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ContainerAdmin inicio = new ContainerAdmin();
+                        inicio.Show();
+                        MdiParent.Close();
+                        this.Close();
+                        break;
                     }
+                    
                 }
             }
             if (!exist)

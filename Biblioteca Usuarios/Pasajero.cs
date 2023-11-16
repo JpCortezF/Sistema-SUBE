@@ -11,102 +11,74 @@ namespace Biblioteca_Usuarios
 {
     public class Pasajero : Usuario<string>
     {
-        string gender;
+        int gender;
         TarjetaSube mySube;
         public Pasajero()
         {
             
         }
-        public Pasajero(string gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(email, password, name, lastname)
+        public Pasajero(int dni, int gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(dni, email, password, name, lastname)
         {
             this.gender = gender;
             this.mySube = sube;
         }
 
-        public string Gender { get => gender; set => gender = value; }
+        public int Gender { get => gender; set => gender = value; }
         public TarjetaSube MySube { get => mySube; set => mySube = value; }
 
         /// <summary>
-        /// Determina la existencia de un pasajero en un diccionario dado.
+        /// Determina la existencia de un pasajero en una lista dada.
         /// </summary>
         /// <param name="passenger">El pasajero que se desea verificar.</param>
-        /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
-        /// <param name="document">La clave del pasajero que se utilizará para la verificación.</param>
-        /// <returns>True si el pasajero existe en el diccionario, ya sea por la clave o por comparación de información. False si no existe.</returns>
-        public bool PassengerExist(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers, string document)
+        /// <param name="listPassengers">La lista de pasajeros en el que se realizará la búsqueda.</param>
+        /// <returns>True si el pasajero existe en la lista, ya sea por la clave o por comparación de información. False si no existe.</returns>
+        public bool PassengerExist(Pasajero passenger, List<Pasajero> listPassengers)
         {
-            bool exists = dictionaryPassengers.ContainsKey(document);
-
+            bool exists = listPassengers.Contains(passenger);
             if (!exists)
             {
-                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+                foreach (Pasajero passengerToCompare in listPassengers)
                 {
-                    if (CompareUser(passenger, kvp.Value))
+                    if (CompareUser(passenger, passengerToCompare))
                     {
                         exists = true;
                         break;
                     }
                 }
             }
-
             return exists;
         }
 
         /// <summary>
         /// Busca un pasajero por su dirección de correo electrónico en un diccionario de pasajeros y devuelve el pasajero encontrado.
         /// </summary>
-        /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
+        /// <param name="listPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
         /// <param name="email">La dirección de correo electrónico del pasajero que se desea encontrar.</param>
         /// <returns>El objeto Pasajero que coincide con la dirección de correo electrónico especificada. Si no se encuentra, devuelve null.</returns>
 
-        public Pasajero FindPassengerByEmail(Dictionary<string, Pasajero> dictionaryPassengers, string email)
+        public Pasajero FindPassengerByEmail(List<Pasajero> listPassengers, string email)
         {
             Pasajero pasajero = null;
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-            {
-                if (kvp.Value is Pasajero passenger)
+            foreach (Pasajero passengerToCompare in listPassengers)
+            {  
+                if(passengerToCompare.Email == email)
                 {
-                    if(passenger.Email == email)
-                    {
-                        pasajero = passenger;
-                        break;
-                    }
-                }
+                    pasajero = passengerToCompare;
+                    break;
+                }            
             }
             return pasajero;
         }
-        /// <summary>
-        /// Busca una clave en un diccionario que corresponde a un objeto Pasajero específico y la devuelve.
-        /// </summary>
-        /// <param name="dictionaryPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
-        /// <param name="pasajero">El objeto Pasajero que se desea encontrar en el diccionario.</param>
-        /// <returns>La clave del diccionario que se asocia con el objeto Pasajero especificado. Si el pasajero no se encuentra, devuelve null.</returns>
-        public string ReturnrKey(Dictionary<string, Pasajero> dictionaryPassengers, Pasajero pasajero)
-        {
-            string keyPasajero = null;
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
-            {
-                if (kvp.Value == pasajero)
-                {
-                    keyPasajero = kvp.Key;
-                    break;
-                }
-            }
-            return keyPasajero;
-        }
-        public bool CardNumberExist(Dictionary<string, Pasajero> dictionaryPassengers, string newCardNumber)
+        public bool CardNumberExist(List<Pasajero> listPassengers, string newCardNumber)
         {
             bool exist = false;
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            foreach (Pasajero passengerToCompare in listPassengers)
             {
-                if (kvp.Value is Pasajero passenger)
+                if (passengerToCompare.MySube.CardNumber == newCardNumber)
                 {
-                    if (passenger.MySube.CardNumber == newCardNumber)
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
+                    exist = true;
+                    break;
+                }             
             }
             return exist;
         }

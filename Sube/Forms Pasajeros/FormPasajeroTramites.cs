@@ -14,21 +14,21 @@ namespace Sube
 {
     public partial class FormPasajeroTramites : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         List<Tramites> misTramites;
         Pasajero passenger;
-        public FormPasajeroTramites(Pasajero passengerLoged, Dictionary<string, Pasajero> passengers)
+        public FormPasajeroTramites(Pasajero passengerLoged, List<Pasajero> listPassengers)
         {
             InitializeComponent();
             this.passenger = passengerLoged;
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
             string rutaT = @"..\..\..\Data";
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
-            SerializadorXML<List<Tramites>> serializeTramite = new SerializadorXML<List<Tramites>>();
+            //SerializadorXML<List<Tramites>> serializeTramite = new SerializadorXML<List<Tramites>>();
 
-            //this.misTramites = Serializador.ReadXMLTramites(pathT);
-            this.misTramites = serializeTramite.Deserialize(pathT);
+            this.misTramites = Serializador.ReadXMLTramites(pathT);
+            //this.misTramites = serializeTramite.Deserialize(pathT);
             if (misTramites != null)
             {
                 dataGridTramites.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -38,8 +38,7 @@ namespace Sube
                 {
                     column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 }
-
-                string dniUserLoged = passenger.ReturnrKey(dictionaryPassengers, passenger);
+           
                 DataTable dataTable = new DataTable();
                 dataTable.Columns.Add("Estado", typeof(string));
                 dataTable.Columns.Add("Numero", typeof(string));
@@ -47,7 +46,7 @@ namespace Sube
                 dataTable.Columns.Add("Fecha", typeof(DateTime));
                 foreach (Tramites miTramite in misTramites)
                 {
-                    if (miTramite.DniClaimer == dniUserLoged)
+                    if (miTramite.DniClaimer == passengerLoged.Dni)
                     {
                         dataTable.Rows.Add(miTramite.ClaimComplete, miTramite.ClaimId, miTramite.ClaimMessage, miTramite.ClaimTime);
                     }

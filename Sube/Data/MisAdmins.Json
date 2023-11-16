@@ -1,26 +1,9 @@
-{
-  "42645815": {
+[
+  {
     "Email": "jpcortezzf@gmail.com",
-    "Password": "9272",
+    "Password": "0912",
     "Name": "Juan Pablo",
-    "Lastname": "Cortez Fernandez"
-  },
-  "42000000": {
-    "Email": "jpcortezzf@gmail.com",
-    "Password": "9012",
-    "Name": "Enzo",
-    "Lastname": "Ackerman"
-  },
-  "41709030": {
-    "Email": "eze@hotmail.com",
-    "Password": "1234",
-    "Name": "Ezequiel",
-    "Lastname": "Melo"
-  },
-  "42019191": {
-    "Email": "eze@gmail.com",
-    "Password": "hola",
-    "Name": "Ezequiel",
-    "Lastname": "Melo"
+    "Lastname": "Cortez",
+    "Dni": 42645815
   }
-}
+]

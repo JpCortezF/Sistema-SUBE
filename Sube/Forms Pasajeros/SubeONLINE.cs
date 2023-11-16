@@ -14,14 +14,14 @@ namespace Sube.Forms_Pasajeros
 {
     public partial class SubeONLINE : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         Pasajero passenger;
-        public SubeONLINE(Dictionary<string, Pasajero> passengers, Pasajero passenger, string newCardNumber)
+        public SubeONLINE(List<Pasajero> listPassengers, Pasajero passenger, string newCardNumber)
         {
             InitializeComponent();
             this.passenger = passenger;
             this.passenger.MySube.CardNumber = newCardNumber;
-            dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
         }
 
         private void SubeONLINE_Load(object sender, EventArgs e)
@@ -59,8 +59,8 @@ namespace Sube.Forms_Pasajeros
                 string path = Path.Combine(ruta, nombre);
 
                 //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-                SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
-                serializadorPasajero.Serialize(path, dictionaryPassengers);
+                SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
+                serializadorPasajero.Serialize(path, listPassengers);
             }
         }
     }

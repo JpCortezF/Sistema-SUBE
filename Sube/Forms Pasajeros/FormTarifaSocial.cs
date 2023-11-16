@@ -14,13 +14,13 @@ namespace Sube
 {
     public partial class FormTarifaSocial : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         Pasajero passenger;
-        public FormTarifaSocial(Pasajero passenger, Dictionary<string, Pasajero> dictionaryPassengers)
+        public FormTarifaSocial(Pasajero passenger, List<Pasajero> listPassengers)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.dictionaryPassengers = dictionaryPassengers;
+            this.listPassengers = listPassengers;
         }
 
         private void FormTarifaSocial_Load(object sender, EventArgs e)
@@ -55,12 +55,12 @@ namespace Sube
             if (radioButtonSeleccionado != null)
             {
                 List<Tramites> listaTramites = new List<Tramites>();
-                SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
+                //SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
                 string ruta = @"..\..\..\Data";
                 string nombre = @".\MisTramites.xml";
                 string path = ruta + nombre;
-                listaTramites = serializeTramites.Deserialize(path);
-                //listaTramites = Serializador.ReadXMLTramites(path);
+                //listaTramites = serializeTramites.Deserialize(path);
+                listaTramites = Serializador.ReadXMLTramites(path);
 
                 MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string radioButtonTarifa = radioButtonSeleccionado.Text;
@@ -71,10 +71,11 @@ namespace Sube
                     Random rnd = new Random();
                     int _rnd = rnd.Next(1, 99999);
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo: {tarifaSocial}  \n" + txtClaim.Text, DateTime.Now, "En revision");
+                    Tramites miTramite = new Tramites(_rnd, passenger.Dni, $"Reclamo: {tarifaSocial}  \n" + txtClaim.Text, DateTime.Now, EClaimStatus.EnRevision);
                     listaTramites.Add(miTramite);
-                    serializeTramites.Serialize(path, listaTramites);
-                    //Serializador.WriteXMLTramites(path, listaTramites);
+                    //serializeTramites.Serialize(path, listaTramites);
+                    Serializador.WriteXMLTramites(path, listaTramites);
+
                 }
             }
             else

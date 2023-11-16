@@ -17,9 +17,9 @@ namespace Sube
 {
     public partial class ContainerAdmin : Form
     {
-        SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
-        SerializadorXML<List<Tramites>> serializeTramite = new SerializadorXML<List<Tramites>>();
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        //SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
+        //SerializadorXML<List<Tramites>> serializeTramite = new SerializadorXML<List<Tramites>>();
+        List<Pasajero> listPassengers;
         List<Tramites> tramites;
 
         private Form currentChildForm = null;
@@ -31,8 +31,8 @@ namespace Sube
             string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
-            //dictionaryPassengers = Serializador.ReadJsonPassenger(path);
-            dictionaryPassengers = serializadorPasajero.Deserialize(path);
+            listPassengers = Serializador.ReadJsonPassenger(path);
+            //listPassengers = serializadorPasajero.Deserialize(path);
             string rutaT = @"..\..\..\Data";
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
@@ -58,13 +58,13 @@ namespace Sube
                 string ruta = @"..\..\..\Data";
                 string nombre = "MisPasajeros.Json";
                 string path = Path.Combine(ruta, nombre);
-                //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-                serializadorPasajero.Serialize(path, dictionaryPassengers);
+                Serializador.WriteJsonPassenger(path, listPassengers);
+                //serializadorPasajero.Serialize(path, dictionaryPassengers);
                 string rutaT = @"..\..\..\Data";
                 string nombreT = "MisTramites.xml";
                 string pathT = Path.Combine(rutaT, nombreT);
-                serializeTramite.Serialize(pathT, tramites);
-                //Serializador.WriteXMLTramites(pathT, tramites);
+                //serializeTramite.Serialize(pathT, tramites);
+                Serializador.WriteXMLTramites(pathT, tramites);
                 Close();
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
@@ -100,7 +100,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormBuscarUser))
             {
-                FormBuscarUser buscador = new FormBuscarUser(this, dictionaryPassengers);
+                FormBuscarUser buscador = new FormBuscarUser(this, listPassengers);
                 OpenChildForm(buscador);
             }
         }
@@ -119,7 +119,7 @@ namespace Sube
             
             if (currentChildForm is null || !(currentChildForm is FormTramites))
             {
-                FormTramites notificaciones = new FormTramites(this, tramites, dictionaryPassengers);
+                FormTramites notificaciones = new FormTramites(this, tramites, listPassengers);
                 OpenChildForm(notificaciones);
             }
             

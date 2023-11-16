@@ -3,39 +3,28 @@ namespace Biblioteca_Usuarios
 {
     public class Administrador : Usuario<string>
     {
-        public Administrador(string email, string password, string name, string lastname) : base(email, password, name, lastname)
+
+        public Administrador(int dni, string email, string password, string name, string lastname) : base(dni, email, password, name, lastname)
         {
         }
         /// <summary>
         /// Verifica si un administrador ya existe en un diccionario de administradores, utilizando su documento como referencia.
         /// </summary>
         /// <param name="admin">El administrador a verificar.</param>
-        /// <param name="dictionaryAdmins">El diccionario que contiene a los administradores existentes.</param>
-        /// <param name="document">El documento de identificación del administrador a comparar.</param>
+        /// <param name="listAdmins">El diccionario que contiene a los administradores existentes.</param>
         /// <returns>True si un administrador con el mismo documento ya existe en el diccionario, de lo contrario, False.</returns>
-        public bool AdminExist(Administrador admin, Dictionary<string, Administrador> dictionaryAdmins, string document)
+        public bool AdminExist(Administrador admin, List<Administrador> listAdmins)
         {
-            bool exists = false;
+            bool exists = listAdmins.Contains(admin);
 
-            foreach (KeyValuePair<string, Administrador> kvp in dictionaryAdmins)
+            if(!exists)
             {
-                if (kvp.Key.ToString() != document)
+                foreach (Administrador adminToCompare in listAdmins)
                 {
-                    foreach(Administrador adminToCompare in dictionaryAdmins.Values)
-                    {
-                        exists = CompareUser(admin, adminToCompare);
-                        if (exists)
-                        {
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    exists = true;
+                    exists = CompareUser(admin, adminToCompare);
                     break;
                 }
-            }
+            }                  
             return exists;
         }
         /// <summary>

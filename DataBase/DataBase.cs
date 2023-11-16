@@ -62,13 +62,17 @@ namespace Biblioteca_DataBase
                         string querySube = $"INSERT INTO tarjetas (id, balance, socialRate) VALUES('{mySube.CardNumber}', '{0}', '{1}')";
                         Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(querySube)}");
 
-                        string query = $"INSERT INTO pasajeros (dni, name, lastname, email, password, idGender, idSube) VALUES('{22222227}', '{passenger.Name}', '{passenger.LastName}', '{passenger.Email}', '{passenger.Password}', '{1}', '{mySube.CardNumber}')";
+                        string query = $"INSERT INTO pasajeros (dni, name, lastname, email, password, idGender, idSube) VALUES('{passenger.Dni}', '{passenger.Name}', '{passenger.LastName}', '{passenger.Email}', '{passenger.Password}', '{passenger.Gender}', '{mySube.CardNumber}')";
                         Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(query)}");
                         break;
                     case 2:
                         DateTime dt = DateTime.Now;
-                        string queryViaje = $"INSERT INTO viajes (idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES('{6061103047609000}', '{1}', '{1025}', '{4}', '{59}', '{4}', '{dt}')";
+                        string queryViaje = $"INSERT INTO viajes (idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES('{mySube.CardNumber}', '{1}', '{1025}', '{4}', '{59}', '{4}', '{dt}')";
                         Debug.WriteLine($"Filas afectadas: {ExecuteNonQuery(queryViaje)}");
+                        break;
+                    case 3:
+                        DateTime dtnow = DateTime.Now;
+                        string queryTramite = $"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES('')";
                         break;
                 }
             }

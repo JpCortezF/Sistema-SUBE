@@ -16,15 +16,15 @@ namespace Sube
 {
     public partial class FormTramites : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         List<Tramites> listTramites = new List<Tramites>();
         List<Tramites> listTramitesAux = new List<Tramites>();
         private ContainerAdmin parentForm;
-        public FormTramites(ContainerAdmin parent, List<Tramites> tramites, Dictionary<string, Pasajero> passengers)
+        public FormTramites(ContainerAdmin parent, List<Tramites> tramites, List<Pasajero> listPassengers)
         {
             InitializeComponent();
             parentForm = parent;
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
             this.listTramites = tramites;
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -36,7 +36,7 @@ namespace Sube
 
             foreach (Tramites tramite in tramites)
             {
-                if (tramite.ClaimComplete == "En proceso" || tramite.ClaimComplete == "En revision")
+                if (tramite.ClaimComplete == EClaimStatus.EnRevision || tramite.ClaimComplete == EClaimStatus.EnProceso)
                 {
                     listTramitesAux.Add(tramite);   
                     
@@ -54,11 +54,11 @@ namespace Sube
                 
                 string selectedDni = null;
                 int selectedIndex = -1;
-                long selectedClaimId = 0;
+                int selectedClaimId = 0;
                 listTramitesAux.Clear();
                 foreach (Tramites tramite in listTramites)
                 {
-                    if (tramite.ClaimComplete == "En proceso" || tramite.ClaimComplete == "En revision")
+                    if (tramite.ClaimComplete == EClaimStatus.EnRevision || tramite.ClaimComplete == EClaimStatus.EnProceso)
                     {
                         listTramitesAux.Add(tramite);
 
@@ -70,15 +70,14 @@ namespace Sube
                     if (selectedRow.Cells["DniClaimer"].Value != null)
                     {
                         selectedDni = selectedRow.Cells["DniClaimer"].Value.ToString();
-                        selectedClaimId = (long)(selectedRow.Cells["ClaimId"].Value);
+                        selectedClaimId = (int)(selectedRow.Cells["ClaimId"].Value);
                         selectedIndex = listTramitesAux.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
-                        listTramitesAux[selectedIndex].ClaimComplete = "En proceso";
+                        listTramitesAux[selectedIndex].ClaimComplete = EClaimStatus.EnRevision;
                     }
-                    foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+                    foreach (Pasajero passenger in listPassengers)
                     {
-                        if (kvp.Value is Pasajero passenger && selectedDni == kvp.Key)
+                        if (selectedDni == passenger.Dni.ToString())
                         {
-
                             FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramitesAux[selectedIndex], listTramites);
                             editarUsuario.MdiParent = parentForm;
                             editarUsuario.Show();

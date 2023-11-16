@@ -15,13 +15,13 @@ namespace Sube
 {
     public partial class FormBuscarUser : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         private ContainerAdmin parentForm;
 
-        public FormBuscarUser(ContainerAdmin parent, Dictionary<string, Pasajero> passengers)
+        public FormBuscarUser(ContainerAdmin parent, List<Pasajero> listPassengers)
         {
             InitializeComponent();
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
             cmbBuscar.SelectedIndex = 0;
             parentForm = parent;
         }
@@ -36,15 +36,12 @@ namespace Sube
             dt.Columns.Add("N° de Tarjeta", typeof(string));
             dt.Columns.Add("Saldo actual", typeof(string));
 
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            foreach (Pasajero pasajero in listPassengers)
             {
-                if (kvp.Value is Pasajero pasajero)
+                if (pasajero.Dni.ToString().StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.MySube.CardNumber.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (kvp.Key.Contains(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.MySube.CardNumber.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
-                    {
-                        dt.Rows.Add(kvp.Key, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
-                    }
-                }
+                    dt.Rows.Add(pasajero.Dni, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
+                }               
             }
 
             dataGridView.DataSource = dt;
@@ -81,17 +78,14 @@ namespace Sube
             {
                 DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
 
-                foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+                foreach (Pasajero passenger in listPassengers)
                 {
-                    if (kvp.Value is Pasajero passenger)
+                    if (selectedRow.Cells["DNI"].Value.ToString() == passenger.Dni.ToString())
                     {
-                        if (selectedRow.Cells["DNI"].Value.ToString() == kvp.Key)
-                        {
-                            FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
-                            editarUsuario.MdiParent = parentForm;
-                            editarUsuario.Show();
-                        }
-                    }
+                        FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
+                        editarUsuario.MdiParent = parentForm;
+                        editarUsuario.Show();
+                    }               
                 }
             }
         }
@@ -105,12 +99,9 @@ namespace Sube
             dt.Columns.Add("N° de Tarjeta", typeof(string));
             dt.Columns.Add("Saldo actual", typeof(string));
 
-            foreach (KeyValuePair<string, Pasajero> kvp in dictionaryPassengers)
+            foreach (Pasajero pasajero in listPassengers)
             {
-                if (kvp.Value is Pasajero pasajero)
-                {
-                    dt.Rows.Add(kvp.Key, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
-                }
+                dt.Rows.Add(pasajero.Dni, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
             }
             dataGridView.DataSource = dt;
             dataGridView.Parent = panel1;

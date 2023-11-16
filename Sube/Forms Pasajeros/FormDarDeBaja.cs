@@ -15,13 +15,13 @@ namespace Sube
     public partial class FormDarDeBaja : Form
     {
         Pasajero passenger;
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
 
-        public FormDarDeBaja(Pasajero passenger, Dictionary<string, Pasajero> passengers)
+        public FormDarDeBaja(Pasajero passenger, List<Pasajero> listPassengers)
         {
             InitializeComponent();
             this.passenger = passenger;
-            dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
         }
 
         private void FormDarDeBaja_Load(object sender, EventArgs e)
@@ -39,7 +39,6 @@ namespace Sube
 
         private void btnTramite_Click(object sender, EventArgs e)
         {
-
             RadioButton radioButtonSeleccionado = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
             if (radioButtonSeleccionado != null)
@@ -51,10 +50,10 @@ namespace Sube
                     string ruta = @"..\..\..\Data";
                     string nombre = "MisTramites.xml";
                     string path = Path.Combine(ruta, nombre);
-                    SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
+                    //SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
                     List<Tramites> listaTramites = new List<Tramites>();
-                    listaTramites = serializeTramites.Deserialize(path);
-                    //listaTramites = Serializador.ReadXMLTramites(path);
+                    //listaTramites = serializeTramites.Deserialize(path);
+                    listaTramites = Serializador.ReadXMLTramites(path);
 
                     string radioButtonTramite = radioButtonSeleccionado.Text;
 
@@ -62,11 +61,11 @@ namespace Sube
                     int _rnd = rnd.Next(1, 99999);
 
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.ReturnrKey(dictionaryPassengers, passenger), $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, "En revision");
+                    Tramites miTramite = new Tramites(_rnd, passenger.Dni, $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, EClaimStatus.EnRevision);
                     listaTramites.Add(miTramite);
 
-                    serializeTramites.Serialize(path, listaTramites);
-                    //Serializador.WriteXMLTramites(path, listaTramites);
+                    //serializeTramites.Serialize(path, listaTramites);
+                    Serializador.WriteXMLTramites(path, listaTramites);
                     MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

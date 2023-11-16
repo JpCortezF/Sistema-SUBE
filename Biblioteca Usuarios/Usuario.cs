@@ -9,6 +9,7 @@ namespace Biblioteca_Usuarios
 {
     public abstract class Usuario<T> : IComparator<Usuario<T>>
     {
+        protected int dni;
         protected string email;
         protected string password;
         protected string name;
@@ -19,8 +20,9 @@ namespace Biblioteca_Usuarios
             this.password = string.Empty;
             this.email = string.Empty;
         }
-        protected Usuario(string email, string password, string name, string lastname)
+        protected Usuario(int dni, string email, string password, string name, string lastname)
         {
+            this.dni = dni;
             this.email = email;
             this.password = password;
             this.name = name;
@@ -34,6 +36,8 @@ namespace Biblioteca_Usuarios
         public string Name { get => name; set => name = value; }
         [JsonProperty("Lastname")]
         public string LastName { get => lastname; set => lastname = value; }
+        [JsonProperty("Dni")]
+        public int Dni { get => dni; set => dni = value; }
 
         public virtual bool CompareUser(Usuario<T> user, Usuario<T> user2)
         {

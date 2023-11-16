@@ -16,14 +16,14 @@ namespace Sube
 {
     public partial class FormSubePasajero : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         Pasajero passenger;
 
-        public FormSubePasajero(Pasajero passenger, Dictionary<string, Pasajero> passengers)
+        public FormSubePasajero(Pasajero passenger, List<Pasajero> listPassengers)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace Sube
         {
             Close();
 
-            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, dictionaryPassengers);
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, listPassengers);
             tarifaSocial.ShowDialog();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.SS.Formula.Functions;
 using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,11 @@ namespace Sube
 {
     public partial class FormRegistroAdmin : Form
     {
-        Dictionary<string, Administrador> dictionaryAdmins;
-        public FormRegistroAdmin(Dictionary<string, Administrador> admins)
+        List<Administrador> listAdmins;
+        public FormRegistroAdmin(List<Administrador> admins)
         {
             InitializeComponent();
-            this.dictionaryAdmins = admins;
+            this.listAdmins = admins;
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -38,14 +39,15 @@ namespace Sube
                 if (ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
                 {
                     string document = txtDNI.Text;
-                    Administrador admin = new Administrador(email, password, name, lastname);
-                    if (!admin.AdminExist(admin, dictionaryAdmins, document))
+                    int.TryParse(document, out int dni);
+                    Administrador admin = new Administrador(dni, email, password, name, lastname);
+                    if (!admin.AdminExist(admin, listAdmins))
                     {
-                        dictionaryAdmins[document] = admin;
+                        listAdmins.Add(admin);
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
-                        serializadorAdmin.Serialize(path, dictionaryAdmins);
-                        //Serializador.WriteJsonAdmin(path, dictionaryAdmins);
+                        //SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
+                        //serializadorAdmin.Serialize(path, dictionaryAdmins);
+                        Serializador.WriteJsonAdmin(path, listAdmins);
                     }
                     else
                     {

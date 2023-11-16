@@ -66,7 +66,7 @@ namespace Sube.Forms_Admin
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tramiteAuxACambiar.ClaimComplete = "Aprobado";
+                tramiteAuxACambiar.ClaimComplete = EClaimStatus.Completado;
                 if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
                 {
                     selectedPassenger.MySube.TarifaSocial = tarifaSocial;
@@ -95,7 +95,7 @@ namespace Sube.Forms_Admin
             FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tramiteAuxACambiar.ClaimComplete = "Rechazado";
+                tramiteAuxACambiar.ClaimComplete = EClaimStatus.Rechazado;
                 foreach (Tramites list in tramitesReales)
                 {
                     if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)

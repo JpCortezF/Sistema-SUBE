@@ -14,13 +14,13 @@ namespace Sube
 {
     public partial class VentanaPassword : Form
     {
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        List<Pasajero> listPassengers;
         Pasajero passenger;
-        public VentanaPassword(Dictionary<string, Pasajero> passengers)
+        public VentanaPassword(List<Pasajero> listPassengers)
         {
             InitializeComponent();
             passenger = new Pasajero();
-            dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
         }
 
         private void VentanaPassword_Load(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace Sube
         public string DevolverPass()
         {
             string clave;
-            passenger = passenger.FindPassengerByEmail(dictionaryPassengers, txtCorreo.Text);
+            passenger = passenger.FindPassengerByEmail(listPassengers, txtCorreo.Text);
             if(passenger is not null)
             {
                 clave = passenger.Password;

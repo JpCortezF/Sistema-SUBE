@@ -22,14 +22,15 @@ namespace Sube
     public partial class FormRegistro : Form
     {
         private string gender = "";
-        Dictionary<string, Pasajero> dictionaryPassengers;
+        private int idGender;
+        List<Pasajero> listPassengers;
         string userCardNumber = "";
 
 
-        public FormRegistro(Dictionary<string, Pasajero> passengers)
+        public FormRegistro(List<Pasajero> listPassengers)
         {
             InitializeComponent();
-            this.dictionaryPassengers = passengers;
+            this.listPassengers = listPassengers;
         }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
@@ -68,18 +69,19 @@ namespace Sube
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
 
+                    int.TryParse(document, out int dni);
                     TarjetaSube newSube = new TarjetaSube(cardNumber);
-                    Pasajero passenger = new Pasajero(gender, email, password, name, lastname, newSube);
-                    if (!passenger.PassengerExist(passenger, dictionaryPassengers, document))
+                    Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, newSube);
+                    if (!passenger.PassengerExist(passenger, listPassengers))
                     {
-                        dictionaryPassengers[document] = passenger;
+                        listPassengers.Add(passenger);
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-                        SerializadorJSON<Dictionary<string, Pasajero>> serializadorPasajero = new SerializadorJSON<Dictionary<string, Pasajero>>();
-                        serializadorPasajero.Serialize(path, dictionaryPassengers);
+                        Serializador.WriteJsonPassenger(path, listPassengers);
+                        //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
+                        //serializadorPasajero.Serialize(path, listPassengers);
 
                         DataBase.Insert(passenger, newSube, 1);
-                        InicioPasajero inicio = new InicioPasajero(passenger, dictionaryPassengers);
+                        InicioPasajero inicio = new InicioPasajero(passenger, listPassengers);
                         inicio.Show();
                         MdiParent.Close();
                         Close();
@@ -108,6 +110,18 @@ namespace Sube
             if (sender is Button clickedButton)
             {
                 this.gender = clickedButton.Text;
+                switch (gender)
+                {
+                    case "Masculino":
+                        idGender = 1;
+                        break;
+                    case "Femenino":
+                        idGender = 2;
+                        break;
+                    case "x":
+                        idGender = 3;
+                        break;
+                }
                 clickedButton.BackColor = Color.LightGray;
             }
         }
@@ -243,7 +257,7 @@ namespace Sube
             txtLastname.Text = "Heidenreich";
             _rnd = rnd.Next(1000, 9999);
             txtDni.Text = $"3320{_rnd}";
-            gender = "Masculino";
+            idGender = 1;
             txtCorreo.Text = $"AleHardcode@gmail.com";
             txtClave.Text = $"{_rnd}";
             txtRepetirClave.Text = $"{_rnd}";

@@ -14,12 +14,12 @@ namespace Biblioteca_Usuarios
         {
             
         }
-        public bool Serialize(string path, T dictionary)
+        public bool Serialize(string path, T list)
         {
             bool success = false;
             try
             {
-                string json = JsonConvert.SerializeObject(dictionary, Newtonsoft.Json.Formatting.Indented);
+                string json = JsonConvert.SerializeObject(list, Newtonsoft.Json.Formatting.Indented);
                 File.WriteAllText(path, json);
                 success = true;
             }
@@ -32,14 +32,14 @@ namespace Biblioteca_Usuarios
 
         public T Deserialize(string path)
         {
-            T dictionary = default(T);
+            T list = default(T);
 
             try
             {
                 if (File.Exists(path))
                 {
                     string json = File.ReadAllText(path);
-                    dictionary = JsonConvert.DeserializeObject<T>(json);
+                    list = JsonConvert.DeserializeObject<T>(json);
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace Biblioteca_Usuarios
                 Console.WriteLine("Error al trabajar con el archivo:");
                 Console.WriteLine(ex.Message);
             }
-            return dictionary;
+            return list;
         }
     }
 }

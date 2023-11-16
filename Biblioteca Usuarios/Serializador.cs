@@ -15,29 +15,29 @@ namespace Biblioteca_Usuarios
 {
     public abstract class Serializador
     {
-        public static void WriteJsonPassenger(string path, Dictionary<string, Pasajero> dictionaryPassengers)
+        public static void WriteJsonPassenger(string path, List<Pasajero> listaPassengers)
         {
             try
-            {   
-                string json = JsonConvert.SerializeObject(dictionaryPassengers, Newtonsoft.Json.Formatting.Indented);
+            {
+                string json = JsonConvert.SerializeObject(listaPassengers, Newtonsoft.Json.Formatting.Indented);
                 File.WriteAllText(path, json);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
         }
 
-        public static Dictionary<string, Pasajero> ReadJsonPassenger(string path)
+        public static List<Pasajero> ReadJsonPassenger(string path)
         {
-            Dictionary<string, Pasajero> dictionary = new Dictionary<string, Pasajero>();
+            List<Pasajero> lista = new List<Pasajero>();
 
             try
             {
                 if(File.Exists(path))
                 {
                     string json = File.ReadAllText(path);
-                    dictionary = JsonConvert.DeserializeObject<Dictionary<string, Pasajero>>(json);
+                    lista = JsonConvert.DeserializeObject<List<Pasajero>>(json);
                 }
                 else
                 {
@@ -50,22 +50,15 @@ namespace Biblioteca_Usuarios
                 Console.WriteLine("Error al trabajar con el archivo:");
                 Console.WriteLine(ex.Message);
             }
-            return dictionary;
+            return lista;
         }
 
-        public static void WriteJsonAdmin(string path, Dictionary<string, Administrador> dictionaryAdmins)
+        public static void WriteJsonAdmin(string path, List<Administrador> listAdmins)
         {
             try
-            {
-                if (File.Exists(path))
-                {
-                    string json = JsonConvert.SerializeObject(dictionaryAdmins, Newtonsoft.Json.Formatting.Indented);
-                    File.WriteAllText(path, json);
-                }
-                else
-                {
-                    Console.WriteLine("El archivo JSON no existe.");
-                }
+            {                           
+                string json = JsonConvert.SerializeObject(listAdmins, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(path, json);
             }
             catch (Exception ex)
             {
@@ -73,20 +66,20 @@ namespace Biblioteca_Usuarios
             }
         }
 
-        public static Dictionary<string, Administrador> ReadJsonAdmin(string path)
+        public static List<Administrador> ReadJsonAdmin(string path)
         {
-            Dictionary<string, Administrador> dictionary = new Dictionary<string, Administrador>();
+            List<Administrador> listAdmin = new List<Administrador>();
 
             try
             {
                 string json = File.ReadAllText(path);
-                dictionary = JsonConvert.DeserializeObject<Dictionary<string, Administrador>>(json);
+                listAdmin = JsonConvert.DeserializeObject<List<Administrador>>(json);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            return dictionary;
+            return listAdmin;
         }
 
         public static void WriteXMLTramites(string path, List<Tramites> Lista)
@@ -100,12 +93,34 @@ namespace Biblioteca_Usuarios
 
         public static List<Tramites> ReadXMLTramites(string path)
         {
-            List<Tramites> lista = null;
-            using (StreamReader sr = new StreamReader(path))
+            List<Tramites> lista = new List<Tramites>();
+            try
             {
-                XmlSerializer des = new XmlSerializer(typeof(List<Tramites>));
+                if (File.Exists(path))
+                {
+                    using (StreamReader sr = new StreamReader(path))
+                    {
+                        XmlSerializer des = new XmlSerializer(typeof(List<Tramites>));
 
-                lista = (List<Tramites>)des.Deserialize(sr);
+                        lista = (List<Tramites>)des.Deserialize(sr);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("El archivo XML está vacío o no existe.");
+                }
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("StackTrace: " + ex.StackTrace);
+
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("Inner Exception: " + ex.InnerException.Message);
+                    Console.WriteLine("Inner Exception StackTrace: " + ex.InnerException.StackTrace);
+                }
             }
 
             return lista;
