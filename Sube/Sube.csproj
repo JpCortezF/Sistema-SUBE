@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Biblioteca Serializadora\Biblioteca Serializadora.csproj" />
     <ProjectReference Include="..\Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj" />
+    <ProjectReference Include="..\Biblioteca Tramites\Biblioteca Tramites.csproj" />
     <ProjectReference Include="..\Biblioteca Usuarios\Biblioteca Usuarios.csproj" />
     <ProjectReference Include="..\DataBase\Biblioteca DataBase.csproj" />
     <ProjectReference Include="..\MyExceptions\MyExceptions.csproj" />

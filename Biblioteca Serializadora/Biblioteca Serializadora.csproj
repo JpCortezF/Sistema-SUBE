@@ -2,14 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Biblioteca_Serializadora</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
-    <PackageReference Include="MySql.Data" Version="8.2.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj" />

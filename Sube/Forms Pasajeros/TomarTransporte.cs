@@ -57,7 +57,7 @@ namespace Sube
                         if (float.TryParse(txtKilometros.Text, out float kilometros))
                         {
                             TarjetaSube sube = new TarjetaSube();
-                            string lineaTransporte = txtLinea.Text;
+                            int.TryParse(txtLinea.Text, out int lineaTransporte);
                             miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, lineaTransporte);
 
                             TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(passenger.MySube.TarifaSocial, miViaje);
@@ -74,6 +74,12 @@ namespace Sube
                                         pictureBox1.Visible = true;
                                         pictureBox2.Visible = false;
                                         pictureBox3.Visible = false;
+                                        string query = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
+                                        Dictionary<string, object> newBalance = new Dictionary<string, object>();
+                                        newBalance.Add("@balanceUpdate", passenger.MySube.Balance);
+                                        newBalance.Add("@idSube", passenger.MySube.CardNumber);
+                                        DataBase<Object> db = new DataBase<Object>();
+                                        db.Update(query, newBalance);
                                         break;
                                     case ETransporte.Subte:
                                         pictureBox2.Visible = true;
@@ -87,7 +93,7 @@ namespace Sube
                                         break;
                                 }
                                 MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                DataBase.Insert(passenger, sube, 2);
+                                //DataBase.Insert(passenger, sube, 2);
 
                             }
                             else

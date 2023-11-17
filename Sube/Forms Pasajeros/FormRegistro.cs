@@ -80,7 +80,24 @@ namespace Sube
                         //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
                         //serializadorPasajero.Serialize(path, listPassengers);
 
-                        DataBase.Insert(passenger, newSube, 1);
+                        string query = @"
+                        INSERT INTO tarjetas (id, balance, socialRate) VALUES (@tarjeta, @balance, @tarifaSocial);
+                        INSERT INTO pasajeros(dni, name, lastname, email, password, idGender, idSube) VALUES(@dniPasajero, @nombrePasajero, @apellidoPasajero, @emailPasajero, @contraPasajero, @generoPasajero, @idSubePasajero)";
+                        Dictionary<string, object> parameters = new Dictionary<string, object>
+                        {
+                            { "@tarjeta", newSube.CardNumber },
+                            { "@balance", 0 },
+                            { "@tarifaSocial", 1 },
+                            { "@dniPasajero", passenger.Dni },
+                            { "@nombrePasajero", passenger.Name },
+                            { "@apellidoPasajero", passenger.LastName },
+                            { "@emailPasajero", passenger.Email },
+                            { "@contraPasajero", passenger.Password },
+                            { "@generoPasajero", passenger.Gender },
+                            { "@idSubePasajero", newSube.CardNumber }
+                        };
+                        DataBase<Object> db = new DataBase<Object>();
+                        db.Insert(query, parameters);
                         InicioPasajero inicio = new InicioPasajero(passenger, listPassengers);
                         inicio.Show();
                         MdiParent.Close();

@@ -10,7 +10,7 @@ namespace Biblioteca_TarjetaSube
     public class Viajes
     {
         ETransporte tipoTransporte;
-        string lineasTransporte;
+        int lineasTransporte;
         float ticketCost;
         float kilometres;
         DateTime date;
@@ -19,14 +19,14 @@ namespace Biblioteca_TarjetaSube
         {
 
         }
-        public Viajes(float kilometres, DateTime date, ETransporte tipoTransporte, string lineasTransporte) : this()
+        public Viajes(float kilometres, DateTime date, ETransporte tipoTransporte, int lineasTransporte) : this()
         {
             this.kilometres = kilometres;
             this.date = date;
             this.tipoTransporte = tipoTransporte;
             this.lineasTransporte = lineasTransporte;
         }
-        public Viajes(float kilometres, DateTime date, ETransporte tipoTransporte, string lineasTransporte, float ticketCost) : this(kilometres, date, tipoTransporte, lineasTransporte)
+        public Viajes(float kilometres, DateTime date, ETransporte tipoTransporte, int lineasTransporte, float ticketCost) : this(kilometres, date, tipoTransporte, lineasTransporte)
         {
             this.ticketCost = ticketCost;
         }
@@ -34,8 +34,8 @@ namespace Biblioteca_TarjetaSube
         public float Kilometres { get => kilometres; set => kilometres = value; }
         public DateTime Date { get => date; set => date = value; }
         public ETransporte TipoTransporte { get => tipoTransporte; set => tipoTransporte = value; }
-        public string LineasTransporte { get => lineasTransporte; set => lineasTransporte = value; }
-
+        public int LineasTransporte { get => lineasTransporte; set => lineasTransporte = value; }
+        public TarjetaSube TarjetaSube { get; set; }
         /// <summary>
         /// Calcula el costo de un servicio basado en la distancia en kilómetros.
         /// </summary>

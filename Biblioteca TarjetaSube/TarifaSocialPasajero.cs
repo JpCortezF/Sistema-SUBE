@@ -9,7 +9,7 @@ namespace Biblioteca_TarjetaSube
     public class TarifaSocialPasajero : Viajes
     {
         ETarifaSocial tarifaSocial;
-        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, string lineasTransporte, float ticketCost) 
+        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, int lineasTransporte, float ticketCost) 
             : base(kilometres, date, tipoTransporte, lineasTransporte, ticketCost)
         {
             this.tarifaSocial = miTarifa;

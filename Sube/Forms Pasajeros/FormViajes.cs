@@ -66,7 +66,7 @@ namespace Sube
                 dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
                 foreach (Viajes viajes in queueViajes)
                 {
-                    if (txtBusqueda.Text == viajes.LineasTransporte)
+                    if (txtBusqueda.Text == viajes.LineasTransporte.ToString())
                     {
                         dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
                     }

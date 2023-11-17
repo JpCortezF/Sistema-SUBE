@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Biblioteca_Usuarios;
+
 
 namespace Biblioteca_TarjetaSube
 {
@@ -37,5 +39,6 @@ namespace Biblioteca_TarjetaSube
         public DateTime ClaimTime { get => claimTime; set => claimTime = value; }
         [XmlElement("ClaimComplete")]
         public EClaimStatus ClaimComplete { get => claimComplete; set => claimComplete = value; }
+        public Pasajero Passenger { get; set; }
     }
 }

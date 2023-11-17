@@ -26,5 +26,84 @@
     "Name": "Alejandro",
     "Lastname": "Heidenreich",
     "Dni": 33202790
+  },
+  {
+    "Gender": 1,
+    "MySube": {
+      "CardNumber": "6061534634635252",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "elpaco@gmail.com",
+    "Password": "1234",
+    "Name": "Paco",
+    "Lastname": "Amoroso",
+    "Dni": 34654564
+  },
+  {
+    "Gender": 1,
+    "MySube": {
+      "CardNumber": "6061345323526346",
+      "Balance": -63.54,
+      "QueueTravels": [
+        {
+          "TicketCost": 63.54,
+          "Kilometres": 7.0,
+          "Date": "2023-11-17T02:58:09.3968628-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": 125,
+          "TarjetaSube": null
+        }
+      ],
+      "TarifaSocial": 0
+    },
+    "Email": "elezex@gmail.com",
+    "Password": "1234",
+    "Name": "Eleze",
+    "Lastname": "melox",
+    "Dni": 34562352
+  },
+  {
+    "Gender": 1,
+    "MySube": {
+      "CardNumber": "6061435223526363",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "lit@juan.com",
+    "Password": "1234",
+    "Name": "Juampalit",
+    "Lastname": "Lit",
+    "Dni": 54234635
+  },
+  {
+    "Gender": 2,
+    "MySube": {
+      "CardNumber": "6061326326582345",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "Lamelilez@hotmail.com",
+    "Password": "4322",
+    "Name": "Melina",
+    "Lastname": "Lezcano",
+    "Dni": 46453245
+  },
+  {
+    "Gender": 3,
+    "MySube": {
+      "CardNumber": "6061647434634574",
+      "Balance": 0.0,
+      "QueueTravels": [],
+      "TarifaSocial": 0
+    },
+    "Email": "nomdic@hotmail.com",
+    "Password": "1234",
+    "Name": "Nomenclatura",
+    "Lastname": "Dictadura",
+    "Dni": 44467456
   }
 ]
