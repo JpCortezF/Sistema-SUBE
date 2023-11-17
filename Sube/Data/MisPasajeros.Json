@@ -105,5 +105,28 @@
     "Name": "Nomenclatura",
     "Lastname": "Dictadura",
     "Dni": 44467456
+  },
+  {
+    "Gender": 1,
+    "MySube": {
+      "CardNumber": "6061463377655757",
+      "Balance": -59.0,
+      "QueueTravels": [
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 6.0,
+          "Date": "2023-11-17T03:10:37.343639-03:00",
+          "TipoTransporte": 0,
+          "LineasTransporte": 5,
+          "TarjetaSube": null
+        }
+      ],
+      "TarifaSocial": 0
+    },
+    "Email": "eltobi@gmail.com",
+    "Password": "4321",
+    "Name": "Tobias",
+    "Lastname": "Chambi",
+    "Dni": 54322352
   }
 ]

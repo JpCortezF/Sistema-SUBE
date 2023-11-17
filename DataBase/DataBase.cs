@@ -19,7 +19,7 @@ namespace Biblioteca_DataBase
 
         static DataBase()
         {
-            var mySqlStringConnection = @"Server=localhost;Port=3306;Database=proyectosube;Uid=root;Pwd=;";
+            var mySqlStringConnection = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
 
             connectionMySql = new MySqlConnection(mySqlStringConnection);
 
