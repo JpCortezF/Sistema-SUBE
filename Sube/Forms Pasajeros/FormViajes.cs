@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using System;
 using System.Collections;
@@ -16,24 +17,38 @@ namespace Sube
 {
     public partial class FormViajes : Form
     {
+        List<Viajes> viajes;
         Pasajero passenger;
-        Queue<Viajes> queueViajes;
+        TarjetaSube sube;
         private InicioPasajero parentForm;
 
-        public FormViajes(InicioPasajero parent, Pasajero passenger, Queue<Viajes> queueTravels)
+        public FormViajes(InicioPasajero parent, Pasajero passenger, TarjetaSube sube)
         {
             InitializeComponent();
             this.passenger = passenger;
-            queueViajes = queueTravels;
+            this.sube = sube;
             parentForm = parent;
+            string queryViajes = @"
+            SELECT viajes.*, lineas.line AS LineValue
+            FROM viajes 
+            INNER JOIN lineas ON lineas.id = viajes.idLine
+            WHERE viajes.idLine = @LineValue AND viajes.idCard = 6061938623643349";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@IdCardNumber", sube.CardNumber },
+                { "@LineValue", 85 },
+            };
+            DataBase<Viajes> data = new DataBase<Viajes>();
+            Viajes viaje = new Viajes();
+            viajes = data.Select(queryViajes, parameters, Viajes.MapViajes);
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
-            //double balance = passenger.MySube.Balance;
-            //lblSaldo.Text = $"${balance.ToString("F2")}";
+            double balance = sube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
             LoadDataGridView();
 
-            if (queueViajes.Count == 0)
+            if (viajes.Count == 0)
             {
                 dataGridViajes.Visible = false;
                 pictureBox1.Visible = true;
@@ -54,7 +69,7 @@ namespace Sube
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {
+        {           
             if (txtBusqueda.Text != string.Empty)
             {
                 DataTable dt = new DataTable();
@@ -64,16 +79,16 @@ namespace Sube
                 dt.Columns.Add("Kilometros", typeof(int));
                 dt.Columns.Add("Costo del boleto", typeof(float));
                 dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
-                foreach (Viajes viajes in queueViajes)
+                foreach (Viajes viaje in viajes)
                 {
-                    if (txtBusqueda.Text == viajes.LineasTransporte.ToString())
+                    if (txtBusqueda.Text == viaje.LineasTransporte.ToString())
                     {
-                        //dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
+                        dt.Rows.Add(viaje.Date, viaje.LineasTransporte, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
                     }
                 }
                 lblFiltro.Visible = true;
                 dataGridViajes.DataSource = dt;
-            }
+            }         
         }
         private void LoadDataGridView()
         {
@@ -84,9 +99,9 @@ namespace Sube
             dt.Columns.Add("Kilometros", typeof(int));
             dt.Columns.Add("Costo del boleto", typeof(float));
             dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
-            foreach (Viajes viajes in queueViajes)
+            foreach (Viajes viaje in viajes)
             {
-                //dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
+                dt.Rows.Add(viaje.Date, viaje.LineasTransporte, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
             }
 
             dataGridViajes.DataSource = dt;
@@ -100,10 +115,12 @@ namespace Sube
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            TomarTransporte transporte = new TomarTransporte(passenger);
+            /*
+            TomarTransporte transporte = new TomarTransporte(passenger, mySube);
             transporte.MdiParent = parentForm;
             transporte.Show();
             Close();
+            */
         }
 
         private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)

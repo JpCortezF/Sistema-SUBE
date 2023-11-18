@@ -13,18 +13,21 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NPOI.SS.Formula.Functions;
+using System.Collections;
 
 namespace Sube
 {
     public partial class TomarTransporte : Form
     {
         Pasajero passenger;
+        TarjetaSube sube;
         Viajes miViaje;
         ETransporte miTransporte;
-        public TomarTransporte(Pasajero passenger)
+        public TomarTransporte(Pasajero passenger, TarjetaSube sube)
         {
             InitializeComponent();
             this.passenger = passenger;
+            this.sube = sube;
         }
 
         private void TomarTransporte_Load(object sender, EventArgs e)
@@ -50,9 +53,8 @@ namespace Sube
         private void btnViajar_Click(object sender, EventArgs e)
         {
             if (ValidarIngresoTextBox())
-            {
-                TarjetaSube sube = new TarjetaSube();
-                if (sube.CardNumber != "DeBaja")
+            {              
+                if (!string.IsNullOrEmpty(passenger.IdSube))
                 {
                     try
                     {
@@ -68,20 +70,18 @@ namespace Sube
                             double balance = sube.Balance;
                             if (sube.Balance > -211.84)
                             {
-
-                                sube.QueueTravels.Enqueue(miViaje);
                                 switch (miTransporte)
                                 {
                                     case ETransporte.Colectivo:
                                         pictureBox1.Visible = true;
                                         pictureBox2.Visible = false;
                                         pictureBox3.Visible = false;
-                                        string query = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                                        Dictionary<string, object> newBalance = new Dictionary<string, object>
+                                        string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
+
+                                        Dictionary<string, object> parameters = new Dictionary<string, object>
                                         {
                                             { "@balanceUpdate", sube.Balance },
                                             { "@idSube", sube.CardNumber },
-
                                             { "@IdCard", sube.CardNumber },
                                             { "@IdTransport", miViaje.TipoTransporte },
                                             { "@IdLine", 1025 },
@@ -90,10 +90,10 @@ namespace Sube
                                             { "@Kilometres", miViaje.Kilometres },
                                             { "@Date", DateTime.Now },
                                         };
-                                        DataBase<object> db = new DataBase<object>();
-                                        db.Update(query, newBalance);
+                                        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+                                        data.Update(queryUpdate, parameters);
                                         string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
-                                        db.Insert(queryInsert, newBalance);
+                                        data.Insert(queryInsert, parameters);
                                         break;
                                     case ETransporte.Subte:
                                         pictureBox2.Visible = true;

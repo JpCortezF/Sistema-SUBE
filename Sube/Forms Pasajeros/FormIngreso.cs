@@ -18,6 +18,8 @@ namespace Sube
         List<Pasajero> listPassengers;
         private FormPasajero parentForm;
 
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+        DataBase<Pasajero> data = new DataBase<Pasajero>();
         public FormIngreso(FormPasajero parent, List<Pasajero> listPassengers)
         {
             InitializeComponent();
@@ -41,21 +43,20 @@ namespace Sube
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPass.Text))
             {
                 string query = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
                 parameters["@dni"] = txtDni.Text;
                 parameters["@password"] = txtPass.Text;
-                DataBase<Pasajero> data = new DataBase<Pasajero>();
                 listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
-                
-                if(listPassengers!=null)
+                if (listPassengers.Count > 0)
                 {
-                    exist = true;
+                    Pasajero passenger = listPassengers.FirstOrDefault();
                     MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    InicioPasajero inicio = new InicioPasajero(listPassengers[0], listPassengers);
+                    exist = true;
+
+                    InicioPasajero inicio = new InicioPasajero(passenger);
                     inicio.Show();
                     MdiParent.Close();
-                    Close();                 
-                }                         
+                    Close();
+                }
             }
             if (!exist)
             {
@@ -89,7 +90,7 @@ namespace Sube
 
         private void lblOlvideClave_Click(object sender, EventArgs e)
         {
-            VentanaPassword ventanaPassword = new VentanaPassword(listPassengers);
+            VentanaPassword ventanaPassword = new VentanaPassword();
             ventanaPassword.ShowDialog();
             if (ventanaPassword.DialogResult == DialogResult.Continue)
             {
@@ -107,14 +108,16 @@ namespace Sube
 
         private void btnHardcoce_Click(object sender, EventArgs e)
         {
-            Pasajero passenger = new Pasajero();
             try
             {
-                passenger = passenger.FindPassengerByEmail(listPassengers, "AleHardcode@gmail.com");
-                if (passenger is not null)
+                string queryHarcode = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
+                parameters["@dni"] = 33202790;
+                parameters["@password"] = 2790;
+                listPassengers = data.Select(queryHarcode, parameters, Pasajero.MapPasajero);
+                if(listPassengers.Count > 0)
                 {
-                    txtDni.Text = passenger.Dni.ToString();
-                    txtPass.Text = passenger.Password;
+                    txtDni.Text = "33202790";
+                    txtPass.Text = "2790";
                 }
                 else
                 {

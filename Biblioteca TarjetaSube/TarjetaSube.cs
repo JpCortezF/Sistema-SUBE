@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +14,39 @@ namespace Biblioteca_TarjetaSube
     {
         string _cardNumber;
         float _balance;
-        Queue<Viajes> queueTravels;
         ETarifaSocial tarifaSocial;
 
         public TarjetaSube()
         {
-            queueTravels = new Queue<Viajes>();
+            this._balance = 0;
+            this.tarifaSocial = ETarifaSocial.Ninguna;
         }
         public TarjetaSube(string cardNumber) : this()
         {
-            this.tarifaSocial = ETarifaSocial.Ninguna;
             this._cardNumber = cardNumber;
-            this._balance = 0;
         }
-
+        public TarjetaSube(string cardNumber, float balance, int socialRate):this()
+        {
+            this._cardNumber = cardNumber;
+            this._balance = balance;
+            this.tarifaSocial = (ETarifaSocial)Enum.ToObject(typeof(ETarifaSocial), socialRate);           
+        }
         public string CardNumber { get => _cardNumber; set => _cardNumber = value; }
         public float Balance { get => _balance; set => _balance = value; }
-        public Queue<Viajes> QueueTravels { get => queueTravels; set => queueTravels = value; }
-        public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }     
+        public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
+
+        public static TarjetaSube MapTarjetaSube(MySqlDataReader reader)
+        {
+            return (TarjetaSube)reader;
+        }
+
+        public static explicit operator TarjetaSube(MySqlDataReader reader)
+        {
+            string id = reader["id"].ToString() ?? "";
+            float balance = Convert.ToSingle(reader["balance"]);
+            int socialRate = Convert.ToInt32(reader["socialRate"]);
+
+            return new TarjetaSube(id, balance, socialRate);
+        }
     }
 }

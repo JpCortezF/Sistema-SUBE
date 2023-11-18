@@ -42,6 +42,8 @@ namespace Biblioteca_DataBase
 
                 commandMySql.CommandText = query;
 
+                commandMySql.Parameters.Clear();
+
                 // Verificar si hay parámetros y agregarlos a la consulta
                 if (parameters != null)
                 {

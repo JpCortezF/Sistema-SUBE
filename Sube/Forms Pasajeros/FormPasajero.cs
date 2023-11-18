@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using Sube.Forms_Pasajeros;
 using System;
@@ -22,12 +23,13 @@ namespace Sube
         public FormPasajero()
         {
             InitializeComponent();
-            //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
-            string ruta = @"..\..\..\Data";
-            string nombre = "MisPasajeros.Json";
-            string path = Path.Combine(ruta, nombre);
-            listPassengers = Serializador.ReadJsonPassenger(path);
-            //listPassengers = serializadorPasajero.Deserialize(path);
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            DataBase<Pasajero> data = new DataBase<Pasajero>();
+
+            string query = "SELECT * FROM pasajeros";
+
+            listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
         }
         private void FormPasajero_Load(object sender, EventArgs e)
         {

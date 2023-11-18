@@ -41,7 +41,7 @@ namespace Biblioteca_Usuarios
 
         public virtual bool CompareUser(Usuario<T> user, Usuario<T> user2)
         {
-            return user?.Email == user2?.Email;
+            return user?.Email == user2?.Email || user?.Dni == user2?.Dni;
         }
 
     }

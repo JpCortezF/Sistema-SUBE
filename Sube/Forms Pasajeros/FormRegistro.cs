@@ -55,9 +55,9 @@ namespace Sube
         }
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
-            string ruta = @"..\..\..\Data";
-            string nombre = @".\MisPasajeros.Json";
-            string path = ruta + nombre;
+            //string ruta = @"..\..\..\Data";
+            //string nombre = @".\MisPasajeros.Json";
+            //string path = ruta + nombre;
             try
             {
                 string email = txtCorreo.Text;
@@ -74,31 +74,28 @@ namespace Sube
                     Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                     if (!passenger.PassengerExist(passenger, listPassengers))
                     {
-                        listPassengers.Add(passenger);
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Serializador.WriteJsonPassenger(path, listPassengers);
-                        //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
-                        //serializadorPasajero.Serialize(path, listPassengers);
 
                         string query = @"
                         INSERT INTO tarjetas (id, balance, socialRate) VALUES (@tarjeta, @balance, @tarifaSocial);
                         INSERT INTO pasajeros(dni, name, lastname, email, password, idGender, idSube) VALUES(@dniPasajero, @nombrePasajero, @apellidoPasajero, @emailPasajero, @contraPasajero, @generoPasajero, @idSubePasajero)";
+
                         Dictionary<string, object> parameters = new Dictionary<string, object>
                         {
-                            { "@tarjeta", newSube.CardNumber },
+                            { "@tarjeta", cardNumber },
                             { "@balance", 0 },
                             { "@tarifaSocial", 1 },
-                            { "@dniPasajero", passenger.Dni },
-                            { "@nombrePasajero", passenger.Name },
-                            { "@apellidoPasajero", passenger.LastName },
-                            { "@emailPasajero", passenger.Email },
-                            { "@contraPasajero", passenger.Password },
-                            { "@generoPasajero", passenger.Gender },
-                            { "@idSubePasajero", newSube.CardNumber }
+                            { "@dniPasajero", dni },
+                            { "@nombrePasajero", name },
+                            { "@apellidoPasajero", lastname },
+                            { "@emailPasajero", email },
+                            { "@contraPasajero", password },
+                            { "@generoPasajero", idGender },
+                            { "@idSubePasajero", cardNumber }
                         };
-                        DataBase<Object> db = new DataBase<Object>();
-                        db.Insert(query, parameters);
-                        InicioPasajero inicio = new InicioPasajero(passenger, listPassengers);
+                        DataBase<Pasajero> data = new DataBase<Pasajero>();
+                        data.Insert(query, parameters);
+                        InicioPasajero inicio = new InicioPasajero(passenger);
                         inicio.Show();
                         MdiParent.Close();
                         Close();
@@ -199,7 +196,7 @@ namespace Sube
             {
                 lblDni.Visible = false;
             }
-            if (txtClave.Text != txtRepetirClave.Text)
+            if (txtClave.Text != txtRepetirClave.Text || txtClave.Text.Length < 4)
             {
                 lblClave.Visible = true;
             }

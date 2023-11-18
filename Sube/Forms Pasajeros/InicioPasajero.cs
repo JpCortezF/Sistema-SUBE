@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,27 @@ namespace Sube
 {
     public partial class InicioPasajero : Form
     {
-        List<Pasajero> listPassengers;
         Pasajero passenger;
+        TarjetaSube mySube;
         private Form currentChildForm = null;
 
 
-        public InicioPasajero(Pasajero passenger, List<Pasajero> listPassengers)
+        public InicioPasajero(Pasajero passenger)
         { 
             InitializeComponent();
             this.passenger = passenger;
-            this.listPassengers = listPassengers;
+
+            string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@IdSube", passenger.IdSube },
+                { "@IdCardNumber", passenger.IdSube },
+            };
+            DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+            List<TarjetaSube> listSube = new List<TarjetaSube>();
+            listSube = data.Select(query, parameters, TarjetaSube.MapTarjetaSube);
+            this.mySube = listSube.FirstOrDefault();
         }
 
         private void InicioPasajero_Load(object sender, EventArgs e)
@@ -65,14 +77,6 @@ namespace Sube
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                string ruta = @"..\..\..\Data";
-                string nombre = "MisPasajeros.Json";
-                string path = Path.Combine(ruta, nombre);
-
-                Serializador.WriteJsonPassenger(path, listPassengers);
-                //SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
-                //serializadorPasajero.Serialize(path, listPassengers);
-
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
                 Close();
@@ -82,7 +86,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is TomarTransporte))
             {
-                TomarTransporte transporte = new TomarTransporte(passenger);
+                TomarTransporte transporte = new TomarTransporte(passenger, mySube);
                 OpenChildForm(transporte);
             }
         }
@@ -90,18 +94,16 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormSubePasajero))
             {
-                FormSubePasajero miSube = new FormSubePasajero(passenger, listPassengers);
+                FormSubePasajero miSube = new FormSubePasajero(passenger, mySube);
                 OpenChildForm(miSube);
             }
         }
         private void viajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (currentChildForm is null || !(currentChildForm is FormViajes))
-            {
-                /*
-                FormViajes viajes = new FormViajes(this, passenger, passenger.MySube.QueueTravels);
-                OpenChildForm(viajes);
-                */
+            {               
+                FormViajes viajes = new FormViajes(this, passenger, mySube);
+                OpenChildForm(viajes);              
             }
         }
 
@@ -149,23 +151,27 @@ namespace Sube
                 lblNombre.Visible = false;
             }
         }
-
+        
         private void darDeBajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        /*
             if (currentChildForm is null || !(currentChildForm is FormDarDeBaja))
             {
                 FormDarDeBaja DeBaja = new FormDarDeBaja(passenger, listPassengers);
                 OpenChildForm(DeBaja);
             }
+        */
         }
 
         private void mISTRÁMITESToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        /*
             if (currentChildForm is null || !(currentChildForm is FormPasajeroTramites))
             {
                 FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger, listPassengers);
                 OpenChildForm(Tramites);
             }
+        */
         }
         public void ItemsMdiParentVisibles()
         {

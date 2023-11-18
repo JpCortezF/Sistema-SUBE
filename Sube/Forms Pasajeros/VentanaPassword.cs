@@ -1,4 +1,5 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_DataBase;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,9 @@ namespace Sube
     public partial class VentanaPassword : Form
     {
         List<Pasajero> listPassengers;
-        Pasajero passenger;
-        public VentanaPassword(List<Pasajero> listPassengers)
+        public VentanaPassword()
         {
             InitializeComponent();
-            passenger = new Pasajero();
-            this.listPassengers = listPassengers;
         }
 
         private void VentanaPassword_Load(object sender, EventArgs e)
@@ -29,11 +27,17 @@ namespace Sube
         }
         public string DevolverPass()
         {
-            string clave;
-            passenger = passenger.FindPassengerByEmail(listPassengers, txtCorreo.Text);
-            if(passenger is not null)
+            string clave="";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            DataBase<Pasajero> data = new DataBase<Pasajero>();
+
+            string queryPass = "SELECT * FROM pasajeros WHERE email = @email";
+            parameters["@email"] = txtCorreo.Text;
+
+            listPassengers = data.Select(queryPass, parameters, Pasajero.MapPasajero);
+            if(listPassengers.Count > 0)
             {
-                clave = passenger.Password;
+                clave = listPassengers[0].Password;
                 DialogResult = DialogResult.OK;
             }
             else

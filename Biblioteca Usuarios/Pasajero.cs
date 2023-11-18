@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.POIFS.Crypt.Dsig;
 
 namespace Biblioteca_Usuarios
 {
@@ -28,10 +29,10 @@ namespace Biblioteca_Usuarios
         public string IdSube { get => idSube; set => idSube = value; }
 
         /// <summary>
-        /// Determina la existencia de un pasajero en una lista dada.
+        /// Determina si un pasajero dado ya existe en una lista de pasajeros, ya sea por clave directa o mediante la comparación de información.
         /// </summary>
         /// <param name="passenger">El pasajero que se desea verificar.</param>
-        /// <param name="listPassengers">La lista de pasajeros en el que se realizará la búsqueda.</param>
+        /// <param name="listPassengers">La lista de pasajeros en la que se realizará la búsqueda.</param>
         /// <returns>True si el pasajero existe en la lista, ya sea por la clave o por comparación de información. False si no existe.</returns>
         public bool PassengerExist(Pasajero passenger, List<Pasajero> listPassengers)
         {
@@ -40,7 +41,7 @@ namespace Biblioteca_Usuarios
             {
                 foreach (Pasajero passengerToCompare in listPassengers)
                 {
-                    if (CompareUser(passenger, passengerToCompare))
+                    if(base.CompareUser(passengerToCompare, passenger) || passenger.IdSube == passengerToCompare.IdSube)
                     {
                         exists = true;
                         break;
@@ -49,28 +50,6 @@ namespace Biblioteca_Usuarios
             }
             return exists;
         }
-
-        /// <summary>
-        /// Busca un pasajero por su dirección de correo electrónico en un diccionario de pasajeros y devuelve el pasajero encontrado.
-        /// </summary>
-        /// <param name="listPassengers">El diccionario de pasajeros en el que se realizará la búsqueda.</param>
-        /// <param name="email">La dirección de correo electrónico del pasajero que se desea encontrar.</param>
-        /// <returns>El objeto Pasajero que coincide con la dirección de correo electrónico especificada. Si no se encuentra, devuelve null.</returns>
-
-        public Pasajero FindPassengerByEmail(List<Pasajero> listPassengers, string email)
-        {
-            Pasajero pasajero = null;
-            foreach (Pasajero passengerToCompare in listPassengers)
-            {  
-                if(passengerToCompare.Email == email)
-                {
-                    pasajero = passengerToCompare;
-                    break;
-                }            
-            }
-            return pasajero;
-        }
-
         public static Pasajero MapPasajero(MySqlDataReader reader)
         {
             return (Pasajero)reader;
@@ -85,7 +64,7 @@ namespace Biblioteca_Usuarios
             string password = reader["password"].ToString() ?? "";
             int idGender = Convert.ToInt32(reader["idGender"]);
             string idSube = reader["idSube"].ToString() ?? "";
-            //int dni, int gender, string email, string password,string name, string lastname, TarjetaSube sube
+
             return new Pasajero(dni, idGender, email, password, name, lastName, idSube);
         }
 

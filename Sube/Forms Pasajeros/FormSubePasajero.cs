@@ -1,5 +1,8 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.POIFS.Crypt.Dsig;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +19,14 @@ namespace Sube
 {
     public partial class FormSubePasajero : Form
     {
-        List<Pasajero> listPassengers;
         Pasajero passenger;
+        TarjetaSube sube;
 
-        public FormSubePasajero(Pasajero passenger, List<Pasajero> listPassengers)
+        public FormSubePasajero(Pasajero passenger, TarjetaSube mySube)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.listPassengers = listPassengers;
+            this.sube = mySube;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -31,13 +34,13 @@ namespace Sube
             Close();
         }
         private void FormSubePasajero_Load(object sender, EventArgs e)
-        {
+        {          
             lblTransportes.Text = "Información sobre los transportes";
-            //lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
+            lblTarjeta.Text = $"{passenger.IdSube}";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
-            //double balance = passenger.MySube.Balance;
-            //lblSaldo.Text = $"${balance.ToString("F2")}";
-            //lblActualTarifa.Text = $"Tarifa Social: {passenger.MySube.TarifaSocial}";
+            double balance = sube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
+            lblActualTarifa.Text = $"Tarifa Social: {sube.TarifaSocial}";
             lblTarifa.Text = "Acceder a tarifa social --->";
             lblTarjeta.Location = new Point(30, 120);
             lblName.Location = new Point(30, 158);
