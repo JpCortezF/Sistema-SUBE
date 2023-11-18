@@ -33,8 +33,8 @@ namespace Sube.Forms_Admin
             txtNombre.Text = selectedPassenger.Name;
             txtApellido.Text = selectedPassenger.LastName;
             txtMail.Text = selectedPassenger.Email;
-            txtNumTarjeta.Text = selectedPassenger.MySube.CardNumber;
-            txtCredito.Text = selectedPassenger.MySube.Balance.ToString();
+            //txtNumTarjeta.Text = selectedPassenger.MySube.CardNumber;
+            //txtCredito.Text = selectedPassenger.MySube.Balance.ToString();
             txtReclamo.Text = tramiteAuxACambiar.ClaimMessage;
             foreach (ETarifaSocial item in Enum.GetValues(typeof(ETarifaSocial)))
             {
@@ -43,11 +43,13 @@ namespace Sube.Forms_Admin
             }
             for (int i = 0; i < cmbTarifa.Items.Count; i++)
             {
+                /*
                 if (cmbTarifa.Items[i].ToString() == selectedPassenger.MySube.TarifaSocial.ToString())
                 {
                     cmbTarifa.SelectedIndex = i;
                     break;
                 }
+                */
             }
         }
 
@@ -72,17 +74,18 @@ namespace Sube.Forms_Admin
                 {
                     if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
                     {
-                        selectedPassenger.MySube.TarifaSocial = tarifaSocial;
+                        //selectedPassenger.MySube.TarifaSocial = tarifaSocial;
                     }
                 }
                 if (bajaTarjeta == true)
                 {
+                    /*
                     this.bajaTarjeta = true;
                     selectedPassenger.MySube.CardNumber = "DeBaja";
                     selectedPassenger.MySube.QueueTravels.Clear();
                     selectedPassenger.MySube.Balance = 0;
                     selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
-
+                    */
                     string select = @"SELECT idClaim FROM tramites VALUES (@IdClaim) WHERE idClaim = @IdClaim";
                     DataBase<object> data = new DataBase<object>();
                     string update = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni;

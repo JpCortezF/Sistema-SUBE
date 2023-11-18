@@ -35,8 +35,8 @@ namespace Sube
         private void CargaSube_Load(object sender, EventArgs e)
         {
             lblMensaje.Text = "Carga tu SUBE de forma virtual desde Mercado Pago";
-            double balance = passenger.MySube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
+            //double balance = Sube.Balance;
+            //lblSaldo.Text = $"${balance.ToString("F2")}";
             txtCarga.TextChanged += txtCarga_TextChanged;
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
@@ -67,6 +67,7 @@ namespace Sube
         {
             try
             {
+                /*
                 float balance = passenger.MySube.Balance;
                 if (!string.IsNullOrEmpty(txtCarga.Text))
                 {
@@ -89,6 +90,7 @@ namespace Sube
                 {
                     txtCarga.BackColor = Color.RosyBrown;
                 }
+                */
             }
             catch (Exception ex)
             {

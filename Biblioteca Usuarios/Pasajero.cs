@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,19 @@ namespace Biblioteca_Usuarios
     public class Pasajero : Usuario<string>
     {
         int gender;
-        TarjetaSube mySube;
+        string idSube;
         public Pasajero()
         {
             
         }
-        public Pasajero(int dni, int gender, string email, string password,string name, string lastname, TarjetaSube sube) : base(dni, email, password, name, lastname)
+        public Pasajero(int dni, int gender, string email, string password,string name, string lastname, string sube) : base(dni, email, password, name, lastname)
         {
             this.gender = gender;
-            this.mySube = sube;
+            this.idSube = sube;
         }
 
         public int Gender { get => gender; set => gender = value; }
-        public TarjetaSube MySube { get => mySube; set => mySube = value; }
+        public string IdSube { get => idSube; set => idSube = value; }
 
         /// <summary>
         /// Determina la existencia de un pasajero en una lista dada.
@@ -69,29 +70,24 @@ namespace Biblioteca_Usuarios
             }
             return pasajero;
         }
-        public bool CardNumberExist(List<Pasajero> listPassengers, string newCardNumber)
+
+        public static Pasajero MapPasajero(MySqlDataReader reader)
         {
-            bool exist = false;
-            foreach (Pasajero passengerToCompare in listPassengers)
-            {
-                if (passengerToCompare.MySube.CardNumber == newCardNumber)
-                {
-                    exist = true;
-                    break;
-                }             
-            }
-            return exist;
-        }
-        public bool CompareUser(Pasajero user1, Pasajero user2)
-        {
-            bool exist = false;
-            if (user1 != null && user2 != null)
-            {
-                exist = base.CompareUser(user1, user2) || user1.MySube.CardNumber == user2.MySube.CardNumber;
-            }
-            return exist;
+            return (Pasajero)reader;
         }
 
+        public static explicit operator Pasajero(MySqlDataReader reader)        
+        {
+            int dni = Convert.ToInt32(reader["dni"]);
+            string name = reader["name"].ToString() ?? "";
+            string lastName = reader["lastname"].ToString() ?? "";
+            string email = reader["email"].ToString() ?? "";
+            string password = reader["password"].ToString() ?? "";
+            int idGender = Convert.ToInt32(reader["idGender"]);
+            string idSube = reader["idSube"].ToString() ?? "";
+            //int dni, int gender, string email, string password,string name, string lastname, TarjetaSube sube
+            return new Pasajero(dni, idGender, email, password, name, lastName, idSube);
+        }
 
     }
 }

@@ -29,8 +29,8 @@ namespace Sube
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
-            double balance = passenger.MySube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
+            //double balance = passenger.MySube.Balance;
+            //lblSaldo.Text = $"${balance.ToString("F2")}";
             LoadDataGridView();
 
             if (queueViajes.Count == 0)
@@ -68,7 +68,7 @@ namespace Sube
                 {
                     if (txtBusqueda.Text == viajes.LineasTransporte.ToString())
                     {
-                        dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
+                        //dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
                     }
                 }
                 lblFiltro.Visible = true;
@@ -86,7 +86,7 @@ namespace Sube
             dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
             foreach (Viajes viajes in queueViajes)
             {
-                dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
+                //dt.Rows.Add(viajes.Date, viajes.LineasTransporte, viajes.TipoTransporte, viajes.Kilometres, "-" + viajes.TicketCost, passenger.MySube.TarifaSocial);
             }
 
             dataGridViajes.DataSource = dt;

@@ -10,7 +10,7 @@ namespace Biblioteca_DataBase
 {
     public interface IDBCommands<T>
     {
-        List<T> Select(string query, Func<MySqlDataReader, T>mapObject);
+        public List<T> Select(string query, Dictionary<string, object> parameters, Func<MySqlDataReader, T> mapObject);
 
         bool Insert(string query, Dictionary<string, object> parameters = null);
 

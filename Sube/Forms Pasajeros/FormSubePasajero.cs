@@ -33,11 +33,11 @@ namespace Sube
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {
             lblTransportes.Text = "Información sobre los transportes";
-            lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
+            //lblTarjeta.Text = $"{passenger.MySube.CardNumber}";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
-            double balance = passenger.MySube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
-            lblActualTarifa.Text = $"Tarifa Social: {passenger.MySube.TarifaSocial}";
+            //double balance = passenger.MySube.Balance;
+            //lblSaldo.Text = $"${balance.ToString("F2")}";
+            //lblActualTarifa.Text = $"Tarifa Social: {passenger.MySube.TarifaSocial}";
             lblTarifa.Text = "Acceder a tarifa social --->";
             lblTarjeta.Location = new Point(30, 120);
             lblName.Location = new Point(30, 158);

@@ -51,25 +51,25 @@ namespace Sube
         {
             if (ValidarIngresoTextBox())
             {
-                if(passenger.MySube.CardNumber != "DeBaja")
+                TarjetaSube sube = new TarjetaSube();
+                if (sube.CardNumber != "DeBaja")
                 {
                     try
                     {
                         if (float.TryParse(txtKilometros.Text, out float kilometros))
                         {
-                            TarjetaSube sube = new TarjetaSube();
                             int.TryParse(txtLinea.Text, out int lineaTransporte);
                             miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, lineaTransporte);
 
-                            TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(passenger.MySube.TarifaSocial, miViaje);
+                            TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial, miViaje);
                             miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
 
-                            passenger.MySube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
-                            double balance = passenger.MySube.Balance;
-                            if (passenger.MySube.Balance > -211.84)
+                            sube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
+                            double balance = sube.Balance;
+                            if (sube.Balance > -211.84)
                             {
 
-                                passenger.MySube.QueueTravels.Enqueue(miViaje);
+                                sube.QueueTravels.Enqueue(miViaje);
                                 switch (miTransporte)
                                 {
                                     case ETransporte.Colectivo:
@@ -79,13 +79,13 @@ namespace Sube
                                         string query = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
                                         Dictionary<string, object> newBalance = new Dictionary<string, object>
                                         {
-                                            { "@balanceUpdate", passenger.MySube.Balance },
-                                            { "@idSube", passenger.MySube.CardNumber },
+                                            { "@balanceUpdate", sube.Balance },
+                                            { "@idSube", sube.CardNumber },
 
-                                            { "@IdCard", passenger.MySube.CardNumber },
+                                            { "@IdCard", sube.CardNumber },
                                             { "@IdTransport", miViaje.TipoTransporte },
                                             { "@IdLine", 1025 },
-                                            { "@IdSocialRate", passenger.MySube.TarifaSocial },
+                                            { "@IdSocialRate", sube.TarifaSocial },
                                             { "@TicketCost", miViaje.TicketCost },
                                             { "@Kilometres", miViaje.Kilometres },
                                             { "@Date", DateTime.Now },
@@ -112,7 +112,7 @@ namespace Sube
                             }
                             else
                             {
-                                passenger.MySube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
+                                sube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
                                 MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }

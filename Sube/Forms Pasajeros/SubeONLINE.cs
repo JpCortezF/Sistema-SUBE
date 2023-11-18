@@ -20,7 +20,7 @@ namespace Sube.Forms_Pasajeros
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.passenger.MySube.CardNumber = newCardNumber;
+            this.passenger.IdSube = newCardNumber;
             this.listPassengers = listPassengers;
         }
 

@@ -23,6 +23,7 @@ namespace Sube
 
         private void FormAdminVistaUsuario_Load(object sender, EventArgs e)
         {
+            /*
             cmbTarifa.Items.Clear();
             txtNombre.Text = selectedPassenger.Name;
             txtApellido.Text = selectedPassenger.LastName;
@@ -47,12 +48,14 @@ namespace Sube
             }
             for (int i = 0; i < cmbTarifa.Items.Count; i++)
             {
+
                 if (cmbTarifa.Items[i].ToString() == selectedPassenger.MySube.TarifaSocial.ToString())
                 {
                     cmbTarifa.SelectedIndex = i;
                     break;
                 }
             }
+            */
         }
     }
 }

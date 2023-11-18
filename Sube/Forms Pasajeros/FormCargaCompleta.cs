@@ -25,8 +25,8 @@ namespace Sube
         }
         private void FormCargaCompleta_Load(object sender, EventArgs e)
         {
-            double balance = passenger.MySube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
+            //double balance = passenger.MySube.Balance;
+            //lblSaldo.Text = $"${balance.ToString("F2")}";
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
         {

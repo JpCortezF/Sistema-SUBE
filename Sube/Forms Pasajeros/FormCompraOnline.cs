@@ -33,6 +33,7 @@ namespace Sube.Forms_Pasajeros
             {
                 foreach (Pasajero passenger in listPassengers)
                 {
+                    /*
                     if (txtDni.Text == passenger.Dni.ToString() && passenger.MySube.CardNumber == "DeBaja")
                     {
                         Random rnd = new Random();
@@ -40,7 +41,7 @@ namespace Sube.Forms_Pasajeros
                         int _rnd2 = rnd.Next(1000, 9999);
                         int _rnd3 = rnd.Next(1000, 9999);
                         string newCardNumber = $"6061{_rnd}{_rnd2}{_rnd3}";
-
+                        
                         if (!passenger.CardNumberExist(listPassengers, newCardNumber))
                         {
                             SubeONLINE subeOnline = new SubeONLINE(listPassengers, passenger, newCardNumber);
@@ -48,7 +49,9 @@ namespace Sube.Forms_Pasajeros
                             subeOnline.Show();
                         }
                         compraOnline = true;
+                        
                     }
+                */
                 }
             }
             if (compraOnline == false)

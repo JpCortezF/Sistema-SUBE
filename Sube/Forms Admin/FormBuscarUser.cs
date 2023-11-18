@@ -35,7 +35,7 @@ namespace Sube
             dt.Columns.Add("Genero", typeof(string));
             dt.Columns.Add("N° de Tarjeta", typeof(string));
             dt.Columns.Add("Saldo actual", typeof(string));
-
+            /*
             foreach (Pasajero pasajero in listPassengers)
             {
                 if (pasajero.Dni.ToString().StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.MySube.CardNumber.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
@@ -43,7 +43,7 @@ namespace Sube
                     dt.Rows.Add(pasajero.Dni, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
                 }               
             }
-
+            */
             dataGridView.DataSource = dt;
         }
 
@@ -98,13 +98,14 @@ namespace Sube
             dt.Columns.Add("Genero", typeof(string));
             dt.Columns.Add("N° de Tarjeta", typeof(string));
             dt.Columns.Add("Saldo actual", typeof(string));
-
+            /*
             foreach (Pasajero pasajero in listPassengers)
             {
                 dt.Rows.Add(pasajero.Dni, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
             }
             dataGridView.DataSource = dt;
             dataGridView.Parent = panel1;
+            */
         }
 
         private void FormBuscarUser_Load(object sender, EventArgs e)

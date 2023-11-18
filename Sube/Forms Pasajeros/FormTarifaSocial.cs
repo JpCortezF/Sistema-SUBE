@@ -85,7 +85,7 @@ namespace Sube
             }
             else
             {
-                passenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+               //passenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
             }
 
         }

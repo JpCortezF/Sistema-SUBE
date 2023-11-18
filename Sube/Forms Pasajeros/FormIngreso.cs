@@ -1,4 +1,5 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_DataBase;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,19 +40,22 @@ namespace Sube
             bool exist = false;
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPass.Text))
             {
-                foreach (Pasajero passenger in listPassengers)
-                {           
-                    if (txtDni.Text == passenger.Dni.ToString() && txtPass.Text == passenger.Password)
-                    {
-                        exist = true;
-                        MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        InicioPasajero inicio = new InicioPasajero(passenger, listPassengers);
-                        inicio.Show();
-                        MdiParent.Close();
-                        Close();
-                        break;
-                    }                   
-                }
+                string query = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters["@dni"] = txtDni.Text;
+                parameters["@password"] = txtPass.Text;
+                DataBase<Pasajero> data = new DataBase<Pasajero>();
+                listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
+                
+                if(listPassengers!=null)
+                {
+                    exist = true;
+                    MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    InicioPasajero inicio = new InicioPasajero(listPassengers[0], listPassengers);
+                    inicio.Show();
+                    MdiParent.Close();
+                    Close();                 
+                }                         
             }
             if (!exist)
             {

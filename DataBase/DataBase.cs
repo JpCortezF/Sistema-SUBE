@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Biblioteca_Usuarios;
 using Biblioteca_TarjetaSube;
 using NPOI.OpenXmlFormats.Spreadsheet;
@@ -33,32 +32,43 @@ namespace Biblioteca_DataBase
             commandMySql.CommandText = query;
             return commandMySql.ExecuteNonQuery();
         }
-        public List<T> Select(string query, Func<IDataRecord, T> mapObject)
+
+        public List<T> Select(string query, Dictionary<string, object> parameters, Func<MySqlDataReader, T> mapObject)
         {
             List<T> list = new List<T>();
             try
             {
                 connectionMySql.Open();
+
                 commandMySql.CommandText = query;
+
+                // Verificar si hay parámetros y agregarlos a la consulta
+                if (parameters != null)
+                {
+                    foreach (var parameter in parameters)
+                    {
+                        commandMySql.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                    }
+                }
+
                 using (MySqlDataReader reader = commandMySql.ExecuteReader())
                 {
-                    while (reader.Read())   
+                    while (reader.Read())
                     {
                         list.Add(mapObject(reader));
                     }
                 }
                 return list;
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 throw;
             }
-            finally 
+            finally
             {
-                connectionMySql.Close(); 
+                connectionMySql.Close();
             }
         }
-
         public bool Insert(string query, Dictionary<string, object> parameters = null)
         {
             try
@@ -98,7 +108,6 @@ namespace Biblioteca_DataBase
                 }
             }
         }
-
         public bool Update(string query, Dictionary<string, object> parameters = null)
         {
             try
@@ -138,7 +147,6 @@ namespace Biblioteca_DataBase
                 }
             }
         }
-
         public bool Delete(string query, Dictionary<string, object> parameters = null)
         {
             try
@@ -198,7 +206,7 @@ namespace Biblioteca_DataBase
         {
             return $"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES('{claim.Passenger.Dni}','{claim.ClaimMessage}','{DateTime.Now}','{claim.ClaimComplete}')";
         }
-
+        /*
         private string GetUpdateQueryPasajero(Pasajero passenger, int estado)
         {
             string query = "";
@@ -213,6 +221,6 @@ namespace Biblioteca_DataBase
             }
             return query ;
         }
-         
+        */
     }
 }
