@@ -8,9 +8,9 @@ namespace Biblioteca_TarjetaSube
 {
     public enum EClaimStatus
     {
-       EnProceso,
-       EnRevision,
-       Completado,
-       Rechazado,
+       EnProceso = 1,
+       EnRevision = 2,
+       Completado = 3,
+       Rechazado = 4,
     }
 }

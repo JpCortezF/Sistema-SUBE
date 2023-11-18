@@ -1,17 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfTramites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Tramites>
-    <ClaimId>90054</ClaimId>
-    <DniClaimer>33202281</DniClaimer>
-    <ClaimMessage>Reclamo:Robo  Soy un bot</ClaimMessage>
-    <ClaimTime>2023-11-16T02:18:17.8004725-03:00</ClaimTime>
-    <ClaimComplete>Aprobado</ClaimComplete>
-  </Tramites>
-  <Tramites>
-    <ClaimId>89898</ClaimId>
-    <DniClaimer>33202790</DniClaimer>
-    <ClaimMessage>Reclamo:Robo  Soy un bot</ClaimMessage>
-    <ClaimTime>2023-11-16T02:24:25.3218268-03:00</ClaimTime>
-    <ClaimComplete>Aprobado</ClaimComplete>
-  </Tramites>
-</ArrayOfTramites>
+<ArrayOfTramites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:nil="true" />

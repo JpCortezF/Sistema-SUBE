@@ -33,11 +33,9 @@ namespace Biblioteca_DataBase
             commandMySql.CommandText = query;
             return commandMySql.ExecuteNonQuery();
         }
-
         public List<T> Select(string query, Func<IDataRecord, T> mapObject)
         {
             List<T> list = new List<T>();
-
             try
             {
                 connectionMySql.Open();
@@ -61,13 +59,15 @@ namespace Biblioteca_DataBase
             }
         }
 
-        public bool Insert(string query, Dictionary<string, object> ?parameters = null)
+        public bool Insert(string query, Dictionary<string, object> parameters = null)
         {
             try
             {
                 connectionMySql.Open();
 
                 commandMySql.CommandText = query;
+
+                commandMySql.Parameters.Clear();
 
                 if (parameters != null)
                 {
@@ -99,13 +99,15 @@ namespace Biblioteca_DataBase
             }
         }
 
-        public bool Update(string query, Dictionary<string, object> ?parameters = null)
+        public bool Update(string query, Dictionary<string, object> parameters = null)
         {
             try
             {
                 connectionMySql.Open();
 
                 commandMySql.CommandText = query;
+
+                commandMySql.Parameters.Clear();
 
                 if (parameters != null)
                 {
@@ -137,9 +139,43 @@ namespace Biblioteca_DataBase
             }
         }
 
-        public bool Delete(T item)
+        public bool Delete(string query, Dictionary<string, object> parameters = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                connectionMySql.Open();
+
+                commandMySql.CommandText = query;
+
+                if (parameters != null)
+                {
+                    foreach (var param in parameters)
+                    {
+                        commandMySql.Parameters.AddWithValue(param.Key, param.Value);
+                    }
+                }
+
+                commandMySql.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error en la eliminación de MySQL: " + ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error general en la eliminación de MySQL: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (connectionMySql.State == ConnectionState.Open)
+                {
+                    connectionMySql.Close();
+                }
+            }
         }
 
         private string GetInsertQueryPasajero(Pasajero passenger, TarjetaSube mySube)

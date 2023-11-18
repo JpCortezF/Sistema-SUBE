@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NPOI.SS.Formula.Functions;
 
 namespace Sube
 {
@@ -67,6 +68,7 @@ namespace Sube
                             double balance = passenger.MySube.Balance;
                             if (passenger.MySube.Balance > -211.84)
                             {
+
                                 passenger.MySube.QueueTravels.Enqueue(miViaje);
                                 switch (miTransporte)
                                 {
@@ -75,11 +77,23 @@ namespace Sube
                                         pictureBox2.Visible = false;
                                         pictureBox3.Visible = false;
                                         string query = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                                        Dictionary<string, object> newBalance = new Dictionary<string, object>();
-                                        newBalance.Add("@balanceUpdate", passenger.MySube.Balance);
-                                        newBalance.Add("@idSube", passenger.MySube.CardNumber);
-                                        DataBase<Object> db = new DataBase<Object>();
+                                        Dictionary<string, object> newBalance = new Dictionary<string, object>
+                                        {
+                                            { "@balanceUpdate", passenger.MySube.Balance },
+                                            { "@idSube", passenger.MySube.CardNumber },
+
+                                            { "@IdCard", passenger.MySube.CardNumber },
+                                            { "@IdTransport", miViaje.TipoTransporte },
+                                            { "@IdLine", 1025 },
+                                            { "@IdSocialRate", passenger.MySube.TarifaSocial },
+                                            { "@TicketCost", miViaje.TicketCost },
+                                            { "@Kilometres", miViaje.Kilometres },
+                                            { "@Date", DateTime.Now },
+                                        };
+                                        DataBase<object> db = new DataBase<object>();
                                         db.Update(query, newBalance);
+                                        string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
+                                        db.Insert(queryInsert, newBalance);
                                         break;
                                     case ETransporte.Subte:
                                         pictureBox2.Visible = true;

@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using Sube.Forms_Admin;
 using System;
@@ -19,6 +20,9 @@ namespace Sube
         List<Pasajero> listPassengers;
         List<Tramites> listTramites = new List<Tramites>();
         List<Tramites> listTramitesAux = new List<Tramites>();
+        DataBase<object> data = new DataBase<object>();
+        string queryUpdate = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni";
+
         private ContainerAdmin parentForm;
         public FormTramites(ContainerAdmin parent, List<Tramites> tramites, List<Pasajero> listPassengers)
         {
@@ -38,8 +42,8 @@ namespace Sube
             {
                 if (tramite.ClaimComplete == EClaimStatus.EnRevision || tramite.ClaimComplete == EClaimStatus.EnProceso)
                 {
-                    listTramitesAux.Add(tramite);   
-                    
+                    listTramitesAux.Add(tramite);
+
                 }
             }
             this.dataGridView1.DataSource = listTramitesAux;
@@ -51,7 +55,7 @@ namespace Sube
 
             try
             {
-                
+
                 string selectedDni = null;
                 int selectedIndex = -1;
                 int selectedClaimId = 0;
@@ -73,6 +77,13 @@ namespace Sube
                         selectedClaimId = (int)(selectedRow.Cells["ClaimId"].Value);
                         selectedIndex = listTramitesAux.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
                         listTramitesAux[selectedIndex].ClaimComplete = EClaimStatus.EnRevision;
+                        int.TryParse(selectedDni, out int dniPassenger);
+                        Dictionary<string, object> parameters = new Dictionary<string, object>
+                        {
+                            { "@UpdateClaimStatus", EClaimStatus.EnRevision },
+                            { "@Dni", dniPassenger }
+                        };
+                        data.Update(queryUpdate, parameters);
                     }
                     foreach (Pasajero passenger in listPassengers)
                     {

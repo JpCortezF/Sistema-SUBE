@@ -8,8 +8,8 @@ namespace Biblioteca_TarjetaSube
 {
     public enum ETransporte
     {
-        Colectivo,
-        Subte,
-        Tren,
+        Colectivo = 1,
+        Subte = 2,
+        Tren = 3,
     }
 }

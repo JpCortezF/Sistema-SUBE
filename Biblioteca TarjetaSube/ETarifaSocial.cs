@@ -8,11 +8,11 @@ namespace Biblioteca_TarjetaSube
 {
     public enum ETarifaSocial
     {
-        Ninguna,
-        Jubilado,
-        Estudiantil,
-        ExComatienteDeMalvinas,
-        Discapacitado, 
-        SinSubsidio,
+        Ninguna = 1,
+        Jubilado = 2,
+        Estudiantil = 3,
+        ExComatienteDeMalvinas = 4,
+        Discapacitado = 5, 
+        SinSubsidio = 6,
     }
 }

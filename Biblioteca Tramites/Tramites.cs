@@ -39,6 +39,7 @@ namespace Biblioteca_TarjetaSube
         public DateTime ClaimTime { get => claimTime; set => claimTime = value; }
         [XmlElement("ClaimComplete")]
         public EClaimStatus ClaimComplete { get => claimComplete; set => claimComplete = value; }
-        public Pasajero Passenger { get; set; }
+        [XmlElement("Passenger")]
+        public Pasajero Passenger { get; }
     }
 }

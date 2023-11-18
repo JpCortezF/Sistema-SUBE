@@ -82,7 +82,7 @@ namespace Sube
         {
             Close();
 
-            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, listPassengers);
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
             tarifaSocial.ShowDialog();
         }
 

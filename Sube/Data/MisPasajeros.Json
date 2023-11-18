@@ -3,9 +3,26 @@
     "Gender": 2,
     "MySube": {
       "CardNumber": "6061100022881911",
-      "Balance": 0.0,
-      "QueueTravels": [],
-      "TarifaSocial": 0
+      "Balance": -111.96,
+      "QueueTravels": [
+        {
+          "TicketCost": 59.0,
+          "Kilometres": 5.0,
+          "Date": "2023-11-18T00:17:32.9929222-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": 85,
+          "TarjetaSube": null
+        },
+        {
+          "TicketCost": 52.96,
+          "Kilometres": 2.0,
+          "Date": "2023-11-18T00:20:54.8568763-03:00",
+          "TipoTransporte": 1,
+          "LineasTransporte": 85,
+          "TarjetaSube": null
+        }
+      ],
+      "TarifaSocial": 1
     },
     "Email": "lamelanie@gmail.com",
     "Password": "9010",
@@ -16,10 +33,10 @@
   {
     "Gender": 1,
     "MySube": {
-      "CardNumber": "DeBaja",
+      "CardNumber": "6061938623643349",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "AleHardcode@gmail.com",
     "Password": "2790",
@@ -33,7 +50,7 @@
       "CardNumber": "6061534634635252",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "elpaco@gmail.com",
     "Password": "1234",
@@ -56,7 +73,7 @@
           "TarjetaSube": null
         }
       ],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "elezex@gmail.com",
     "Password": "1234",
@@ -70,7 +87,7 @@
       "CardNumber": "6061435223526363",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "lit@juan.com",
     "Password": "1234",
@@ -84,7 +101,7 @@
       "CardNumber": "6061326326582345",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "Lamelilez@hotmail.com",
     "Password": "4322",
@@ -98,7 +115,7 @@
       "CardNumber": "6061647434634574",
       "Balance": 0.0,
       "QueueTravels": [],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "nomdic@hotmail.com",
     "Password": "1234",
@@ -121,7 +138,7 @@
           "TarjetaSube": null
         }
       ],
-      "TarifaSocial": 0
+      "TarifaSocial": 1
     },
     "Email": "eltobi@gmail.com",
     "Password": "4321",

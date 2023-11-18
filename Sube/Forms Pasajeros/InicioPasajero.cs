@@ -107,7 +107,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormTarifaSocial))
             {
-                FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, listPassengers);
+                FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
                 OpenChildForm(tarifaSocial);
             }
         }

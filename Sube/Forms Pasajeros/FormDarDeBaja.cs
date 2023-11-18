@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
@@ -61,8 +62,19 @@ namespace Sube
                     int _rnd = rnd.Next(1, 99999);
 
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.Dni, $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, EClaimStatus.EnRevision);
+                    Tramites miTramite = new Tramites(_rnd, passenger.Dni, $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, EClaimStatus.EnProceso);
                     listaTramites.Add(miTramite);
+
+                    string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
+                    DataBase<object> data = new DataBase<object>();
+                    Dictionary<string, object> parameters = new Dictionary<string, object>
+                    {
+                        { "@Dni", passenger.Dni },
+                        { "@ClaimMessage", $"Reclamo:{radioButtonTramite}  " + txtClaim.Text },
+                        { "@ClaimTime", DateTime.Now },
+                        { "@IdClaimStatus", EClaimStatus.EnProceso },
+                    };
+                    data.Update(query, parameters);
 
                     //serializeTramites.Serialize(path, listaTramites);
                     Serializador.WriteXMLTramites(path, listaTramites);

@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using Sube.Forms_Admin;
 using System;
@@ -27,16 +28,16 @@ namespace Sube
         public ContainerAdmin()
         {
             InitializeComponent();
-            this.tramites = new List<Tramites>();
+            DataBase<object> data = new DataBase<object>();
+            //this.tramites = data.Select("SELECT * FROM tramites", IDataReader data);
             string ruta = @"..\..\..\Data";
             string nombre = "MisPasajeros.Json";
             string path = Path.Combine(ruta, nombre);
             listPassengers = Serializador.ReadJsonPassenger(path);
-            //listPassengers = serializadorPasajero.Deserialize(path);
             string rutaT = @"..\..\..\Data";
             string nombreT = "MisTramites.xml";
             string pathT = Path.Combine(rutaT, nombreT);
-            tramites = Serializador.ReadXMLTramites(pathT);
+            //tramites = ;
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)

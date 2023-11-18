@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
@@ -67,9 +68,12 @@ namespace Sube.Forms_Admin
             if (form.ShowDialog() == DialogResult.OK)
             {
                 tramiteAuxACambiar.ClaimComplete = EClaimStatus.Completado;
-                if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
+                if(cmbTarifa.SelectedItem != null)
                 {
-                    selectedPassenger.MySube.TarifaSocial = tarifaSocial;
+                    if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
+                    {
+                        selectedPassenger.MySube.TarifaSocial = tarifaSocial;
+                    }
                 }
                 if (bajaTarjeta == true)
                 {
@@ -78,6 +82,18 @@ namespace Sube.Forms_Admin
                     selectedPassenger.MySube.QueueTravels.Clear();
                     selectedPassenger.MySube.Balance = 0;
                     selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+
+                    string select = @"SELECT idClaim FROM tramites VALUES (@IdClaim) WHERE idClaim = @IdClaim";
+                    DataBase<object> data = new DataBase<object>();
+                    string update = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni;
+                    UPDATE pasajeros SET idSube = NULL WHERE id = @idSube";
+                    Dictionary<string, object> parameters = new Dictionary<string, object>
+                    {
+                        { "@Dni", selectedPassenger.Dni },
+                        { "@UpdateClaimStatus", EClaimStatus.Completado },
+                        { "@idSube", DBNull.Value }
+                    };
+                    data.Update(update, parameters);
                 }
                 foreach (Tramites list in tramitesReales)
                 {

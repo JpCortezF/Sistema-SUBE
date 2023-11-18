@@ -1,4 +1,5 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,11 @@ namespace Sube
 {
     public partial class FormTarifaSocial : Form
     {
-        List<Pasajero> listPassengers;
         Pasajero passenger;
-        public FormTarifaSocial(Pasajero passenger, List<Pasajero> listPassengers)
+        public FormTarifaSocial(Pasajero passenger)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.listPassengers = listPassengers;
         }
 
         private void FormTarifaSocial_Load(object sender, EventArgs e)
@@ -68,11 +67,17 @@ namespace Sube
 
                 if (Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
                 {
-                    Random rnd = new Random();
-                    int _rnd = rnd.Next(1, 99999);
+                    string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
+                    DataBase<object> data = new DataBase<object>();
+                    Dictionary<string, object> parameters = new Dictionary<string, object>
+                    {
+                        { "@Dni", passenger.Dni },
+                        { "@ClaimMessage", $"Reclamo:{tarifaSocial}  " + txtClaim.Text },
+                        { "@ClaimTime", DateTime.Now },
+                        { "@IdClaimStatus", EClaimStatus.EnProceso },
+                    };
+                    data.Insert(query, parameters);
 
-                    Tramites miTramite = new Tramites(_rnd, passenger.Dni, $"Reclamo: {tarifaSocial}  \n" + txtClaim.Text, DateTime.Now, EClaimStatus.EnRevision);
-                    listaTramites.Add(miTramite);
                     //serializeTramites.Serialize(path, listaTramites);
                     Serializador.WriteXMLTramites(path, listaTramites);
 
