@@ -188,41 +188,5 @@ namespace Biblioteca_DataBase
             }
         }
 
-        private string GetInsertQueryPasajero(Pasajero passenger, TarjetaSube mySube)
-        {
-            return $"INSERT INTO pasajeros (dni, name, lastname, email, password, idGender, idSube) " +
-                   $"VALUES('{passenger.Dni}', '{passenger.Name}', '{passenger.LastName}', '{passenger.Email}', '{passenger.Password}', '{passenger.Gender}', '{mySube.CardNumber}')";
-        }
-
-        private string GetInsertQuerySube(TarjetaSube mySube)
-        {
-            return $"INSERT INTO tarjetas (id, balance, socialRate) VALUES('{mySube.CardNumber}', '{0}', '{1}')";
-        }
-       
-        private string GetInsertQueryViaje(Viajes travel)
-        {
-            return $"INSERT INTO viajes (idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES('{travel.TarjetaSube.CardNumber}', '{travel.TipoTransporte}', '{travel.LineasTransporte}', '{travel.TarjetaSube.TarifaSocial}', '{travel.TicketCost}', '{travel.Kilometres}', '{DateTime.Now}')";
-        }
-
-        private string GetInsertQueryTramite(Tramites claim)
-        {
-            return $"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES('{claim.Passenger.Dni}','{claim.ClaimMessage}','{DateTime.Now}','{claim.ClaimComplete}')";
-        }
-        /*
-        private string GetUpdateQueryPasajero(Pasajero passenger, int estado)
-        {
-            string query = "";
-            switch (estado)
-            {
-                case 1:
-                    query = $"UPDATE pasajeros SET idSube = NULL WHERE {passenger.MySube.CardNumber} = idSube";
-                break;
-                case 2:
-                    query = $"UPDATE pasajeros SET idSube = {passenger.MySube.CardNumber}";
-                break;
-            }
-            return query ;
-        }
-        */
     }
 }

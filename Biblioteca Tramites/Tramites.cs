@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Biblioteca_Usuarios;
+using MySql.Data.MySqlClient;
 
 
 namespace Biblioteca_TarjetaSube
@@ -29,6 +30,15 @@ namespace Biblioteca_TarjetaSube
             this.claimComplete = claimComplete;
         }
 
+        public Tramites(int claimId, int dniClaimer, string claimMessage, DateTime claimTime, int claimComplete)
+        {
+            this.claimId = claimId;
+            this.dniClaimer = dniClaimer;
+            this.claimMessage = claimMessage;
+            this.claimTime = claimTime;
+            this.claimComplete = (EClaimStatus)Enum.ToObject(typeof(EClaimStatus), claimComplete); ;
+        }
+
         [XmlElement("ClaimId")]
         public int ClaimId { get => claimId; set => claimId = value; }
         [XmlElement("DniClaimer")]
@@ -39,7 +49,21 @@ namespace Biblioteca_TarjetaSube
         public DateTime ClaimTime { get => claimTime; set => claimTime = value; }
         [XmlElement("ClaimComplete")]
         public EClaimStatus ClaimComplete { get => claimComplete; set => claimComplete = value; }
-        [XmlElement("Passenger")]
-        public Pasajero Passenger { get; }
+
+        public static Tramites MapTramites(MySqlDataReader reader)
+        {
+            return (Tramites)reader;
+        }
+
+        public static explicit operator Tramites(MySqlDataReader reader)
+        {
+            int claimId = Convert.ToInt32(reader["idClaim"]);
+            int dniClaimer = Convert.ToInt32(reader["dniClaimer"]);
+            string claimMessage = reader["claimMessage"].ToString() ?? "";
+            DateTime claimTime = Convert.ToDateTime(reader["claimTime"]);
+            int claimComplete = Convert.ToInt32(reader["idClaimStatus"]);
+
+            return new Tramites(claimId, dniClaimer, claimMessage, claimTime, claimComplete);
+        }
     }
 }

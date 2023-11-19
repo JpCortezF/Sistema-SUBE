@@ -88,10 +88,10 @@ namespace Sube
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtEmail.Text = "eze@hotmail.com";
-            txtDni.Text = "41709030";
-            txtPassword.Text = "1234";
-            txtRepeatPassword.Text = "1234";
+            txtEmail.Text = "jpcortezzf@gmail.com";
+            txtDni.Text = "42645815";
+            txtPassword.Text = "0912";
+            txtRepeatPassword.Text = "0912";
         }
 
         private void btnMostrarPass_Click(object sender, EventArgs e)

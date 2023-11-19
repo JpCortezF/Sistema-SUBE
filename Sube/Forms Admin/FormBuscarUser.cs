@@ -18,7 +18,7 @@ namespace Sube
         List<Pasajero> listPassengers;
         private ContainerAdmin parentForm;
 
-        public FormBuscarUser(ContainerAdmin parent, List<Pasajero> listPassengers)
+        public FormBuscarUser(ContainerAdmin parent)
         {
             InitializeComponent();
             this.listPassengers = listPassengers;

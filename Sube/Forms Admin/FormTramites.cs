@@ -17,18 +17,16 @@ namespace Sube
 {
     public partial class FormTramites : Form
     {
-        List<Pasajero> listPassengers;
         List<Tramites> listTramites = new List<Tramites>();
         List<Tramites> listTramitesAux = new List<Tramites>();
         DataBase<object> data = new DataBase<object>();
         string queryUpdate = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni";
 
         private ContainerAdmin parentForm;
-        public FormTramites(ContainerAdmin parent, List<Tramites> tramites, List<Pasajero> listPassengers)
+        public FormTramites(ContainerAdmin parent, List<Tramites> tramites)
         {
             InitializeComponent();
             parentForm = parent;
-            this.listPassengers = listPassengers;
             this.listTramites = tramites;
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -85,6 +83,7 @@ namespace Sube
                         };
                         data.Update(queryUpdate, parameters);
                     }
+                    /*
                     foreach (Pasajero passenger in listPassengers)
                     {
                         if (selectedDni == passenger.Dni.ToString())
@@ -96,7 +95,7 @@ namespace Sube
                             break;
                         }
                     }
-
+                    */
                     foreach (Tramites list in listTramites)
                     {
                         if (listTramitesAux[selectedIndex].ClaimId == list.ClaimId && listTramitesAux[selectedIndex].ClaimComplete != list.ClaimComplete)
