@@ -186,6 +186,43 @@ namespace Biblioteca_DataBase
                     connectionMySql.Close();
                 }
             }
+            
+        }
+
+        public DataTable Data(string query, Dictionary<string, object> parameters = null)
+        {
+            DataTable table = new DataTable();
+            var mySqlStringConnection = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
+
+            using (MySqlConnection connection = new MySqlConnection(mySqlStringConnection))
+            {
+                connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.Clear();
+                    // Asigna el comando a la variable cmd
+                    using (MySqlDataAdapter data = new MySqlDataAdapter(cmd))
+                    {
+                        cmd.CommandText = query;
+
+                        if (parameters != null)
+                        {
+                            foreach (var param in parameters)
+                            {
+                                cmd.Parameters.AddWithValue(param.Key, param.Value);
+                            }
+                        }
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            // Llena la tabla con los datos obtenidos
+                            table.Load(reader);
+                        }
+                    }
+                }
+            }
+
+            return table;
         }
 
     }

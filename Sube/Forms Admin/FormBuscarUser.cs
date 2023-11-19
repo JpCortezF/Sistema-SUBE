@@ -1,14 +1,19 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static NPOI.HSSF.Util.HSSFColor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Sube
@@ -17,34 +22,62 @@ namespace Sube
     {
         List<Pasajero> listPassengers;
         private ContainerAdmin parentForm;
-
+        DataBase<DataTable> data = new DataBase<DataTable>();
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
         public FormBuscarUser(ContainerAdmin parent)
         {
             InitializeComponent();
-            this.listPassengers = listPassengers;
+
             cmbBuscar.SelectedIndex = 0;
             parentForm = parent;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("DNI", typeof(string));
-            dt.Columns.Add("Nombre", typeof(string));
-            dt.Columns.Add("Apellido", typeof(string));
-            dt.Columns.Add("Genero", typeof(string));
-            dt.Columns.Add("N° de Tarjeta", typeof(string));
-            dt.Columns.Add("Saldo actual", typeof(string));
-            /*
-            foreach (Pasajero pasajero in listPassengers)
+            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo FROM pasajeros INNER JOIN generos ON generos.id = pasajeros.idGender LEFT JOIN tarjetas ON tarjetas.id = pasajeros.idSube";
+            dataGridView.DataSource = null;
+            dataGridView.Refresh();
+            parameters.Clear();
+            switch (cmbBuscar.SelectedIndex)
             {
-                if (pasajero.Dni.ToString().StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.MySube.CardNumber.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase) || pasajero.LastName.StartsWith(txtDni.Text, StringComparison.OrdinalIgnoreCase))
-                {
-                    dt.Rows.Add(pasajero.Dni, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
-                }               
+                case 0:
+                    int.TryParse(txtDni.Text, out int dni);
+                    query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                    FROM pasajeros
+                    INNER JOIN
+                        generos ON generos.id = pasajeros.idGender
+                    LEFT JOIN
+                       tarjetas ON tarjetas.id = pasajeros.idSube
+                    WHERE 
+                    pasajeros.dni LIKE @dniSearch";
+                    parameters.Add("@dniSearch", "%" + dni + "%");
+                    break;
+                case 1:
+                    query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                    FROM pasajeros
+                    INNER JOIN
+                        generos ON generos.id = pasajeros.idGender
+                    LEFT JOIN
+                       tarjetas ON tarjetas.id = pasajeros.idSube
+                    WHERE 
+                    pasajeros.name LIKE @Name OR pasajeros.lastname LIKE @LastName";
+                    parameters.Add("@Name", "%" + txtName.Text + "%");
+                    parameters.Add("@LastName", "%" + txtName.Text + "%");
+                    break;
+                case 2:
+                    query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                    FROM pasajeros
+                    INNER JOIN
+                        generos ON generos.id = pasajeros.idGender
+                    LEFT JOIN
+                       tarjetas ON tarjetas.id = pasajeros.idSube
+                    WHERE
+                    pasajeros.idSube LIKE @Sube";
+                    parameters.Add("@Sube", "%" + txtName.Text + "%");
+                    break;
             }
-            */
-            dataGridView.DataSource = dt;
+            dataGridView.DataSource = data.Data(query, parameters);
+            LoadDataGridView();
         }
 
         private void cmbBuscar_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,7 +98,7 @@ namespace Sube
                     break;
                 case 2:
                     label2.Text = "N° de tarjeta a buscar:";
-                    txtDni.MaxLength = 16;
+                    txtName.MaxLength = 16;
                     txtName.Visible = false;
                     txtDni.Visible = true;
                     break;
@@ -85,7 +118,7 @@ namespace Sube
                         FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
                         editarUsuario.MdiParent = parentForm;
                         editarUsuario.Show();
-                    }               
+                    }
                 }
             }
         }
@@ -98,18 +131,13 @@ namespace Sube
             dt.Columns.Add("Genero", typeof(string));
             dt.Columns.Add("N° de Tarjeta", typeof(string));
             dt.Columns.Add("Saldo actual", typeof(string));
-            /*
-            foreach (Pasajero pasajero in listPassengers)
-            {
-                dt.Rows.Add(pasajero.Dni, pasajero.Name, pasajero.LastName, pasajero.Gender, pasajero.MySube.CardNumber, pasajero.MySube.Balance);
-            }
-            dataGridView.DataSource = dt;
-            dataGridView.Parent = panel1;
-            */
         }
 
         private void FormBuscarUser_Load(object sender, EventArgs e)
         {
+            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo FROM pasajeros INNER JOIN generos ON generos.id = pasajeros.idGender LEFT JOIN tarjetas ON tarjetas.id = pasajeros.idSube";
+
+            dataGridView.DataSource = data.Data(query, parameters);
             LoadDataGridView();
         }
 
@@ -122,5 +150,6 @@ namespace Sube
         {
             txtName.Text = Regex.Replace(txtName.Text, "[^a-zA-Z ]", "");
         }
+
     }
 }

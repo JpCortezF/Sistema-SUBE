@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.POIFS.Crypt.Dsig;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,11 +19,11 @@ namespace Sube
 {
     public partial class FormViajes : Form
     {
-        List<Viajes> viajes;
         Pasajero passenger;
         TarjetaSube sube;
         private InicioPasajero parentForm;
-        List<LineasTransporte> lineas;
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+        DataBase<DataTable> data = new DataBase<DataTable>();
 
         public FormViajes(InicioPasajero parent, Pasajero passenger, TarjetaSube sube)
         {
@@ -30,29 +31,28 @@ namespace Sube
             this.passenger = passenger;
             this.sube = sube;
             parentForm = parent;
-            string queryViajes = @"
-            SELECT viajes.idTravel, viajes.idCard, viajes.idTransport, viajes.idLine, viajes.idSocialRate, viajes.ticketCost, viajes.kilometres, viajes.date
-            FROM viajes
-            WHERE viajes.idCard = @idCardNumber";
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "@idCardNumber", sube.CardNumber },
-            };
-            DataBase<Viajes> data = new DataBase<Viajes>();
-            Viajes viaje = new Viajes();
-            viajes = data.Select(queryViajes, parameters, Viajes.MapViajes);
-
-            DataBase<LineasTransporte> dataLineas = new DataBase<LineasTransporte>();
-            string queryLineas = @"SELECT * FROM lineas"; 
-            lineas = dataLineas.Select(queryLineas, parameters, LineasTransporte.MapLineas);
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
-            double balance = sube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
+            parameters.Clear();
+            string query = @"
+                SELECT transportes.transport AS Transporte, lineas.line AS Linea, tarifassociales.rate AS TarifaSocial, viajes.ticketCost AS Boleto, viajes.kilometres AS Kilometros, viajes.date AS Fecha
+                FROM viajes
+                INNER JOIN
+                    tarifassociales ON tarifassociales.id = viajes.idSocialRate
+                INNER JOIN
+                    transportes ON transportes.id = viajes.idTransport
+                LEFT JOIN
+                    lineas ON lineas.id = viajes.idLine
+                WHERE viajes.idCard = @idCardNumber";
+            parameters.Add("@idCardNumber", sube.CardNumber);
+            dataGridViajes.DataSource = data.Data(query, parameters);
             LoadDataGridView();
 
-            if (viajes.Count == 0)
+            double balance = sube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
+
+            if (dataGridViajes.Rows.Count == 1)
             {
                 dataGridViajes.Visible = false;
                 pictureBox1.Visible = true;
@@ -76,29 +76,26 @@ namespace Sube
         {           
             if (txtBusqueda.Text != string.Empty)
             {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("FECHA", typeof(DateTime));
-                dt.Columns.Add("Linea", typeof(string));
-                dt.Columns.Add("Transporte", typeof(ETransporte));
-                dt.Columns.Add("Kilometros", typeof(int));
-                dt.Columns.Add("Costo del boleto", typeof(float));
-                dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
+                dataGridViajes.DataSource = null;
+                dataGridViajes.Refresh();
+                parameters.Clear();
 
-                foreach (Viajes viaje in viajes)
-                {
-                    foreach (LineasTransporte linea in lineas)
-                    { 
-                        if(viaje.LineasTransporte == linea.Id)
-                        { 
-                            if (txtBusqueda.Text == linea.Line)
-                            {
-                                dt.Rows.Add(viaje.Date, linea.Line, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
-                            }
-                        }
-                    }
-                }
+                string query = @"
+                SELECT transportes.transport AS Transporte, lineas.line AS Linea, tarifassociales.rate AS TarifaSocial, viajes.ticketCost AS Boleto, viajes.kilometres AS Kilometros, viajes.date AS Fecha
+                FROM viajes
+                INNER JOIN
+                    tarifassociales ON tarifassociales.id = viajes.idSocialRate
+                INNER JOIN
+                    transportes ON transportes.id = viajes.idTransport
+                LEFT JOIN
+                    lineas ON lineas.id = viajes.idLine
+                WHERE viajes.idCard = @idCardNumber AND lineas.line = @linea";
+                parameters.Add("@idCardNumber", sube.CardNumber);
+                parameters.Add("@linea", txtBusqueda.Text);
+
                 lblFiltro.Visible = true;
-                dataGridViajes.DataSource = dt;
+                dataGridViajes.DataSource = data.Data(query, parameters);
+                LoadDataGridView();
             }         
         }
         private void LoadDataGridView()
@@ -110,34 +107,20 @@ namespace Sube
             dt.Columns.Add("Kilometros", typeof(int));
             dt.Columns.Add("Costo del boleto", typeof(float));
             dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
-            foreach (Viajes viaje in viajes)
-            {
-                foreach (LineasTransporte linea in lineas)
-                {
-                    if (viaje.LineasTransporte == linea.Id)
-                    {
-                        dt.Rows.Add(viaje.Date, linea.Line, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
-                    }
-                }
-            }
-
-            dataGridViajes.DataSource = dt;
         }
 
         private void lblFiltro_Click(object sender, EventArgs e)
         {
-            LoadDataGridView();
+            FormViajes_Load(sender, e);
             lblFiltro.Visible = false;
             txtBusqueda.Text = string.Empty;
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
             TomarTransporte transporte = new TomarTransporte(passenger, sube);
             transporte.MdiParent = parentForm;
             transporte.Show();
-            Close();
-            
+            transporte.BringToFront();
         }
 
         private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)

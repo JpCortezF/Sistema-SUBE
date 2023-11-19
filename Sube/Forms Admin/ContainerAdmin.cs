@@ -98,13 +98,13 @@ namespace Sube
             ChartMenu notificaciones = new ChartMenu();
             notificaciones.Show();
             */
-            
+
             if (currentChildForm is null || !(currentChildForm is FormTramites))
             {
                 FormTramites notificaciones = new FormTramites(this, tramites);
                 OpenChildForm(notificaciones);
             }
-            
+
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)

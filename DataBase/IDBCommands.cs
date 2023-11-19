@@ -17,5 +17,7 @@ namespace Biblioteca_DataBase
         bool Update(string query, Dictionary<string, object> parameters = null);
 
         bool Delete(string query, Dictionary<string, object> parameters = null);
+
+        DataTable Data(string query, Dictionary<string, object> parameters = null);
     }
 }
