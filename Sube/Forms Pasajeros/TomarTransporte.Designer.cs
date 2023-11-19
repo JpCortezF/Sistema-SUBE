@@ -34,10 +34,10 @@
             txtKilometros = new TextBox();
             lblKilometres = new Label();
             btnViajar = new Button();
-            txtLinea = new TextBox();
             lblLinea = new Label();
             label1 = new Label();
             grpTransporte = new GroupBox();
+            comboBox2 = new ComboBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -66,6 +66,7 @@
             comboBox1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(6, 60);
+            comboBox1.MaxDropDownItems = 15;
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(181, 24);
             comboBox1.TabIndex = 1;
@@ -103,14 +104,6 @@
             btnViajar.UseVisualStyleBackColor = false;
             btnViajar.Click += btnViajar_Click;
             // 
-            // txtLinea
-            // 
-            txtLinea.Location = new Point(271, 60);
-            txtLinea.Name = "txtLinea";
-            txtLinea.PlaceholderText = "Subte A, Linea 85, Roca...";
-            txtLinea.Size = new Size(195, 22);
-            txtLinea.TabIndex = 2;
-            // 
             // lblLinea
             // 
             lblLinea.AutoSize = true;
@@ -131,17 +124,30 @@
             // 
             // grpTransporte
             // 
+            grpTransporte.Controls.Add(comboBox2);
             grpTransporte.Controls.Add(label1);
             grpTransporte.Controls.Add(txtKilometros);
             grpTransporte.Controls.Add(comboBox1);
             grpTransporte.Controls.Add(lblKilometres);
             grpTransporte.Controls.Add(lblLinea);
-            grpTransporte.Controls.Add(txtLinea);
             grpTransporte.Location = new Point(12, 57);
             grpTransporte.Name = "grpTransporte";
             grpTransporte.Size = new Size(723, 156);
             grpTransporte.TabIndex = 12;
             grpTransporte.TabStop = false;
+            // 
+            // comboBox2
+            // 
+            comboBox2.AllowDrop = true;
+            comboBox2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBox2.FormattingEnabled = true;
+            comboBox2.IntegralHeight = false;
+            comboBox2.ItemHeight = 16;
+            comboBox2.Location = new Point(271, 60);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(181, 24);
+            comboBox2.TabIndex = 12;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // pictureBox1
             // 
@@ -194,10 +200,10 @@
             btnContinuar.FlatAppearance.BorderSize = 0;
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnContinuar.Location = new Point(721, 192);
+            btnContinuar.Location = new Point(721, 172);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(34, 66);
-            btnContinuar.TabIndex = 21;
+            btnContinuar.TabIndex = 23;
             btnContinuar.UseVisualStyleBackColor = false;
             btnContinuar.Click += btnContinuar_Click_1;
             // 
@@ -239,7 +245,6 @@
         private TextBox txtKilometros;
         private Label lblKilometres;
         private Button btnViajar;
-        private TextBox txtLinea;
         private Label lblLinea;
         private Label label1;
         private GroupBox grpTransporte;
@@ -247,6 +252,7 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
+        private ComboBox comboBox2;
         private Button btnContinuar;
     }
 }

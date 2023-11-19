@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Sube
         Pasajero passenger;
         TarjetaSube sube;
         private InicioPasajero parentForm;
+        List<LineasTransporte> lineas;
 
         public FormViajes(InicioPasajero parent, Pasajero passenger, TarjetaSube sube)
         {
@@ -29,18 +31,20 @@ namespace Sube
             this.sube = sube;
             parentForm = parent;
             string queryViajes = @"
-            SELECT viajes.*, lineas.line AS LineValue
-            FROM viajes 
-            INNER JOIN lineas ON lineas.id = viajes.idLine
-            WHERE viajes.idLine = @LineValue AND viajes.idCard = 6061938623643349";
+            SELECT viajes.idTravel, viajes.idCard, viajes.idTransport, viajes.idLine, viajes.idSocialRate, viajes.ticketCost, viajes.kilometres, viajes.date
+            FROM viajes
+            WHERE viajes.idCard = @idCardNumber";
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
-                { "@IdCardNumber", sube.CardNumber },
-                { "@LineValue", 85 },
+                { "@idCardNumber", sube.CardNumber },
             };
             DataBase<Viajes> data = new DataBase<Viajes>();
             Viajes viaje = new Viajes();
             viajes = data.Select(queryViajes, parameters, Viajes.MapViajes);
+
+            DataBase<LineasTransporte> dataLineas = new DataBase<LineasTransporte>();
+            string queryLineas = @"SELECT * FROM lineas"; 
+            lineas = dataLineas.Select(queryLineas, parameters, LineasTransporte.MapLineas);
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
@@ -79,11 +83,18 @@ namespace Sube
                 dt.Columns.Add("Kilometros", typeof(int));
                 dt.Columns.Add("Costo del boleto", typeof(float));
                 dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
+
                 foreach (Viajes viaje in viajes)
                 {
-                    if (txtBusqueda.Text == viaje.LineasTransporte.ToString())
-                    {
-                        dt.Rows.Add(viaje.Date, viaje.LineasTransporte, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
+                    foreach (LineasTransporte linea in lineas)
+                    { 
+                        if(viaje.LineasTransporte == linea.Id)
+                        { 
+                            if (txtBusqueda.Text == linea.Line)
+                            {
+                                dt.Rows.Add(viaje.Date, linea.Line, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
+                            }
+                        }
                     }
                 }
                 lblFiltro.Visible = true;
@@ -101,7 +112,13 @@ namespace Sube
             dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
             foreach (Viajes viaje in viajes)
             {
-                dt.Rows.Add(viaje.Date, viaje.LineasTransporte, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
+                foreach (LineasTransporte linea in lineas)
+                {
+                    if (viaje.LineasTransporte == linea.Id)
+                    {
+                        dt.Rows.Add(viaje.Date, linea.Line, viaje.TipoTransporte, viaje.Kilometres, "-" + viaje.TicketCost, viaje.TarifaSocial);
+                    }
+                }
             }
 
             dataGridViajes.DataSource = dt;
@@ -115,12 +132,12 @@ namespace Sube
         }
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            /*
-            TomarTransporte transporte = new TomarTransporte(passenger, mySube);
+            
+            TomarTransporte transporte = new TomarTransporte(passenger, sube);
             transporte.MdiParent = parentForm;
             transporte.Show();
             Close();
-            */
+            
         }
 
         private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)
