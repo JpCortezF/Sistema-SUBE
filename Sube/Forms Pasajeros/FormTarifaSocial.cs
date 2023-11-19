@@ -53,14 +53,6 @@ namespace Sube
 
             if (radioButtonSeleccionado != null)
             {
-                List<Tramites> listaTramites = new List<Tramites>();
-                //SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
-                string ruta = @"..\..\..\Data";
-                string nombre = @".\MisTramites.xml";
-                string path = ruta + nombre;
-                //listaTramites = serializeTramites.Deserialize(path);
-                listaTramites = Serializador.ReadXMLTramites(path);
-
                 MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string radioButtonTarifa = radioButtonSeleccionado.Text;
 
@@ -72,20 +64,16 @@ namespace Sube
                     Dictionary<string, object> parameters = new Dictionary<string, object>
                     {
                         { "@Dni", passenger.Dni },
-                        { "@ClaimMessage", $"Reclamo:{tarifaSocial}  " + txtClaim.Text },
+                        { "@ClaimMessage", $"Reclamo: {tarifaSocial}  " + txtClaim.Text },
                         { "@ClaimTime", DateTime.Now },
                         { "@IdClaimStatus", EClaimStatus.EnProceso },
                     };
                     data.Insert(query, parameters);
-
-                    //serializeTramites.Serialize(path, listaTramites);
-                    Serializador.WriteXMLTramites(path, listaTramites);
-
                 }
             }
             else
             {
-               //passenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
+                MessageBox.Show("No se registro ninguna opcion marcada", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }

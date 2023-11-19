@@ -16,13 +16,11 @@ namespace Sube
     public partial class FormDarDeBaja : Form
     {
         Pasajero passenger;
-        List<Pasajero> listPassengers;
 
-        public FormDarDeBaja(Pasajero passenger, List<Pasajero> listPassengers)
+        public FormDarDeBaja(Pasajero passenger)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.listPassengers = listPassengers;
         }
 
         private void FormDarDeBaja_Load(object sender, EventArgs e)
@@ -48,38 +46,24 @@ namespace Sube
                 bajaUsuario.ShowDialog();
                 if (bajaUsuario.DialogResult == DialogResult.OK)
                 {
-                    string ruta = @"..\..\..\Data";
-                    string nombre = "MisTramites.xml";
-                    string path = Path.Combine(ruta, nombre);
-                    //SerializadorXML<List<Tramites>> serializeTramites = new SerializadorXML<List<Tramites>>();
-                    List<Tramites> listaTramites = new List<Tramites>();
-                    //listaTramites = serializeTramites.Deserialize(path);
-                    listaTramites = Serializador.ReadXMLTramites(path);
-
                     string radioButtonTramite = radioButtonSeleccionado.Text;
-
-                    Random rnd = new Random();
-                    int _rnd = rnd.Next(1, 99999);
-
-
-                    Tramites miTramite = new Tramites(_rnd, passenger.Dni, $"Reclamo:{radioButtonTramite}  " + txtClaim.Text, DateTime.Now, EClaimStatus.EnProceso);
-                    listaTramites.Add(miTramite);
+                    MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
                     DataBase<object> data = new DataBase<object>();
                     Dictionary<string, object> parameters = new Dictionary<string, object>
                     {
                         { "@Dni", passenger.Dni },
-                        { "@ClaimMessage", $"Reclamo:{radioButtonTramite}  " + txtClaim.Text },
+                        { "@ClaimMessage", $"Reclamo: {radioButtonTramite}  " + txtClaim.Text },
                         { "@ClaimTime", DateTime.Now },
                         { "@IdClaimStatus", EClaimStatus.EnProceso },
                     };
                     data.Update(query, parameters);
-
-                    //serializeTramites.Serialize(path, listaTramites);
-                    Serializador.WriteXMLTramites(path, listaTramites);
-                    MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            else
+            {
+                MessageBox.Show("No se registro ninguna opcion marcada", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -27,9 +27,12 @@ namespace Sube
         public FormBuscarUser(ContainerAdmin parent)
         {
             InitializeComponent();
-
             cmbBuscar.SelectedIndex = 0;
             parentForm = parent;
+
+            DataBase<Pasajero> data = new DataBase<Pasajero>();
+            string query = "SELECT * FROM pasajeros";
+            listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -115,9 +118,21 @@ namespace Sube
                 {
                     if (selectedRow.Cells["DNI"].Value.ToString() == passenger.Dni.ToString())
                     {
-                        FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger);
+                        string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
+
+                        Dictionary<string, object> parameters = new Dictionary<string, object>
+                        {
+                            { "@IdSube", passenger.IdSube },
+                            { "@IdCardNumber", passenger.IdSube },
+                        };
+                        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+                        List<TarjetaSube> listSube = new List<TarjetaSube>();
+                        listSube = data.Select(query, parameters, TarjetaSube.MapTarjetaSube);
+                        TarjetaSube sube = listSube.FirstOrDefault();
+                        FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger, sube);
                         editarUsuario.MdiParent = parentForm;
                         editarUsuario.Show();
+                        break;
                     }
                 }
             }

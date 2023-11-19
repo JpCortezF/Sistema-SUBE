@@ -23,7 +23,7 @@ namespace Sube
 
         private void FormBajaUsuario_Load(object sender, EventArgs e)
         {
-            //lblMensaje.Text = ($"Al dar de baja tu tarjeta nº {passenger.MySube.CardNumber}, quedará inhabilitada.\n¿Estás seguro de que querés continuar?\r\n\r\n");
+            lblMensaje.Text = ($"Al dar de baja tu tarjeta nº {passenger.IdSube}, quedará inhabilitada.\n¿Estás seguro de que querés continuar?\r\n\r\n");
         }
 
         private void button2_Click(object sender, EventArgs e)

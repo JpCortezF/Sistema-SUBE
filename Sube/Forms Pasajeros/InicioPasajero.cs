@@ -154,24 +154,20 @@ namespace Sube
         
         private void darDeBajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        /*
             if (currentChildForm is null || !(currentChildForm is FormDarDeBaja))
             {
-                FormDarDeBaja DeBaja = new FormDarDeBaja(passenger, listPassengers);
+                FormDarDeBaja DeBaja = new FormDarDeBaja(passenger);
                 OpenChildForm(DeBaja);
-            }
-        */
+            }        
         }
 
         private void mISTRÁMITESToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        /*
             if (currentChildForm is null || !(currentChildForm is FormPasajeroTramites))
             {
-                FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger, listPassengers);
+                FormPasajeroTramites Tramites = new FormPasajeroTramites(passenger);
                 OpenChildForm(Tramites);
             }
-        */
         }
         public void ItemsMdiParentVisibles()
         {
