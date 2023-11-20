@@ -23,14 +23,13 @@ namespace Sube
     {
         private string gender = "";
         private int idGender;
-        List<Pasajero> listPassengers;
         string userCardNumber = "";
+        DataBase<Pasajero> data = new DataBase<Pasajero>();
 
 
-        public FormRegistro(List<Pasajero> listPassengers)
+        public FormRegistro()
         {
             InitializeComponent();
-            this.listPassengers = listPassengers;
         }
         private void FormRegistro_Load_1(object sender, EventArgs e)
         {
@@ -55,9 +54,6 @@ namespace Sube
         }
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
-            //string ruta = @"..\..\..\Data";
-            //string nombre = @".\MisPasajeros.Json";
-            //string path = ruta + nombre;
             try
             {
                 string email = txtCorreo.Text;
@@ -66,15 +62,21 @@ namespace Sube
                 string lastname = txtLastname.Text;
                 if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
                 {
+
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
-
                     int.TryParse(document, out int dni);
-                    Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
-                    if (!passenger.PassengerExist(passenger, listPassengers))
+                    string query1 = @"SELECT * FROM pasajeros WHERE dni = @dniPasajero OR idSube = @idSubePasajero OR email = @emailPasajero";
+                    Dictionary<string, object> parameters1 = new Dictionary<string, object>
                     {
+                        { "@dniPasajero", dni },
+                        { "@idSubePasajero", cardNumber },
+                        { "@emailPasajero", email}
+                    };
+                    if (data.Select(query1, parameters1, Pasajero.MapPasajero).Count == 0)
+                    {   
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                         string query = @"
                         INSERT INTO tarjetas (id, balance, socialRate) VALUES (@tarjeta, @balance, @tarifaSocial);
                         INSERT INTO pasajeros(dni, name, lastname, email, password, idGender, idSube) VALUES(@dniPasajero, @nombrePasajero, @apellidoPasajero, @emailPasajero, @contraPasajero, @generoPasajero, @idSubePasajero)";
@@ -91,8 +93,7 @@ namespace Sube
                             { "@contraPasajero", password },
                             { "@generoPasajero", idGender },
                             { "@idSubePasajero", cardNumber }
-                        };
-                        DataBase<Pasajero> data = new DataBase<Pasajero>();
+                        };                        
                         data.Insert(query, parameters);
                         InicioPasajero inicio = new InicioPasajero(passenger);
                         inicio.Show();

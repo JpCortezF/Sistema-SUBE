@@ -1,4 +1,5 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,18 +16,18 @@ namespace Sube
 {
     public partial class FormCargaCompleta : Form
     {
-        Pasajero passenger;
+        TarjetaSube sube;
 
-        public FormCargaCompleta(Pasajero passenger, string amount)
+        public FormCargaCompleta(TarjetaSube sube, string amount)
         {
             InitializeComponent();
-            this.passenger = passenger;
+            this.sube = sube;
             lblAcreditado.Text = "Saldo acreditado $" + amount;
         }
         private void FormCargaCompleta_Load(object sender, EventArgs e)
         {
-            //double balance = passenger.MySube.Balance;
-            //lblSaldo.Text = $"${balance.ToString("F2")}";
+            double balance = sube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
         {

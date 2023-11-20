@@ -17,19 +17,11 @@ namespace Sube
 {
     public partial class FormPasajero : Form
     {
-        List<Pasajero> listPassengers;
         private Form currentChildForm = null;
 
         public FormPasajero()
         {
             InitializeComponent();
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-            DataBase<Pasajero> data = new DataBase<Pasajero>();
-
-            string query = "SELECT * FROM pasajeros";
-
-            listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
         }
         private void FormPasajero_Load(object sender, EventArgs e)
         {
@@ -89,7 +81,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormIngreso))
             {
-                FormIngreso formIngreso = new FormIngreso(this, listPassengers);
+                FormIngreso formIngreso = new FormIngreso(this);
                 OpenChildForm(formIngreso);
             }
         }
@@ -102,7 +94,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormRegistro))
             {
-                FormRegistro formRegistro = new FormRegistro(listPassengers);
+                FormRegistro formRegistro = new FormRegistro();
                 OpenChildForm(formRegistro);
             }
         }

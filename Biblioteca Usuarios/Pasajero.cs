@@ -34,6 +34,7 @@ namespace Biblioteca_Usuarios
         /// <param name="passenger">El pasajero que se desea verificar.</param>
         /// <param name="listPassengers">La lista de pasajeros en la que se realizará la búsqueda.</param>
         /// <returns>True si el pasajero existe en la lista, ya sea por la clave o por comparación de información. False si no existe.</returns>
+        /*
         public bool PassengerExist(Pasajero passenger, List<Pasajero> listPassengers)
         {
             bool exists = listPassengers.Contains(passenger);
@@ -50,6 +51,7 @@ namespace Biblioteca_Usuarios
             }
             return exists;
         }
+        */
         public static Pasajero MapPasajero(MySqlDataReader reader)
         {
             return (Pasajero)reader;

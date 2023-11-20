@@ -21,7 +21,7 @@ namespace Sube
         Pasajero passenger;
         TarjetaSube mySube;
         private Form currentChildForm = null;
-        FormSubePasajero formSube;
+        FormSubePasajero formSube = null;
 
         public InicioPasajero(Pasajero passenger)
         { 

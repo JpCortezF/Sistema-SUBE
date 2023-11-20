@@ -1,6 +1,9 @@
-﻿using Biblioteca_TarjetaSube;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.POIFS.Crypt.Dsig;
 using NPOI.SS.Formula.Functions;
+using Org.BouncyCastle.Asn1.X509;
 using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
@@ -18,17 +21,13 @@ namespace Sube
 {
     public partial class FormRegistroAdmin : Form
     {
-        List<Administrador> listAdmins;
-        public FormRegistroAdmin(List<Administrador> admins)
+        DataBase<Administrador> data = new DataBase<Administrador>();
+        public FormRegistroAdmin()
         {
             InitializeComponent();
-            this.listAdmins = admins;
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            string ruta = @"..\..\..\Data";
-            string nombre = @".\MisAdmins.Json";
-            string path = ruta + nombre;
 
             try
             {
@@ -40,14 +39,35 @@ namespace Sube
                 {
                     string document = txtDNI.Text;
                     int.TryParse(document, out int dni);
-                    Administrador admin = new Administrador(dni, email, password, name, lastname);
-                    if (!admin.AdminExist(admin, listAdmins))
+                    string claveSecreta = Administrador.KeyToEncrypt();
+                    string claveEncriptada = Administrador.EncriptarClave(password, claveSecreta);
+                    string query1 = @"SELECT * FROM admins WHERE dni = @dniAdmin OR email = @emailAdmin";
+                    Dictionary<string, object> parameters1 = new Dictionary<string, object>
                     {
-                        listAdmins.Add(admin);
+                        { "@dniAdmin", dni },
+                        { "@emailAdmin", email}
+                    };
+                    if (data.Select(query1, parameters1, Administrador.MapAdmin).Count == 0)
+                    {
+                        Administrador admin = new Administrador(dni, email, password, name, lastname);
+                        string query = @"  
+                        INSERT INTO admins(dni, name, lastname, email, password) VALUES(@dniAdmin, @nombreAdmin, @apellidoAdmin, @emailAdmin, @contraAdmin)";
+
+                        Dictionary<string, object> parameters = new Dictionary<string, object>
+                        {
+                            { "@dniAdmin", dni },
+                            { "@nombreAdmin", name },
+                            { "@apellidoAdmin", lastname },
+                            { "@emailAdmin", email },
+                            { "@contraAdmin", claveEncriptada },
+                        };
+                        data.Insert(query, parameters);
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
-                        //serializadorAdmin.Serialize(path, dictionaryAdmins);
-                        Serializador.WriteJsonAdmin(path, listAdmins);
+                        ContainerAdmin inicio = new ContainerAdmin(admin);
+                        inicio.Show();
+                        MdiParent.Close();
+                        Close();
+
                     }
                     else
                     {

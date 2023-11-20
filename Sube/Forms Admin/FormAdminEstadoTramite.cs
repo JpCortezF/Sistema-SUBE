@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.POIFS.Crypt.Dsig;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -107,6 +108,7 @@ namespace Sube.Forms_Admin
                 }
                 else
                 {
+                    parameters.Clear();
                     string update = @"
                         UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;
                         UPDATE tarjetas SET socialRate =  @IdSocialRate";
@@ -121,21 +123,21 @@ namespace Sube.Forms_Admin
 
         private void btnDenegate_Click(object sender, EventArgs e)
         {
-            /*
+            
             FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tramiteAuxACambiar.ClaimComplete = EClaimStatus.Rechazado;
-                foreach (Tramites list in tramitesReales)
-                {
-                    if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)
-                    {
-                        list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
-                    }
-                }
+                DataBase<object> data = new DataBase<object>();
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Clear();
+                string update = @"
+                        UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;";
+                parameters.Add("@IdClaim", tramite.ClaimId);
+                parameters.Add("@UpdateClaimStatus", EClaimStatus.Rechazado);
+                data.Update(update, parameters);
                 Close();
             }
-            */
+            
         }
 
     }

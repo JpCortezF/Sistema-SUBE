@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,7 +51,7 @@ namespace Sube
                         selectedIndex = listTramites.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
                         listTramites[selectedIndex].ClaimComplete = EClaimStatus.EnRevision;
 
-                        UpdateTramiteStatus(dniPassenger, EClaimStatus.EnRevision);
+                        UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
 
                         Pasajero passenger = GetPasajeroByDni(dniPassenger);
 
@@ -71,13 +72,13 @@ namespace Sube
             }
 
         }
-        private void UpdateTramiteStatus(int dniPassenger, EClaimStatus newStatus)
+        private void UpdateTramiteStatus(int selectedClaimId, EClaimStatus newStatus)
         {
-            string queryUpdate = "UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni";
+            string queryUpdate = "UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @idClaim";
             Dictionary<string, object> parameters = new Dictionary<string, object>
             {
                 { "@UpdateClaimStatus", newStatus },
-                { "@Dni", dniPassenger }
+                { "@idClaim", selectedClaimId }
             };
             data.Update(queryUpdate, parameters);
         }

@@ -55,6 +55,7 @@ namespace Sube.Forms_Pasajeros
                         SubeONLINE subeOnline = new SubeONLINE(passenger);
                         subeOnline.MdiParent = parentForm;
                         subeOnline.Show();
+                        Close();
                     }
                     else
                     {

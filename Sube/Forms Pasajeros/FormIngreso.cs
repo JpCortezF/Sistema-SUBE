@@ -20,10 +20,9 @@ namespace Sube
 
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<Pasajero> data = new DataBase<Pasajero>();
-        public FormIngreso(FormPasajero parent, List<Pasajero> listPassengers)
+        public FormIngreso(FormPasajero parent)
         {
             InitializeComponent();
-            this.listPassengers = listPassengers;
             parentForm = parent;
         }
 
@@ -65,7 +64,7 @@ namespace Sube
         }
         private void lblRegistro_Click_1(object sender, EventArgs e)
         {
-            FormRegistro registro = new FormRegistro(listPassengers);
+            FormRegistro registro = new FormRegistro();
             registro.MdiParent = parentForm;
             registro.Show();
         }

@@ -72,6 +72,7 @@ namespace Sube.Forms_Pasajeros
                 parameters.Add("@newCardNumber", passenger.IdSube);
                 parameters.Add("@Dni", passenger.Dni);
                 data.Update(query, parameters);
+                Close();
             }
         }
     }

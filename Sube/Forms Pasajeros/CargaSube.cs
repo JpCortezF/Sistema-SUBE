@@ -1,4 +1,6 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_TarjetaSube;
+using Biblioteca_DataBase;
+using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +18,11 @@ namespace Sube
 {
     public partial class CargaSube : Form
     {
-        Pasajero passenger;
-
-        public CargaSube(Pasajero passenger)
+        TarjetaSube sube;
+        public CargaSube(TarjetaSube sube)
         {
             InitializeComponent();
-            this.passenger = passenger;
+            this.sube = sube; 
         }
         private void lblContinuar_Click(object sender, EventArgs e)
         {
@@ -35,8 +36,8 @@ namespace Sube
         private void CargaSube_Load(object sender, EventArgs e)
         {
             lblMensaje.Text = "Carga tu SUBE de forma virtual desde Mercado Pago";
-            //double balance = Sube.Balance;
-            //lblSaldo.Text = $"${balance.ToString("F2")}";
+            double balance = sube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
             txtCarga.TextChanged += txtCarga_TextChanged;
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
@@ -67,20 +68,25 @@ namespace Sube
         {
             try
             {
-                /*
-                float balance = passenger.MySube.Balance;
+                string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
+                DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+                Dictionary<string, object> parameters = new Dictionary<string, object>();         
+                float balance = sube.Balance;
                 if (!string.IsNullOrEmpty(txtCarga.Text))
                 {
                     if (float.TryParse(txtCarga.Text, out balance))
                     {
-                        passenger.MySube.Balance += balance;
-                        if (passenger.MySube.Balance < 0)
+                        sube.Balance += balance;
+                        if (sube.Balance < 0)
                         {
-                            passenger.MySube.Balance -= balance;
+                            sube.Balance -= balance;
                             MessageBox.Show("El saldo de la SUBE no puede quedar en NEGATIVO", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
+                            parameters.Add("@idSube", sube.CardNumber);
+                            parameters.Add("@balanceUpdate", sube.Balance);
+                            data.Update(queryUpdate, parameters);
                             DialogResult = DialogResult.OK;
                             Close();
                         }
@@ -90,7 +96,7 @@ namespace Sube
                 {
                     txtCarga.BackColor = Color.RosyBrown;
                 }
-                */
+
             }
             catch (Exception ex)
             {

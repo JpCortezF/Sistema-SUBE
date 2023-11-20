@@ -69,20 +69,23 @@ namespace Sube
         {
             try
             {
-                Hide();
+                if(sube != null)
+                {                
+                    Hide();
 
-                CargaSube cargarSube = new CargaSube(passenger);
-                cargarSube.ShowDialog();
-                if (cargarSube.DialogResult == DialogResult.OK)
-                {
-                    string amount = cargarSube.DevolverMonto();
-
-                    FormCargaCompleta subeCargada = new FormCargaCompleta(passenger, amount);
-                    subeCargada.ShowDialog();
-                    if (subeCargada.DialogResult == DialogResult.OK)
+                    CargaSube cargarSube = new CargaSube(sube);
+                    cargarSube.ShowDialog();
+                    if (cargarSube.DialogResult == DialogResult.OK)
                     {
-                        Show();
-                        Close();
+                        string amount = cargarSube.DevolverMonto();
+
+                        FormCargaCompleta subeCargada = new FormCargaCompleta(sube, amount);
+                        subeCargada.ShowDialog();
+                        if (subeCargada.DialogResult == DialogResult.OK)
+                        {
+                            Show();
+                            Close();
+                        }
                     }
                 }
             }

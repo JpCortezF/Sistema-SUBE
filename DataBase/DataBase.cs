@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using NPOI.OpenXmlFormats.Vml;
 using static NPOI.HSSF.Util.HSSFColor;
 using System.Collections;
+using System.Net.Sockets;
 
 namespace Biblioteca_DataBase
 {
@@ -18,6 +19,7 @@ namespace Biblioteca_DataBase
 
         static DataBase()
         {
+
             var mySqlStringConnection = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
 
             connectionMySql = new MySqlConnection(mySqlStringConnection);
@@ -25,12 +27,28 @@ namespace Biblioteca_DataBase
             commandMySql = new MySqlCommand();
             commandMySql.CommandType = System.Data.CommandType.Text;
             commandMySql.Connection = connectionMySql;
+
         }
              
-        public static int ExecuteNonQuery(string query)
+        public static void OpenConection()
         {
-            commandMySql.CommandText = query;
-            return commandMySql.ExecuteNonQuery();
+            try
+            {
+                connectionMySql.Open();
+            }
+            catch (MySqlException ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            catch(SocketException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public List<T> Select(string query, Dictionary<string, object> parameters, Func<MySqlDataReader, T> mapObject)
@@ -38,7 +56,7 @@ namespace Biblioteca_DataBase
             List<T> list = new List<T>();
             try
             {
-                connectionMySql.Open();
+                OpenConection();
 
                 commandMySql.CommandText = query;
 
@@ -62,8 +80,14 @@ namespace Biblioteca_DataBase
                 }
                 return list;
             }
-            catch (Exception)
+            catch (InvalidOperationException ex)
             {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 throw;
             }
             finally
@@ -75,7 +99,7 @@ namespace Biblioteca_DataBase
         {
             try
             {
-                connectionMySql.Open();
+                OpenConection();
 
                 commandMySql.CommandText = query;
 
@@ -114,7 +138,7 @@ namespace Biblioteca_DataBase
         {
             try
             {
-                connectionMySql.Open();
+                OpenConection();
 
                 commandMySql.CommandText = query;
 
@@ -153,7 +177,7 @@ namespace Biblioteca_DataBase
         {
             try
             {
-                connectionMySql.Open();
+                OpenConection();
 
                 commandMySql.CommandText = query;
 

@@ -21,7 +21,7 @@ namespace Sube
         List<Tramites> tramites;
         private Form currentChildForm = null;
 
-        public ContainerAdmin()
+        public ContainerAdmin(Administrador admin)
         {
             InitializeComponent();
             DataBase<Tramites> data = new DataBase<Tramites>();

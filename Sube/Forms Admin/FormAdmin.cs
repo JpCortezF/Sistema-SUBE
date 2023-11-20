@@ -1,4 +1,7 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_DataBase;
+using Biblioteca_Usuarios;
+using NPOI.POIFS.Crypt.Dsig;
+using NPOI.SS.Formula.Functions;
 using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
@@ -16,17 +19,12 @@ namespace Sube
 {
     public partial class FormAdmin : Form
     {
-        List<Administrador> listAdmins;
-
+        List<Administrador> admins = new List<Administrador>();
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+        DataBase<Administrador> data = new DataBase<Administrador>();
         public FormAdmin(ContainerLoginAdmin parent)
         {
             InitializeComponent();
-            //SerializadorJSON<Dictionary<string, Administrador>> serializadorAdmin = new SerializadorJSON<Dictionary<string, Administrador>>();
-            string ruta = @"..\..\..\Data";
-            string nombre = "MisAdmins.Json";
-            string path = Path.Combine(ruta, nombre);
-            listAdmins = Serializador.ReadJsonAdmin(path);
-            //dictionaryAdmins = serializadorAdmin.Deserialize(path);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -54,7 +52,7 @@ namespace Sube
 
         private void lblRegistroAdmin_Click(object sender, EventArgs e)
         {
-            FormRegistroAdmin frm = new FormRegistroAdmin(listAdmins);
+            FormRegistroAdmin frm = new FormRegistroAdmin();
             frm.MdiParent = this.MdiParent;
             frm.Show();
             Close();
@@ -62,27 +60,36 @@ namespace Sube
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            bool exist = false;
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtEmail.Text))
             {
-                foreach (Administrador admin in listAdmins)
+                parameters.Clear();
+                string query1 = "SELECT * FROM admins WHERE dni = @dni AND email = @email";
+                parameters.Add("@dni", txtDni.Text);
+                parameters.Add("@email", txtEmail.Text);
+
+                admins = data.Select(query1, parameters, Administrador.MapAdmin);
+                Administrador admin = admins.FirstOrDefault();
+
+                if (admin != null)
                 {
-                    if (txtDni.Text == admin.Dni.ToString() && txtPassword.Text == admin.Password && txtEmail.Text == admin.Email)
+                    string passwordToCheck = Administrador.DesencriptarClave(admin.Password, Administrador.KeyToEncrypt());
+                    if (txtPassword.Text == passwordToCheck)
                     {
-                        exist = true;
                         MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ContainerAdmin inicio = new ContainerAdmin();
+                        ContainerAdmin inicio = new ContainerAdmin(admin);
                         inicio.Show();
                         MdiParent.Close();
                         this.Close();
-                        break;
                     }
-                    
+                    else
+                    {
+                        MessageBox.Show("No se encontro al usuario.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-            }
-            if (!exist)
-            {
-                MessageBox.Show("No se encontro al usuario.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("No se encontro al usuario.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
