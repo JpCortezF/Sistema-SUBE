@@ -234,7 +234,7 @@
             // 
             txtClaim.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtClaim.Location = new Point(601, 65);
-            txtClaim.MaxLength = 138;
+            txtClaim.MaxLength = 140;
             txtClaim.Multiline = true;
             txtClaim.Name = "txtClaim";
             txtClaim.Size = new Size(260, 160);

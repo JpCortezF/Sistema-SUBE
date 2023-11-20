@@ -30,23 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistroAdmin));
             groupBox1 = new GroupBox();
-            label11 = new Label();
             txtLastName = new TextBox();
             label12 = new Label();
-            label9 = new Label();
             txtName = new TextBox();
             label10 = new Label();
             lblDNI = new Label();
             txtDNI = new TextBox();
             label8 = new Label();
             label1 = new Label();
-            label3 = new Label();
             txtRepeatPassword = new TextBox();
             label5 = new Label();
             lblClave = new Label();
             btnMostrarPass = new Button();
             btnIngresar = new Button();
-            label6 = new Label();
             txtPassword = new TextBox();
             label4 = new Label();
             lblEmail = new Label();
@@ -58,23 +54,19 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
-            groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(txtLastName);
             groupBox1.Controls.Add(label12);
-            groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(txtName);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(lblDNI);
             groupBox1.Controls.Add(txtDNI);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtRepeatPassword);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(lblClave);
             groupBox1.Controls.Add(btnMostrarPass);
             groupBox1.Controls.Add(btnIngresar);
-            groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(txtPassword);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(lblEmail);
@@ -86,18 +78,6 @@
             groupBox1.Size = new Size(682, 307);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = Color.DarkRed;
-            label11.Location = new Point(13, 217);
-            label11.Name = "label11";
-            label11.Size = new Size(57, 16);
-            label11.TabIndex = 33;
-            label11.Text = "MsjError";
-            label11.Visible = false;
             // 
             // txtLastName
             // 
@@ -117,18 +97,6 @@
             label12.Size = new Size(82, 19);
             label12.TabIndex = 32;
             label12.Text = "* Apellido";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = Color.DarkRed;
-            label9.Location = new Point(13, 144);
-            label9.Name = "label9";
-            label9.Size = new Size(57, 16);
-            label9.TabIndex = 30;
-            label9.Text = "MsjError";
-            label9.Visible = false;
             // 
             // txtName
             // 
@@ -192,17 +160,6 @@
             label1.Text = "MsjClave";
             label1.Visible = false;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            label3.ForeColor = Color.DodgerBlue;
-            label3.Location = new Point(353, 217);
-            label3.Name = "label3";
-            label3.Size = new Size(89, 15);
-            label3.TabIndex = 22;
-            label3.Text = "Olvidé mi clave";
-            // 
             // txtRepeatPassword
             // 
             txtRepeatPassword.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -260,17 +217,6 @@
             btnIngresar.Text = "Crear cuenta";
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic, GraphicsUnit.Point);
-            label6.ForeColor = Color.DodgerBlue;
-            label6.Location = new Point(353, 142);
-            label6.Name = "label6";
-            label6.Size = new Size(89, 15);
-            label6.TabIndex = 5;
-            label6.Text = "Olvidé mi clave";
             // 
             // txtPassword
             // 
@@ -334,6 +280,7 @@
             Name = "FormRegistroAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegistroAdmin";
+            Load += FormRegistroAdmin_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -346,22 +293,18 @@
         private TextBox txtDNI;
         private Label label8;
         private Label label1;
-        private Label label3;
         private TextBox txtRepeatPassword;
         private Label label5;
         private Label lblClave;
         private Button btnMostrarPass;
         private Button btnIngresar;
-        private Label label6;
         private TextBox txtPassword;
         private Label label4;
         private Label lblEmail;
         private TextBox txtEmail;
         private Label label2;
-        private Label label11;
         private TextBox txtLastName;
         private Label label12;
-        private Label label9;
         private TextBox txtName;
         private Label label10;
     }

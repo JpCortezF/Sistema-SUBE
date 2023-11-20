@@ -64,6 +64,30 @@ namespace Sube
                         {
                             comboBox2.Items.Add(linea.Line);
                         }
+                        
+                        List<string> lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
+                        lineasOrdenadas.Sort((a, b) =>
+                        {
+                            int CompareNumerically(string x, string y)
+                            {
+                                if (int.TryParse(x, out int numX) && int.TryParse(y, out int numY))
+                                {
+                                    return numX.CompareTo(numY);
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Error al convertir {x} o {y} a número.");
+                                    return 0;
+                                }
+                            }
+
+                            return CompareNumerically(a, b);
+                        });
+
+                        // Asigna las líneas ordenadas al ComboBox
+                        comboBox2.Items.Clear();
+                        comboBox2.Items.AddRange(lineasOrdenadas.ToArray());
+
                         break;
                     case ETransporte.Subte:
                         lineas.Clear();

@@ -22,7 +22,6 @@ namespace Sube
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             lblPrincipal.Text = "Desarrollamos la tecnología para simplificar y mejorar el acceso al transporte público.";
-
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
         {

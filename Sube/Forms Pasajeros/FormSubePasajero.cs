@@ -87,6 +87,10 @@ namespace Sube
                             Close();
                         }
                     }
+                    else
+                    {
+                        Show();
+                    }
                 }
             }
             catch (Exception ex)

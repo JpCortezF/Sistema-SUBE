@@ -76,7 +76,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(589, 199);
             ControlBox = false;
             Controls.Add(button2);

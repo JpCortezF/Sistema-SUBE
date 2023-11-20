@@ -13,6 +13,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Sube
 {
@@ -23,11 +24,16 @@ namespace Sube
         private Form currentChildForm = null;
         FormSubePasajero formSube = null;
 
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel toolStripStatusLabel;
+        private ToolStripStatusLabel dummyLabel;
+        private Timer timer;
+
         public InicioPasajero(Pasajero passenger)
-        { 
+        {
             InitializeComponent();
             this.passenger = passenger;
-
+            InstanciarStatusTrip();
             string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -101,7 +107,7 @@ namespace Sube
         private void viajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (currentChildForm is null || !(currentChildForm is FormViajes))
-            {               
+            {
                 FormViajes viajes = new FormViajes(this, passenger, mySube);
                 OpenChildForm(viajes);
             }
@@ -151,14 +157,14 @@ namespace Sube
                 lblNombre.Visible = false;
             }
         }
-        
+
         private void darDeBajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (currentChildForm is null || !(currentChildForm is FormDarDeBaja))
             {
                 FormDarDeBaja DeBaja = new FormDarDeBaja(passenger);
                 OpenChildForm(DeBaja);
-            }        
+            }
         }
 
         private void mISTRÁMITESToolStripMenuItem_Click(object sender, EventArgs e)
@@ -173,6 +179,47 @@ namespace Sube
         {
             lblNombre.Visible = true;
             pictureBox1.Visible = true;
+        }
+        private void InstanciarStatusTrip()
+        {
+            statusStrip = new StatusStrip();
+
+            toolStripStatusLabel = new ToolStripStatusLabel();
+            toolStripStatusLabel.Spring = true;
+
+            // No inicialices dummyLabel aquí
+
+            statusStrip.Items.Add(toolStripStatusLabel);
+
+            // Configura el StatusStrip para que esté en la parte inferior del formulario
+            statusStrip.Dock = DockStyle.Bottom;
+
+            Controls.Add(statusStrip);
+
+            // Establece la alineación del ToolStripStatusLabel
+            toolStripStatusLabel.Alignment = ToolStripItemAlignment.Right;
+
+            // Inicia el temporizador después de configurar los componentes
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+            // Inicializa dummyLabel después de iniciar el temporizador
+            dummyLabel = new ToolStripStatusLabel(DateTime.Now.ToString("HH:mm"));
+            statusStrip.Items.Add(dummyLabel);
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Actualiza la hora actual en el ToolStripStatusLabel
+            dummyLabel.Text = DateTime.Now.ToString("HH:mm");
+        }
+
+        private void InicioPasajero_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer.Stop();
+            timer.Dispose();
         }
     }
 }

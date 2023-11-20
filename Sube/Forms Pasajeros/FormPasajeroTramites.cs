@@ -18,13 +18,20 @@ namespace Sube
         Pasajero passenger;
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<DataTable> data = new DataBase<DataTable>();
+        private int mensajeColumnIndex = 2; 
 
         public FormPasajeroTramites(Pasajero passengerLoged)
         {
             InitializeComponent();
             this.passenger = passengerLoged;
         }
-
+        public class LimitedTextBox : TextBox
+        {
+            public LimitedTextBox()
+            {
+                this.MaxLength = 140;
+            }
+        }
         private void btnSalir_Click(object sender, EventArgs e)
         {
             InicioPasajero inicio = (InicioPasajero)this.MdiParent;
@@ -40,6 +47,7 @@ namespace Sube
 
         private void FormPasajeroTramites_Load(object sender, EventArgs e)
         {
+            dataGridTramites.DataError += dataGridTramites_DataError;
             parameters.Clear();
 
             string query = @"SELECT tramites.idClaim AS N°Reclamo, pasajeros.dni AS DNI, tramites.claimMessage AS MensajeReclamo, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
@@ -65,6 +73,19 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }           
+        }
+        private void dataGridTramites_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show($"Error en la celda {e.ColumnIndex + 1}, fila {e.RowIndex + 1}: {e.Exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Otra opción: Ignorar el error y continuar
+                e.ThrowException = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en el manejo de DataError: {ex.Message}");
+            }
         }
     }
 }

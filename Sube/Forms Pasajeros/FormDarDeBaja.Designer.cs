@@ -44,7 +44,7 @@
             // 
             txtClaim.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtClaim.Location = new Point(599, 102);
-            txtClaim.MaxLength = 138;
+            txtClaim.MaxLength = 140;
             txtClaim.Multiline = true;
             txtClaim.Name = "txtClaim";
             txtClaim.Size = new Size(260, 114);
@@ -52,7 +52,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.RosyBrown;
+            button1.BackColor = Color.DarkGray;
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(870, 0);
@@ -62,6 +62,8 @@
             button1.Text = " x";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            button1.MouseLeave += button1_MouseLeave;
+            button1.MouseHover += button1_MouseHover;
             // 
             // btnTramite
             // 

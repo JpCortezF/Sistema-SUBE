@@ -38,8 +38,8 @@
             tarifaSocialToolStripMenuItem = new ToolStripMenuItem();
             darDeBajaToolStripMenuItem = new ToolStripMenuItem();
             mISTRÁMITESToolStripMenuItem = new ToolStripMenuItem();
-            lblNombre = new Label();
             pictureBox1 = new PictureBox();
+            lblNombre = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -115,18 +115,6 @@
             mISTRÁMITESToolStripMenuItem.Text = "| MIS TRÁMITES |";
             mISTRÁMITESToolStripMenuItem.Click += mISTRÁMITESToolStripMenuItem_Click;
             // 
-            // lblNombre
-            // 
-            lblNombre.AutoSize = true;
-            lblNombre.BackColor = Color.Transparent;
-            lblNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(360, 116);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(92, 31);
-            lblNombre.TabIndex = 3;
-            lblNombre.Text = "¡Hola!";
-            // 
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
@@ -137,6 +125,18 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.BackColor = Color.Transparent;
+            lblNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombre.ForeColor = Color.White;
+            lblNombre.Location = new Point(334, 117);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(92, 31);
+            lblNombre.TabIndex = 40;
+            lblNombre.Text = "¡Hola!";
             // 
             // InicioPasajero
             // 
@@ -156,6 +156,7 @@
             Name = "InicioPasajero";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "InicioPasajero";
+            FormClosed += InicioPasajero_FormClosed;
             Load += InicioPasajero_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -171,11 +172,11 @@
         private ToolStripMenuItem viajesToolStripMenuItem;
         private ToolStripMenuItem tarifaSocialToolStripMenuItem;
         private ToolStripMenuItem subeToolStripMenuItem;
-        private Label lblNombre;
         private ToolStripMenuItem vIAJARToolStripMenuItem;
         private ToolStripMenuItem iNICIOToolStripMenuItem;
         private ToolStripMenuItem darDeBajaToolStripMenuItem;
         private ToolStripMenuItem mISTRÁMITESToolStripMenuItem;
         private PictureBox pictureBox1;
+        private Label lblNombre;
     }
 }

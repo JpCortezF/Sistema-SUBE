@@ -31,7 +31,6 @@ namespace Sube
             itemSalir.BackColor = SystemColors.ActiveCaption;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
-
             Image backgroundImage = Properties.Resources.fondoPasajero;
 
             // Establece la imagen como fondo del Panel

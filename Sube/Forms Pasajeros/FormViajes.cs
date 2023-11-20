@@ -34,6 +34,7 @@ namespace Sube
         }
         private void FormViajes_Load(object sender, EventArgs e)
         {
+            dataGridViajes.DataError += dataGridViajes_DataError;
             parameters.Clear();
             if (sube != null)
             {
@@ -125,6 +126,19 @@ namespace Sube
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
         }
+        private void dataGridViajes_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show($"Error en la celda {e.ColumnIndex + 1}, fila {e.RowIndex + 1}: {e.Exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Otra opción: Ignorar el error y continuar
+                e.ThrowException = false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en el manejo de DataError: {ex.Message}");
+            }
+        }
 
         private void lblFiltro_Click(object sender, EventArgs e)
         {
@@ -136,7 +150,16 @@ namespace Sube
         {
             TomarTransporte transporte = new TomarTransporte(passenger, sube);
             transporte.MdiParent = parentForm;
+            transporte.FormClosed += (s, args) =>
+            {
+                if (!Visible)
+                {
+                    Show();
+                    Close();
+                }
+            };
             transporte.Show();
+            Hide();
         }
 
         private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)

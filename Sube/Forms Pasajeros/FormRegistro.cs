@@ -16,6 +16,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
 using NPOI.SS.Formula.Functions;
+using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Sube
 {
@@ -110,7 +112,7 @@ namespace Sube
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "Ocurrió un error inesperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -281,7 +283,7 @@ namespace Sube
 
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
                 // Si no es un carácter o una tecla de control, cancelar la entrada
                 e.Handled = true;

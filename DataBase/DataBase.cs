@@ -39,7 +39,6 @@ namespace Biblioteca_DataBase
             }
             catch (MySqlException ex)
             {
-
                 Console.WriteLine(ex.Message + "\nPrimero deberias abrir la base de datos!");
             }
             catch(SocketException ex)

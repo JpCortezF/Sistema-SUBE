@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using MySql.Data.MySqlClient;
 using NPOI.POIFS.Crypt.Dsig;
 using NPOI.SS.Formula.Functions;
 using Org.BouncyCastle.Asn1.X509;
@@ -22,6 +23,7 @@ namespace Sube
     public partial class FormRegistroAdmin : Form
     {
         DataBase<Administrador> data = new DataBase<Administrador>();
+        int flagPass = 0;
         public FormRegistroAdmin()
         {
             InitializeComponent();
@@ -74,10 +76,14 @@ namespace Sube
                         MessageBox.Show("El usuario ya se encuentra registrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                else
+                {
+                    MessageBox.Show($"Error al cargar los datos!", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "Ocurrió un error inesperado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -105,6 +111,12 @@ namespace Sube
             }
             if (txtPassword.Text != txtRepeatPassword.Text)
             {
+                lblClave.Text = "Las contraseñas no coinciden";
+                lblClave.Visible = true;
+            }
+            else if (txtPassword.Text.Length < 4)
+            {
+                lblClave.Text = "La contraseña debe tener por lo menos 4 caracteres";
                 lblClave.Visible = true;
             }
             else
@@ -146,6 +158,13 @@ namespace Sube
                 txtPassword.PasswordChar = '•';
                 btnMostrarPass.BackgroundImage = Properties.Resources.view;
             }
+        }
+
+        private void FormRegistroAdmin_Load(object sender, EventArgs e)
+        {
+            lblEmail.Text = "Ingrese un email valido";
+            lblDNI.Text = "Ingrese un DNI valido";
+
         }
     }
 }

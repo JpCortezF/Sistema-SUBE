@@ -48,7 +48,7 @@ namespace Sube
                 {
                     string radioButtonTramite = radioButtonSeleccionado.Text;
                     MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    btnTramite.Enabled = true;
                     string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
                     DataBase<object> data = new DataBase<object>();
                     Dictionary<string, object> parameters = new Dictionary<string, object>
@@ -71,6 +71,16 @@ namespace Sube
         {
             InicioPasajero inicio = (InicioPasajero)this.MdiParent;
             inicio.ItemsMdiParentVisibles();
+        }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.RosyBrown;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.DarkGray;
         }
     }
 }
