@@ -1,4 +1,7 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +17,12 @@ namespace Sube.Forms_Pasajeros
 {
     public partial class SubeONLINE : Form
     {
-        List<Pasajero> listPassengers;
         Pasajero passenger;
-        public SubeONLINE(List<Pasajero> listPassengers, Pasajero passenger, string newCardNumber)
+
+        public SubeONLINE(Pasajero passenger)
         {
             InitializeComponent();
             this.passenger = passenger;
-            this.passenger.IdSube = newCardNumber;
-            this.listPassengers = listPassengers;
         }
 
         private void SubeONLINE_Load(object sender, EventArgs e)
@@ -52,15 +53,25 @@ namespace Sube.Forms_Pasajeros
         {
             if (txtDomicilio.Text != string.Empty)
             {
+                DataBase<TarjetaSube> dataSube = new DataBase<TarjetaSube>();
+                DataBase<Pasajero> data = new DataBase<Pasajero>();
+
                 CamionEmergente camion = new CamionEmergente();
                 camion.ShowDialog();
-                string ruta = @"..\..\..\Data";
-                string nombre = "MisPasajeros.Json";
-                string path = Path.Combine(ruta, nombre);
 
-                //Serializador.WriteJsonPassenger(path, dictionaryPassengers);
-                SerializadorJSON<List<Pasajero>> serializadorPasajero = new SerializadorJSON<List<Pasajero>>();
-                serializadorPasajero.Serialize(path, listPassengers);
+                string insertSube = @"INSERT INTO tarjetas (id, balance, socialRate) VALUES (@tarjeta, @balance, @tarifaSocial);";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@tarjeta", passenger.IdSube },
+                    { "@balance", 0 },
+                    { "@tarifaSocial", ETarifaSocial.Ninguna },
+                };
+                dataSube.Insert(insertSube, parameters);
+                string query = @"UPDATE pasajeros SET idSube = @newCardNumber WHERE dni = @Dni";
+                parameters.Clear();
+                parameters.Add("@newCardNumber", passenger.IdSube);
+                parameters.Add("@Dni", passenger.Dni);
+                data.Update(query, parameters);
             }
         }
     }

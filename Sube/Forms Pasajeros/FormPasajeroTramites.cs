@@ -58,6 +58,13 @@ namespace Sube
             dataTable.Columns.Add("Numero", typeof(string));
             dataTable.Columns.Add("Mensaje", typeof(string));
             dataTable.Columns.Add("Fecha", typeof(DateTime));
+            dataGridTramites.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridTramites.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridTramites.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            foreach (DataGridViewColumn column in dataGridTramites.Columns)
+            {
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }           
         }
     }
 }

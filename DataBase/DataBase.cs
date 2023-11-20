@@ -172,6 +172,7 @@ namespace Biblioteca_DataBase
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error en la eliminación de MySQL: " + ex.Message);
+                Console.WriteLine("Número de error MySQL: " + ex.Number);
                 return false;
             }
             catch (Exception ex)

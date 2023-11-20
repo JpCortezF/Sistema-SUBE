@@ -111,7 +111,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormCompraOnline))
             {
-                FormCompraOnline compraSube = new FormCompraOnline(this, listPassengers);
+                FormCompraOnline compraSube = new FormCompraOnline(this);
                 OpenChildForm(compraSube);
             }
         }

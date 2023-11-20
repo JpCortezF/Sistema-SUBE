@@ -16,10 +16,12 @@ namespace Sube
     public partial class FormTarifaSocial : Form
     {
         Pasajero passenger;
-        public FormTarifaSocial(Pasajero passenger)
+        FormSubePasajero formSube;
+        public FormTarifaSocial(Pasajero passenger, FormSubePasajero formSube)
         {
             InitializeComponent();
             this.passenger = passenger;
+            this.formSube = formSube;
         }
 
         private void FormTarifaSocial_Load(object sender, EventArgs e)
@@ -42,9 +44,12 @@ namespace Sube
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InicioPasajero inicio = (InicioPasajero)this.MdiParent;
-            inicio.ItemsMdiParentVisibles();
             Close();
+            if(formSube != null)
+            {
+                formSube.Show();
+                formSube.Close();
+            }
         }
 
         private void btnTramite_Click(object sender, EventArgs e)

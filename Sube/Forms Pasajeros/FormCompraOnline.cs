@@ -1,5 +1,8 @@
-﻿using Biblioteca_Usuarios;
+﻿using Biblioteca_DataBase;
+using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using Microsoft.Win32;
+using NPOI.POIFS.Crypt.Dsig;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,46 +21,51 @@ namespace Sube.Forms_Pasajeros
     {
         List<Pasajero> listPassengers;
         private FormPasajero parentForm;
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+        DataBase<Pasajero> data = new DataBase<Pasajero>();
+        DataBase<TarjetaSube> dataSube = new DataBase<TarjetaSube>();
 
-        public FormCompraOnline(FormPasajero parent, List<Pasajero> listPassengers)
+        public FormCompraOnline(FormPasajero parent)
         {
             InitializeComponent();
-            this.listPassengers = listPassengers;
             parentForm = parent;
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            bool compraOnline = false;
-            if(txtDni.Text != string.Empty)
+            if (txtDni.Text != string.Empty)
             {
-                foreach (Pasajero passenger in listPassengers)
+                string query = "SELECT * FROM pasajeros WHERE dni = @dni AND idSube IS NULL";
+                parameters["@dni"] = txtDni.Text;
+                listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
+                if (listPassengers.Count > 0)
                 {
-                    /*
-                    if (txtDni.Text == passenger.Dni.ToString() && passenger.MySube.CardNumber == "DeBaja")
+                    Pasajero passenger = listPassengers.FirstOrDefault();
+                    Random rnd = new Random();
+                    int _rnd = rnd.Next(1000, 9999);
+                    int _rnd2 = rnd.Next(1000, 9999);
+                    int _rnd3 = rnd.Next(1000, 9999);
+                    passenger.IdSube = $"6061{_rnd}{_rnd2}{_rnd3}";
+
+                    parameters.Clear();
+                    string querySube = "SELECT * FROM tarjetas WHERE id = @subeRandom";
+                    parameters.Add("@subeRandom", passenger.IdSube);
+                    if(dataSube.Select(querySube, parameters, TarjetaSube.MapTarjetaSube).Count == 0)
                     {
-                        Random rnd = new Random();
-                        int _rnd = rnd.Next(1000, 9999);
-                        int _rnd2 = rnd.Next(1000, 9999);
-                        int _rnd3 = rnd.Next(1000, 9999);
-                        string newCardNumber = $"6061{_rnd}{_rnd2}{_rnd3}";
-                        
-                        if (!passenger.CardNumberExist(listPassengers, newCardNumber))
-                        {
-                            SubeONLINE subeOnline = new SubeONLINE(listPassengers, passenger, newCardNumber);
-                            subeOnline.MdiParent = parentForm;
-                            subeOnline.Show();
-                        }
-                        compraOnline = true;
-                        
+                        SubeONLINE subeOnline = new SubeONLINE(passenger);
+                        subeOnline.MdiParent = parentForm;
+                        subeOnline.Show();
                     }
-                */
+                    else
+                    {
+                        MessageBox.Show("Felicitaciones, lograste crear una SUBE ya existente! jaja", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-            }
-            if (compraOnline == false)
-            {
-                MessageBox.Show("No puede tener más de una SUBE a su nombre", "Nueva SUBE", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }         
+                else
+                {
+                    MessageBox.Show("No puede tener más de una SUBE a su nombre", "Nueva SUBE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }           
         }
         private void FormCompraOnline_Load(object sender, EventArgs e)
         {

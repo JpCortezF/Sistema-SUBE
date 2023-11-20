@@ -20,6 +20,7 @@ namespace Sube
 {
     public partial class FormBuscarUser : Form
     {
+        TarjetaSube sube;
         List<Pasajero> listPassengers;
         private ContainerAdmin parentForm;
         DataBase<DataTable> data = new DataBase<DataTable>();
@@ -118,7 +119,7 @@ namespace Sube
                 {
                     if (selectedRow.Cells["DNI"].Value.ToString() == passenger.Dni.ToString())
                     {
-                        string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
+                        string querySube = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
 
                         Dictionary<string, object> parameters = new Dictionary<string, object>
                         {
@@ -127,8 +128,9 @@ namespace Sube
                         };
                         DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
                         List<TarjetaSube> listSube = new List<TarjetaSube>();
-                        listSube = data.Select(query, parameters, TarjetaSube.MapTarjetaSube);
-                        TarjetaSube sube = listSube.FirstOrDefault();
+                        listSube = data.Select(querySube, parameters, TarjetaSube.MapTarjetaSube);
+                        sube = listSube.FirstOrDefault();
+
                         FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger, sube);
                         editarUsuario.MdiParent = parentForm;
                         editarUsuario.Show();

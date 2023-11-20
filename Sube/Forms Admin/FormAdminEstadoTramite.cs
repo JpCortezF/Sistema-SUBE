@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,14 +18,24 @@ namespace Sube.Forms_Admin
     {
         bool bajaTarjeta;
         Pasajero selectedPassenger;
-        Tramites tramiteAuxACambiar;
-        List<Tramites> tramitesReales;
-        public FormAdminEstadoTramite(Pasajero pasajero, Tramites tramiteAux, List<Tramites> tramites)
+        Tramites tramite;
+        TarjetaSube sube;
+        public FormAdminEstadoTramite(Pasajero pasajero, Tramites tramite)
         {
             InitializeComponent();
             selectedPassenger = pasajero;
-            tramiteAuxACambiar = tramiteAux;
-            tramitesReales = tramites;
+            this.tramite = tramite;
+            string querySube = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@IdSube", pasajero.IdSube },
+                { "@IdCardNumber", pasajero.IdSube },
+            };
+            DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+            List<TarjetaSube> listSube = new List<TarjetaSube>();
+            listSube = data.Select(querySube, parameters, TarjetaSube.MapTarjetaSube);
+            sube = listSube.FirstOrDefault();
         }
 
         private void FormAdminEstadoTramite_Load(object sender, EventArgs e)
@@ -33,23 +44,21 @@ namespace Sube.Forms_Admin
             txtNombre.Text = selectedPassenger.Name;
             txtApellido.Text = selectedPassenger.LastName;
             txtMail.Text = selectedPassenger.Email;
-            //txtNumTarjeta.Text = selectedPassenger.MySube.CardNumber;
-            //txtCredito.Text = selectedPassenger.MySube.Balance.ToString();
-            txtReclamo.Text = tramiteAuxACambiar.ClaimMessage;
+            txtNumTarjeta.Text = sube.CardNumber;
+            txtCredito.Text = sube.Balance.ToString();
+            txtReclamo.Text = tramite.ClaimMessage;
             foreach (ETarifaSocial item in Enum.GetValues(typeof(ETarifaSocial)))
             {
                 string itemString = Enum.GetName(typeof(ETarifaSocial), item);
                 cmbTarifa.Items.Add(itemString);
             }
             for (int i = 0; i < cmbTarifa.Items.Count; i++)
-            {
-                /*
-                if (cmbTarifa.Items[i].ToString() == selectedPassenger.MySube.TarifaSocial.ToString())
+            {             
+                if (cmbTarifa.Items[i].ToString() == sube.TarifaSocial.ToString())
                 {
                     cmbTarifa.SelectedIndex = i;
                     break;
                 }
-                */
             }
         }
 
@@ -66,44 +75,45 @@ namespace Sube.Forms_Admin
         private void btnAprobe_Click(object sender, EventArgs e)
         {
             FormEmergente form = new FormEmergente("Quiere aprobar los cambios?", "Guardar");
-
             if (form.ShowDialog() == DialogResult.OK)
             {
-                tramiteAuxACambiar.ClaimComplete = EClaimStatus.Completado;
-                if(cmbTarifa.SelectedItem != null)
+                DataBase<object> data = new DataBase<object>();
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                if (cmbTarifa.SelectedItem != null)
                 {
                     if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
                     {
-                        //selectedPassenger.MySube.TarifaSocial = tarifaSocial;
+                        sube.TarifaSocial = tarifaSocial;
                     }
                 }
                 if (bajaTarjeta == true)
                 {
-                    /*
-                    this.bajaTarjeta = true;
-                    selectedPassenger.MySube.CardNumber = "DeBaja";
-                    selectedPassenger.MySube.QueueTravels.Clear();
-                    selectedPassenger.MySube.Balance = 0;
-                    selectedPassenger.MySube.TarifaSocial = ETarifaSocial.Ninguna;
-                    */
-                    string select = @"SELECT idClaim FROM tramites VALUES (@IdClaim) WHERE idClaim = @IdClaim";
-                    DataBase<object> data = new DataBase<object>();
                     string update = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni;
-                    UPDATE pasajeros SET idSube = NULL WHERE id = @idSube";
-                    Dictionary<string, object> parameters = new Dictionary<string, object>
-                    {
-                        { "@Dni", selectedPassenger.Dni },
-                        { "@UpdateClaimStatus", EClaimStatus.Completado },
-                        { "@idSube", DBNull.Value }
-                    };
+                    UPDATE pasajeros SET idSube = @idSubeNull WHERE idSube = @idSubeNotNull";
+
+                    parameters.Add("@Dni", selectedPassenger.Dni);
+                    parameters.Add("@UpdateClaimStatus", EClaimStatus.Completado);
+                    parameters.Add("@idSubeNull", DBNull.Value);
+                    parameters.Add("@idSubeNotNull", selectedPassenger.IdSube);
+             
                     data.Update(update, parameters);
+                    parameters.Clear();
+                    string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
+                    DELETE FROM tarjetas WHERE id = @CardNumber";
+                    parameters.Add("@idSube", selectedPassenger.IdSube);
+                    parameters.Add("@CardNumber", selectedPassenger.IdSube);
+                    data.Delete(delete, parameters);
+                    parameters.Clear();
                 }
-                foreach (Tramites list in tramitesReales)
+                else
                 {
-                    if (tramiteAuxACambiar.ClaimId == list.ClaimId && tramiteAuxACambiar.ClaimComplete != list.ClaimComplete)
-                    {
-                        list.ClaimComplete = tramiteAuxACambiar.ClaimComplete;
-                    }
+                    string update = @"
+                        UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;
+                        UPDATE tarjetas SET socialRate =  @IdSocialRate";
+                    parameters.Add("@IdClaim", tramite.ClaimId);
+                    parameters.Add("@UpdateClaimStatus", EClaimStatus.Completado);
+                    parameters.Add("@IdSocialRate", sube.TarifaSocial);
+                    data.Update(update, parameters);
                 }
                 Close();
             }
@@ -111,6 +121,7 @@ namespace Sube.Forms_Admin
 
         private void btnDenegate_Click(object sender, EventArgs e)
         {
+            /*
             FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -124,6 +135,7 @@ namespace Sube.Forms_Admin
                 }
                 Close();
             }
+            */
         }
 
     }

@@ -19,7 +19,6 @@ namespace Sube
     public partial class ContainerAdmin : Form
     {
         List<Tramites> tramites;
-
         private Form currentChildForm = null;
 
         public ContainerAdmin()

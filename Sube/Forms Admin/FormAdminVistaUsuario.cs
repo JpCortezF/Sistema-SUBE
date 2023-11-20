@@ -75,7 +75,15 @@ namespace Sube
             dt.Columns.Add("Linea", typeof(string));
             dt.Columns.Add("Kms", typeof(string));
             dt.Columns.Add("Fecha", typeof(string));
-            dt.Columns.Add("Precio", typeof(string));                    
+            dt.Columns.Add("Precio", typeof(string));
+
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
         }
     }
 }

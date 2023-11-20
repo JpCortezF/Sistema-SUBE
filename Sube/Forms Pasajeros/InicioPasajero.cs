@@ -21,7 +21,7 @@ namespace Sube
         Pasajero passenger;
         TarjetaSube mySube;
         private Form currentChildForm = null;
-
+        FormSubePasajero formSube;
 
         public InicioPasajero(Pasajero passenger)
         { 
@@ -94,7 +94,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormSubePasajero))
             {
-                FormSubePasajero miSube = new FormSubePasajero(passenger, mySube);
+                FormSubePasajero miSube = new FormSubePasajero(passenger, mySube, this);
                 OpenChildForm(miSube);
             }
         }
@@ -111,7 +111,7 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is FormTarifaSocial))
             {
-                FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
+                FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, formSube);
                 OpenChildForm(tarifaSocial);
             }
         }

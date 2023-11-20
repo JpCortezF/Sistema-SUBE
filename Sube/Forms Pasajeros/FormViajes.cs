@@ -35,7 +35,9 @@ namespace Sube
         private void FormViajes_Load(object sender, EventArgs e)
         {
             parameters.Clear();
-            string query = @"
+            if (sube != null)
+            {
+                string query = @"
                 SELECT transportes.transport AS Transporte, lineas.line AS Linea, tarifassociales.rate AS TarifaSocial, viajes.ticketCost AS Boleto, viajes.kilometres AS Kilometros, viajes.date AS Fecha
                 FROM viajes
                 INNER JOIN
@@ -45,26 +47,33 @@ namespace Sube
                 LEFT JOIN
                     lineas ON lineas.id = viajes.idLine
                 WHERE viajes.idCard = @idCardNumber";
-            parameters.Add("@idCardNumber", sube.CardNumber);
-            dataGridViajes.DataSource = data.Data(query, parameters);
-            LoadDataGridView();
+                parameters.Add("@idCardNumber", sube.CardNumber);
 
-            double balance = sube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
 
-            if (dataGridViajes.Rows.Count == 1)
-            {
-                dataGridViajes.Visible = false;
-                pictureBox1.Visible = true;
-                lblViajes.Visible = true;
-                linkLabel1.Visible = true;
+                dataGridViajes.DataSource = data.Data(query, parameters);
+                LoadDataGridView();
+
+                double balance = sube.Balance;
+                lblSaldo.Text = $"${balance.ToString("F2")}";
+            
+                if (dataGridViajes.Rows.Count == 1)
+                {
+                    dataGridViajes.Visible = false;
+                    pictureBox1.Visible = true;
+                    lblViajes.Visible = true;
+                    linkLabel1.Visible = true;
+                }
+                else
+                {
+                    dataGridViajes.Visible = true;
+                    pictureBox1.Visible = false;
+                    lblViajes.Visible = false;
+                    linkLabel1.Visible = false;
+                }
             }
             else
             {
-                dataGridViajes.Visible = true;
-                pictureBox1.Visible = false;
-                lblViajes.Visible = false;
-                linkLabel1.Visible = false;
+                lblSaldo.Text = "  $0";
             }
         }
         private void btnSalir_Click_1(object sender, EventArgs e)
@@ -107,6 +116,14 @@ namespace Sube
             dt.Columns.Add("Kilometros", typeof(int));
             dt.Columns.Add("Costo del boleto", typeof(float));
             dt.Columns.Add("Tarifa social", typeof(ETarifaSocial));
+
+            dataGridViajes.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridViajes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViajes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            foreach (DataGridViewColumn column in dataGridViajes.Columns)
+            {
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
         }
 
         private void lblFiltro_Click(object sender, EventArgs e)
@@ -120,7 +137,6 @@ namespace Sube
             TomarTransporte transporte = new TomarTransporte(passenger, sube);
             transporte.MdiParent = parentForm;
             transporte.Show();
-            transporte.BringToFront();
         }
 
         private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)

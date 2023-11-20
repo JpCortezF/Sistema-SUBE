@@ -3,6 +3,7 @@ using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using Sube.Forms_Admin;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,11 @@ namespace Sube
     public partial class FormTramites : Form
     {
         List<Tramites> listTramites = new List<Tramites>();
-        List<Tramites> listTramitesAux = new List<Tramites>();
         DataBase<object> data = new DataBase<object>();
-        string queryUpdate = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni";
+        DataBase<Pasajero> dataPassenger = new DataBase<Pasajero>();
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+
 
         private ContainerAdmin parentForm;
         public FormTramites(ContainerAdmin parent, List<Tramites> tramites)
@@ -28,82 +31,34 @@ namespace Sube
             InitializeComponent();
             parentForm = parent;
             this.listTramites = tramites;
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            }
-
-            foreach (Tramites tramite in tramites)
-            {
-                if (tramite.ClaimComplete == EClaimStatus.EnRevision || tramite.ClaimComplete == EClaimStatus.EnProceso)
-                {
-                    listTramitesAux.Add(tramite);
-
-                }
-            }
-            this.dataGridView1.DataSource = listTramitesAux;
-            lblCount.Text = listTramitesAux.Count.ToString();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int selectedClaimId = 0;
+            int selectedIndex = -1;
             try
             {
-
-                string selectedDni = null;
-                int selectedIndex = -1;
-                int selectedClaimId = 0;
-                listTramitesAux.Clear();
-                foreach (Tramites tramite in listTramites)
-                {
-                    if (tramite.ClaimComplete == EClaimStatus.EnRevision || tramite.ClaimComplete == EClaimStatus.EnProceso)
-                    {
-                        listTramitesAux.Add(tramite);
-
-                    }
-                }
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
                     DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-                    if (selectedRow.Cells["DniClaimer"].Value != null)
+                    if (selectedRow.Cells["DNI"].Value != null)
                     {
-                        selectedDni = selectedRow.Cells["DniClaimer"].Value.ToString();
-                        selectedClaimId = (int)(selectedRow.Cells["ClaimId"].Value);
-                        selectedIndex = listTramitesAux.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
-                        listTramitesAux[selectedIndex].ClaimComplete = EClaimStatus.EnRevision;
-                        int.TryParse(selectedDni, out int dniPassenger);
-                        Dictionary<string, object> parameters = new Dictionary<string, object>
-                        {
-                            { "@UpdateClaimStatus", EClaimStatus.EnRevision },
-                            { "@Dni", dniPassenger }
-                        };
-                        data.Update(queryUpdate, parameters);
-                    }
-                    /*
-                    foreach (Pasajero passenger in listPassengers)
-                    {
-                        if (selectedDni == passenger.Dni.ToString())
-                        {
-                            FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramitesAux[selectedIndex], listTramites);
-                            editarUsuario.MdiParent = parentForm;
-                            editarUsuario.Show();
-                            Close();
-                            break;
-                        }
-                    }
-                    */
-                    foreach (Tramites list in listTramites)
-                    {
-                        if (listTramitesAux[selectedIndex].ClaimId == list.ClaimId && listTramitesAux[selectedIndex].ClaimComplete != list.ClaimComplete)
-                        {
-                            list.ClaimComplete = listTramitesAux[selectedIndex].ClaimComplete;
-                        }
-                    }
+                        int dniPassenger = Convert.ToInt32(selectedRow.Cells["DNI"].Value);
+                        
+                        selectedClaimId = (int)(selectedRow.Cells["IdReclamo"].Value);
+                        selectedIndex = listTramites.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
+                        listTramites[selectedIndex].ClaimComplete = EClaimStatus.EnRevision;
 
+                        UpdateTramiteStatus(dniPassenger, EClaimStatus.EnRevision);
+
+                        Pasajero passenger = GetPasajeroByDni(dniPassenger);
+
+                        FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramites[selectedIndex]);
+                        editarUsuario.MdiParent = parentForm;
+                        editarUsuario.Show();      
+                    }
+                    Close();
                 }
             }
             catch (InvalidOperationException ex)
@@ -116,6 +71,52 @@ namespace Sube
             }
 
         }
+        private void UpdateTramiteStatus(int dniPassenger, EClaimStatus newStatus)
+        {
+            string queryUpdate = "UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@UpdateClaimStatus", newStatus },
+                { "@Dni", dniPassenger }
+            };
+            data.Update(queryUpdate, parameters);
+        }
+        private Pasajero GetPasajeroByDni(int dniPassenger)
+        {
+            string query = "SELECT * FROM pasajeros WHERE dni = @selectedDni";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@selectedDni", dniPassenger }
+            };
+            List<Pasajero> listPassengers = dataPassenger.Select(query, parameters, Pasajero.MapPasajero);
+            return listPassengers.FirstOrDefault();
+        }
+        private void FormTramites_Load(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Refresh();
+            parameters.Clear();
 
+            string query = @"SELECT tramites.idClaim AS IdReclamo, tramites.dniClaimer AS DNI, tramites.claimMessage AS Mensaje, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
+            FROM tramites
+            INNER JOIN
+                estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
+            WHERE tramites.idClaimStatus = @Revision OR tramites.idClaimStatus = @Proceso";
+            parameters.Add("@Revision", EClaimStatus.EnRevision);
+            parameters.Add("@Proceso", EClaimStatus.EnProceso);
+                
+
+            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+
+            dataGridView1.DataSource = data.Data(query, parameters);
+
+            lblCount.Text = dataGridView1.Rows.Count.ToString();
+        }
     }
 }

@@ -21,12 +21,14 @@ namespace Sube
     {
         Pasajero passenger;
         TarjetaSube sube;
+        private InicioPasajero parent;
 
-        public FormSubePasajero(Pasajero passenger, TarjetaSube mySube)
+        public FormSubePasajero(Pasajero passenger, TarjetaSube mySube, InicioPasajero parent)
         {
             InitializeComponent();
             this.passenger = passenger;
             this.sube = mySube;
+            this.parent = parent;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -35,12 +37,21 @@ namespace Sube
         }
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {          
-            lblTransportes.Text = "Información sobre los transportes";
-            lblTarjeta.Text = $"{passenger.IdSube}";
+            lblTransportes.Text = "Información sobre los transportes";            
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
-            double balance = sube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
-            lblActualTarifa.Text = $"Tarifa Social: {sube.TarifaSocial}";
+            if(sube != null)
+            {
+                lblTarjeta.Text = $"{passenger.IdSube}";
+                double balance = sube.Balance;
+                lblSaldo.Text = $"${balance.ToString("F2")}";
+                lblActualTarifa.Text = $"Tarifa Social: {sube.TarifaSocial}";
+            }
+            else
+            {
+                lblTarjeta.Text = "NULL";
+                lblSaldo.Text = "   $0";
+                lblActualTarifa.Text = $"Tarifa Social: {ETarifaSocial.Ninguna}";
+            }
             lblTarifa.Text = "Acceder a tarifa social --->";
             lblTarjeta.Location = new Point(30, 120);
             lblName.Location = new Point(30, 158);
@@ -83,10 +94,10 @@ namespace Sube
         }
         private void lblTarifa_Click(object sender, EventArgs e)
         {
-            Close();
-
-            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger);
-            tarifaSocial.ShowDialog();
+            Hide();
+            FormTarifaSocial tarifaSocial = new FormTarifaSocial(passenger, this);
+            tarifaSocial.MdiParent = parent;
+            tarifaSocial.Show();
         }
 
         private void FormSubePasajero_FormClosed(object sender, FormClosedEventArgs e)

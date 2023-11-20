@@ -70,7 +70,6 @@ namespace Sube
                     string cardNumber = userCardNumber;
 
                     int.TryParse(document, out int dni);
-                    TarjetaSube newSube = new TarjetaSube(cardNumber);
                     Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                     if (!passenger.PassengerExist(passenger, listPassengers))
                     {
