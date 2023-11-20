@@ -57,7 +57,7 @@ namespace Biblioteca_Usuarios
                 }
             }
         }
-
+        
         public static string DesencriptarClave(string textoEncriptado, string clave)
         {
             using (Aes aesAlg = Aes.Create())
@@ -67,21 +67,28 @@ namespace Biblioteca_Usuarios
 
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 
-                byte[] textoEnBytes = Convert.FromBase64String(textoEncriptado);
-
-                using (MemoryStream msDecrypt = new MemoryStream(textoEnBytes))
+                try
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    byte[] textoEnBytes = Convert.FromBase64String(textoEncriptado);
+
+                    using (MemoryStream msDecrypt = new MemoryStream(textoEnBytes))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                         {
-                            return srDecrypt.ReadToEnd();
+                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                            {
+                                return srDecrypt.ReadToEnd();
+                            }
                         }
                     }
                 }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine($"Error de formato: {ex.Message}");
+                    throw;
+                }
             }
         }
-
         /// <summary>
         /// Compara dos administradores por su dirección de correo electrónico.
         /// </summary>

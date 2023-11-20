@@ -132,5 +132,9 @@ namespace Sube
                 panel1.Visible = true;
             }
         }
+        public void ItemsMdiParentVisibles()
+        {
+            panel1.Visible = true;
+        }
     }
 }

@@ -97,8 +97,8 @@ namespace Sube
         {
             txtEmail.Text = "jpcortezzf@gmail.com";
             txtDni.Text = "42645815";
-            txtPassword.Text = "0912";
-            txtRepeatPassword.Text = "0912";
+            txtPassword.Text = "bushin";
+            txtRepeatPassword.Text = "bushin";
         }
 
         private void btnMostrarPass_Click(object sender, EventArgs e)

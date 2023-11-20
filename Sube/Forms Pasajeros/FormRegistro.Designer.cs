@@ -165,6 +165,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(388, 26);
             txtName.TabIndex = 45;
+            txtName.KeyPress += txtName_KeyPress;
             // 
             // label11
             // 

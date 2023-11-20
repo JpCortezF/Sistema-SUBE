@@ -16,18 +16,19 @@ namespace Biblioteca_DataBase
     {
         public static MySqlConnection connectionMySql;
         public static MySqlCommand commandMySql;
+        string localhost = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
 
         static DataBase()
         {
 
             var mySqlStringConnection = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
 
-            connectionMySql = new MySqlConnection(mySqlStringConnection);
-
-            commandMySql = new MySqlCommand();
-            commandMySql.CommandType = System.Data.CommandType.Text;
-            commandMySql.Connection = connectionMySql;
-
+            using (connectionMySql = new MySqlConnection(mySqlStringConnection))
+            {
+                commandMySql = new MySqlCommand();
+                commandMySql.CommandType = System.Data.CommandType.Text;
+                commandMySql.Connection = connectionMySql;
+            }
         }
              
         public static void OpenConection()
@@ -39,7 +40,7 @@ namespace Biblioteca_DataBase
             catch (MySqlException ex)
             {
 
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message + "\nPrimero deberias abrir la base de datos!");
             }
             catch(SocketException ex)
             {
@@ -56,29 +57,39 @@ namespace Biblioteca_DataBase
             List<T> list = new List<T>();
             try
             {
-                OpenConection();
-
-                commandMySql.CommandText = query;
-
-                commandMySql.Parameters.Clear();
-
-                // Verificar si hay parámetros y agregarlos a la consulta
-                if (parameters != null)
+                using (MySqlConnection connection = new MySqlConnection(localhost))
                 {
-                    foreach (var parameter in parameters)
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        commandMySql.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                        command.Parameters.Clear();
+
+                        // Verificar si hay parámetros y agregarlos a la consulta
+                        if (parameters != null)
+                        {
+                            foreach (var parameter in parameters)
+                            {
+                                command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                            }
+                        }
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                list.Add(mapObject(reader));
+                            }
+                        }
                     }
                 }
 
-                using (MySqlDataReader reader = commandMySql.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        list.Add(mapObject(reader));
-                    }
-                }
                 return list;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
             catch (InvalidOperationException ex)
             {
@@ -92,9 +103,13 @@ namespace Biblioteca_DataBase
             }
             finally
             {
-                connectionMySql.Close();
+                if (connectionMySql.State == ConnectionState.Open)
+                {
+                    connectionMySql.Close();
+                }
             }
         }
+
         public bool Insert(string query, Dictionary<string, object> parameters = null)
         {
             try
@@ -217,7 +232,7 @@ namespace Biblioteca_DataBase
         public DataTable Data(string query, Dictionary<string, object> parameters = null)
         {
             DataTable table = new DataTable();
-            var mySqlStringConnection = @"Server=localhost;Port=3307;Database=proyectosube;Uid=root;Pwd=;";
+            var mySqlStringConnection = localhost;
 
             using (MySqlConnection connection = new MySqlConnection(mySqlStringConnection))
             {

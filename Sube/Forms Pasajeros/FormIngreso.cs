@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -41,20 +42,27 @@ namespace Sube
             bool exist = false;
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPass.Text))
             {
-                string query = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
-                parameters["@dni"] = txtDni.Text;
-                parameters["@password"] = txtPass.Text;
-                listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
-                if (listPassengers.Count > 0)
+                try
                 {
-                    Pasajero passenger = listPassengers.FirstOrDefault();
-                    MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    exist = true;
+                    string query = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
+                    parameters["@dni"] = txtDni.Text;
+                    parameters["@password"] = txtPass.Text;
+                    listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
+                    if (listPassengers.Count > 0)
+                    {
+                        Pasajero passenger = listPassengers.FirstOrDefault();
+                        MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        exist = true;
 
-                    InicioPasajero inicio = new InicioPasajero(passenger);
-                    inicio.Show();
-                    MdiParent.Close();
-                    Close();
+                        InicioPasajero inicio = new InicioPasajero(passenger);
+                        inicio.Show();
+                        MdiParent.Close();
+                        Close();
+                    }
+                }
+                finally
+                {
+
                 }
             }
             if (!exist)

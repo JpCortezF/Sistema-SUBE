@@ -135,6 +135,7 @@
             Name = "SubeONLINE";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SubeONLINE";
+            FormClosed += SubeONLINE_FormClosed;
             Load += SubeONLINE_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);

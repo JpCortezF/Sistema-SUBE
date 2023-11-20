@@ -75,5 +75,11 @@ namespace Sube.Forms_Pasajeros
                 Close();
             }
         }
+
+        private void SubeONLINE_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormPasajero formPasajero = (FormPasajero)this.MdiParent;
+            formPasajero.ItemsMdiParentVisibles();
+        }
     }
 }

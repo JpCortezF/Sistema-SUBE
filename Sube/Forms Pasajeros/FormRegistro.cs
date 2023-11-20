@@ -44,6 +44,9 @@ namespace Sube
             btnMasculino.Click += ButtonGender_Click;
             btnFemenino.Click += ButtonGender_Click;
             btnX.Click += ButtonGender_Click;
+            txtName.KeyPress += txtName_KeyPress;
+            txtLastname.KeyPress += txtName_KeyPress;
+
         }
         private void txtTarjeta_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -62,7 +65,6 @@ namespace Sube
                 string lastname = txtLastname.Text;
                 if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
                 {
-
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
                     int.TryParse(document, out int dni);
@@ -74,7 +76,7 @@ namespace Sube
                         { "@emailPasajero", email}
                     };
                     if (data.Select(query1, parameters1, Pasajero.MapPasajero).Count == 0)
-                    {   
+                    {
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                         string query = @"
@@ -93,7 +95,7 @@ namespace Sube
                             { "@contraPasajero", password },
                             { "@generoPasajero", idGender },
                             { "@idSubePasajero", cardNumber }
-                        };                        
+                        };
                         data.Insert(query, parameters);
                         InicioPasajero inicio = new InicioPasajero(passenger);
                         inicio.Show();
@@ -275,6 +277,15 @@ namespace Sube
             txtCorreo.Text = $"AleHardcode@gmail.com";
             txtClave.Text = $"{_rnd}";
             txtRepetirClave.Text = $"{_rnd}";
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un carácter o una tecla de control, cancelar la entrada
+                e.Handled = true;
+            }
         }
     }
 }
