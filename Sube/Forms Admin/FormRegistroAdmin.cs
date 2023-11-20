@@ -23,7 +23,6 @@ namespace Sube
     public partial class FormRegistroAdmin : Form
     {
         DataBase<Administrador> data = new DataBase<Administrador>();
-        int flagPass = 0;
         public FormRegistroAdmin()
         {
             InitializeComponent();

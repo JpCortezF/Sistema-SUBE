@@ -40,7 +40,7 @@ namespace Sube
         {
             string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo FROM pasajeros INNER JOIN generos ON generos.id = pasajeros.idGender LEFT JOIN tarjetas ON tarjetas.id = pasajeros.idSube";
             dataGridView.DataSource = null;
-            dataGridView.Refresh();
+            dataGridView.Refresh();            
             parameters.Clear();
             switch (cmbBuscar.SelectedIndex)
             {
@@ -77,7 +77,7 @@ namespace Sube
                        tarjetas ON tarjetas.id = pasajeros.idSube
                     WHERE
                     pasajeros.idSube LIKE @Sube";
-                    parameters.Add("@Sube", "%" + txtName.Text + "%");
+                    parameters.Add("@Sube", "%" + txtDni.Text + "%");
                     break;
             }
             dataGridView.DataSource = data.Data(query, parameters);
@@ -102,7 +102,7 @@ namespace Sube
                     break;
                 case 2:
                     label2.Text = "N° de tarjeta a buscar:";
-                    txtName.MaxLength = 16;
+                    txtDni.MaxLength = 16;
                     txtName.Visible = false;
                     txtDni.Visible = true;
                     break;

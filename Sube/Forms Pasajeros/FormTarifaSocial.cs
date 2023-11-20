@@ -60,7 +60,7 @@ namespace Sube
             {
                 MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string radioButtonTarifa = radioButtonSeleccionado.Text;
-                btnTramite.Enabled = true;
+                btnTramite.Enabled = false;
 
                 if (Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
                 {

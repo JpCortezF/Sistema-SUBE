@@ -63,6 +63,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(6, 60);
@@ -139,6 +140,7 @@
             // comboBox2
             // 
             comboBox2.AllowDrop = true;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.IntegralHeight = false;
@@ -200,12 +202,12 @@
             btnContinuar.FlatAppearance.BorderSize = 0;
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnContinuar.Location = new Point(721, 172);
+            btnContinuar.Location = new Point(721, 174);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(34, 66);
-            btnContinuar.TabIndex = 23;
+            btnContinuar.TabIndex = 24;
             btnContinuar.UseVisualStyleBackColor = false;
-            btnContinuar.Click += btnContinuar_Click_1;
+            btnContinuar.Click += btnContinuar_Click;
             // 
             // TomarTransporte
             // 

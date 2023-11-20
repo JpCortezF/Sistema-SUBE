@@ -194,6 +194,10 @@ namespace Sube
             // Configura el StatusStrip para que esté en la parte inferior del formulario
             statusStrip.Dock = DockStyle.Bottom;
 
+            statusStrip.BackColor = Color.DarkGray;
+            //statusStrip.ForeColor = Color.Black;
+            statusStrip.SizingGrip = false;
+
             Controls.Add(statusStrip);
 
             // Establece la alineación del ToolStripStatusLabel
@@ -207,6 +211,7 @@ namespace Sube
 
             // Inicializa dummyLabel después de iniciar el temporizador
             dummyLabel = new ToolStripStatusLabel(DateTime.Now.ToString("HH:mm"));
+            dummyLabel.ForeColor = Color.White;
             statusStrip.Items.Add(dummyLabel);
         }
 

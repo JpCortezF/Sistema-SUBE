@@ -64,7 +64,7 @@ namespace Sube
                         {
                             comboBox2.Items.Add(linea.Line);
                         }
-                        
+
                         List<string> lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
                         lineasOrdenadas.Sort((a, b) =>
                         {
@@ -236,7 +236,7 @@ namespace Sube
 
         }
 
-        private void btnContinuar_Click_1(object sender, EventArgs e)
+        private void btnContinuar_Click(object sender, EventArgs e)
         {
             pictureBox4.Visible = false;
             btnContinuar.Visible = false;

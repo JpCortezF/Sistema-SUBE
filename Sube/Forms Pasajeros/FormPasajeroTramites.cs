@@ -18,7 +18,6 @@ namespace Sube
         Pasajero passenger;
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<DataTable> data = new DataBase<DataTable>();
-        private int mensajeColumnIndex = 2; 
 
         public FormPasajeroTramites(Pasajero passengerLoged)
         {

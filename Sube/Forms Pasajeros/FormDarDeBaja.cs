@@ -48,7 +48,7 @@ namespace Sube
                 {
                     string radioButtonTramite = radioButtonSeleccionado.Text;
                     MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnTramite.Enabled = true;
+                    btnTramite.Enabled = false;
                     string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
                     DataBase<object> data = new DataBase<object>();
                     Dictionary<string, object> parameters = new Dictionary<string, object>
