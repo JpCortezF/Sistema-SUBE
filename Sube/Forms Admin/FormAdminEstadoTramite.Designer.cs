@@ -297,6 +297,7 @@
             Name = "FormAdminEstadoTramite";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Verificar Tramite";
+            FormClosed += FormAdminEstadoTramite_FormClosed;
             Load += FormAdminEstadoTramite_Load;
             ResumeLayout(false);
             PerformLayout();

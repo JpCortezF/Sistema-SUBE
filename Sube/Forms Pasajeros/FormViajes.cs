@@ -56,8 +56,8 @@ namespace Sube
 
                 double balance = sube.Balance;
                 lblSaldo.Text = $"${balance.ToString("F2")}";
-            
-                if (dataGridViajes.Rows.Count == 1)
+
+                if (dataGridViajes.Rows.Count == 0)
                 {
                     dataGridViajes.Visible = false;
                     pictureBox1.Visible = true;
@@ -83,7 +83,7 @@ namespace Sube
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
-        {           
+        {
             if (txtBusqueda.Text != string.Empty)
             {
                 dataGridViajes.DataSource = null;
@@ -106,7 +106,7 @@ namespace Sube
                 lblFiltro.Visible = true;
                 dataGridViajes.DataSource = data.Data(query, parameters);
                 LoadDataGridView();
-            }         
+            }
         }
         private void LoadDataGridView()
         {

@@ -40,7 +40,7 @@ namespace Sube
         {
             string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo FROM pasajeros INNER JOIN generos ON generos.id = pasajeros.idGender LEFT JOIN tarjetas ON tarjetas.id = pasajeros.idSube";
             dataGridView.DataSource = null;
-            dataGridView.Refresh();            
+            dataGridView.Refresh();
             parameters.Clear();
             switch (cmbBuscar.SelectedIndex)
             {

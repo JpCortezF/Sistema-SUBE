@@ -111,7 +111,8 @@ namespace Sube
                         break;
 
                 }
-
+                txtKilometros.Enabled = false;
+                txtKilometros.Clear();
             }
         }
 

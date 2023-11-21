@@ -54,7 +54,7 @@ namespace Sube.Forms_Admin
                 cmbTarifa.Items.Add(itemString);
             }
             for (int i = 0; i < cmbTarifa.Items.Count; i++)
-            {             
+            {
                 if (cmbTarifa.Items[i].ToString() == sube.TarifaSocial.ToString())
                 {
                     cmbTarifa.SelectedIndex = i;
@@ -62,6 +62,7 @@ namespace Sube.Forms_Admin
                 }
             }
         }
+
 
         private void btnBajaTarjeta_Click(object sender, EventArgs e)
         {
@@ -96,7 +97,7 @@ namespace Sube.Forms_Admin
                     parameters.Add("@UpdateClaimStatus", EClaimStatus.Completado);
                     parameters.Add("@idSubeNull", DBNull.Value);
                     parameters.Add("@idSubeNotNull", selectedPassenger.IdSube);
-             
+
                     data.Update(update, parameters);
                     parameters.Clear();
                     string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
@@ -123,7 +124,7 @@ namespace Sube.Forms_Admin
 
         private void btnDenegate_Click(object sender, EventArgs e)
         {
-            
+
             FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -137,8 +138,12 @@ namespace Sube.Forms_Admin
                 data.Update(update, parameters);
                 Close();
             }
-            
+
         }
 
+        private void FormAdminEstadoTramite_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }

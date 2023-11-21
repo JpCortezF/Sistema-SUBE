@@ -144,6 +144,7 @@
             // 
             // dataGridViajes
             // 
+            dataGridViajes.AllowUserToAddRows = false;
             dataGridViajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
@@ -164,6 +165,7 @@
             dataGridViajes.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViajes.Location = new Point(12, 149);
             dataGridViajes.Name = "dataGridViajes";
+            dataGridViajes.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);

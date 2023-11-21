@@ -41,6 +41,7 @@
             // 
             // dataGridTramites
             // 
+            dataGridTramites.AllowUserToAddRows = false;
             dataGridTramites.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
@@ -61,6 +62,7 @@
             dataGridTramites.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridTramites.Location = new Point(0, 0);
             dataGridTramites.Name = "dataGridTramites";
+            dataGridTramites.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);

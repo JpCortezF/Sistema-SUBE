@@ -101,7 +101,7 @@ namespace Sube
             List<Pasajero> listPassengers = dataPassenger.Select(query, parameters, Pasajero.MapPasajero);
             return listPassengers.FirstOrDefault();
         }
-        private void FormTramites_Load(object sender, EventArgs e)
+        public void FormTramites_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();

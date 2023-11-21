@@ -76,6 +76,7 @@
             // 
             // dataGridView
             // 
+            dataGridView.AllowUserToAddRows = false;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(0, 0);

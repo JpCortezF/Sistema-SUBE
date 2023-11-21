@@ -59,7 +59,7 @@ namespace Sube
                 tramites.dniClaimer = @Dni";
             parameters.Add("@Dni", passenger.Dni);
             dataGridTramites.DataSource = data.Data(query, parameters);
-          
+
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Estado", typeof(string));
             dataTable.Columns.Add("Numero", typeof(string));
@@ -71,7 +71,7 @@ namespace Sube
             foreach (DataGridViewColumn column in dataGridTramites.Columns)
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            }           
+            }
         }
         private void dataGridTramites_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
