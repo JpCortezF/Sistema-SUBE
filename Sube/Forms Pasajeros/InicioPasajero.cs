@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Sube.CustomControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Sube
@@ -55,7 +57,7 @@ namespace Sube
             itemSalir.BackColor = SystemColors.ActiveCaption;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
-            lblNombre.Text = $"¡Hola {passenger.Name + " " + passenger.LastName}!";
+            lblNombre.Text = $"¡Hola {passenger.Name}!";
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
         {
@@ -194,7 +196,7 @@ namespace Sube
             // Configura el StatusStrip para que esté en la parte inferior del formulario
             statusStrip.Dock = DockStyle.Bottom;
 
-            statusStrip.BackColor = Color.DarkGray;
+            statusStrip.BackColor = Color.DimGray;
             //statusStrip.ForeColor = Color.Black;
             statusStrip.SizingGrip = false;
 
@@ -213,14 +215,50 @@ namespace Sube
             dummyLabel = new ToolStripStatusLabel(DateTime.Now.ToString("HH:mm"));
             dummyLabel.ForeColor = Color.White;
             statusStrip.Items.Add(dummyLabel);
-        }
 
+            ToggleButton toggleButton = new ToggleButton();
+
+            // Configura las propiedades según sea necesario
+            toggleButton.OnBackColor = Color.MediumSlateBlue;
+            toggleButton.OnToggleColor = Color.WhiteSmoke;
+            toggleButton.OffBackColor = Color.Gray;
+            toggleButton.OffToggleColor = Color.Gainsboro;
+            toggleButton.SolidStyle = true;
+
+            // Agrega el ToggleButton al StatusStrip
+            statusStrip.Items.Add(new ToolStripControlHost(toggleButton));
+            toggleButton.MouseHover += ToggleButton_MouseHover;
+            toggleButton.Click += ToggleButton_Click;
+        }
+        private void ToggleButton_MouseHover(object sender, EventArgs e)
+        {
+            ToggleButton toggleButton = (ToggleButton)sender;
+            toggleButton.Cursor = Cursors.Hand;
+        }
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Actualiza la hora actual en el ToolStripStatusLabel
             dummyLabel.Text = DateTime.Now.ToString("HH:mm");
         }
+        private void ToggleButton_Click(object sender, EventArgs e)
+        {
+            ToggleButton toggleButton = (ToggleButton)sender;
 
+            if (toggleButton.Checked)
+            {
+                Image gifImage = Properties.Resources.DarkMode;
+                pictureBox1.Image = gifImage;
+                pictureBox1.BackColor = Color.Transparent;
+                lblNombre.BackColor = Color.Black;
+            }
+            else
+            {
+                Image gifImage = Properties.Resources.LigthMode;
+                pictureBox1.Image = gifImage;
+                pictureBox1.BackColor = Color.Transparent;
+                lblNombre.BackColor = Color.SteelBlue;
+            }
+        }
         private void InicioPasajero_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Stop();

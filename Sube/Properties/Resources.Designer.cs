@@ -143,6 +143,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap DarkMode {
+            get {
+                object obj = ResourceManager.GetObject("DarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fondoPasajero {
             get {
                 object obj = ResourceManager.GetObject("fondoPasajero", resourceCulture);
@@ -216,6 +226,16 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap inicioPasajero {
             get {
                 object obj = ResourceManager.GetObject("inicioPasajero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap LigthMode {
+            get {
+                object obj = ResourceManager.GetObject("LigthMode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

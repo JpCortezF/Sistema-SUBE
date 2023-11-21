@@ -118,10 +118,10 @@
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.homePasajeroGif;
-            pictureBox1.Location = new Point(0, 33);
+            pictureBox1.Image = Properties.Resources.LigthMode;
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1000, 517);
+            pictureBox1.Size = new Size(1000, 550);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -129,10 +129,11 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.BackColor = Color.Transparent;
+            lblNombre.BackColor = Color.SteelBlue;
             lblNombre.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(334, 117);
+            lblNombre.ImageAlign = ContentAlignment.BottomCenter;
+            lblNombre.Location = new Point(754, 491);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(92, 31);
             lblNombre.TabIndex = 40;
@@ -142,13 +143,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.homePasajeroGif;
+            BackgroundImage = Properties.Resources.LigthMode;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1000, 550);
             ControlBox = false;
             Controls.Add(lblNombre);
-            Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
