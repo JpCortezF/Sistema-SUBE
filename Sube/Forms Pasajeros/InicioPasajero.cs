@@ -1,6 +1,8 @@
 ﻿using Biblioteca_DataBase;
+using Biblioteca_Serializadora;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using NPOI.SS.Formula.Functions;
 using Sube.CustomControls;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Sube
@@ -25,6 +28,11 @@ namespace Sube
         TarjetaSube mySube;
         private Form currentChildForm = null;
         FormSubePasajero formSube = null;
+        List<Configuracion> listConfig = new List<Configuracion>();
+        SerializadorJSON<List<Configuracion>> JSON = new SerializadorJSON<List<Configuracion>>();
+        public delegate List<Configuracion> FactoryMethod();
+        ToggleButton toggleButton;
+        bool darkMode = true;
 
         private StatusStrip statusStrip;
         private ToolStripStatusLabel toolStripStatusLabel;
@@ -35,6 +43,8 @@ namespace Sube
         {
             InitializeComponent();
             this.passenger = passenger;
+            toggleButton = new ToggleButton();
+            toggleButton.CheckedChanged += ToggleButton_Click;
             InstanciarStatusTrip();
             string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
 
@@ -47,6 +57,26 @@ namespace Sube
             List<TarjetaSube> listSube = new List<TarjetaSube>();
             listSube = data.Select(query, parameters, TarjetaSube.MapTarjetaSube);
             this.mySube = listSube.FirstOrDefault();
+            string ruta = @"..\..\..\Data";
+            string nombre = "Config.Json";
+            string path = Path.Combine(ruta, nombre);
+            List<Configuracion> CrearListaPredeterminada()
+            {
+                return new List<Configuracion>();
+            }
+            listConfig = JSON.Deserialize(path, CrearListaPredeterminada);
+
+            if(listConfig!=null)
+            { 
+                foreach (Configuracion config in listConfig)
+                {
+                    if(config.ConfiguracionProg == "darkMode")
+                    {
+                        bool.TryParse(config.Dato, out darkMode);
+                    }
+                }
+            }
+
         }
 
         private void InicioPasajero_Load(object sender, EventArgs e)
@@ -58,6 +88,23 @@ namespace Sube
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
             lblNombre.Text = $"¡Hola {passenger.Name}!";
+            if (darkMode == true)
+            {
+                Image gifImage = Properties.Resources.DarkMode;
+                pictureBox1.Image = gifImage;
+                pictureBox1.BackColor = Color.Transparent;
+                lblNombre.BackColor = Color.Black;
+                darkMode = true;
+            }
+            else
+            {
+                Image gifImage = Properties.Resources.LigthMode;
+                pictureBox1.Image = gifImage;
+                pictureBox1.BackColor = Color.Transparent;
+                lblNombre.BackColor = Color.SteelBlue;
+                darkMode = false;
+            }
+            toggleButton.Checked = darkMode;
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
         {
@@ -85,6 +132,23 @@ namespace Sube
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
+                foreach(Configuracion config in listConfig)
+                {
+                    if(config.ConfiguracionProg == "darkMode")
+                    {
+                        config.Dato = darkMode.ToString();
+                        break;
+                        /*
+                        Configuracion opcion = new Configuracion("darkMode", darkMode);
+                        listConfig.Add(opcion);
+                        */
+                    }
+                }
+
+                string ruta = @"..\..\..\Data";
+                string nombre = "Config.Json";
+                string path = Path.Combine(ruta, nombre);
+                JSON.Serialize(path, listConfig);
                 FormPrincipal formPrincipal = new FormPrincipal();
                 formPrincipal.Show();
                 Close();
@@ -216,8 +280,6 @@ namespace Sube
             dummyLabel.ForeColor = Color.White;
             statusStrip.Items.Add(dummyLabel);
 
-            ToggleButton toggleButton = new ToggleButton();
-
             // Configura las propiedades según sea necesario
             toggleButton.OnBackColor = Color.MediumSlateBlue;
             toggleButton.OnToggleColor = Color.WhiteSmoke;
@@ -240,16 +302,17 @@ namespace Sube
             // Actualiza la hora actual en el ToolStripStatusLabel
             dummyLabel.Text = DateTime.Now.ToString("HH:mm");
         }
+ 
         private void ToggleButton_Click(object sender, EventArgs e)
         {
             ToggleButton toggleButton = (ToggleButton)sender;
-
             if (toggleButton.Checked)
             {
                 Image gifImage = Properties.Resources.DarkMode;
                 pictureBox1.Image = gifImage;
                 pictureBox1.BackColor = Color.Transparent;
                 lblNombre.BackColor = Color.Black;
+                darkMode = true;
             }
             else
             {
@@ -257,8 +320,10 @@ namespace Sube
                 pictureBox1.Image = gifImage;
                 pictureBox1.BackColor = Color.Transparent;
                 lblNombre.BackColor = Color.SteelBlue;
+                darkMode = false;
             }
         }
+       
         private void InicioPasajero_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Stop();

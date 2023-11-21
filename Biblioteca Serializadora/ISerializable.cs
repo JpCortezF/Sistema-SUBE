@@ -10,6 +10,6 @@ namespace Biblioteca_Usuarios
     {
         bool Serialize(string path, T datos);
 
-        T Deserialize(string path);
+        T Deserialize(string path, Func<T> factoryMethod);
     }
 }

@@ -30,7 +30,7 @@ namespace Biblioteca_Usuarios
             return success;
         }
 
-        public T Deserialize(string path)
+        public T Deserialize(string path, Func<T> factoryMethod)
         {
             T list = default(T);
 
@@ -43,15 +43,19 @@ namespace Biblioteca_Usuarios
                 }
                 else
                 {
-                    Console.WriteLine("El archivo JSON no existe.");
+                    Console.WriteLine("El archivo JSON no existe. Se utilizará la lista predeterminada.");
+                    if (factoryMethod != null)
+                    {
+                        list = factoryMethod.Invoke();
+                    }
                 }
-
             }
             catch (IOException ex)
             {
                 Console.WriteLine("Error al trabajar con el archivo:");
                 Console.WriteLine(ex.Message);
             }
+
             return list;
         }
     }

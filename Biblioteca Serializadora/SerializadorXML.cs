@@ -29,7 +29,7 @@ namespace Biblioteca_Usuarios
             return success;
         }
 
-        public T Deserialize(string path)
+        public T Deserialize(string path, Func<T> factoryMethod)
         {
             T lista = default(T);
             try
