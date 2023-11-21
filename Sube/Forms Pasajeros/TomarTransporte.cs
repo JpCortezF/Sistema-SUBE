@@ -199,6 +199,10 @@ namespace Sube
                     MessageBox.Show("Su SUBE se encuentra dada de baja...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else
+            {
+                MessageBox.Show("No se registro ningun viaje", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private bool ValidarIngresoTextBox()
         {
@@ -232,11 +236,11 @@ namespace Sube
             if (comboBox2.SelectedItem != null)
             {
                 selectedLine = comboBox2.SelectedItem.ToString();
+                txtKilometros.Enabled = true;
             }
 
         }
-
-        private void btnContinuar_Click(object sender, EventArgs e)
+        private void btnContinuar_Click_1(object sender, EventArgs e)
         {
             pictureBox4.Visible = false;
             btnContinuar.Visible = false;

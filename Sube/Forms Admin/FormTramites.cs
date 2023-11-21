@@ -23,7 +23,11 @@ namespace Sube
         DataBase<object> data = new DataBase<object>();
         DataBase<Pasajero> dataPassenger = new DataBase<Pasajero>();
         Dictionary<string, object> parameters = new Dictionary<string, object>();
-
+        string query = @"SELECT tramites.idClaim AS IdReclamo, tramites.dniClaimer AS DNI, tramites.claimMessage AS Mensaje, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
+            FROM tramites
+            INNER JOIN
+                estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
+            WHERE tramites.idClaimStatus = @Revision OR tramites.idClaimStatus = @Proceso";
 
 
         private ContainerAdmin parentForm;
@@ -59,7 +63,12 @@ namespace Sube
                         editarUsuario.MdiParent = parentForm;
                         editarUsuario.Show();      
                     }
-                    Close();
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Refresh();
+
+                    dataGridView1.DataSource = data.Data(query, parameters);
+
+                    lblCount.Text = dataGridView1.Rows.Count.ToString();
                 }
             }
             catch (InvalidOperationException ex)
@@ -98,11 +107,6 @@ namespace Sube
             dataGridView1.Refresh();
             parameters.Clear();
 
-            string query = @"SELECT tramites.idClaim AS IdReclamo, tramites.dniClaimer AS DNI, tramites.claimMessage AS Mensaje, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
-            FROM tramites
-            INNER JOIN
-                estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
-            WHERE tramites.idClaimStatus = @Revision OR tramites.idClaimStatus = @Proceso";
             parameters.Add("@Revision", EClaimStatus.EnRevision);
             parameters.Add("@Proceso", EClaimStatus.EnProceso);
                 

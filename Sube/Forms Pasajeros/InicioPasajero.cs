@@ -28,6 +28,7 @@ namespace Sube
         TarjetaSube mySube;
         private Form currentChildForm = null;
         FormSubePasajero formSube = null;
+        ToolStripMenuItem itemSalir = new ToolStripMenuItem("| SALIR |");
         List<Configuracion> listConfig = new List<Configuracion>();
         SerializadorJSON<List<Configuracion>> JSON = new SerializadorJSON<List<Configuracion>>();
         public delegate List<Configuracion> FactoryMethod();
@@ -81,7 +82,6 @@ namespace Sube
 
         private void InicioPasajero_Load(object sender, EventArgs e)
         {
-            ToolStripMenuItem itemSalir = new ToolStripMenuItem("| SALIR |");
             menuStrip1.Items.Add(itemSalir);
             itemSalir.Alignment = ToolStripItemAlignment.Right;
             itemSalir.BackColor = SystemColors.ActiveCaption;
@@ -207,6 +207,7 @@ namespace Sube
             };
             lblNombre.Visible = false;
             pictureBox1.Visible = false;
+            toggleButton.Enabled = false;
             childForm.Show();
         }
         /// <summary>
@@ -245,6 +246,7 @@ namespace Sube
         {
             lblNombre.Visible = true;
             pictureBox1.Visible = true;
+            toggleButton.Enabled = true;
         }
         private void InstanciarStatusTrip()
         {
@@ -265,7 +267,7 @@ namespace Sube
             statusStrip.SizingGrip = false;
 
             Controls.Add(statusStrip);
-
+            
             // Establece la alineación del ToolStripStatusLabel
             toolStripStatusLabel.Alignment = ToolStripItemAlignment.Right;
 
@@ -312,6 +314,9 @@ namespace Sube
                 pictureBox1.Image = gifImage;
                 pictureBox1.BackColor = Color.Transparent;
                 lblNombre.BackColor = Color.Black;
+                BackgroundImage = Properties.Resources.DarkMode;
+                menuStrip1.BackColor = Color.MediumSlateBlue;
+                itemSalir.BackColor = Color.MediumSlateBlue;
                 darkMode = true;
             }
             else
@@ -320,6 +325,9 @@ namespace Sube
                 pictureBox1.Image = gifImage;
                 pictureBox1.BackColor = Color.Transparent;
                 lblNombre.BackColor = Color.SteelBlue;
+                BackgroundImage = Properties.Resources.LigthMode;
+                menuStrip1.BackColor = SystemColors.ActiveCaption;
+                itemSalir.BackColor = SystemColors.ActiveCaption;
                 darkMode = false;
             }
         }

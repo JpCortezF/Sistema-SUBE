@@ -79,7 +79,7 @@ namespace Sube
             {
                 MessageBox.Show($"Error en la celda {e.ColumnIndex + 1}, fila {e.RowIndex + 1}: {e.Exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // Otra opción: Ignorar el error y continuar
-                e.ThrowException = false;
+                //e.ThrowException = false;
             }
             catch (Exception ex)
             {
