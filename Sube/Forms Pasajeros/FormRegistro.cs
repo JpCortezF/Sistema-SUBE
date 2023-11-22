@@ -71,16 +71,16 @@ namespace Sube
                     string cardNumber = userCardNumber;
                     int.TryParse(document, out int dni);
                     string query1 = @"SELECT * FROM pasajeros WHERE dni = @dniPasajero OR idSube = @idSubePasajero OR email = @emailPasajero";
+                    Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                     Dictionary<string, object> parameters1 = new Dictionary<string, object>
                     {
                         { "@dniPasajero", dni },
                         { "@idSubePasajero", cardNumber },
                         { "@emailPasajero", email}
                     };
-                    if (data.Select(query1, parameters1, Pasajero.MapPasajero).Count == 0)
+                    if (data.Select(query1, parameters1, passenger.Map).Count == 0)
                     {
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                         string query = @"
                         INSERT INTO tarjetas (id, balance, socialRate) VALUES (@tarjeta, @balance, @tarifaSocial);
                         INSERT INTO pasajeros(dni, name, lastname, email, password, idGender, idSube) VALUES(@dniPasajero, @nombrePasajero, @apellidoPasajero, @emailPasajero, @contraPasajero, @generoPasajero, @idSubePasajero)";

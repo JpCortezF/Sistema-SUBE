@@ -66,9 +66,9 @@ namespace Sube
                 string query1 = "SELECT * FROM admins WHERE dni = @dni AND email = @email";
                 parameters.Add("@dni", txtDni.Text);
                 parameters.Add("@email", txtEmail.Text);
-
-                admins = data.Select(query1, parameters, Administrador.MapAdmin);
-                Administrador admin = admins.FirstOrDefault();
+                Administrador admin = new Administrador();
+                admins = data.Select(query1, parameters, admin.Map);
+                admin = admins.FirstOrDefault();
 
                 if (admin != null)
                 {

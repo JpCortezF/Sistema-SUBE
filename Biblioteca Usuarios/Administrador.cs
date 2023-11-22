@@ -5,9 +5,12 @@ using System.Text;
 
 namespace Biblioteca_Usuarios
 {
-    public class Administrador : Usuario<string>
+    public class Administrador : Usuario<string>, IMapeableUser<Administrador>
     {
-
+        public Administrador()
+        {
+            
+        }
         public Administrador(int dni, string email, string password, string name, string lastname) : base(dni, email, password, name, lastname)
         {
         }
@@ -100,12 +103,12 @@ namespace Biblioteca_Usuarios
             return base.CompareUser(admin1, admin2);
         }
 
-        public static Administrador MapAdmin(MySqlDataReader reader)
+        public static string KeyToEncrypt()
         {
-            return (Administrador)reader;
+            return "UnaClaveDe16Char";
         }
 
-        public static explicit operator Administrador(MySqlDataReader reader)
+        public Administrador Map(MySqlDataReader reader)
         {
             int dni = Convert.ToInt32(reader["dni"]);
             string name = reader["name"].ToString() ?? "";
@@ -114,11 +117,6 @@ namespace Biblioteca_Usuarios
             string password = reader["password"].ToString() ?? "";
 
             return new Administrador(dni, email, password, name, lastName);
-        }
-
-        public static string KeyToEncrypt()
-        {
-            return "UnaClaveDe16Char";
         }
     }
 }

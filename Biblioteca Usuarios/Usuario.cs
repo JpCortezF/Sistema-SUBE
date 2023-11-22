@@ -29,15 +29,15 @@ namespace Biblioteca_Usuarios
             this.lastname = lastname;
         }
         [JsonProperty("Email")]
-        public string Email { get => email; set => email = value; }
+        public string Email { get => email;}
         [JsonProperty("Password")]
-        public string Password { get => password; set => password = value; }
+        public string Password { get => password;}
         [JsonProperty("Name")]
-        public string Name { get => name; set => name = value; }
+        public string Name { get => name; }
         [JsonProperty("Lastname")]
-        public string LastName { get => lastname; set => lastname = value; }
+        public string LastName { get => lastname; }
         [JsonProperty("Dni")]
-        public int Dni { get => dni; set => dni = value; }
+        public int Dni { get => dni; }
 
         public virtual bool CompareUser(Usuario<T> user, Usuario<T> user2)
         {

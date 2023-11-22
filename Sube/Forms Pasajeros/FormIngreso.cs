@@ -47,10 +47,11 @@ namespace Sube
                     string query = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
                     parameters["@dni"] = txtDni.Text;
                     parameters["@password"] = txtPass.Text;
-                    listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
+                    Pasajero passenger = new Pasajero();
+                    listPassengers = data.Select(query, parameters, passenger.Map);
                     if (listPassengers.Count > 0)
                     {
-                        Pasajero passenger = listPassengers.FirstOrDefault();
+                        passenger = listPassengers.FirstOrDefault();
                         MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         exist = true;
 
@@ -120,7 +121,8 @@ namespace Sube
                 string queryHarcode = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
                 parameters["@dni"] = 33202790;
                 parameters["@password"] = 2790;
-                listPassengers = data.Select(queryHarcode, parameters, Pasajero.MapPasajero);
+                Pasajero passenger = new Pasajero();
+                listPassengers = data.Select(queryHarcode, parameters, passenger.Map);
                 if(listPassengers.Count > 0)
                 {
                     txtDni.Text = "33202790";

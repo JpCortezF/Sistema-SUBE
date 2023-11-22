@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca DataBase", "Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca Tramites", "Biblioteca Tramites\Biblioteca Tramites.csproj", "{A0D4FD0B-00E8-40D6-849A-8EE94FB75073}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca Serializadora", "Biblioteca Serializadora\Biblioteca Serializadora.csproj", "{7FD44961-B9B1-4DA8-80F9-57D537D650CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca Serializadora", "Biblioteca Serializadora\Biblioteca Serializadora.csproj", "{7FD44961-B9B1-4DA8-80F9-57D537D650CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

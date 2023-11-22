@@ -37,10 +37,11 @@ namespace Sube.Forms_Pasajeros
             {
                 string query = "SELECT * FROM pasajeros WHERE dni = @dni AND idSube IS NULL";
                 parameters["@dni"] = txtDni.Text;
-                listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
+                Pasajero passenger = new Pasajero();
+                listPassengers = data.Select(query, parameters, passenger.Map);
                 if (listPassengers.Count > 0)
                 {
-                    Pasajero passenger = listPassengers.FirstOrDefault();
+                    passenger = listPassengers.FirstOrDefault();
                     Random rnd = new Random();
                     int _rnd = rnd.Next(1000, 9999);
                     int _rnd2 = rnd.Next(1000, 9999);

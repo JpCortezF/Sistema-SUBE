@@ -48,9 +48,10 @@ namespace Sube
                         { "@dniAdmin", dni },
                         { "@emailAdmin", email}
                     };
-                    if (data.Select(query1, parameters1, Administrador.MapAdmin).Count == 0)
+                    Administrador admin = new Administrador();
+                    if (data.Select(query1, parameters1, admin.Map).Count == 0)
                     {
-                        Administrador admin = new Administrador(dni, email, password, name, lastname);
+                        admin = new Administrador(dni, email, password, name, lastname);
                         string query = @"  
                         INSERT INTO admins(dni, name, lastname, email, password) VALUES(@dniAdmin, @nombreAdmin, @apellidoAdmin, @emailAdmin, @contraAdmin)";
 

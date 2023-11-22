@@ -26,13 +26,12 @@ namespace Sube
         DataBase<Pasajero> dataPassenger = new DataBase<Pasajero>();
         Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-
         private ContainerAdmin parentForm;
         public FormTramites(ContainerAdmin parent, List<Tramites> tramites)
         {
             InitializeComponent();
             parentForm = parent;
-            this.listTramites = tramites;
+            this.listTramites = tramites;       
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -55,7 +54,7 @@ namespace Sube
                         editarUsuario.MdiParent = parentForm;
                         //editarUsuario.ActualizarEstadoReclamo += UpdateTramiteStatus;
                         UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
-                        editarUsuario.UpdateDataGridViewEvent += FormAdminEstadoTramite_UpdateDataGridViewEvent; 
+                        editarUsuario.UpdateDataGridViewEvent += FormTramites_Load; 
                         editarUsuario.Show();
                     }
                 }
@@ -87,12 +86,9 @@ namespace Sube
             {
                 { "@selectedDni", dniPassenger }
             };
-            List<Pasajero> listPassengers = dataPassenger.Select(query, parameters, Pasajero.MapPasajero);
+            Pasajero passenger = new Pasajero();
+            List<Pasajero> listPassengers = dataPassenger.Select(query, parameters, passenger.Map);
             return listPassengers.FirstOrDefault();
-        }
-        private async void FormAdminEstadoTramite_UpdateDataGridViewEvent(object sender, EventArgs e)
-        {
-            await LoadDataAsync();
         }
         private async void FormTramites_Load(object sender, EventArgs e)
         {
@@ -119,21 +115,18 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
-
-            await Task.Delay(2000);
+            Loading gif = new Loading();
+            gif.Show(this);
 
             DataTable result = await GetDataAsync(query, parameters);
 
+            await Task.Delay(2000);
+
+            gif.Close();
+
             dataGridView1.DataSource = result;
 
-            lblCount.Text = dataGridView1.Rows.Count.ToString();
-
-            Loading gif = new Loading();
-            gif.ShowDialog();
-            if (gif.DialogResult == DialogResult.OK)
-            {
-
-            }
+            lblCount.Text = dataGridView1.Rows.Count.ToString();         
         }
         private async Task<DataTable> GetDataAsync(string query, Dictionary<string, object> parameters)
         {

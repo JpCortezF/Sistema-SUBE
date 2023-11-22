@@ -33,8 +33,8 @@ namespace Sube
 
             string queryPass = "SELECT * FROM pasajeros WHERE email = @email";
             parameters["@email"] = txtCorreo.Text;
-
-            listPassengers = data.Select(queryPass, parameters, Pasajero.MapPasajero);
+            Pasajero passenger = new Pasajero();
+            listPassengers = data.Select(queryPass, parameters, passenger.Map);
             if(listPassengers.Count > 0)
             {
                 clave = listPassengers[0].Password;

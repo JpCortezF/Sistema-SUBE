@@ -33,7 +33,8 @@ namespace Sube
 
             DataBase<Pasajero> data = new DataBase<Pasajero>();
             string query = "SELECT * FROM pasajeros";
-            listPassengers = data.Select(query, parameters, Pasajero.MapPasajero);
+            Pasajero pasajero = new Pasajero();
+            listPassengers = data.Select(query, parameters, pasajero.Map);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)

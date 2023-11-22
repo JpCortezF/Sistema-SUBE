@@ -25,9 +25,8 @@ namespace Sube
             LoadingGif();
         }
 
-        private async void LoadingGif()
+        private void LoadingGif()
         {
-            await Task.Delay(2000);
             DialogResult = DialogResult.OK;
         }
 
