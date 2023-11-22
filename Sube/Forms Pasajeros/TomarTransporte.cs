@@ -47,6 +47,7 @@ namespace Sube
         {
             string transporte = comboBox1.SelectedItem.ToString();
             DataBase<LineasTransporte> data = new DataBase<LineasTransporte>();
+            LineasTransporte lineaCtor = new LineasTransporte();
             string query = "";
             comboBox2.Items.Clear();
             if (Enum.TryParse(transporte, out ETransporte tipoTransporte))
@@ -59,7 +60,7 @@ namespace Sube
                         lineas.Clear();
                         query = @"SELECT * FROM lineas WHERE idTransport = @idTransport";
                         parameters.Add("@idTransport", ETransporte.Colectivo);
-                        lineas = data.Select(query, parameters, LineasTransporte.MapLineas);
+                        lineas = data.Select(query, parameters, lineaCtor.Map);
                         foreach (LineasTransporte linea in lineas)
                         {
                             comboBox2.Items.Add(linea.Line);
@@ -93,7 +94,7 @@ namespace Sube
                         lineas.Clear();
                         query = @"SELECT * FROM lineas WHERE idTransport = @idTransport";
                         parameters.Add("@idTransport", ETransporte.Subte);
-                        lineas = data.Select(query, parameters, LineasTransporte.MapLineas);
+                        lineas = data.Select(query, parameters, lineaCtor.Map);
                         foreach (LineasTransporte linea in lineas)
                         {
                             comboBox2.Items.Add(linea.Line);
@@ -103,7 +104,7 @@ namespace Sube
                         lineas.Clear();
                         query = @"SELECT * FROM lineas WHERE idTransport = @idTransport";
                         parameters.Add("@idTransport", ETransporte.Tren);
-                        lineas = data.Select(query, parameters, LineasTransporte.MapLineas);
+                        lineas = data.Select(query, parameters, lineaCtor.Map);
                         foreach (LineasTransporte linea in lineas)
                         {
                             comboBox2.Items.Add(linea.Line);

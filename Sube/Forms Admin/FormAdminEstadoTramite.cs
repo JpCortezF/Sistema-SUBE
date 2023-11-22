@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Biblioteca_Tramites;
 using NPOI.POIFS.Crypt.Dsig;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace Sube.Forms_Admin
             };
             DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
             List<TarjetaSube> listSube = new List<TarjetaSube>();
-            listSube = data.Select(querySube, parameters, TarjetaSube.MapTarjetaSube);
+            listSube = data.Select(querySube, parameters, sube.Map);
             sube = listSube.FirstOrDefault();
         }
 

@@ -56,8 +56,8 @@ namespace Sube
             };
             DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
             List<TarjetaSube> listSube = new List<TarjetaSube>();
-            listSube = data.Select(query, parameters, TarjetaSube.MapTarjetaSube);
-            this.mySube = listSube.FirstOrDefault();
+            listSube = data.Select(query, parameters, mySube.Map);
+            mySube = listSube.FirstOrDefault();
             string ruta = @"..\..\..\Data";
             string nombre = "Config.Json";
             string path = Path.Combine(ruta, nombre);

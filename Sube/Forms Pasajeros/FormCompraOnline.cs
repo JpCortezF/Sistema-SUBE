@@ -51,7 +51,8 @@ namespace Sube.Forms_Pasajeros
                     parameters.Clear();
                     string querySube = "SELECT * FROM tarjetas WHERE id = @subeRandom";
                     parameters.Add("@subeRandom", passenger.IdSube);
-                    if(dataSube.Select(querySube, parameters, TarjetaSube.MapTarjetaSube).Count == 0)
+                    TarjetaSube sube = new TarjetaSube();
+                    if(dataSube.Select(querySube, parameters, sube.Map).Count == 0)
                     {
                         SubeONLINE subeOnline = new SubeONLINE(passenger);
                         subeOnline.MdiParent = parentForm;

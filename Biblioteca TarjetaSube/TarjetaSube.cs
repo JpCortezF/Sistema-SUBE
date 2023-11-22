@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace Biblioteca_TarjetaSube
 {
-    public class TarjetaSube
+    public class TarjetaSube : IMapeableTarjetaSube<TarjetaSube>
     {
         string _cardNumber;
         float _balance;
@@ -35,12 +35,7 @@ namespace Biblioteca_TarjetaSube
         public float Balance { get => _balance; set => _balance = value; }
         public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
 
-        public static TarjetaSube MapTarjetaSube(MySqlDataReader reader)
-        {
-            return (TarjetaSube)reader;
-        }
-
-        public static explicit operator TarjetaSube(MySqlDataReader reader)
+        public TarjetaSube Map(MySqlDataReader reader)
         {
             string id = reader["id"].ToString() ?? "";
             float balance = Convert.ToSingle(reader["balance"]);
