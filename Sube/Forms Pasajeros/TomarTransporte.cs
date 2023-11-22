@@ -52,6 +52,7 @@ namespace Sube
             if (Enum.TryParse(transporte, out ETransporte tipoTransporte))
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
+                List<string> lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
                 miTransporte = tipoTransporte;
                 switch (miTransporte)
                 {
@@ -65,7 +66,7 @@ namespace Sube
                             comboBox2.Items.Add(linea.Line);
                         }
 
-                        List<string> lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
+                        lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
                         lineasOrdenadas.Sort((a, b) =>
                         {
                             int CompareNumerically(string x, string y)
@@ -98,6 +99,16 @@ namespace Sube
                         {
                             comboBox2.Items.Add(linea.Line);
                         }
+
+                        lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
+                        lineasOrdenadas.Sort((a, b) =>
+                        {
+                            return string.Compare(a, b, StringComparison.OrdinalIgnoreCase);
+                        });
+
+                        comboBox2.Items.Clear();
+                        comboBox2.Items.AddRange(lineasOrdenadas.ToArray());
+
                         break;
                     case ETransporte.Tren:
                         lineas.Clear();
@@ -108,6 +119,16 @@ namespace Sube
                         {
                             comboBox2.Items.Add(linea.Line);
                         }
+
+                        lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
+                        lineasOrdenadas.Sort((a, b) =>
+                        {
+                            return string.Compare(a, b, StringComparison.OrdinalIgnoreCase);
+                        });
+
+                        comboBox2.Items.Clear();
+                        comboBox2.Items.AddRange(lineasOrdenadas.ToArray());
+
                         break;
 
                 }
