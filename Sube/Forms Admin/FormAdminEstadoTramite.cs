@@ -17,6 +17,10 @@ namespace Sube.Forms_Admin
 {
     public partial class FormAdminEstadoTramite : Form
     {
+        // public event UpdateTramiteStatus ActualizarEstadoReclamo;
+        public event EventHandler UpdateDataGridViewEvent;
+
+
         bool bajaTarjeta;
         Pasajero selectedPassenger;
         Tramites tramite;
@@ -118,6 +122,7 @@ namespace Sube.Forms_Admin
                     parameters.Add("@IdSocialRate", sube.TarifaSocial);
                     data.Update(update, parameters);
                 }
+                OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
             }
         }
@@ -136,14 +141,18 @@ namespace Sube.Forms_Admin
                 parameters.Add("@IdClaim", tramite.ClaimId);
                 parameters.Add("@UpdateClaimStatus", EClaimStatus.Rechazado);
                 data.Update(update, parameters);
+                OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
             }
-
+        }
+        protected virtual void OnUpdateDataGridViewEvent(EventArgs e)
+        {
+            UpdateDataGridViewEvent?.Invoke(this, e);
         }
 
         private void FormAdminEstadoTramite_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            UpdateDataGridViewEvent?.Invoke(this, e);
         }
     }
 }

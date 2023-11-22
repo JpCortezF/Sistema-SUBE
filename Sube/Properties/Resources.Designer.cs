@@ -183,6 +183,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap gifLoading {
+            get {
+                object obj = ResourceManager.GetObject("gifLoading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Gps_Product {
             get {
                 object obj = ResourceManager.GetObject("Gps_Product", resourceCulture);

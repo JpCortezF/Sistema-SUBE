@@ -261,7 +261,7 @@
             // 
             // txtReclamo
             // 
-            txtReclamo.Font = new Font("Sans Serif Collection", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            txtReclamo.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             txtReclamo.Location = new Point(521, 59);
             txtReclamo.Multiline = true;
             txtReclamo.Name = "txtReclamo";

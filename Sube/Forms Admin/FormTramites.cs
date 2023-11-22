@@ -17,17 +17,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Sube
 {
+    public delegate void UpdateTramiteStatus(int claimId, EClaimStatus nuevoEstado);
+
     public partial class FormTramites : Form
     {
         List<Tramites> listTramites = new List<Tramites>();
         DataBase<object> data = new DataBase<object>();
         DataBase<Pasajero> dataPassenger = new DataBase<Pasajero>();
         Dictionary<string, object> parameters = new Dictionary<string, object>();
-        string query = @"SELECT tramites.idClaim AS IdReclamo, tramites.dniClaimer AS DNI, tramites.claimMessage AS Mensaje, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
-            FROM tramites
-            INNER JOIN
-                estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
-            WHERE tramites.idClaimStatus = @Revision OR tramites.idClaimStatus = @Proceso";
 
 
         private ContainerAdmin parentForm;
@@ -53,22 +50,14 @@ namespace Sube
                         
                         selectedClaimId = (int)(selectedRow.Cells["IdReclamo"].Value);
                         selectedIndex = listTramites.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
-                        listTramites[selectedIndex].ClaimComplete = EClaimStatus.EnRevision;
-
-                        UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
-
                         Pasajero passenger = GetPasajeroByDni(dniPassenger);
-
                         FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramites[selectedIndex]);
                         editarUsuario.MdiParent = parentForm;
-                        editarUsuario.Show();      
+                        //editarUsuario.ActualizarEstadoReclamo += UpdateTramiteStatus;
+                        UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
+                        editarUsuario.UpdateDataGridViewEvent += FormAdminEstadoTramite_UpdateDataGridViewEvent; 
+                        editarUsuario.Show();
                     }
-                    dataGridView1.DataSource = null;
-                    dataGridView1.Refresh();
-
-                    dataGridView1.DataSource = data.Data(query, parameters);
-
-                    lblCount.Text = dataGridView1.Rows.Count.ToString();
                 }
             }
             catch (InvalidOperationException ex)
@@ -101,15 +90,27 @@ namespace Sube
             List<Pasajero> listPassengers = dataPassenger.Select(query, parameters, Pasajero.MapPasajero);
             return listPassengers.FirstOrDefault();
         }
-        public void FormTramites_Load(object sender, EventArgs e)
+        private async void FormAdminEstadoTramite_UpdateDataGridViewEvent(object sender, EventArgs e)
+        {
+            await LoadDataAsync();
+        }
+        private async void FormTramites_Load(object sender, EventArgs e)
+        {
+            await LoadDataAsync();
+        }
+        private async Task LoadDataAsync()
         {
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
             parameters.Clear();
 
+            string query = @"SELECT tramites.idClaim AS IdReclamo, tramites.dniClaimer AS DNI, tramites.claimMessage AS Mensaje, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
+            FROM tramites
+            INNER JOIN
+                estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
+            WHERE tramites.idClaimStatus = @Revision OR tramites.idClaimStatus = @Proceso";
             parameters.Add("@Revision", EClaimStatus.EnRevision);
             parameters.Add("@Proceso", EClaimStatus.EnProceso);
-                
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -119,9 +120,24 @@ namespace Sube
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
 
-            dataGridView1.DataSource = data.Data(query, parameters);
+            await Task.Delay(2000);
+
+            DataTable result = await GetDataAsync(query, parameters);
+
+            dataGridView1.DataSource = result;
 
             lblCount.Text = dataGridView1.Rows.Count.ToString();
+
+            Loading gif = new Loading();
+            gif.ShowDialog();
+            if (gif.DialogResult == DialogResult.OK)
+            {
+
+            }
+        }
+        private async Task<DataTable> GetDataAsync(string query, Dictionary<string, object> parameters)
+        {
+            return await Task.Run(() => data.Data(query, parameters));
         }
     }
 }
