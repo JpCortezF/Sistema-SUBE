@@ -40,6 +40,7 @@ namespace Sube.Forms_Admin
             };
             DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
             List<TarjetaSube> listSube = new List<TarjetaSube>();
+            sube = new TarjetaSube();
             listSube = data.Select(querySube, parameters, sube.Map);
             sube = listSube.FirstOrDefault();
         }
