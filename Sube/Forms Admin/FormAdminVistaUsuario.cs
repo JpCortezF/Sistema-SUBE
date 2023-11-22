@@ -39,7 +39,7 @@ namespace Sube
                     tarifassociales.rate = @SocialRate";
             parameters.Add("@SocialRate", sube.TarifaSocial);
 
-            listSube = dataSube.Select(queryTarjeta, parameters, TarjetaSube.MapTarjetaSube);
+            listSube = dataSube.Select(queryTarjeta, parameters, sube.Map);
             sube = listSube.FirstOrDefault();
 
 

@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Biblioteca_Tramites;
 using Sube.Forms_Admin;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,8 @@ namespace Sube
             DataBase<Tramites> data = new DataBase<Tramites>();
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             string query = @"SELECT * FROM tramites";
-            this.tramites = data.Select(query, parameters, Tramites.MapTramites);
+            Tramites tramite  = new Tramites();
+            this.tramites = data.Select(query, parameters, tramite.Map);
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)

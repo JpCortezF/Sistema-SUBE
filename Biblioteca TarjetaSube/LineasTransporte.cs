@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_TarjetaSube
 {
-    public class LineasTransporte
+    public class LineasTransporte : IMapeableTarjetaSube<LineasTransporte>
     {
         int id;
         string line;
 
+        public LineasTransporte()
+        {
+            
+        }
         public LineasTransporte(int id, string line)
         {
             this.id = id;
@@ -21,12 +25,7 @@ namespace Biblioteca_TarjetaSube
         public int Id { get => id; set => id = value; }
         public string Line { get => line; set => line = value; }
 
-        public static LineasTransporte MapLineas(MySqlDataReader reader)
-        {
-            return (LineasTransporte)reader;
-        }
-
-        public static explicit operator LineasTransporte(MySqlDataReader reader)
+        public LineasTransporte Map(MySqlDataReader reader)
         {
             int id = Convert.ToInt32(reader["id"]);
             string line = reader["line"].ToString() ?? "";

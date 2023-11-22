@@ -15,6 +15,7 @@ namespace Biblioteca_Usuarios
 {
     public abstract class Serializador
     {
+        /*
         public static void WriteJsonPassenger(string path, List<Pasajero> listaPassengers)
         {
             try
@@ -125,5 +126,6 @@ namespace Biblioteca_Usuarios
 
             return lista;
         }
+        */
     }
 }

@@ -8,10 +8,10 @@ using Biblioteca_Usuarios;
 using MySql.Data.MySqlClient;
 
 
-namespace Biblioteca_TarjetaSube
+namespace Biblioteca_Tramites
 {
     [XmlRoot("Tramites")]
-    public class Tramites
+    public class Tramites : IMapeableTramites<Tramites>
     {
         int claimId;
         int dniClaimer;
@@ -50,12 +50,7 @@ namespace Biblioteca_TarjetaSube
         [XmlElement("ClaimComplete")]
         public EClaimStatus ClaimComplete { get => claimComplete; set => claimComplete = value; }
 
-        public static Tramites MapTramites(MySqlDataReader reader)
-        {
-            return (Tramites)reader;
-        }
-
-        public static explicit operator Tramites(MySqlDataReader reader)
+        public Tramites Map(MySqlDataReader reader)
         {
             int claimId = Convert.ToInt32(reader["idClaim"]);
             int dniClaimer = Convert.ToInt32(reader["dniClaimer"]);
