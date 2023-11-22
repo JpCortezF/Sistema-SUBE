@@ -45,6 +45,7 @@ namespace Sube
             InitializeComponent();
             this.passenger = passenger;
             toggleButton = new ToggleButton();
+            mySube = new TarjetaSube();
             toggleButton.CheckedChanged += ToggleButton_Click;
             InstanciarStatusTrip();
             string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";

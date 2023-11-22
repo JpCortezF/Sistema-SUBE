@@ -149,24 +149,26 @@ namespace Sube
                     {
                         if (float.TryParse(txtKilometros.Text, out float kilometros))
                         {
-                            foreach (LineasTransporte linea in lineas)
+                            if(kilometros < 27)
                             {
-                                if (selectedLine == linea.Line)
+                                foreach (LineasTransporte linea in lineas)
                                 {
-                                    idLine = linea.Id;
-                                    break;
+                                    if (selectedLine == linea.Line)
+                                    {
+                                        idLine = linea.Id;
+                                        break;
+                                    }
                                 }
-                            }
-                            miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, idLine);
+                                miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, idLine);
 
-                            TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial, miViaje);
-                            miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
+                                TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial, miViaje);
+                                miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
 
-                            sube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
-                            double balance = sube.Balance;
-                            if (sube.Balance > -211.84)
-                            {
-                                Dictionary<string, object> parameters = new Dictionary<string, object>
+                                sube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
+                                double balance = sube.Balance;
+                                if (sube.Balance > -211.84)
+                                {
+                                    Dictionary<string, object> parameters = new Dictionary<string, object>
                                 {
                                     { "@balanceUpdate", sube.Balance },
                                     { "@idSube", sube.CardNumber },
@@ -178,37 +180,42 @@ namespace Sube
                                     { "@Kilometres", miViaje.Kilometres },
                                     { "@Date", DateTime.Now },
                                 };
-                                string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                                DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-                                data.Update(queryUpdate, parameters);
-                                string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
-                                data.Insert(queryInsert, parameters);
-                                switch (miTransporte)
-                                {
-                                    case ETransporte.Colectivo:
-                                        pictureBox1.Visible = true;
-                                        pictureBox2.Visible = false;
-                                        pictureBox3.Visible = false;
-                                        break;
-                                    case ETransporte.Subte:
-                                        pictureBox2.Visible = true;
-                                        pictureBox1.Visible = false;
-                                        pictureBox3.Visible = false;
-                                        break;
-                                    case ETransporte.Tren:
-                                        pictureBox3.Visible = true;
-                                        pictureBox2.Visible = false;
-                                        pictureBox1.Visible = false;
-                                        break;
-                                }
-                                MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                //DataBase.Insert(passenger, sube, 2);
+                                    string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
+                                    DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+                                    data.Update(queryUpdate, parameters);
+                                    string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
+                                    data.Insert(queryInsert, parameters);
+                                    switch (miTransporte)
+                                    {
+                                        case ETransporte.Colectivo:
+                                            pictureBox1.Visible = true;
+                                            pictureBox2.Visible = false;
+                                            pictureBox3.Visible = false;
+                                            break;
+                                        case ETransporte.Subte:
+                                            pictureBox2.Visible = true;
+                                            pictureBox1.Visible = false;
+                                            pictureBox3.Visible = false;
+                                            break;
+                                        case ETransporte.Tren:
+                                            pictureBox3.Visible = true;
+                                            pictureBox2.Visible = false;
+                                            pictureBox1.Visible = false;
+                                            break;
+                                    }
+                                    MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    //DataBase.Insert(passenger, sube, 2);
 
+                                }
+                                else
+                                {
+                                    sube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
+                                    MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             else
                             {
-                                sube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
-                                MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                throw new KilometrosExcedeLimiteException();
                             }
                         }
                     }
@@ -263,7 +270,7 @@ namespace Sube
             }
 
         }
-        private void btnContinuar_Click_1(object sender, EventArgs e)
+        private void btnContinuar_Click(object sender, EventArgs e)
         {
             pictureBox4.Visible = false;
             btnContinuar.Visible = false;
