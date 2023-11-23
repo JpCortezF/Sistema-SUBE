@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica;
 
 namespace Sube
 {
@@ -50,16 +51,8 @@ namespace Sube
                     string radioButtonTramite = radioButtonSeleccionado.Text;
                     MessageBox.Show("¡Solicitud enviada!\n¡Listo! Su trámite se encuentra en revisión", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnTramite.Enabled = false;
-                    string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
-                    DataBase<object> data = new DataBase<object>();
-                    Dictionary<string, object> parameters = new Dictionary<string, object>
-                    {
-                        { "@Dni", passenger.Dni },
-                        { "@ClaimMessage", $"Reclamo: {radioButtonTramite}  " + txtClaim.Text },
-                        { "@ClaimTime", DateTime.Now },
-                        { "@IdClaimStatus", EClaimStatus.EnProceso },
-                    };
-                    data.Update(query, parameters);
+                    SistemaTramite sistema = new SistemaTramite();
+                    sistema.InsertClaimIntoDataTable(passenger, radioButtonTramite, txtClaim.Text);
                 }
             }
             else

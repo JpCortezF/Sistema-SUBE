@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +17,7 @@ namespace Sube
     public partial class FormPasajeroTramites : Form
     {
         Pasajero passenger;
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        DataBase<DataTable> data = new DataBase<DataTable>();
-
+        SistemaTramite sistema = new SistemaTramite();
         public FormPasajeroTramites(Pasajero passengerLoged)
         {
             InitializeComponent();
@@ -46,20 +45,6 @@ namespace Sube
 
         private void FormPasajeroTramites_Load(object sender, EventArgs e)
         {
-            dataGridTramites.DataError += dataGridTramites_DataError;
-            parameters.Clear();
-
-            string query = @"SELECT tramites.idClaim AS N°Reclamo, pasajeros.dni AS DNI, tramites.claimMessage AS MensajeReclamo, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
-            FROM tramites 
-            INNER JOIN
-                  pasajeros ON pasajeros.dni = tramites.dniClaimer
-            LEFT JOIN
-                  estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
-            WHERE 
-                tramites.dniClaimer = @Dni";
-            parameters.Add("@Dni", passenger.Dni);
-            dataGridTramites.DataSource = data.Data(query, parameters);
-
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Estado", typeof(string));
             dataTable.Columns.Add("Numero", typeof(string));
@@ -72,19 +57,7 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
-        }
-        private void dataGridTramites_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            try
-            {
-                MessageBox.Show($"Error en la celda {e.ColumnIndex + 1}, fila {e.RowIndex + 1}: {e.Exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Otra opción: Ignorar el error y continuar
-                //e.ThrowException = false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error en el manejo de DataError: {ex.Message}");
-            }
+            dataGridTramites.DataSource = sistema.LoadClaimDataTable(passenger);
         }
     }
 }
