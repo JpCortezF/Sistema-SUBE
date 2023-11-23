@@ -1,5 +1,6 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
+using MyExceptions;
 
 namespace Logica
 {
@@ -73,6 +74,37 @@ namespace Logica
                 lineas.Sort((a, b) => string.Compare(a.Line, b.Line, StringComparison.OrdinalIgnoreCase));
             }                     
             return lineas;
+        }
+
+        public void LoadTravelWithTimer(TarjetaSube sube, ETransporte miTransporte, LineasTransporte miLinea, Viajes miViaje)
+        {
+            int time = 0;
+            switch (miViaje.Kilometres)
+            {
+                case float k when k >= 0 && k <= 3:
+                    time = 5000;
+                    break;
+                case float k when k >= 3 && k <= 6:
+                    time = 10000;
+                    break;
+                case float k when k >= 6 && k <= 12:
+                    time = 13500;
+                    break;
+                case float k when k >= 12 && k <= 27:
+                    time = 16500;
+                    break;
+            }
+            Task task1 = new Task((object tiempoParam) =>
+            {
+                int time = (int)tiempoParam;
+
+                Thread.Sleep(time);
+                UpdateSubeBalance(sube);
+                GenerarViaje(sube, miTransporte, miLinea, miViaje);
+
+            }, time);
+            task1.Start();
+        
         }
     }
 }

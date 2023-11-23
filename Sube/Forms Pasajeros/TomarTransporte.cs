@@ -21,17 +21,13 @@ namespace Sube
 {
     public partial class TomarTransporte : Form
     {
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-
         List<LineasTransporte> lineas = new List<LineasTransporte>();
+        LineasTransporte miLinea = new LineasTransporte();
         SistemaSube sistemaSube = new SistemaSube();
         Pasajero passenger;
         TarjetaSube sube;
         Viajes miViaje;
         ETransporte miTransporte;
-        LineasTransporte miLinea = new LineasTransporte();
-        string selectedLine;
         public TomarTransporte(Pasajero passenger, TarjetaSube sube)
         {
             InitializeComponent();
@@ -60,6 +56,7 @@ namespace Sube
             {
                 comboBox2.Items.Add(linea.Line);
             }
+            comboBox2.Items.Clear();
             comboBox2.Items.AddRange(lineas.Select(linea => linea.Line).ToArray());
 
             txtKilometros.Enabled = false;
@@ -80,7 +77,7 @@ namespace Sube
                             {
                                 foreach (LineasTransporte linea in lineas)
                                 {
-                                    if (selectedLine == linea.Line)
+                                    if (miLinea.Line == linea.Line)
                                     {
                                         miLinea.Id = linea.Id;
                                         break;
@@ -96,36 +93,7 @@ namespace Sube
                                 double balance = sube.Balance;
                                 if (sube.Balance > -211.84)
                                 {
-                                    sistemaSube.UpdateSubeBalance(sube);
-                                    sistemaSube.GenerarViaje(sube, miTransporte, miLinea, miViaje);
-                                    Dictionary<string, object> parameters = new Dictionary<string, object>
-                                {
-                                    { "@balanceUpdate", sube.Balance },
-                                    { "@idSube", sube.CardNumber },
-                                    { "@IdCard", sube.CardNumber },
-                                    { "@IdTransport", miViaje.TipoTransporte },
-                                    { "@IdLine", idLine },
-                                    { "@IdSocialRate", sube.TarifaSocial },
-                                    { "@TicketCost", miViaje.TicketCost },
-                                    { "@Kilometres", miViaje.Kilometres },
-                                    { "@Date", DateTime.Now },
-                                };
-
-                                    int tiempo = 10000;
-                                    Task task1 = new Task((object tiempoParam) =>
-                                    {
-                                        int tiempo = (int)tiempoParam; // Convertir el objeto a un entero
-
-                                        Thread.Sleep(tiempo);
-                                        string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                                        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-                                        data.Update(queryUpdate, parameters);
-                                        string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
-                                        data.Insert(queryInsert, parameters);
-
-                                    }, tiempo);
-                                    task1.Start();
-
+                                    sistemaSube.LoadTravelWithTimer(sube, miTransporte, miLinea, miViaje);
                                     switch (miTransporte)
                                     {
                                         case ETransporte.Colectivo:
@@ -173,6 +141,7 @@ namespace Sube
                 MessageBox.Show("No se registro ningun viaje", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private bool ValidarIngresoTextBox()
         {
             bool allCompleted = true;
@@ -204,7 +173,7 @@ namespace Sube
         {
             if (comboBox2.SelectedItem != null)
             {
-                selectedLine = comboBox2.SelectedItem.ToString();
+                miLinea.Line = comboBox2.SelectedItem.ToString();
                 txtKilometros.Enabled = true;
             }
 
