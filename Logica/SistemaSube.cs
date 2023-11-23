@@ -35,6 +35,7 @@ namespace Logica
         /// <returns>Un diccionario con los parámetros utilizados en la inserción del viaje.</returns>
         public Dictionary<string, object> GenerarViaje(TarjetaSube sube, ETransporte miTransporte, LineasTransporte miLinea, Viajes miViaje)
         {
+            parameters.Clear();
             string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
             parameters.Add("@IdCard", sube.CardNumber);
             parameters.Add("@IdTransport", miTransporte);
@@ -47,6 +48,21 @@ namespace Logica
 
             return parameters;
         }
+
+        public TarjetaSube GetSubeFromPasajero(Pasajero pasajero)
+        {
+            parameters.Clear();
+            string querySube = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
+            parameters.Add("@IdSube", pasajero.IdSube);
+            parameters.Add("@IdCardNumber", pasajero.IdSube);
+            List<TarjetaSube> listSube = new List<TarjetaSube>();
+            TarjetaSube sube = new TarjetaSube();
+            listSube = data.Select(querySube, parameters, sube.Map);
+            sube = listSube.FirstOrDefault();
+
+            return sube;
+        }
+
         /// <summary>
         /// Carga las líneas de transporte disponibles para un tipo específico de transporte.
         /// </summary>

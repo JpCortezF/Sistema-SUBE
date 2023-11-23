@@ -13,14 +13,17 @@ using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sube.Forms_Admin
 {
     public partial class FormAdminEstadoTramite : Form
     {
-        // public event UpdateTramiteStatus ActualizarEstadoReclamo;
         public event EventHandler UpdateDataGridViewEvent;
-
+        SistemaSube sistemaSube = new SistemaSube();
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+        DataBase<object> data = new DataBase<object>();
 
         bool bajaTarjeta;
         Pasajero selectedPassenger;
@@ -31,19 +34,9 @@ namespace Sube.Forms_Admin
             InitializeComponent();
             selectedPassenger = pasajero;
             this.tramite = tramite;
-            string querySube = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "@IdSube", pasajero.IdSube },
-                { "@IdCardNumber", pasajero.IdSube },
-            };
-            DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-            List<TarjetaSube> listSube = new List<TarjetaSube>();
-            sube = new TarjetaSube();
-            listSube = data.Select(querySube, parameters, sube.Map);
-            sube = listSube.FirstOrDefault();
+            sube = sistemaSube.GetSubeFromPasajero(pasajero);
         }
+
 
         private void FormAdminEstadoTramite_Load(object sender, EventArgs e)
         {
@@ -85,8 +78,6 @@ namespace Sube.Forms_Admin
             FormEmergente form = new FormEmergente("Quiere aprobar los cambios?", "Guardar");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                DataBase<object> data = new DataBase<object>();
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
                 if (cmbTarifa.SelectedItem != null)
                 {
                     if (Enum.TryParse(cmbTarifa.SelectedItem.ToString(), out ETarifaSocial tarifaSocial))
@@ -127,6 +118,47 @@ namespace Sube.Forms_Admin
                 OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
             }
+        }
+
+        public void UpdateTramiteStatus(Tramites tramite, EClaimStatus status)
+        {
+            parameters.Clear();
+            string update = @"
+                        UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;
+                        UPDATE tarjetas SET socialRate =  @IdSocialRate";
+            parameters.Add("@IdClaim", tramite.ClaimId);
+            parameters.Add("@UpdateClaimStatus", status);
+            //parameters.Add("@IdSocialRate", sube.TarifaSocial);
+            data.Update(update, parameters);
+        }
+
+
+        public void UpdateTramiteSocialRateSube(TarjetaSube sube, Tramites tramite, EClaimStatus status)
+        {
+            parameters.Clear();
+            UpdateTramiteStatus(tramite, status);
+            string update = @"UPDATE tarjetas SET socialRate =  @IdSocialRate";
+            parameters.Add("@IdSocialRate", sube.TarifaSocial);
+            data.Update(update, parameters);
+        }
+
+        public void TramiteDeleteSube()
+        {
+            parameters.Clear();
+            string update = @"UPDATE pasajeros SET idSube = @idSubeNull WHERE idSube = @idSubeNotNull";
+
+            parameters.Add("@idSubeNull", DBNull.Value);
+            parameters.Add("@idSubeNotNull", selectedPassenger.IdSube);
+            data.Update(update, parameters);
+            parameters.Clear();
+            string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
+                    DELETE FROM tarjetas WHERE id = @CardNumber;
+                    DELETE FROM tramites WHERE dniClaimer = @Dni";
+            parameters.Add("@idSube", selectedPassenger.IdSube);
+            parameters.Add("@CardNumber", selectedPassenger.IdSube);
+            parameters.Add("@Dni", selectedPassenger.Dni);
+            data.Delete(delete, parameters);
+            parameters.Clear();
         }
 
         private void btnDenegate_Click(object sender, EventArgs e)
