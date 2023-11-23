@@ -2,6 +2,7 @@
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using Biblioteca_Tramites;
+using Logica;
 using Sube.Forms_Admin;
 using System;
 using System.Collections;
@@ -27,6 +28,7 @@ namespace Sube
         DataBase<object> data = new DataBase<object>();
         DataBase<Pasajero> dataPassenger = new DataBase<Pasajero>();
         Dictionary<string, object> parameters = new Dictionary<string, object>();
+        SistemaTramite sistemaTramite = new SistemaTramite();
 
         private ContainerAdmin parentForm;
         public FormTramites(ContainerAdmin parent, List<Tramites> tramites)
@@ -100,15 +102,6 @@ namespace Sube
         {
             dataGridView1.DataSource = null;
             dataGridView1.Refresh();
-            parameters.Clear();
-
-            string query = @"SELECT tramites.idClaim AS IdReclamo, tramites.dniClaimer AS DNI, tramites.claimMessage AS Mensaje, tramites.claimTime AS Fecha, estadoreclamo.name AS Estado
-            FROM tramites
-            INNER JOIN
-                estadoreclamo ON estadoreclamo.id = tramites.idClaimStatus
-            WHERE tramites.idClaimStatus = @Revision OR tramites.idClaimStatus = @Proceso";
-            parameters.Add("@Revision", EClaimStatus.EnRevision);
-            parameters.Add("@Proceso", EClaimStatus.EnProceso);
 
             dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -117,10 +110,11 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
+
             Loading gif = new Loading();
             gif.Show(this);
 
-            DataTable result = await GetDataAsync(query, parameters);
+            DataTable result = await GetDataAsync();
 
             await Task.Delay(2000);
 
@@ -130,9 +124,10 @@ namespace Sube
 
             lblCount.Text = dataGridView1.Rows.Count.ToString();         
         }
-        private async Task<DataTable> GetDataAsync(string query, Dictionary<string, object> parameters)
+
+        private async Task<DataTable> GetDataAsync()
         {
-            return await Task.Run(() => data.Data(query, parameters));
+            return await Task.Run(() => sistemaTramite.LoadDataTable());
         }
     }
 }

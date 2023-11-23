@@ -1,5 +1,6 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_Usuarios;
+using Logica;
 using NPOI.POIFS.Crypt.Dsig;
 using NPOI.SS.Formula.Functions;
 using Sube.Forms_Admin;
@@ -19,9 +20,8 @@ namespace Sube
 {
     public partial class FormAdmin : Form
     {
-        List<Administrador> admins = new List<Administrador>();
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        DataBase<Administrador> data = new DataBase<Administrador>();
+        Administrador admin;
+        SistemaAdmin sistemaAdmin = new SistemaAdmin();
         public FormAdmin(ContainerLoginAdmin parent)
         {
             InitializeComponent();
@@ -62,13 +62,7 @@ namespace Sube
         {
             if (!string.IsNullOrEmpty(txtDni.Text) && !string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtEmail.Text))
             {
-                parameters.Clear();
-                string query1 = "SELECT * FROM admins WHERE dni = @dni AND email = @email";
-                parameters.Add("@dni", txtDni.Text);
-                parameters.Add("@email", txtEmail.Text);
-                Administrador admin = new Administrador();
-                admins = data.Select(query1, parameters, admin.Map);
-                admin = admins.FirstOrDefault();
+                admin = sistemaAdmin.cargarAdmin(txtEmail.Text, txtDni.Text);
 
                 if (admin != null)
                 {
