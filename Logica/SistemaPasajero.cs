@@ -81,6 +81,19 @@ namespace Logica
 
             return passenger;
         }
+
+        public Pasajero GetPasajeroByDni(int dniPassenger)
+        {
+            string query = "SELECT * FROM pasajeros WHERE dni = @selectedDni";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@selectedDni", dniPassenger }
+            };
+            Pasajero passenger = new Pasajero();
+            List<Pasajero> listPassengers = data.Select(query, parameters, passenger.Map);
+            return listPassengers.FirstOrDefault();
+        }
+
         public string NewCardNumberToPassenger()
         {
             Pasajero passenger = new Pasajero();

@@ -12,17 +12,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Logica;
 
 namespace Sube
 {
     public partial class FormRegistroAdmin : Form
     {
-        DataBase<Administrador> data = new DataBase<Administrador>();
+        SistemaAdmin sistemaAdmin = new SistemaAdmin();
         public FormRegistroAdmin()
         {
             InitializeComponent();
@@ -38,32 +40,13 @@ namespace Sube
                 string password = txtPassword.Text;
                 if (ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
                 {
+
                     string document = txtDNI.Text;
                     int.TryParse(document, out int dni);
-                    string claveSecreta = Administrador.KeyToEncrypt();
-                    string claveEncriptada = Administrador.EncriptarClave(password, claveSecreta);
-                    string query1 = @"SELECT * FROM admins WHERE dni = @dniAdmin OR email = @emailAdmin";
-                    Dictionary<string, object> parameters1 = new Dictionary<string, object>
-                    {
-                        { "@dniAdmin", dni },
-                        { "@emailAdmin", email}
-                    };
-                    Administrador admin = new Administrador();
-                    if (data.Select(query1, parameters1, admin.Map).Count == 0)
-                    {
-                        admin = new Administrador(dni, email, password, name, lastname);
-                        string query = @"  
-                        INSERT INTO admins(dni, name, lastname, email, password) VALUES(@dniAdmin, @nombreAdmin, @apellidoAdmin, @emailAdmin, @contraAdmin)";
+                    Administrador admin = new Administrador(dni, email, password, name, lastname);
 
-                        Dictionary<string, object> parameters = new Dictionary<string, object>
-                        {
-                            { "@dniAdmin", dni },
-                            { "@nombreAdmin", name },
-                            { "@apellidoAdmin", lastname },
-                            { "@emailAdmin", email },
-                            { "@contraAdmin", claveEncriptada },
-                        };
-                        data.Insert(query, parameters);
+                    if(sistemaAdmin.GenerateNewAdmin(admin))
+                    { 
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ContainerAdmin inicio = new ContainerAdmin(admin);
                         inicio.Show();

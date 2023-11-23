@@ -25,10 +25,8 @@ namespace Sube
     public partial class FormTramites : Form
     {
         List<Tramites> listTramites = new List<Tramites>();
-        DataBase<object> data = new DataBase<object>();
-        DataBase<Pasajero> dataPassenger = new DataBase<Pasajero>();
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
         SistemaTramite sistemaTramite = new SistemaTramite();
+        SistemaPasajero sistemaPasajero = new SistemaPasajero();
 
         private ContainerAdmin parentForm;
         public FormTramites(ContainerAdmin parent, List<Tramites> tramites)
@@ -53,11 +51,10 @@ namespace Sube
                         
                         selectedClaimId = (int)(selectedRow.Cells["IdReclamo"].Value);
                         selectedIndex = listTramites.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
-                        Pasajero passenger = GetPasajeroByDni(dniPassenger);
+                        Pasajero passenger = sistemaPasajero.GetPasajeroByDni(dniPassenger);
                         FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramites[selectedIndex]);
-                        editarUsuario.MdiParent = parentForm;
-                        //editarUsuario.ActualizarEstadoReclamo += UpdateTramiteStatus;
-                        UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
+                        editarUsuario.MdiParent = parentForm;                       
+                        sistemaTramite.UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
                         editarUsuario.UpdateDataGridViewEvent += FormTramites_Load;
                         editarUsuario.Show();
                     }
@@ -73,31 +70,12 @@ namespace Sube
             }
 
         }
-        private void UpdateTramiteStatus(int selectedClaimId, EClaimStatus newStatus)
-        {
-            string queryUpdate = "UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @idClaim";
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "@UpdateClaimStatus", newStatus },
-                { "@idClaim", selectedClaimId }
-            };
-            data.Update(queryUpdate, parameters);
-        }
-        private Pasajero GetPasajeroByDni(int dniPassenger)
-        {
-            string query = "SELECT * FROM pasajeros WHERE dni = @selectedDni";
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "@selectedDni", dniPassenger }
-            };
-            Pasajero passenger = new Pasajero();
-            List<Pasajero> listPassengers = dataPassenger.Select(query, parameters, passenger.Map);
-            return listPassengers.FirstOrDefault();
-        }
+
         private async void FormTramites_Load(object sender, EventArgs e)
         {
             await LoadDataAsync();
         }
+
         private async Task LoadDataAsync()
         {
             dataGridView1.DataSource = null;

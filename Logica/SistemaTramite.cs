@@ -34,5 +34,16 @@ namespace Logica
 
             return dt;
         }
+
+        public void UpdateTramiteStatus(int selectedClaimId, EClaimStatus newStatus)
+        {
+            string queryUpdate = "UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @idClaim";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@UpdateClaimStatus", newStatus },
+                { "@idClaim", selectedClaimId }
+            };
+            data.Update(queryUpdate, parameters);
+        }
     }
 }

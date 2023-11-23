@@ -18,11 +18,8 @@ namespace Sube
 {
     public partial class FormIngreso : Form
     {
-        List<Pasajero> listPassengers;
         private FormPasajero parentForm;
 
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        DataBase<Pasajero> data = new DataBase<Pasajero>();
         public FormIngreso(FormPasajero parent)
         {
             InitializeComponent();
