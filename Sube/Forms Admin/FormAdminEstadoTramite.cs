@@ -87,33 +87,11 @@ namespace Sube.Forms_Admin
                 }
                 if (bajaTarjeta == true)
                 {
-                    string update = @"UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE dniClaimer = @Dni;
-                    UPDATE pasajeros SET idSube = @idSubeNull WHERE idSube = @idSubeNotNull";
-
-                    parameters.Add("@Dni", selectedPassenger.Dni);
-                    parameters.Add("@UpdateClaimStatus", EClaimStatus.Completado);
-                    parameters.Add("@idSubeNull", DBNull.Value);
-                    parameters.Add("@idSubeNotNull", selectedPassenger.IdSube);
-
-                    data.Update(update, parameters);
-                    parameters.Clear();
-                    string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
-                    DELETE FROM tarjetas WHERE id = @CardNumber";
-                    parameters.Add("@idSube", selectedPassenger.IdSube);
-                    parameters.Add("@CardNumber", selectedPassenger.IdSube);
-                    data.Delete(delete, parameters);
-                    parameters.Clear();
+                    TramiteDeleteSube(selectedPassenger);
                 }
                 else
                 {
-                    parameters.Clear();
-                    string update = @"
-                        UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;
-                        UPDATE tarjetas SET socialRate =  @IdSocialRate";
-                    parameters.Add("@IdClaim", tramite.ClaimId);
-                    parameters.Add("@UpdateClaimStatus", EClaimStatus.Completado);
-                    parameters.Add("@IdSocialRate", sube.TarifaSocial);
-                    data.Update(update, parameters);
+                    UpdateTramiteSocialRateSube(sube, tramite, EClaimStatus.Completado);
                 }
                 OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
@@ -142,21 +120,21 @@ namespace Sube.Forms_Admin
             data.Update(update, parameters);
         }
 
-        public void TramiteDeleteSube()
+        public void TramiteDeleteSube(Pasajero pasajero)
         {
             parameters.Clear();
             string update = @"UPDATE pasajeros SET idSube = @idSubeNull WHERE idSube = @idSubeNotNull";
 
             parameters.Add("@idSubeNull", DBNull.Value);
-            parameters.Add("@idSubeNotNull", selectedPassenger.IdSube);
+            parameters.Add("@idSubeNotNull", pasajero.IdSube);
             data.Update(update, parameters);
             parameters.Clear();
             string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
                     DELETE FROM tarjetas WHERE id = @CardNumber;
                     DELETE FROM tramites WHERE dniClaimer = @Dni";
-            parameters.Add("@idSube", selectedPassenger.IdSube);
-            parameters.Add("@CardNumber", selectedPassenger.IdSube);
-            parameters.Add("@Dni", selectedPassenger.Dni);
+            parameters.Add("@idSube", pasajero.IdSube);
+            parameters.Add("@CardNumber", pasajero.IdSube);
+            parameters.Add("@Dni", pasajero.Dni);
             data.Delete(delete, parameters);
             parameters.Clear();
         }
@@ -167,14 +145,7 @@ namespace Sube.Forms_Admin
             FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                DataBase<object> data = new DataBase<object>();
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters.Clear();
-                string update = @"
-                        UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;";
-                parameters.Add("@IdClaim", tramite.ClaimId);
-                parameters.Add("@UpdateClaimStatus", EClaimStatus.Rechazado);
-                data.Update(update, parameters);
+                UpdateTramiteStatus(tramite, EClaimStatus.Rechazado);
                 OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
             }
