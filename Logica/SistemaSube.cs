@@ -1,5 +1,6 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using MyExceptions;
 
 namespace Logica
@@ -15,7 +16,6 @@ namespace Logica
             string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
             parameters.Add("@balanceUpdate", sube.Balance);
             parameters.Add("@idSube", sube.CardNumber);
-            parameters.Add("queryUpdate", queryUpdate);
             data.Update(queryUpdate, parameters);
 
             return parameters;
@@ -30,7 +30,6 @@ namespace Logica
             parameters.Add("@TicketCost", miViaje.TicketCost);
             parameters.Add("@Kilometres", miViaje.Kilometres);
             parameters.Add("@Date", DateTime.Now);
-            parameters.Add("queryInsert", queryInsert);
             data.Insert(queryInsert, parameters);
 
             return parameters;
@@ -103,8 +102,20 @@ namespace Logica
                 GenerarViaje(sube, miTransporte, miLinea, miViaje);
 
             }, time);
-            task1.Start();
-        
+            task1.Start();        
+        }
+        public bool CardNumberExits(string cardnumber)
+        {
+            bool exist = true;
+            string query = "SELECT * FROM tarjetas WHERE id = @subeRandom";
+            parameters.Clear();
+            parameters.Add("@subeRandom", cardnumber);
+            TarjetaSube sube = new TarjetaSube();
+            if (data.Select(query, parameters, sube.Map).Count == 0)
+            {
+                exist = false;
+            }
+            return exist;
         }
     }
 }

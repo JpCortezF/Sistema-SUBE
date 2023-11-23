@@ -17,8 +17,12 @@ namespace Biblioteca_Usuarios
 
         public Usuario()
         {
-            this.password = string.Empty;
-            this.email = string.Empty;
+            
+        }
+        public Usuario(int dni, string password)
+        {
+            this.dni = dni;
+            this.password = password;
         }
         protected Usuario(int dni, string email, string password, string name, string lastname)
         {

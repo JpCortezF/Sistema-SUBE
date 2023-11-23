@@ -18,6 +18,10 @@ using System.Xml.Linq;
 using NPOI.SS.Formula.Functions;
 using Microsoft.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using NPOI.SS.Formula.Eval;
+using Org.BouncyCastle.Asn1.X509;
+using System.Net;
+using Logica;
 
 namespace Sube
 {
@@ -26,8 +30,6 @@ namespace Sube
         private string gender = "";
         private int idGender;
         string userCardNumber = "";
-        DataBase<Pasajero> data = new DataBase<Pasajero>();
-
 
         public FormRegistro()
         {
@@ -54,51 +56,28 @@ namespace Sube
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Ignorar la tecla presionada si no es un número entero
+                e.Handled = true;
             }
         }
         private void btnContinuar_Click_1(object sender, EventArgs e)
         {
             try
             {
-                string email = txtCorreo.Text;
-                string password = txtClave.Text;
-                string name = txtName.Text;
-                string lastname = txtLastname.Text;
-                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(email) && EsSoloTexto(name) && EsSoloTexto(lastname) && !lblClave.Visible)
+                if (ValidarIngresoTarjeta() && ValidarIngresoTextBox() && ValidarEmail(txtCorreo.Text) && EsSoloTexto(txtName.Text) && EsSoloTexto(txtLastname.Text) && !lblClave.Visible)
                 {
+                    string password = txtClave.Text;
+                    string name = txtName.Text;
+                    string lastname = txtLastname.Text; 
+                    string email = txtCorreo.Text;
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
                     int.TryParse(document, out int dni);
-                    string query1 = @"SELECT * FROM pasajeros WHERE dni = @dniPasajero OR idSube = @idSubePasajero OR email = @emailPasajero";
                     Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
-                    Dictionary<string, object> parameters1 = new Dictionary<string, object>
-                    {
-                        { "@dniPasajero", dni },
-                        { "@idSubePasajero", cardNumber },
-                        { "@emailPasajero", email}
-                    };
-                    if (data.Select(query1, parameters1, passenger.Map).Count == 0)
+                    SistemaPasajero sistemaPasajero = new SistemaPasajero();
+                    if(!sistemaPasajero.PassengerExist(passenger))
                     {
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        string query = @"
-                        INSERT INTO tarjetas (id, balance, socialRate) VALUES (@tarjeta, @balance, @tarifaSocial);
-                        INSERT INTO pasajeros(dni, name, lastname, email, password, idGender, idSube) VALUES(@dniPasajero, @nombrePasajero, @apellidoPasajero, @emailPasajero, @contraPasajero, @generoPasajero, @idSubePasajero)";
-
-                        Dictionary<string, object> parameters = new Dictionary<string, object>
-                        {
-                            { "@tarjeta", cardNumber },
-                            { "@balance", 0 },
-                            { "@tarifaSocial", 1 },
-                            { "@dniPasajero", dni },
-                            { "@nombrePasajero", name },
-                            { "@apellidoPasajero", lastname },
-                            { "@emailPasajero", email },
-                            { "@contraPasajero", password },
-                            { "@generoPasajero", idGender },
-                            { "@idSubePasajero", cardNumber }
-                        };
-                        data.Insert(query, parameters);
+                        sistemaPasajero.InsertPassenger(passenger);
                         InicioPasajero inicio = new InicioPasajero(passenger);
                         inicio.Show();
                         MdiParent.Close();
@@ -285,7 +264,6 @@ namespace Sube
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
             {
-                // Si no es un carácter o una tecla de control, cancelar la entrada
                 e.Handled = true;
             }
         }

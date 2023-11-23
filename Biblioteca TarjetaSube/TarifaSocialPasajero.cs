@@ -10,40 +10,30 @@ namespace Biblioteca_TarjetaSube
     {
         ETarifaSocial tarifaSocial;
 
-        public TarifaSocialPasajero(ETarifaSocial miTarifa)
+        public TarifaSocialPasajero(ETarifaSocial tarifaSocial, Viajes viaje) : base (viaje.Kilometres, viaje.TipoTransporte)
         {
-            this.tarifaSocial = miTarifa;
+            this.tarifaSocial = tarifaSocial;
         }
-        public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, int lineasTransporte, float ticketCost) 
-            : base(kilometres, date, tipoTransporte, lineasTransporte, ticketCost)
+        public override float CostByKilometres(Viajes miViaje)
         {
-            this.tarifaSocial = miTarifa;
-        }
-        public TarifaSocialPasajero(ETarifaSocial tarifaSocial, Viajes viaje)
-            : this(viaje.Kilometres, viaje.Date, viaje.TipoTransporte, tarifaSocial, viaje.LineasTransporte, viaje.TicketCost)
-        {
-        }
+            miViaje.TicketCost = base.CostByKilometres(miViaje);
 
-        public override float CostByKilometres()
-        {
-            float cost = base.CostByKilometres();
-
-            cost = CostByTarifa(cost);
-            return cost;
+            miViaje.TicketCost = CostByTarifa(miViaje.TicketCost);
+            return miViaje.TicketCost;
         }
         /// <summary>
         /// Calcula el costo de un boleto de transporte público en base al tipo de transporte especificado.
         /// </summary>
         /// <param name="transporte">El tipo de transporte, que puede ser Colectivo, Subte o Tren.</param>
         /// <returns>El costo del boleto calculado.</returns>
-        public float ReturnTicketCost(ETransporte transporte)
+        public float ReturnTicketCost(Viajes miViaje)
         {
             float ticket = 0;
 
-            switch (transporte)
+            switch (miViaje.TipoTransporte)
             {
                 case ETransporte.Colectivo:
-                    ticket = CostByKilometres();
+                    ticket = CostByKilometres(miViaje);
                     break;
                 case ETransporte.Subte:
                     ticket = CostByTarifa(PrecioViajes.ValorSubte);

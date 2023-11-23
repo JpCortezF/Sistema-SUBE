@@ -51,12 +51,6 @@ namespace Sube
             miTransporte = (ETransporte)comboBox1.SelectedItem;
             comboBox2.Items.Clear();
             lineas = sistemaSube.CargarLineasTransporte(miTransporte);
-
-            foreach (LineasTransporte linea in lineas)
-            {
-                comboBox2.Items.Add(linea.Line);
-            }
-            comboBox2.Items.Clear();
             comboBox2.Items.AddRange(lineas.Select(linea => linea.Line).ToArray());
 
             txtKilometros.Enabled = false;
@@ -83,11 +77,9 @@ namespace Sube
                                         break;
                                     }
                                 }
-                                miViaje = new Viajes();
-                                TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial);
-
-                                miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
-                                miViaje.Kilometres = kilometros;
+                                miViaje = new Viajes(kilometros, miTransporte);
+                                TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial, miViaje);
+                                miViaje.TicketCost = boletoViaje.ReturnTicketCost(miViaje);
                                 sube.Balance -= miViaje.TicketCost;
                                 
                                 double balance = sube.Balance;
@@ -112,17 +104,17 @@ namespace Sube
                                             pictureBox1.Visible = false;
                                             break;
                                     }
-                                    MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${miViaje.TicketCost}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
                                 {
-                                    sube.Balance += boletoViaje.ReturnTicketCost(miTransporte);
+                                    sube.Balance += miViaje.TicketCost;
                                     MessageBox.Show("Saldo insuficiente", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
                             {
-                                throw new KilometrosExcedeLimiteException();
+                                throw new KilometrosException("La cantidad de kilómetros excede el límite permitido (27 km).");
                             }
                         }
                     }

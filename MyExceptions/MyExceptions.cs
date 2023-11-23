@@ -2,11 +2,11 @@
 {
     public class MyExceptions : Exception
     {
-        public MyExceptions()
-        {
-        }
+        string message;
+
         public MyExceptions(string message) : base(message)
         {
+            this.message = message;
         }
     }
 }

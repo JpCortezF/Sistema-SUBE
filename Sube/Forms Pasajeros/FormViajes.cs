@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Logica;
 using NPOI.POIFS.Crypt.Dsig;
 using System;
 using System.Collections;
@@ -22,8 +23,7 @@ namespace Sube
         Pasajero passenger;
         TarjetaSube sube;
         private InicioPasajero parentForm;
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        DataBase<DataTable> data = new DataBase<DataTable>();
+        SistemaViajes sistema = new SistemaViajes();
 
         public FormViajes(InicioPasajero parent, Pasajero passenger, TarjetaSube sube)
         {
@@ -35,23 +35,9 @@ namespace Sube
         private void FormViajes_Load(object sender, EventArgs e)
         {
             dataGridViajes.DataError += dataGridViajes_DataError;
-            parameters.Clear();
             if (sube != null)
             {
-                string query = @"
-                SELECT transportes.transport AS Transporte, lineas.line AS Linea, tarifassociales.rate AS TarifaSocial, viajes.ticketCost AS Boleto, viajes.kilometres AS Kilometros, viajes.date AS Fecha
-                FROM viajes
-                INNER JOIN
-                    tarifassociales ON tarifassociales.id = viajes.idSocialRate
-                INNER JOIN
-                    transportes ON transportes.id = viajes.idTransport
-                LEFT JOIN
-                    lineas ON lineas.id = viajes.idLine
-                WHERE viajes.idCard = @idCardNumber";
-                parameters.Add("@idCardNumber", sube.CardNumber);
-
-
-                dataGridViajes.DataSource = data.Data(query, parameters);
+                dataGridViajes.DataSource = sistema.SearchDataGridFromDataTable(sube, txtBusqueda.Text, 1);
                 LoadDataGridView();
 
                 double balance = sube.Balance;
@@ -88,23 +74,8 @@ namespace Sube
             {
                 dataGridViajes.DataSource = null;
                 dataGridViajes.Refresh();
-                parameters.Clear();
-
-                string query = @"
-                SELECT transportes.transport AS Transporte, lineas.line AS Linea, tarifassociales.rate AS TarifaSocial, viajes.ticketCost AS Boleto, viajes.kilometres AS Kilometros, viajes.date AS Fecha
-                FROM viajes
-                INNER JOIN
-                    tarifassociales ON tarifassociales.id = viajes.idSocialRate
-                INNER JOIN
-                    transportes ON transportes.id = viajes.idTransport
-                LEFT JOIN
-                    lineas ON lineas.id = viajes.idLine
-                WHERE viajes.idCard = @idCardNumber AND lineas.line = @linea";
-                parameters.Add("@idCardNumber", sube.CardNumber);
-                parameters.Add("@linea", txtBusqueda.Text);
-
+                dataGridViajes.DataSource = sistema.SearchDataGridFromDataTable(sube, txtBusqueda.Text, 2);
                 lblFiltro.Visible = true;
-                dataGridViajes.DataSource = data.Data(query, parameters);
                 LoadDataGridView();
             }
         }

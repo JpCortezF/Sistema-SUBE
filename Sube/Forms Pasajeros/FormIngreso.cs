@@ -1,11 +1,13 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_Usuarios;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -44,17 +46,14 @@ namespace Sube
             {
                 try
                 {
-                    string query = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
-                    parameters["@dni"] = txtDni.Text;
-                    parameters["@password"] = txtPass.Text;
-                    Pasajero passenger = new Pasajero();
-                    listPassengers = data.Select(query, parameters, passenger.Map);
-                    if (listPassengers.Count > 0)
+                    int.TryParse(txtDni.Text, out int dni);
+                    Pasajero passenger = new Pasajero(dni, txtPass.Text);
+                    SistemaPasajero sistemaPasajero = new SistemaPasajero();
+                    passenger = sistemaPasajero.LogPassenger(passenger);
+                    if (passenger != null)
                     {
-                        passenger = listPassengers.FirstOrDefault();
                         MessageBox.Show("Ingreso correctamente", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         exist = true;
-
                         InicioPasajero inicio = new InicioPasajero(passenger);
                         inicio.Show();
                         MdiParent.Close();
@@ -118,12 +117,11 @@ namespace Sube
         {
             try
             {
-                string queryHarcode = "SELECT * FROM pasajeros WHERE dni = @dni AND password = @password";
-                parameters["@dni"] = 33202790;
-                parameters["@password"] = 2790;
-                Pasajero passenger = new Pasajero();
-                listPassengers = data.Select(queryHarcode, parameters, passenger.Map);
-                if(listPassengers.Count > 0)
+                SistemaPasajero sistemaPasajero = new SistemaPasajero();
+                Pasajero passenger = new Pasajero(33202790, "2790");
+                passenger = sistemaPasajero.LogPassenger(passenger);
+
+                if (passenger != null)
                 {
                     txtDni.Text = "33202790";
                     txtPass.Text = "2790";
@@ -137,7 +135,6 @@ namespace Sube
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }
