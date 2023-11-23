@@ -180,11 +180,22 @@ namespace Sube
                                     { "@Kilometres", miViaje.Kilometres },
                                     { "@Date", DateTime.Now },
                                 };
-                                    string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                                    DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-                                    data.Update(queryUpdate, parameters);
-                                    string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
-                                    data.Insert(queryInsert, parameters);
+
+                                    int tiempo = 10000;
+                                    Task task1 = new Task((object tiempoParam) =>
+                                    {
+                                        int tiempo = (int)tiempoParam; // Convertir el objeto a un entero
+
+                                        Thread.Sleep(tiempo);
+                                        string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
+                                        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+                                        data.Update(queryUpdate, parameters);
+                                        string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
+                                        data.Insert(queryInsert, parameters);
+
+                                    }, tiempo);
+                                    task1.Start();
+
                                     switch (miTransporte)
                                     {
                                         case ETransporte.Colectivo:
