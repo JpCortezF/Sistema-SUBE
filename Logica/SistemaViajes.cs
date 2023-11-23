@@ -16,6 +16,14 @@ namespace Logica
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<Viajes> data = new DataBase<Viajes>();
 
+        /// <summary>
+        /// Busca y filtra información de viajes asociados a una tarjeta SUBE en un DataTable.
+        /// La búsqueda puede ser por línea de transporte específica o todos los viajes de la tarjeta.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube asociado a los viajes.</param>
+        /// <param name="search">Criterio de búsqueda, como la línea de transporte (puede ser nulo).</param>
+        /// <param name="option">Opción que indica si se filtra por línea de transporte (2) o no (cualquier otro valor).</param>
+        /// <returns>Un DataTable con la información de los viajes filtrados.</returns>
         public DataTable SearchDataGridFromDataTable(TarjetaSube sube, string search, int option)
         {
             parameters.Clear();

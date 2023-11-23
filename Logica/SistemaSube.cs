@@ -10,6 +10,11 @@ namespace Logica
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
 
+        /// <summary>
+        /// Actualiza el saldo de una tarjeta SUBE en la base de datos.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube con la información de la tarjeta a actualizar.</param>
+        /// <returns>Un diccionario con los parámetros utilizados en la actualización.</returns>
         public Dictionary<string, object> UpdateSubeBalance(TarjetaSube sube)
         {
             parameters.Clear();
@@ -20,6 +25,14 @@ namespace Logica
 
             return parameters;
         }
+        /// <summary>
+        /// Genera un nuevo registro de viaje en la base de datos, asociado a una tarjeta SUBE, transporte, línea y detalles del viaje.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube asociado al viaje.</param>
+        /// <param name="miTransporte">Tipo de transporte del viaje.</param>
+        /// <param name="miLinea">Línea de transporte utilizada en el viaje.</param>
+        /// <param name="miViaje">Detalles del viaje a registrar.</param>
+        /// <returns>Un diccionario con los parámetros utilizados en la inserción del viaje.</returns>
         public Dictionary<string, object> GenerarViaje(TarjetaSube sube, ETransporte miTransporte, LineasTransporte miLinea, Viajes miViaje)
         {
             string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
@@ -34,6 +47,11 @@ namespace Logica
 
             return parameters;
         }
+        /// <summary>
+        /// Carga las líneas de transporte disponibles para un tipo específico de transporte.
+        /// </summary>
+        /// <param name="tipoTransporte">Tipo de transporte del cual cargar las líneas.</param>
+        /// <returns>Una lista de objetos LineasTransporte ordenada según el tipo de transporte.</returns>
         public List<LineasTransporte> CargarLineasTransporte(ETransporte tipoTransporte)
         {
             DataBase<LineasTransporte> data = new DataBase<LineasTransporte>();
@@ -74,7 +92,13 @@ namespace Logica
             }                     
             return lineas;
         }
-
+        /// <summary>
+        /// Inicia un temporizador para simular la carga de saldo y la generación de un viaje después de un tiempo determinado.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube asociado al viaje.</param>
+        /// <param name="miTransporte">Tipo de transporte del viaje.</param>
+        /// <param name="miLinea">Línea de transporte utilizada en el viaje.</param>
+        /// <param name="miViaje">Detalles del viaje a registrar.</param>
         public void LoadTravelWithTimer(TarjetaSube sube, ETransporte miTransporte, LineasTransporte miLinea, Viajes miViaje)
         {
             int time = 0;
@@ -104,6 +128,11 @@ namespace Logica
             }, time);
             task1.Start();        
         }
+        /// <summary>
+        /// Verifica si un número de tarjeta SUBE ya existe en la base de datos.
+        /// </summary>
+        /// <param name="cardnumber">Número de tarjeta SUBE a verificar.</param>
+        /// <returns>True si la tarjeta ya existe, False si no.</returns>
         public bool CardNumberExits(string cardnumber)
         {
             bool exist = true;

@@ -2,6 +2,7 @@
 using Biblioteca_TarjetaSube;
 using Biblioteca_Tramites;
 using Biblioteca_Usuarios;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,6 @@ namespace Sube
             this.passenger = passenger;
             this.formSube = formSube;
         }
-
         private void FormTarifaSocial_Load(object sender, EventArgs e)
         {
 
@@ -65,25 +65,15 @@ namespace Sube
 
                 if (Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
                 {
-                    string query = @"INSERT INTO tramites (dniClaimer, claimMessage, claimTime, idClaimStatus) VALUES (@Dni, @ClaimMessage, @ClaimTime, @IdClaimStatus)";
-                    DataBase<object> data = new DataBase<object>();
-                    Dictionary<string, object> parameters = new Dictionary<string, object>
-                    {
-                        { "@Dni", passenger.Dni },
-                        { "@ClaimMessage", $"Reclamo: {tarifaSocial}  " + txtClaim.Text },
-                        { "@ClaimTime", DateTime.Now },
-                        { "@IdClaimStatus", EClaimStatus.EnProceso },
-                    };
-                    data.Insert(query, parameters);
+                    SistemaTramite sistema = new SistemaTramite();
+                    sistema.InsertClaimIntoDataTable(passenger, tarifaSocial, txtClaim.Text);
                 }
             }
             else
             {
                 MessageBox.Show("No se registro ninguna opcion marcada", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-
         private void FormTarifaSocial_FormClosed(object sender, FormClosedEventArgs e)
         {
             InicioPasajero inicio = (InicioPasajero)this.MdiParent;
