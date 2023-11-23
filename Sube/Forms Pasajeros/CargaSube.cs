@@ -1,5 +1,6 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_DataBase;
+using Logica;
 using Biblioteca_Usuarios;
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,7 @@ namespace Sube
         private void CargaSube_Load(object sender, EventArgs e)
         {
             lblMensaje.Text = "Carga tu SUBE de forma virtual desde Mercado Pago";
-            double balance = sube.Balance;
-            lblSaldo.Text = $"${balance.ToString("F2")}";
+            lblSaldo.Text = $"${sube.Balance:F2}";
             txtCarga.TextChanged += txtCarga_TextChanged;
         }
         private GraphicsPath CrearRegionConEsquinasRedondeadas(int width, int height, int radio)
@@ -67,11 +67,9 @@ namespace Sube
         private void btnCargar_Click(object sender, EventArgs e)
         {
             try
-            {
-                string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-                Dictionary<string, object> parameters = new Dictionary<string, object>();         
+            {   
                 float balance = sube.Balance;
+                SistemaSube sistemaSube = new SistemaSube();
                 if (!string.IsNullOrEmpty(txtCarga.Text))
                 {
                     if (float.TryParse(txtCarga.Text, out balance))
@@ -84,9 +82,7 @@ namespace Sube
                         }
                         else
                         {
-                            parameters.Add("@idSube", sube.CardNumber);
-                            parameters.Add("@balanceUpdate", sube.Balance);
-                            data.Update(queryUpdate, parameters);
+                            sistemaSube.UpdateSubeBalance(sube);
                             DialogResult = DialogResult.OK;
                             Close();
                         }

@@ -39,7 +39,6 @@ namespace Biblioteca_Usuarios
 
             return new Pasajero(dni, idGender, email, password, name, lastName, idSube);
         }
-
     }
 }
 

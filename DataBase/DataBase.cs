@@ -54,6 +54,7 @@ namespace Biblioteca_DataBase
         public List<T> Select(string query, Dictionary<string, object> parameters, Func<MySqlDataReader, T> mapObject)
         {
             List<T> list = new List<T>();
+            Exception x = null;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(localhost))
@@ -88,6 +89,7 @@ namespace Biblioteca_DataBase
             catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
+                x = ex;
                 throw;
             }
             catch (InvalidOperationException ex)
@@ -102,6 +104,10 @@ namespace Biblioteca_DataBase
             }
             finally
             {
+                if(x != null)
+                {
+
+                }
                 if (connectionMySql.State == ConnectionState.Open)
                 {
                     connectionMySql.Close();
