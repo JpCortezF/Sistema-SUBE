@@ -20,6 +20,7 @@ namespace Sube
 {
     public delegate void UpdateTramiteStatus(int claimId, EClaimStatus nuevoEstado);
 
+
     public partial class FormTramites : Form
     {
         List<Tramites> listTramites = new List<Tramites>();
@@ -55,7 +56,7 @@ namespace Sube
                         editarUsuario.MdiParent = parentForm;
                         //editarUsuario.ActualizarEstadoReclamo += UpdateTramiteStatus;
                         UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
-                        editarUsuario.UpdateDataGridViewEvent += FormTramites_Load; 
+                        editarUsuario.UpdateDataGridViewEvent += FormTramites_Load;
                         editarUsuario.Show();
                     }
                 }

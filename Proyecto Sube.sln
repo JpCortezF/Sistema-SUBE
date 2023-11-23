@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca Tramites", "Bibl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca Serializadora", "Biblioteca Serializadora\Biblioteca Serializadora.csproj", "{7FD44961-B9B1-4DA8-80F9-57D537D650CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{E20FC327-4AEA-45C7-9103-45A70DE602D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7FD44961-B9B1-4DA8-80F9-57D537D650CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FD44961-B9B1-4DA8-80F9-57D537D650CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FD44961-B9B1-4DA8-80F9-57D537D650CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20FC327-4AEA-45C7-9103-45A70DE602D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20FC327-4AEA-45C7-9103-45A70DE602D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20FC327-4AEA-45C7-9103-45A70DE602D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20FC327-4AEA-45C7-9103-45A70DE602D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

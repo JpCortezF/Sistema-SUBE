@@ -1,6 +1,7 @@
 ﻿using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using Biblioteca_DataBase;
+using Logica;
 using MyExceptions;
 using System;
 using System.Collections.Generic;
@@ -14,16 +15,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NPOI.SS.Formula.Functions;
 using System.Collections;
+using NPOI.POIFS.Crypt.Dsig;
 
 namespace Sube
 {
     public partial class TomarTransporte : Form
     {
+        Dictionary<string, object> parameters = new Dictionary<string, object>();
+        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
+
         List<LineasTransporte> lineas = new List<LineasTransporte>();
+        SistemaSube sistemaSube = new SistemaSube();
         Pasajero passenger;
         TarjetaSube sube;
         Viajes miViaje;
         ETransporte miTransporte;
+        LineasTransporte miLinea = new LineasTransporte();
         string selectedLine;
         public TomarTransporte(Pasajero passenger, TarjetaSube sube)
         {
@@ -45,102 +52,22 @@ namespace Sube
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string transporte = comboBox1.SelectedItem.ToString();
-            DataBase<LineasTransporte> data = new DataBase<LineasTransporte>();
-            LineasTransporte lineaCtor = new LineasTransporte();
-            string query = "";
+            miTransporte = (ETransporte)comboBox1.SelectedItem;
             comboBox2.Items.Clear();
-            if (Enum.TryParse(transporte, out ETransporte tipoTransporte))
+            lineas = sistemaSube.CargarLineasTransporte(miTransporte);
+
+            foreach (LineasTransporte linea in lineas)
             {
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                List<string> lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
-                miTransporte = tipoTransporte;
-                switch (miTransporte)
-                {
-                    case ETransporte.Colectivo:
-                        lineas.Clear();
-                        query = @"SELECT * FROM lineas WHERE idTransport = @idTransport";
-                        parameters.Add("@idTransport", ETransporte.Colectivo);
-                        lineas = data.Select(query, parameters, lineaCtor.Map);
-                        foreach (LineasTransporte linea in lineas)
-                        {
-                            comboBox2.Items.Add(linea.Line);
-                        }
-
-                        lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
-                        lineasOrdenadas.Sort((a, b) =>
-                        {
-                            int CompareNumerically(string x, string y)
-                            {
-                                if (int.TryParse(x, out int numX) && int.TryParse(y, out int numY))
-                                {
-                                    return numX.CompareTo(numY);
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"Error al convertir {x} o {y} a número.");
-                                    return 0;
-                                }
-                            }
-
-                            return CompareNumerically(a, b);
-                        });
-
-                        // Asigna las líneas ordenadas al ComboBox
-                        comboBox2.Items.Clear();
-                        comboBox2.Items.AddRange(lineasOrdenadas.ToArray());
-
-                        break;
-                    case ETransporte.Subte:
-                        lineas.Clear();
-                        query = @"SELECT * FROM lineas WHERE idTransport = @idTransport";
-                        parameters.Add("@idTransport", ETransporte.Subte);
-                        lineas = data.Select(query, parameters, lineaCtor.Map);
-                        foreach (LineasTransporte linea in lineas)
-                        {
-                            comboBox2.Items.Add(linea.Line);
-                        }
-
-                        lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
-                        lineasOrdenadas.Sort((a, b) =>
-                        {
-                            return string.Compare(a, b, StringComparison.OrdinalIgnoreCase);
-                        });
-
-                        comboBox2.Items.Clear();
-                        comboBox2.Items.AddRange(lineasOrdenadas.ToArray());
-
-                        break;
-                    case ETransporte.Tren:
-                        lineas.Clear();
-                        query = @"SELECT * FROM lineas WHERE idTransport = @idTransport";
-                        parameters.Add("@idTransport", ETransporte.Tren);
-                        lineas = data.Select(query, parameters, lineaCtor.Map);
-                        foreach (LineasTransporte linea in lineas)
-                        {
-                            comboBox2.Items.Add(linea.Line);
-                        }
-
-                        lineasOrdenadas = lineas.Select(linea => linea.Line).ToList();
-                        lineasOrdenadas.Sort((a, b) =>
-                        {
-                            return string.Compare(a, b, StringComparison.OrdinalIgnoreCase);
-                        });
-
-                        comboBox2.Items.Clear();
-                        comboBox2.Items.AddRange(lineasOrdenadas.ToArray());
-
-                        break;
-
-                }
-                txtKilometros.Enabled = false;
-                txtKilometros.Clear();
+                comboBox2.Items.Add(linea.Line);
             }
+            comboBox2.Items.AddRange(lineas.Select(linea => linea.Line).ToArray());
+
+            txtKilometros.Enabled = false;
+            txtKilometros.Clear();            
         }
 
         private void btnViajar_Click(object sender, EventArgs e)
         {
-            int idLine = 0;
             if (ValidarIngresoTextBox())
             {
                 if (!string.IsNullOrEmpty(passenger.IdSube))
@@ -155,36 +82,22 @@ namespace Sube
                                 {
                                     if (selectedLine == linea.Line)
                                     {
-                                        idLine = linea.Id;
+                                        miLinea.Id = linea.Id;
                                         break;
                                     }
                                 }
-                                miViaje = new Viajes(kilometros, DateTime.Now, miTransporte, idLine);
+                                miViaje = new Viajes();
+                                TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial);
 
-                                TarifaSocialPasajero boletoViaje = new TarifaSocialPasajero(sube.TarifaSocial, miViaje);
                                 miViaje.TicketCost = boletoViaje.ReturnTicketCost(miTransporte);
-
-                                sube.Balance -= boletoViaje.ReturnTicketCost(miTransporte);
+                                miViaje.Kilometres = kilometros;
+                                sube.Balance -= miViaje.TicketCost;
+                                
                                 double balance = sube.Balance;
                                 if (sube.Balance > -211.84)
                                 {
-                                    Dictionary<string, object> parameters = new Dictionary<string, object>
-                                {
-                                    { "@balanceUpdate", sube.Balance },
-                                    { "@idSube", sube.CardNumber },
-                                    { "@IdCard", sube.CardNumber },
-                                    { "@IdTransport", miViaje.TipoTransporte },
-                                    { "@IdLine", idLine },
-                                    { "@IdSocialRate", sube.TarifaSocial },
-                                    { "@TicketCost", miViaje.TicketCost },
-                                    { "@Kilometres", miViaje.Kilometres },
-                                    { "@Date", DateTime.Now },
-                                };
-                                    string queryUpdate = @"UPDATE tarjetas SET balance = @balanceUpdate WHERE id = @idSube";
-                                    DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-                                    data.Update(queryUpdate, parameters);
-                                    string queryInsert = @"INSERT INTO viajes(idCard, idTransport, idLine, idSocialRate, ticketCost, kilometres, date) VALUES(@IdCard, @IdTransport, @IdLine, @IdSocialRate, @TicketCost, @Kilometres, @Date)";
-                                    data.Insert(queryInsert, parameters);
+                                    sistemaSube.UpdateSubeBalance(sube);
+                                    sistemaSube.GenerarViaje(sube, miTransporte, miLinea, miViaje);
                                     switch (miTransporte)
                                     {
                                         case ETransporte.Colectivo:
@@ -204,8 +117,6 @@ namespace Sube
                                             break;
                                     }
                                     MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${boletoViaje.ReturnTicketCost(miTransporte)}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    //DataBase.Insert(passenger, sube, 2);
-
                                 }
                                 else
                                 {

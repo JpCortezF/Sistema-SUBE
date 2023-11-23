@@ -9,6 +9,11 @@ namespace Biblioteca_TarjetaSube
     public class TarifaSocialPasajero : Viajes
     {
         ETarifaSocial tarifaSocial;
+
+        public TarifaSocialPasajero(ETarifaSocial miTarifa)
+        {
+            this.tarifaSocial = miTarifa;
+        }
         public TarifaSocialPasajero(float kilometres, DateTime date, ETransporte tipoTransporte, ETarifaSocial miTarifa, int lineasTransporte, float ticketCost) 
             : base(kilometres, date, tipoTransporte, lineasTransporte, ticketCost)
         {
@@ -47,7 +52,6 @@ namespace Biblioteca_TarjetaSube
                     ticket = CostByTarifa(PrecioViajes.ValorTren);
                     break;
             }
-            TicketCost = ticket;
             return ticket;
         }
         /// <summary>
@@ -78,15 +82,6 @@ namespace Biblioteca_TarjetaSube
                     break;
             }
             return ticket;
-        }
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Tarifa Social: {this.tarifaSocial}");
-            sb.AppendLine(base.ToString());
-            sb.AppendLine($"Boleto: {ReturnTicketCost(TipoTransporte)}");
-
-            return sb.ToString();
         }
     }
 }

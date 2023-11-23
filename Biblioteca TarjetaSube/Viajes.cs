@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace Biblioteca_TarjetaSube
 {
-    public class Viajes
+    public class Viajes : IMapeableTarjetaSube<Viajes>
     {
         int idTravel;
         ETransporte tipoTransporte;
@@ -52,6 +52,7 @@ namespace Biblioteca_TarjetaSube
         public int LineasTransporte { get => lineasTransporte; set => lineasTransporte = value; }
         public TarjetaSube TarjetaSube { get; set; }
         public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
+        public int IdTravel { get => idTravel;}
 
         /// <summary>
         /// Calcula el costo de un servicio basado en la distancia en kilómetros.
@@ -81,21 +82,8 @@ namespace Biblioteca_TarjetaSube
             }
             return cost;
         }
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Fecha: {this.date}");
-            sb.AppendLine($"Linea: {this.lineasTransporte}");
-            sb.AppendLine($"Transporte: {this.tipoTransporte}");
-            sb.AppendLine($"Km: {this.kilometres}");
-            return sb.ToString();
-        }
-        public static Viajes MapViajes(MySqlDataReader reader)
-        {
-            return (Viajes)reader;
-        }
 
-        public static explicit operator Viajes(MySqlDataReader reader)
+        public Viajes Map(MySqlDataReader reader)
         {
             int idTravel = Convert.ToInt32(reader["idTravel"]);
             int tipoTransporte = Convert.ToInt32(reader["idTransport"]);
@@ -104,6 +92,7 @@ namespace Biblioteca_TarjetaSube
             float ticketcost = Convert.ToSingle(reader["ticketcost"]);
             float kilometres = Convert.ToSingle(reader["kilometres"]);
             DateTime date = Convert.ToDateTime(reader["date"]);
+
             return new Viajes(idTravel, tipoTransporte, idLine, socialRate, ticketcost, kilometres, date);
         }
     }
