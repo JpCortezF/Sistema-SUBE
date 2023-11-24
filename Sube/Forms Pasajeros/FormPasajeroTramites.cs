@@ -58,12 +58,18 @@ namespace Sube
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
             dataGridTramites.DataSource = sistema.LoadClaimDataTable(passenger);
-            if(dataGridTramites.Rows.Count == 0)
+            if (dataGridTramites.Rows.Count == 0)
             {
                 pictureBox1.Visible = true;
+                lblNada.Visible = true;
+                label3.Visible = true;
+                lblNada.Text = "No hay tramites pendientes";
+                label3.Text = "Controla su estado desde esta ventana!";
             }
             else
             {
+                label3.Visible = false;
+                lblNada.Visible = false;
                 pictureBox1.Visible = false;
             }
         }

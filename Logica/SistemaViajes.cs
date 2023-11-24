@@ -78,7 +78,7 @@ namespace Logica
             parameters.Add("@SubeGold", sube.TarifaSocial);
             List<Viajes> listaViajes = data.Select(query, parameters, viaje.Map);
             totalTravels = listaViajes.Count + 1;
-            
+
             return totalTravels;
         }
         public Viajes CountTravelsWithSubeGold(Viajes viaje, int travels)
@@ -90,7 +90,7 @@ namespace Logica
         }
         public void HandleDiscountGoldEvent(Viajes viaje, SubeEvento e)
         {
-            if (e.TravelsCount % 5 == 0)
+            if (e.TravelsCount >= 6 && e.TravelsCount <= 9)
             {
                 viaje.TicketCost = 0;
             }

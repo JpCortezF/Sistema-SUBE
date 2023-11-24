@@ -33,6 +33,7 @@
             button1 = new Button();
             lblCancel = new Label();
             pictureBox1 = new PictureBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             // 
             lblMensaje.AutoSize = true;
             lblMensaje.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMensaje.Location = new Point(450, 61);
+            lblMensaje.Location = new Point(446, 49);
             lblMensaje.Name = "lblMensaje";
             lblMensaje.Size = new Size(44, 15);
             lblMensaje.TabIndex = 1;
@@ -53,7 +54,7 @@
             btnSuscripccion.FlatStyle = FlatStyle.Flat;
             btnSuscripccion.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnSuscripccion.ForeColor = SystemColors.Control;
-            btnSuscripccion.Location = new Point(450, 193);
+            btnSuscripccion.Location = new Point(410, 193);
             btnSuscripccion.Name = "btnSuscripccion";
             btnSuscripccion.Size = new Size(122, 35);
             btnSuscripccion.TabIndex = 7;
@@ -80,7 +81,7 @@
             lblCancel.Cursor = Cursors.Hand;
             lblCancel.Font = new Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblCancel.ForeColor = Color.RosyBrown;
-            lblCancel.Location = new Point(596, 203);
+            lblCancel.Location = new Point(573, 203);
             lblCancel.Name = "lblCancel";
             lblCancel.Size = new Size(127, 15);
             lblCancel.TabIndex = 19;
@@ -90,12 +91,22 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.SubeGold;
-            pictureBox1.Location = new Point(33, 30);
+            pictureBox1.Location = new Point(2, 30);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(361, 198);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 20;
             pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(369, 84);
+            label1.Name = "label1";
+            label1.Size = new Size(43, 15);
+            label1.TabIndex = 21;
+            label1.Text = "label1";
             // 
             // SubeGold
             // 
@@ -104,6 +115,7 @@
             BackColor = Color.White;
             ClientSize = new Size(750, 259);
             ControlBox = false;
+            Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(lblCancel);
             Controls.Add(button1);
@@ -126,5 +138,6 @@
         private Button button1;
         private Label lblCancel;
         private PictureBox pictureBox1;
+        private Label label1;
     }
 }

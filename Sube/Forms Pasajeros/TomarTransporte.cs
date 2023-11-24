@@ -105,7 +105,7 @@ namespace Sube
                                             break;
                                     }
                                     int totalTravels = sistemaViaje.CountTravels(sube);
-                                    if (totalTravels % 5 == 0 && totalTravels > 0)
+                                    if (totalTravels >= 6 && totalTravels <= 9)
                                     {
                                         sistemaViaje.DiscountGoldEvent += sistemaViaje.HandleDiscountGoldEvent;
                                     }

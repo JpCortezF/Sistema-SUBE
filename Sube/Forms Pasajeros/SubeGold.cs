@@ -27,6 +27,7 @@ namespace Sube.Forms_Pasajeros
         private void SubeGold_Load(object sender, EventArgs e)
         {
             lblMensaje.Text = "¿Deseas suscribirte a Sube GOLD?";
+            label1.Text = "La próxima vez que inicies sesión verás reflejada la SUBE GOLD\nUna vez que realices los 5 primeros viajes con tu Sube GOLD,\nlos próximos 5 viajes seran GRATIS.";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace Sube.Forms_Pasajeros
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                if(sube != null)
+                if (sube != null)
                 {
                     if (sube.TarifaSocial == ETarifaSocial.SubeGold)
                     {
@@ -66,7 +67,7 @@ namespace Sube.Forms_Pasajeros
 
         private void btnSuscripccion_Click(object sender, EventArgs e)
         {
-            if(sube != null)
+            if (sube != null)
             {
                 if (sube.TarifaSocial == ETarifaSocial.SubeGold)
                 {
@@ -88,12 +89,12 @@ namespace Sube.Forms_Pasajeros
             if (isSubscribed)
             {
                 sistemaSube.UpdateSubeGold(sube);
-                MessageBox.Show($"¡Felicidades! Te has suscrito a Sube GOLD.\n1.La próxima vez que inicies sesión verás reflejada la SUBE GOLD\nUna vez que realices los 5 primeros viajes con tu Sube GOLD,\nlos próximos 5 viajes seran GRATIS.");
+                MessageBox.Show($"¡Felicidades! Te has suscrito a Sube GOLD.", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 sistemaSube.ResetSocialRate(sube);
-                MessageBox.Show("Has cancelado la suscripción a Sube GOLD.");
+                MessageBox.Show("Has cancelado la suscripción a Sube GOLD.", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 sistemaViaje.DeleteTravels(sube);
             }
         }
