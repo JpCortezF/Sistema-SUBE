@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca TarjetaSube\Biblioteca TarjetaSube.csproj" />
     <ProjectReference Include="..\DataBase\Biblioteca DataBase.csproj" />
+    <ProjectReference Include="..\SubeEvent\SubeEvent.csproj" />
   </ItemGroup>
 
 </Project>

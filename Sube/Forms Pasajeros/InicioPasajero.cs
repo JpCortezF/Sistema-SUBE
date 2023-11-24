@@ -2,9 +2,11 @@
 using Biblioteca_Serializadora;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Logica;
 using NPOI.SS.Formula.Functions;
 using Sube.CustomControls;
 using Sube.Forms_Pasajeros;
+using SubeEvent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +19,6 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Sube
@@ -27,6 +27,7 @@ namespace Sube
     {
         Pasajero passenger;
         TarjetaSube mySube;
+        SistemaSube sistema = new SistemaSube();
         private Form currentChildForm = null;
         FormSubePasajero formSube = null;
         ToolStripMenuItem itemSalir = new ToolStripMenuItem("| SALIR |");
@@ -46,20 +47,8 @@ namespace Sube
             InitializeComponent();
             this.passenger = passenger;
             toggleButton = new ToggleButton();
-            mySube = new TarjetaSube();
-            toggleButton.CheckedChanged += ToggleButton_Click;
+            mySube = sistema.ReturnSubePassenger(passenger);
             InstanciarStatusTrip();
-            string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "@IdSube", passenger.IdSube },
-                { "@IdCardNumber", passenger.IdSube },
-            };
-            DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-            List<TarjetaSube> listSube = new List<TarjetaSube>();
-            listSube = data.Select(query, parameters, mySube.Map);
-            mySube = listSube.FirstOrDefault();
             string ruta = @"..\..\..\Data";
             string nombre = "Config.Json";
             string path = Path.Combine(ruta, nombre);
@@ -89,6 +78,7 @@ namespace Sube
             itemSalir.BackColor = SystemColors.ActiveCaption;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
+            toggleButton.CheckedChanged += ToggleButton_Click;
             lblNombre.Text = $"¡Hola {passenger.Name}!";
             if (darkMode == true)
             {
@@ -250,6 +240,7 @@ namespace Sube
             pictureBox1.Visible = true;
             toggleButton.Enabled = true;
         }
+
         private void InstanciarStatusTrip()
         {
             statusStrip = new StatusStrip();
@@ -303,10 +294,8 @@ namespace Sube
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Actualiza la hora actual en el ToolStripStatusLabel
             dummyLabel.Text = DateTime.Now.ToString("HH:mm");
         }
-
         private void ToggleButton_Click(object sender, EventArgs e)
         {
             ToggleButton toggleButton = (ToggleButton)sender;
@@ -344,8 +333,8 @@ namespace Sube
         {
             if (currentChildForm is null || !(currentChildForm is SubeGold))
             {
-                SubeGold sube = new SubeGold();
-                OpenChildForm(sube);
+                SubeGold subeGoldForm = new SubeGold(mySube);
+                OpenChildForm(subeGoldForm);
             }
         }
     }

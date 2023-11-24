@@ -57,6 +57,14 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
+            if(dataGridTramites.Rows.Count == 0)
+            {
+                pictureBox1.Visible = true;
+            }
+            else
+            {
+                pictureBox1.Visible = false;
+            }
             dataGridTramites.DataSource = sistema.LoadClaimDataTable(passenger);
         }
     }

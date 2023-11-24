@@ -43,7 +43,6 @@ namespace Sube
             rdbCombatiente.Text = $"{ETarifaSocial.ExComatienteDeMalvinas}";
             rdbDiscapacitado.Text = $"{ETarifaSocial.Discapacitado}";
             rdbSinSubsidio.Text = $"{ETarifaSocial.SinSubsidio}";
-            rdbGold.Text = $"{ETarifaSocial.SubeGold}";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,7 +67,7 @@ namespace Sube
                 if (Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
                 {
                     SistemaTramite sistema = new SistemaTramite();
-                    sistema.InsertClaimIntoDataTable(passenger, tarifaSocial, txtClaim.Text);                    
+                    sistema.InsertClaimIntoDataTable(passenger, tarifaSocial, txtClaim.Text);
                 }
             }
             else

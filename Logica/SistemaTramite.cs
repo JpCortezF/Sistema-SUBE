@@ -126,14 +126,5 @@ namespace Logica
             parameters.Add("@UpdateClaimStatus", status);
             data.Update(update, parameters);
         }
-        public void UpdateSubeGold(TarjetaSube sube)
-        {
-            parameters.Clear();
-            string update = @"
-            UPDATE tarjetas SET idSocialRate = @SubeGold WHERE id = @CardNumber";
-            parameters.Add("@CardNumber", sube.CardNumber);
-            parameters.Add("@SubeGold", ETarifaSocial.SubeGold);
-            data.Update(update, parameters);
-        }
     }
 }

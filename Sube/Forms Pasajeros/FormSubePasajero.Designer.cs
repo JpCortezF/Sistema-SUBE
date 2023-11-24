@@ -49,7 +49,9 @@
             lblTren = new Label();
             label5 = new Label();
             lblSubsidio = new Label();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -68,7 +70,7 @@
             lblTarjeta.BackColor = Color.Transparent;
             lblTarjeta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTarjeta.ForeColor = Color.Black;
-            lblTarjeta.Location = new Point(39, 169);
+            lblTarjeta.Location = new Point(43, 159);
             lblTarjeta.Name = "lblTarjeta";
             lblTarjeta.Size = new Size(185, 24);
             lblTarjeta.TabIndex = 4;
@@ -80,7 +82,7 @@
             lblName.BackColor = Color.Transparent;
             lblName.Font = new Font("Candara", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblName.ForeColor = Color.Black;
-            lblName.Location = new Point(39, 206);
+            lblName.Location = new Point(43, 196);
             lblName.Name = "lblName";
             lblName.Size = new Size(142, 23);
             lblName.TabIndex = 5;
@@ -279,6 +281,16 @@
             lblSubsidio.TabIndex = 23;
             lblSubsidio.Text = "0";
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.SubeGold;
+            pictureBox2.Location = new Point(12, 23);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(405, 233);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 24;
+            pictureBox2.TabStop = false;
+            // 
             // FormSubePasajero
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -286,6 +298,9 @@
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(900, 430);
             ControlBox = false;
+            Controls.Add(lblName);
+            Controls.Add(lblTarjeta);
+            Controls.Add(pictureBox2);
             Controls.Add(lblSubsidio);
             Controls.Add(label5);
             Controls.Add(lblTren);
@@ -304,8 +319,6 @@
             Controls.Add(label1);
             Controls.Add(btnSalir);
             Controls.Add(lblTransportes);
-            Controls.Add(lblName);
-            Controls.Add(lblTarjeta);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormSubePasajero";
@@ -314,6 +327,7 @@
             FormClosed += FormSubePasajero_FormClosed;
             Load += FormSubePasajero_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -341,5 +355,6 @@
         private Label lblTren;
         private Label label5;
         private Label lblSubsidio;
+        private PictureBox pictureBox2;
     }
 }

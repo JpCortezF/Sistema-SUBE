@@ -25,8 +25,6 @@ namespace Sube
         LineasTransporte miLinea = new LineasTransporte();
         SistemaSube sistemaSube = new SistemaSube();
         SistemaViajes sistemaViaje = new SistemaViajes();
-        Action<string> subeGold;
-
         Pasajero passenger;
         TarjetaSube sube;
         Viajes miViaje;
@@ -36,7 +34,6 @@ namespace Sube
             InitializeComponent();
             this.passenger = passenger;
             this.sube = sube;
-            subeGold = MensajeSubeGold;
         }
 
         private void TomarTransporte_Load(object sender, EventArgs e)
@@ -88,8 +85,7 @@ namespace Sube
                                 
                                 double balance = sube.Balance;
                                 if (sube.Balance > -211.84)
-                                {
-                                    sistemaSube.LoadTravelWithTimer(sube, miTransporte, miLinea, miViaje);
+                                {                                 
                                     switch (miTransporte)
                                     {
                                         case ETransporte.Colectivo:
@@ -108,8 +104,18 @@ namespace Sube
                                             pictureBox1.Visible = false;
                                             break;
                                     }
+                                    int totalTravels = sistemaViaje.CountTravels(sube);
+                                    if(totalTravels >= 5 && totalTravels <= 10)
+                                    {
+                                        sistemaViaje.DiscountGoldEvent += sistemaViaje.HandleDiscountGoldEvent;
+                                    }
+                                    else
+                                    {
+                                        sistemaViaje.DiscountGoldEvent -= sistemaViaje.HandleDiscountGoldEvent;
+                                    }
+                                    miViaje = sistemaViaje.CountTravelsWithSubeGold(sube, miViaje, totalTravels);
                                     MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${miViaje.TicketCost}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    sistemaViaje.CountTravels(sube, MensajeSubeGold);
+                                    sistemaSube.LoadTravelWithTimer(sube, miTransporte, miLinea, miViaje);
                                 }
                                 else
                                 {
@@ -138,10 +144,7 @@ namespace Sube
                 MessageBox.Show("No se registro ningun viaje", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void MensajeSubeGold(string mensaje)
-        {
-            MessageBox.Show($"Felicidades {passenger.Name} alcanzaste los 10 viajes con nuestra aplicación!\n{mensaje}", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+
         private bool ValidarIngresoTextBox()
         {
             bool allCompleted = true;

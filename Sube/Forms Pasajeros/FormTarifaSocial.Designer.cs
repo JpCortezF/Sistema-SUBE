@@ -45,7 +45,6 @@
             groupBox1 = new GroupBox();
             rdbSinSubsidio = new RadioButton();
             txtClaim = new TextBox();
-            rdbGold = new RadioButton();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -207,7 +206,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(rdbGold);
             groupBox1.Controls.Add(rdbSinSubsidio);
             groupBox1.Controls.Add(rdbJubilado);
             groupBox1.Controls.Add(rdbEstudiantil);
@@ -241,18 +239,6 @@
             txtClaim.Name = "txtClaim";
             txtClaim.Size = new Size(260, 160);
             txtClaim.TabIndex = 16;
-            // 
-            // rdbGold
-            // 
-            rdbGold.AutoSize = true;
-            rdbGold.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            rdbGold.Location = new Point(6, 219);
-            rdbGold.Name = "rdbGold";
-            rdbGold.Size = new Size(97, 20);
-            rdbGold.TabIndex = 16;
-            rdbGold.TabStop = true;
-            rdbGold.Text = "Sube GOLD";
-            rdbGold.UseVisualStyleBackColor = true;
             // 
             // FormTarifaSocial
             // 
@@ -304,6 +290,5 @@
         private GroupBox groupBox1;
         private TextBox txtClaim;
         private RadioButton rdbSinSubsidio;
-        private RadioButton rdbGold;
     }
 }

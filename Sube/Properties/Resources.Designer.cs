@@ -63,6 +63,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _null {
+            get {
+                object obj = ResourceManager.GetObject("_null", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap brigdeTrainGif {
             get {
                 object obj = ResourceManager.GetObject("brigdeTrainGif", resourceCulture);
@@ -86,16 +96,6 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap camionGif {
             get {
                 object obj = ResourceManager.GetObject("camionGif", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap cargaSube {
-            get {
-                object obj = ResourceManager.GetObject("cargaSube", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,16 +203,6 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap headerShortMiSube {
-            get {
-                object obj = ResourceManager.GetObject("headerShortMiSube", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap homePasajeroGif {
             get {
                 object obj = ResourceManager.GetObject("homePasajeroGif", resourceCulture);
@@ -226,16 +216,6 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap iconPesos {
             get {
                 object obj = ResourceManager.GetObject("iconPesos", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap inicioPasajero {
-            get {
-                object obj = ResourceManager.GetObject("inicioPasajero", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

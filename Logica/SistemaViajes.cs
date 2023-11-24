@@ -7,15 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
+using SubeEvent;
 using Biblioteca_Usuarios;
 using NPOI.POIFS.Crypt.Dsig;
 
 namespace Logica
 {
+        public delegate void SubeGoldSuscription(Viajes viaje, SubeEvento e);
     public class SistemaViajes
     {
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<Viajes> data = new DataBase<Viajes>();
+        public event SubeGoldSuscription DiscountGoldEvent;
+
 
         /// <summary>
         /// Busca y filtra información de viajes asociados a una tarjeta SUBE en un DataTable.
@@ -62,22 +66,42 @@ namespace Logica
                 return data.Data(query, parameters);
             }
         }
-        public void CountTravels(TarjetaSube sube, Action<string> subeGold)
+        public int CountTravels(TarjetaSube sube)
         {
+            int totalTravels = 0;
+
             Viajes viaje = new Viajes();
             string query = @"SELECT * FROM viajes
             WHERE viajes.idCard = @idCardNumber";
             parameters.Clear();
             parameters.Add("@idCardNumber", sube.CardNumber);
             List<Viajes> listaViajes = data.Select(query, parameters, viaje.Map);
-            int totalTravels = listaViajes.Count + 1;
-
-            if (totalTravels == 10)
+            totalTravels = listaViajes.Count + 1;
+            return totalTravels;
+        }
+        public Viajes CountTravelsWithSubeGold(TarjetaSube sube, Viajes viaje, int travels)
+        {
+            if (sube.TarifaSocial == ETarifaSocial.SubeGold)
             {
-                subeGold?.Invoke("Los próximos viajes que realices no tendran costo.");
-                SistemaTramite sistemaTramite = new SistemaTramite();
-                sistemaTramite.UpdateSubeGold(sube);
+                SubeEvento evento = new SubeEvento();
+                evento.TravelsCount = travels;
+                DiscountGoldEvent?.Invoke(viaje, evento);
             }
+            return viaje; 
+        }
+        public void HandleDiscountGoldEvent(Viajes viaje, SubeEvento e)
+        {
+            if (e.TravelsCount >= 5 && e.TravelsCount <= 10)
+            {
+                viaje.TicketCost = 0;
+            }
+        }
+        public void DeleteTravels(TarjetaSube sube)
+        {
+            parameters.Clear();
+            string delete = @"DELETE FROM viajes WHERE idCard = @idSube";
+            parameters.Add("@CardNumber", sube.CardNumber);
+            data.Delete(delete, parameters);
         }
     }
 }

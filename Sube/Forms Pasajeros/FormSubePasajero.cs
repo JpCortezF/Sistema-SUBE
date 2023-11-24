@@ -36,10 +36,36 @@ namespace Sube
             Close();
         }
         private void FormSubePasajero_Load(object sender, EventArgs e)
-        {          
-            lblTransportes.Text = "Información sobre los transportes";            
+        {
+            if(sube.TarifaSocial == ETarifaSocial.SubeGold)
+            {
+                pictureBox1.Visible = false;
+                pictureBox2.Visible = true;
+                CargarDatosEnPictureBox();
+                pictureBox2.Controls.Add(lblTarjeta);
+                pictureBox2.Controls.Add(lblName);
+            }
+            else
+            {
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = false;
+                CargarDatosEnPictureBox();
+                pictureBox1.Controls.Add(lblTarjeta);
+                pictureBox1.Controls.Add(lblName);
+            }
+            lbl0to3Km.Text = $"De 0 a 3Km: ${PrecioViajes.ValorColectivo0To3Km}";
+            lbl3to6Km.Text = $"De 3 a 6Km: ${PrecioViajes.ValorColectivo3To6Km}";
+            lbl6to12km.Text = $"De 6 a 12Km: ${PrecioViajes.ValorColectivo6To12Km}";
+            lbl12to27km.Text = $"De 12 a 27: ${PrecioViajes.ValorColectivo12To27Km}";
+            lblSubte.Text = $"Todas las lineas: ${PrecioViajes.ValorSubte}";
+            lblTren.Text = $"Todas las lineas: ${PrecioViajes.ValorTren}";
+            lblSubsidio.Text = $"Sin subsidio: ${PrecioViajes.ValorSinSubsidio}";
+        }
+        private void CargarDatosEnPictureBox()
+        {
+            lblTransportes.Text = "Información sobre los transportes";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
-            if(sube != null)
+            if (sube != null)
             {
                 lblTarjeta.Text = $"{passenger.IdSube}";
                 double balance = sube.Balance;
@@ -55,22 +81,13 @@ namespace Sube
             lblTarifa.Text = "Acceder a tarifa social --->";
             lblTarjeta.Location = new Point(30, 120);
             lblName.Location = new Point(30, 158);
-            pictureBox1.Controls.Add(lblTarjeta);
-            pictureBox1.Controls.Add(lblName);
-            lbl0to3Km.Text = $"De 0 a 3Km: ${PrecioViajes.ValorColectivo0To3Km}";
-            lbl3to6Km.Text = $"De 3 a 6Km: ${PrecioViajes.ValorColectivo3To6Km}";
-            lbl6to12km.Text = $"De 6 a 12Km: ${PrecioViajes.ValorColectivo6To12Km}";
-            lbl12to27km.Text = $"De 12 a 27: ${PrecioViajes.ValorColectivo12To27Km}";
-            lblSubte.Text = $"Todas las lineas: ${PrecioViajes.ValorSubte}";
-            lblTren.Text = $"Todas las lineas: ${PrecioViajes.ValorTren}";
-            lblSubsidio.Text = $"Sin subsidio: ${PrecioViajes.ValorSinSubsidio}";
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {
             try
             {
-                if(sube != null)
-                {                
+                if (sube != null)
+                {
                     Hide();
 
                     CargaSube cargarSube = new CargaSube(sube);

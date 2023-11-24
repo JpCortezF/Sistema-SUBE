@@ -1,7 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
-using MyExceptions;
+using SubeEvent;
 
 namespace Logica
 {
@@ -10,6 +10,17 @@ namespace Logica
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
 
+        public TarjetaSube ReturnSubePassenger(Pasajero passenger)
+        {
+            parameters.Clear();
+            TarjetaSube sube = new TarjetaSube();
+            string query = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
+            parameters.Add("@IdSube", passenger.IdSube);
+            parameters.Add("@IdCardNumber", passenger.IdSube);
+            List<TarjetaSube> listSube = data.Select(query, parameters, sube.Map);
+
+            return listSube.FirstOrDefault();
+        }
         /// <summary>
         /// Actualiza el saldo de una tarjeta SUBE en la base de datos.
         /// </summary>
@@ -161,6 +172,24 @@ namespace Logica
                 exist = false;
             }
             return exist;
+        }
+        public void UpdateSubeGold(TarjetaSube sube)
+        {
+            parameters.Clear();
+            string update = @"
+            UPDATE tarjetas SET socialRate = @SubeGold WHERE id = @CardNumber";
+            parameters.Add("@CardNumber", sube.CardNumber);
+            parameters.Add("@SubeGold", ETarifaSocial.SubeGold);
+            data.Update(update, parameters);
+        }
+        public void ResetSocialRate(TarjetaSube sube)
+        {
+            parameters.Clear();
+            string update = @"
+            UPDATE tarjetas SET socialRate = @updateSocialRate WHERE id = @CardNumber";
+            parameters.Add("@CardNumber", sube.CardNumber);
+            parameters.Add("@updateSocialRate", ETarifaSocial.Ninguna);
+            data.Update(update, parameters);
         }
     }
 }
