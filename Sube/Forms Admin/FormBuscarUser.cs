@@ -1,6 +1,7 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
+using Logica;
 using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
@@ -25,21 +26,19 @@ namespace Sube
         private ContainerAdmin parentForm;
         DataBase<DataTable> data = new DataBase<DataTable>();
         Dictionary<string, object> parameters = new Dictionary<string, object>();
+        SistemaPasajero sistemaPasajero = new SistemaPasajero();
+        SistemaSube sistemaSube = new SistemaSube();
         public FormBuscarUser(ContainerAdmin parent)
         {
             InitializeComponent();
             cmbBuscar.SelectedIndex = 0;
             parentForm = parent;
-
-            DataBase<Pasajero> data = new DataBase<Pasajero>();
-            string query = "SELECT * FROM pasajeros";
-            Pasajero pasajero = new Pasajero();
-            listPassengers = data.Select(query, parameters, pasajero.Map);
+            listPassengers = sistemaPasajero.GetAllPasajeros();
         }
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo FROM pasajeros INNER JOIN generos ON generos.id = pasajeros.idGender LEFT JOIN tarjetas ON tarjetas.id = pasajeros.idSube";
             dataGridView.DataSource = null;
             dataGridView.Refresh();
             parameters.Clear();
@@ -47,43 +46,19 @@ namespace Sube
             {
                 case 0:
                     int.TryParse(txtDni.Text, out int dni);
-                    query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
-                    FROM pasajeros
-                    INNER JOIN
-                        generos ON generos.id = pasajeros.idGender
-                    LEFT JOIN
-                       tarjetas ON tarjetas.id = pasajeros.idSube
-                    WHERE 
-                    pasajeros.dni LIKE @dniSearch";
-                    parameters.Add("@dniSearch", "%" + dni + "%");
+                    dataGridView.DataSource = sistemaPasajero.LoadDataTableWithDniSearch(dni);
                     break;
                 case 1:
-                    query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
-                    FROM pasajeros
-                    INNER JOIN
-                        generos ON generos.id = pasajeros.idGender
-                    LEFT JOIN
-                       tarjetas ON tarjetas.id = pasajeros.idSube
-                    WHERE 
-                    pasajeros.name LIKE @Name OR pasajeros.lastname LIKE @LastName";
-                    parameters.Add("@Name", "%" + txtName.Text + "%");
-                    parameters.Add("@LastName", "%" + txtName.Text + "%");
+                    dataGridView.DataSource = sistemaPasajero.LoadDataTableWithNameSearch(txtName.Text, txtName.Text);
                     break;
                 case 2:
-                    query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
-                    FROM pasajeros
-                    INNER JOIN
-                        generos ON generos.id = pasajeros.idGender
-                    LEFT JOIN
-                       tarjetas ON tarjetas.id = pasajeros.idSube
-                    WHERE
-                    pasajeros.idSube LIKE @Sube";
-                    parameters.Add("@Sube", "%" + txtDni.Text + "%");
+                    dataGridView.DataSource = sistemaPasajero.LoadDataTableWithSubeSearch(txtDni.Text);
                     break;
-            }
-            dataGridView.DataSource = data.Data(query, parameters);
+            } 
             LoadDataGridView();
         }
+
+
 
         private void cmbBuscar_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -120,19 +95,7 @@ namespace Sube
                 {
                     if (selectedRow.Cells["DNI"].Value.ToString() == passenger.Dni.ToString())
                     {
-                        string querySube = @"SELECT * FROM pasajeros INNER JOIN tarjetas ON tarjetas.id = pasajeros.idSube WHERE idSube = @IdSube AND id = @IdCardNumber";
-
-                        Dictionary<string, object> parameters = new Dictionary<string, object>
-                        {
-                            { "@IdSube", passenger.IdSube },
-                            { "@IdCardNumber", passenger.IdSube },
-                        };
-                        DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
-                        List<TarjetaSube> listSube = new List<TarjetaSube>();
-                        sube = new TarjetaSube();
-                        listSube = data.Select(querySube, parameters, sube.Map);
-                        sube = listSube.FirstOrDefault();
-
+                        sube = sistemaSube.GetSubeFromPasajero(passenger);
                         FormAdminVistaUsuario editarUsuario = new FormAdminVistaUsuario(passenger, sube);
                         editarUsuario.MdiParent = parentForm;
                         editarUsuario.Show();
@@ -154,9 +117,7 @@ namespace Sube
 
         private void FormBuscarUser_Load(object sender, EventArgs e)
         {
-            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo FROM pasajeros INNER JOIN generos ON generos.id = pasajeros.idGender LEFT JOIN tarjetas ON tarjetas.id = pasajeros.idSube";
-
-            dataGridView.DataSource = data.Data(query, parameters);
+            dataGridView.DataSource = sistemaPasajero.LoadDataTableWithAllPassengers();
             LoadDataGridView();
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Logica
 {
@@ -58,6 +59,25 @@ namespace Logica
                 created = true;
             }
             return created;
+        }
+
+        public DataTable ShowPassengerTravels(Pasajero pasajero)
+        {
+            DataTable dt;
+            parameters.Clear();
+            string query = @"
+                SELECT transportes.transport AS Transporte, lineas.line AS Linea, tarifassociales.rate AS TarifaSocial, viajes.ticketCost AS Boleto, viajes.kilometres AS Kilometros, viajes.date AS Fecha
+                FROM viajes
+                INNER JOIN
+                    tarifassociales ON tarifassociales.id = viajes.idSocialRate
+                INNER JOIN
+                    transportes ON transportes.id = viajes.idTransport
+                LEFT JOIN
+                    lineas ON lineas.id = viajes.idLine
+                WHERE viajes.idCard = @idSube";
+            parameters.Add("@idSube", pasajero.IdSube);
+            dt = data.Data(query, parameters);
+            return dt;
         }
     }
 }

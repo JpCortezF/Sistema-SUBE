@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using Biblioteca_TarjetaSube;
 using System.Net;
 using Org.BouncyCastle.Asn1.X509;
+using System.Data;
+using System.Collections;
+using System.Xml.Linq;
 
 namespace Logica
 {
@@ -17,6 +20,14 @@ namespace Logica
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<Pasajero> data = new DataBase<Pasajero>();
 
+        public List<Pasajero> GetAllPasajeros()
+        {
+            List<Pasajero> listaPasajeros;
+            Pasajero pasajero = new Pasajero();
+            string query = "SELECT * FROM pasajeros";
+            listaPasajeros = data.Select(query, parameters, pasajero.Map);
+            return listaPasajeros;
+        }
         /// <summary>
         /// Verifica si un pasajero ya existe en la base de datos, comparando el DNI, el ID de la tarjeta SUBE y el correo electrónico.
         /// </summary>
@@ -143,5 +154,72 @@ namespace Logica
             parameters.Add("@Dni", passenger.Dni);
             data.Update(query, parameters);
         }
+
+        public DataTable LoadDataTableWithDniSearch(int dni)
+        {
+            DataTable dt;
+            parameters.Clear();
+            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                    FROM pasajeros
+                    INNER JOIN
+                        generos ON generos.id = pasajeros.idGender
+                    LEFT JOIN
+                       tarjetas ON tarjetas.id = pasajeros.idSube
+                    WHERE 
+                    pasajeros.dni LIKE @dniSearch";
+            parameters.Add("@dniSearch", "%" + dni + "%");
+            dt = data.Data(query, parameters);
+            return dt;
+        }
+
+        public DataTable LoadDataTableWithNameSearch(string name, string lastName)
+        {
+            DataTable dt;
+            parameters.Clear();
+            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                    FROM pasajeros
+                    INNER JOIN
+                        generos ON generos.id = pasajeros.idGender
+                    LEFT JOIN
+                       tarjetas ON tarjetas.id = pasajeros.idSube
+                    WHERE 
+                    pasajeros.name LIKE @Name OR pasajeros.lastname LIKE @LastName";
+            parameters.Add("@Name", "%" + name + "%");
+            parameters.Add("@LastName", "%" + lastName + "%");
+            dt = data.Data(query, parameters);
+            return dt;
+        }
+
+        public DataTable LoadDataTableWithSubeSearch(string subeId)
+        {
+            DataTable dt;
+            parameters.Clear();
+            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                    FROM pasajeros
+                    INNER JOIN
+                        generos ON generos.id = pasajeros.idGender
+                    LEFT JOIN
+                       tarjetas ON tarjetas.id = pasajeros.idSube
+                    WHERE
+                    pasajeros.idSube LIKE @Sube";
+            parameters.Add("@Sube", "%" + subeId + "%");
+            dt = data.Data(query, parameters);
+            return dt;
+        }
+
+        public DataTable LoadDataTableWithAllPassengers()
+        {
+            DataTable dt;
+            parameters.Clear();
+            string query = @"SELECT pasajeros.dni AS DNI, pasajeros.name AS Nombre, pasajeros.lastname AS Apellido, pasajeros.email AS Email, generos.gender AS Genero, pasajeros.idSube AS SUBE, tarjetas.balance AS Saldo
+                            FROM pasajeros 
+                            INNER JOIN 
+                                generos ON generos.id = pasajeros.idGender 
+                            LEFT JOIN 
+                                tarjetas ON tarjetas.id = pasajeros.idSube";
+            dt = data.Data(query, parameters);
+            return dt;
+        }
+
     }
 }

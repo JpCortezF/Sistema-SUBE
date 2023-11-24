@@ -14,22 +14,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Logica;
 
 namespace Sube
 {
     public partial class ContainerAdmin : Form
     {
         List<Tramites> tramites;
+        SistemaTramite sistemaTramite = new SistemaTramite();
         private Form currentChildForm = null;
 
         public ContainerAdmin(Administrador admin)
         {
             InitializeComponent();
-            DataBase<Tramites> data = new DataBase<Tramites>();
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-            string query = @"SELECT * FROM tramites";
-            Tramites tramite  = new Tramites();
-            this.tramites = data.Select(query, parameters, tramite.Map);
+            this.tramites = sistemaTramite.GetAllTramites();
         }
 
         private void ContainerAdmin_Load(object sender, EventArgs e)

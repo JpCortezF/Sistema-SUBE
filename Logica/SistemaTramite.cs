@@ -16,6 +16,8 @@ namespace Logica
     {
         DataBase<object> data = new DataBase<object>();
         Dictionary<string, object> parameters = new Dictionary<string, object>();
+        Tramites tramite = new Tramites();
+        List<Tramites> tramites = new List<Tramites>();
         /// <summary>
         /// Carga un DataTable con información de reclamos, incluyendo ID de reclamo, DNI del reclamante, mensaje del reclamo, fecha y estado del reclamo.
         /// Filtra los reclamos por los estados En Revisión y En Proceso.
@@ -134,6 +136,14 @@ namespace Logica
             parameters.Add("@CardNumber", sube.CardNumber);
             parameters.Add("@SubeGold", ETarifaSocial.SubeGold);
             data.Update(update, parameters);
+        }
+        public List<Tramites> GetAllTramites()
+        {
+            DataBase<Tramites> data = new DataBase<Tramites>();
+            parameters.Clear();
+            string query = @"SELECT * FROM tramites";
+            this.tramites = data.Select(query, parameters, tramite.Map);
+            return tramites;
         }
     }
 }
