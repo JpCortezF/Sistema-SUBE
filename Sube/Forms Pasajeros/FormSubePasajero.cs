@@ -37,19 +37,32 @@ namespace Sube
         }
         private void FormSubePasajero_Load(object sender, EventArgs e)
         {
-            if(sube.TarifaSocial == ETarifaSocial.SubeGold)
+            if (sube != null)
             {
-                pictureBox1.Visible = false;
-                pictureBox2.Visible = true;
-                CargarDatosEnPictureBox();
-                pictureBox2.Controls.Add(lblTarjeta);
-                pictureBox2.Controls.Add(lblName);
+                if (sube.TarifaSocial == ETarifaSocial.SubeGold)
+                {
+                    pictureBox1.Visible = false;
+                    pictureBox2.Visible = true;
+                    CargarDatosEnPictureBox();
+                    pictureBox2.Controls.Add(lblTarjeta);
+                    pictureBox2.Controls.Add(lblName);
+                }
+                else
+                {
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = false;
+                    CargarDatosEnPictureBox();
+                    pictureBox1.Controls.Add(lblTarjeta);
+                    pictureBox1.Controls.Add(lblName);
+                }
             }
             else
             {
                 pictureBox1.Visible = true;
                 pictureBox2.Visible = false;
-                CargarDatosEnPictureBox();
+                lblTarjeta.Text = "NULL";
+                lblSaldo.Text = "   $0";
+                lblActualTarifa.Text = $"Tarifa Social: {ETarifaSocial.Ninguna}";
                 pictureBox1.Controls.Add(lblTarjeta);
                 pictureBox1.Controls.Add(lblName);
             }
@@ -65,19 +78,11 @@ namespace Sube
         {
             lblTransportes.Text = "Información sobre los transportes";
             lblName.Text = $"{passenger.Name + " " + passenger.LastName}";
-            if (sube != null)
-            {
-                lblTarjeta.Text = $"{passenger.IdSube}";
-                double balance = sube.Balance;
-                lblSaldo.Text = $"${balance.ToString("F2")}";
-                lblActualTarifa.Text = $"Tarifa Social: {sube.TarifaSocial}";
-            }
-            else
-            {
-                lblTarjeta.Text = "NULL";
-                lblSaldo.Text = "   $0";
-                lblActualTarifa.Text = $"Tarifa Social: {ETarifaSocial.Ninguna}";
-            }
+            lblTarjeta.Text = $"{passenger.IdSube}";
+            double balance = sube.Balance;
+            lblSaldo.Text = $"${balance.ToString("F2")}";
+            lblActualTarifa.Text = $"Tarifa Social: {sube.TarifaSocial}";          
+            
             lblTarifa.Text = "Acceder a tarifa social --->";
             lblTarjeta.Location = new Point(30, 120);
             lblName.Location = new Point(30, 158);

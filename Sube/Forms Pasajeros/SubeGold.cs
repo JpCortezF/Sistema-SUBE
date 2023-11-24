@@ -46,34 +46,49 @@ namespace Sube.Forms_Pasajeros
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                if (sube.TarifaSocial == ETarifaSocial.SubeGold)
+                if(sube != null)
                 {
-                    SubeGoldEventHandler(sube, false);
+                    if (sube.TarifaSocial == ETarifaSocial.SubeGold)
+                    {
+                        SubeGoldEventHandler(sube, false);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usted no posee Sube GOLD", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Usted no posee Sube GOLD", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Su sube está dada de baja!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void btnSuscripccion_Click(object sender, EventArgs e)
         {
-            if (sube.TarifaSocial == ETarifaSocial.SubeGold)
+            if(sube != null)
             {
-                MessageBox.Show("Usted ya posee Sube GOLD", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (sube.TarifaSocial == ETarifaSocial.SubeGold)
+                {
+                    MessageBox.Show("Usted ya posee Sube GOLD", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    SubeGoldEventHandler(sube, true);
+                }
             }
             else
             {
-                SubeGoldEventHandler(sube, true);
+                MessageBox.Show("Su sube está dada de baja!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         private void SubeGoldEventHandler(TarjetaSube sube, bool isSubscribed)
         {
             if (isSubscribed)
             {
                 sistemaSube.UpdateSubeGold(sube);
-                MessageBox.Show($"¡Felicidades! Te has suscrito a Sube GOLD.\n1. Una vez que realices los 5 primeros viajes con tu Sube GOlD,\nlos próximos 5 viajes seran GRATIS.");
+                MessageBox.Show($"¡Felicidades! Te has suscrito a Sube GOLD.\n1.La próxima vez que inicies sesión verás reflejada la SUBE GOLD\nUna vez que realices los 5 primeros viajes con tu Sube GOLD,\nlos próximos 5 viajes seran GRATIS.");
             }
             else
             {

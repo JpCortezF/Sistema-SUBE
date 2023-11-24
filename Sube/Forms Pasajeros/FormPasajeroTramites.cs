@@ -57,6 +57,7 @@ namespace Sube
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
+            dataGridTramites.DataSource = sistema.LoadClaimDataTable(passenger);
             if(dataGridTramites.Rows.Count == 0)
             {
                 pictureBox1.Visible = true;
@@ -65,7 +66,6 @@ namespace Sube
             {
                 pictureBox1.Visible = false;
             }
-            dataGridTramites.DataSource = sistema.LoadClaimDataTable(passenger);
         }
     }
 }

@@ -72,26 +72,25 @@ namespace Logica
 
             Viajes viaje = new Viajes();
             string query = @"SELECT * FROM viajes
-            WHERE viajes.idCard = @idCardNumber";
+            WHERE viajes.idCard = @idCardNumber AND viajes.idSocialRate = @SubeGold";
             parameters.Clear();
             parameters.Add("@idCardNumber", sube.CardNumber);
+            parameters.Add("@SubeGold", sube.TarifaSocial);
             List<Viajes> listaViajes = data.Select(query, parameters, viaje.Map);
             totalTravels = listaViajes.Count + 1;
+            
             return totalTravels;
         }
-        public Viajes CountTravelsWithSubeGold(TarjetaSube sube, Viajes viaje, int travels)
+        public Viajes CountTravelsWithSubeGold(Viajes viaje, int travels)
         {
-            if (sube.TarifaSocial == ETarifaSocial.SubeGold)
-            {
-                SubeEvento evento = new SubeEvento();
-                evento.TravelsCount = travels;
-                DiscountGoldEvent?.Invoke(viaje, evento);
-            }
+            SubeEvento evento = new SubeEvento();
+            evento.TravelsCount = travels;
+            DiscountGoldEvent?.Invoke(viaje, evento);            
             return viaje; 
         }
         public void HandleDiscountGoldEvent(Viajes viaje, SubeEvento e)
         {
-            if (e.TravelsCount >= 5 && e.TravelsCount <= 10)
+            if (e.TravelsCount % 5 == 0)
             {
                 viaje.TicketCost = 0;
             }

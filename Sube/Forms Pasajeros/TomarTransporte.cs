@@ -105,7 +105,7 @@ namespace Sube
                                             break;
                                     }
                                     int totalTravels = sistemaViaje.CountTravels(sube);
-                                    if(totalTravels >= 5 && totalTravels <= 10)
+                                    if (totalTravels % 5 == 0 && totalTravels > 0)
                                     {
                                         sistemaViaje.DiscountGoldEvent += sistemaViaje.HandleDiscountGoldEvent;
                                     }
@@ -113,7 +113,7 @@ namespace Sube
                                     {
                                         sistemaViaje.DiscountGoldEvent -= sistemaViaje.HandleDiscountGoldEvent;
                                     }
-                                    miViaje = sistemaViaje.CountTravelsWithSubeGold(sube, miViaje, totalTravels);
+                                    miViaje = sistemaViaje.CountTravelsWithSubeGold(miViaje, totalTravels);
                                     MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${miViaje.TicketCost}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     sistemaSube.LoadTravelWithTimer(sube, miTransporte, miLinea, miViaje);
                                 }

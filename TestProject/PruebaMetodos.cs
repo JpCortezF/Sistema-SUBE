@@ -33,7 +33,7 @@ namespace TestProject
         public void CostByKilometres_DeberiaLanzarExcepcionKilometrosCero()
         {
             // Arrange
-            Viajes miViaje = new Viajes { Kilometres = 5 }; // Kilómetros 0
+            Viajes miViaje = new Viajes { Kilometres = 0 }; // Kilómetros 0
 
             // Act & Assert
             miViaje.CostByKilometres(miViaje); // Debería lanzar una excepción KilometrosException
@@ -97,7 +97,7 @@ namespace TestProject
             // Arrange
             SerializadorXML<List<string>> serializer = new SerializadorXML<List<string>>();
             string ruta = @"..\..\..\Data";
-            string nombre = "Prueba.Json";
+            string nombre = "Prueba.xml";
             string path = Path.Combine(ruta, nombre);
             List<string> myList = new List<string> { "item1", "item2", "item3" };
 

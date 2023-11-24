@@ -40,7 +40,7 @@
             // 
             lblMensaje.AutoSize = true;
             lblMensaje.Font = new Font("Lucida Sans", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblMensaje.Location = new Point(450, 30);
+            lblMensaje.Location = new Point(450, 61);
             lblMensaje.Name = "lblMensaje";
             lblMensaje.Size = new Size(44, 15);
             lblMensaje.TabIndex = 1;
