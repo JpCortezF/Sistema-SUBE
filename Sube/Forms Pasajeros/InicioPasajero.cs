@@ -4,6 +4,7 @@ using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
 using NPOI.SS.Formula.Functions;
 using Sube.CustomControls;
+using Sube.Forms_Pasajeros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,11 +69,11 @@ namespace Sube
             }
             listConfig = JSON.Deserialize(path, CrearListaPredeterminada);
 
-            if(listConfig!=null)
-            { 
+            if (listConfig != null)
+            {
                 foreach (Configuracion config in listConfig)
                 {
-                    if(config.ConfiguracionProg == "darkMode")
+                    if (config.ConfiguracionProg == "darkMode")
                     {
                         bool.TryParse(config.Dato, out darkMode);
                     }
@@ -133,9 +134,9 @@ namespace Sube
             emergente.ShowDialog();
             if (emergente.DialogResult == DialogResult.OK)
             {
-                foreach(Configuracion config in listConfig)
+                foreach (Configuracion config in listConfig)
                 {
-                    if(config.ConfiguracionProg == "darkMode")
+                    if (config.ConfiguracionProg == "darkMode")
                     {
                         config.Dato = darkMode.ToString();
                         break;
@@ -268,7 +269,7 @@ namespace Sube
             statusStrip.SizingGrip = false;
 
             Controls.Add(statusStrip);
-            
+
             // Establece la alineación del ToolStripStatusLabel
             toolStripStatusLabel.Alignment = ToolStripItemAlignment.Right;
 
@@ -305,7 +306,7 @@ namespace Sube
             // Actualiza la hora actual en el ToolStripStatusLabel
             dummyLabel.Text = DateTime.Now.ToString("HH:mm");
         }
- 
+
         private void ToggleButton_Click(object sender, EventArgs e)
         {
             ToggleButton toggleButton = (ToggleButton)sender;
@@ -332,11 +333,20 @@ namespace Sube
                 darkMode = false;
             }
         }
-       
+
         private void InicioPasajero_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Stop();
             timer.Dispose();
+        }
+
+        private void subeGOLDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentChildForm is null || !(currentChildForm is SubeGold))
+            {
+                SubeGold sube = new SubeGold();
+                OpenChildForm(sube);
+            }
         }
     }
 }

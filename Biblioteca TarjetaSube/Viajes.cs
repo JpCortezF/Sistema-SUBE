@@ -41,6 +41,7 @@ namespace Biblioteca_TarjetaSube
         public ETransporte TipoTransporte { get => tipoTransporte; set => tipoTransporte = value; }
         public int LineasTransporte { get => lineasTransporte; set => lineasTransporte = value; }
         public ETarifaSocial TarifaSocial { get => tarifaSocial; set => tarifaSocial = value; }
+        public int IdTravel { get => idTravel; }
 
         /// <summary>
         /// Calcula el costo de un servicio basado en la distancia en kilómetros.

@@ -14,5 +14,6 @@ namespace Biblioteca_TarjetaSube
         ExComatienteDeMalvinas = 4,
         Discapacitado = 5, 
         SinSubsidio = 6,
+        SubeGold = 10,
     }
 }

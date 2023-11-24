@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
+using Biblioteca_Usuarios;
 using NPOI.POIFS.Crypt.Dsig;
 
 namespace Logica
@@ -59,6 +60,23 @@ namespace Logica
                 parameters.Add("@idCardNumber", sube.CardNumber);
 
                 return data.Data(query, parameters);
+            }
+        }
+        public void CountTravels(TarjetaSube sube, Action<string> subeGold)
+        {
+            Viajes viaje = new Viajes();
+            string query = @"SELECT * FROM viajes
+            WHERE viajes.idCard = @idCardNumber";
+            parameters.Clear();
+            parameters.Add("@idCardNumber", sube.CardNumber);
+            List<Viajes> listaViajes = data.Select(query, parameters, viaje.Map);
+            int totalTravels = listaViajes.Count + 1;
+
+            if (totalTravels == 10)
+            {
+                subeGold?.Invoke("Los próximos viajes que realices no tendran costo.");
+                SistemaTramite sistemaTramite = new SistemaTramite();
+                sistemaTramite.UpdateSubeGold(sube);
             }
         }
     }

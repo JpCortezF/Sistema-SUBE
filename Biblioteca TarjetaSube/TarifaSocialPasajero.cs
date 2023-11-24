@@ -66,6 +66,9 @@ namespace Biblioteca_TarjetaSube
                     break;
                 case ETarifaSocial.Discapacitado:
                     ticket = 0;
+                    break;                
+                case ETarifaSocial.SubeGold:
+                    ticket = 0;
                     break;
                 default:
                     ticket = PrecioViajes.ValorSinSubsidio;

@@ -40,6 +40,7 @@
             mISTRÁMITESToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             lblNombre = new Label();
+            subeGOLDToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -71,7 +72,7 @@
             // 
             // mISUBEToolStripMenuItem
             // 
-            mISUBEToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { subeToolStripMenuItem, viajesToolStripMenuItem, tarifaSocialToolStripMenuItem, darDeBajaToolStripMenuItem });
+            mISUBEToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { subeToolStripMenuItem, viajesToolStripMenuItem, tarifaSocialToolStripMenuItem, darDeBajaToolStripMenuItem, subeGOLDToolStripMenuItem });
             mISUBEToolStripMenuItem.Name = "mISUBEToolStripMenuItem";
             mISUBEToolStripMenuItem.Size = new Size(143, 29);
             mISUBEToolStripMenuItem.Text = "| MI SUBE |";
@@ -80,7 +81,7 @@
             // 
             subeToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             subeToolStripMenuItem.Name = "subeToolStripMenuItem";
-            subeToolStripMenuItem.Size = new Size(168, 24);
+            subeToolStripMenuItem.Size = new Size(180, 24);
             subeToolStripMenuItem.Text = "Sube";
             subeToolStripMenuItem.Click += subeToolStripMenuItem_Click;
             // 
@@ -88,7 +89,7 @@
             // 
             viajesToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             viajesToolStripMenuItem.Name = "viajesToolStripMenuItem";
-            viajesToolStripMenuItem.Size = new Size(168, 24);
+            viajesToolStripMenuItem.Size = new Size(180, 24);
             viajesToolStripMenuItem.Text = "Viajes";
             viajesToolStripMenuItem.Click += viajesToolStripMenuItem_Click;
             // 
@@ -96,7 +97,7 @@
             // 
             tarifaSocialToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             tarifaSocialToolStripMenuItem.Name = "tarifaSocialToolStripMenuItem";
-            tarifaSocialToolStripMenuItem.Size = new Size(168, 24);
+            tarifaSocialToolStripMenuItem.Size = new Size(180, 24);
             tarifaSocialToolStripMenuItem.Text = "Tarifa Social";
             tarifaSocialToolStripMenuItem.Click += tarifaSocialToolStripMenuItem_Click;
             // 
@@ -104,7 +105,7 @@
             // 
             darDeBajaToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             darDeBajaToolStripMenuItem.Name = "darDeBajaToolStripMenuItem";
-            darDeBajaToolStripMenuItem.Size = new Size(168, 24);
+            darDeBajaToolStripMenuItem.Size = new Size(180, 24);
             darDeBajaToolStripMenuItem.Text = "Dar de baja";
             darDeBajaToolStripMenuItem.Click += darDeBajaToolStripMenuItem_Click;
             // 
@@ -138,6 +139,14 @@
             lblNombre.Size = new Size(92, 31);
             lblNombre.TabIndex = 40;
             lblNombre.Text = "¡Hola!";
+            // 
+            // subeGOLDToolStripMenuItem
+            // 
+            subeGOLDToolStripMenuItem.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            subeGOLDToolStripMenuItem.Name = "subeGOLDToolStripMenuItem";
+            subeGOLDToolStripMenuItem.Size = new Size(180, 24);
+            subeGOLDToolStripMenuItem.Text = "Sube GOLD";
+            subeGOLDToolStripMenuItem.Click += subeGOLDToolStripMenuItem_Click;
             // 
             // InicioPasajero
             // 
@@ -179,5 +188,6 @@
         private ToolStripMenuItem mISTRÁMITESToolStripMenuItem;
         private PictureBox pictureBox1;
         private Label lblNombre;
+        private ToolStripMenuItem subeGOLDToolStripMenuItem;
     }
 }

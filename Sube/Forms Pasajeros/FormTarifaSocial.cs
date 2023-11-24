@@ -3,6 +3,7 @@ using Biblioteca_TarjetaSube;
 using Biblioteca_Tramites;
 using Biblioteca_Usuarios;
 using Logica;
+using Sube.Forms_Pasajeros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static NPOI.HSSF.Util.HSSFColor;
 
 namespace Sube
 {
@@ -19,6 +21,7 @@ namespace Sube
     {
         Pasajero passenger;
         FormSubePasajero formSube;
+
         public FormTarifaSocial(Pasajero passenger, FormSubePasajero formSube)
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace Sube
             rdbCombatiente.Text = $"{ETarifaSocial.ExComatienteDeMalvinas}";
             rdbDiscapacitado.Text = $"{ETarifaSocial.Discapacitado}";
             rdbSinSubsidio.Text = $"{ETarifaSocial.SinSubsidio}";
-
+            rdbGold.Text = $"{ETarifaSocial.SubeGold}";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,7 +55,6 @@ namespace Sube
                 formSube.Close();
             }
         }
-
         private void btnTramite_Click(object sender, EventArgs e)
         {
             RadioButton radioButtonSeleccionado = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
@@ -66,7 +68,7 @@ namespace Sube
                 if (Enum.TryParse(radioButtonTarifa, out ETarifaSocial tarifaSocial))
                 {
                     SistemaTramite sistema = new SistemaTramite();
-                    sistema.InsertClaimIntoDataTable(passenger, tarifaSocial, txtClaim.Text);
+                    sistema.InsertClaimIntoDataTable(passenger, tarifaSocial, txtClaim.Text);                    
                 }
             }
             else

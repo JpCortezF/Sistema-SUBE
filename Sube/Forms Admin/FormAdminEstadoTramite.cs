@@ -22,8 +22,7 @@ namespace Sube.Forms_Admin
     {
         public event EventHandler UpdateDataGridViewEvent;
         SistemaSube sistemaSube = new SistemaSube();
-        Dictionary<string, object> parameters = new Dictionary<string, object>();
-        DataBase<object> data = new DataBase<object>();
+        SistemaTramite sistemaTramite = new SistemaTramite();
 
         bool bajaTarjeta;
         Pasajero selectedPassenger;
@@ -87,65 +86,23 @@ namespace Sube.Forms_Admin
                 }
                 if (bajaTarjeta == true)
                 {
-                    TramiteDeleteSube(selectedPassenger);
+                    sistemaTramite.TramiteDeleteSube(selectedPassenger);
                 }
                 else
                 {
-                    UpdateTramiteSocialRateSube(sube, tramite, EClaimStatus.Completado);
+                    sistemaTramite.UpdateSocialRateSube(sube, tramite.ClaimId, EClaimStatus.Completado);
                 }
                 OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
             }
         }
 
-        public void UpdateTramiteStatus(Tramites tramite, EClaimStatus status)
-        {
-            parameters.Clear();
-            string update = @"
-                        UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim;
-                        UPDATE tarjetas SET socialRate =  @IdSocialRate";
-            parameters.Add("@IdClaim", tramite.ClaimId);
-            parameters.Add("@UpdateClaimStatus", status);
-            //parameters.Add("@IdSocialRate", sube.TarifaSocial);
-            data.Update(update, parameters);
-        }
-
-
-        public void UpdateTramiteSocialRateSube(TarjetaSube sube, Tramites tramite, EClaimStatus status)
-        {
-            parameters.Clear();
-            UpdateTramiteStatus(tramite, status);
-            string update = @"UPDATE tarjetas SET socialRate =  @IdSocialRate";
-            parameters.Add("@IdSocialRate", sube.TarifaSocial);
-            data.Update(update, parameters);
-        }
-
-        public void TramiteDeleteSube(Pasajero pasajero)
-        {
-            parameters.Clear();
-            string update = @"UPDATE pasajeros SET idSube = @idSubeNull WHERE idSube = @idSubeNotNull";
-
-            parameters.Add("@idSubeNull", DBNull.Value);
-            parameters.Add("@idSubeNotNull", pasajero.IdSube);
-            data.Update(update, parameters);
-            parameters.Clear();
-            string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
-                    DELETE FROM tarjetas WHERE id = @CardNumber;
-                    DELETE FROM tramites WHERE dniClaimer = @Dni";
-            parameters.Add("@idSube", pasajero.IdSube);
-            parameters.Add("@CardNumber", pasajero.IdSube);
-            parameters.Add("@Dni", pasajero.Dni);
-            data.Delete(delete, parameters);
-            parameters.Clear();
-        }
-
         private void btnDenegate_Click(object sender, EventArgs e)
         {
-
             FormEmergente form = new FormEmergente("Desea denegar el tramite?", "Cancelar");
             if (form.ShowDialog() == DialogResult.OK)
             {
-                UpdateTramiteStatus(tramite, EClaimStatus.Rechazado);
+                sistemaTramite.UpdateTramiteStatus(tramite.ClaimId, EClaimStatus.Rechazado);
                 OnUpdateDataGridViewEvent(EventArgs.Empty);
                 Close();
             }

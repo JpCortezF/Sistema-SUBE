@@ -132,7 +132,6 @@ namespace Sube
             transporte.Show();
             Hide();
         }
-
         private void FormViajes_FormClosed(object sender, FormClosedEventArgs e)
         {
             InicioPasajero inicio = (InicioPasajero)this.MdiParent;

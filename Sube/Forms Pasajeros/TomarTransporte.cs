@@ -24,6 +24,9 @@ namespace Sube
         List<LineasTransporte> lineas = new List<LineasTransporte>();
         LineasTransporte miLinea = new LineasTransporte();
         SistemaSube sistemaSube = new SistemaSube();
+        SistemaViajes sistemaViaje = new SistemaViajes();
+        Action<string> subeGold;
+
         Pasajero passenger;
         TarjetaSube sube;
         Viajes miViaje;
@@ -33,6 +36,7 @@ namespace Sube
             InitializeComponent();
             this.passenger = passenger;
             this.sube = sube;
+            subeGold = MensajeSubeGold;
         }
 
         private void TomarTransporte_Load(object sender, EventArgs e)
@@ -105,6 +109,7 @@ namespace Sube
                                             break;
                                     }
                                     MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${miViaje.TicketCost}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    sistemaViaje.CountTravels(sube, MensajeSubeGold);
                                 }
                                 else
                                 {
@@ -133,7 +138,10 @@ namespace Sube
                 MessageBox.Show("No se registro ningun viaje", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
+        private void MensajeSubeGold(string mensaje)
+        {
+            MessageBox.Show($"Felicidades {passenger.Name} alcanzaste los 10 viajes con nuestra aplicación!\n{mensaje}", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private bool ValidarIngresoTextBox()
         {
             bool allCompleted = true;

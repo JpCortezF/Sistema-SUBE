@@ -92,16 +92,48 @@ namespace Logica
 
             return data.Data(query, parameters);
         }
-
-        public void UpdateTramiteStatus(int selectedClaimId, EClaimStatus newStatus)
+        public void TramiteDeleteSube(Pasajero pasajero)
         {
-            string queryUpdate = "UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @idClaim";
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "@UpdateClaimStatus", newStatus },
-                { "@idClaim", selectedClaimId }
-            };
-            data.Update(queryUpdate, parameters);
+            parameters.Clear();
+            string update = @"UPDATE pasajeros SET idSube = @idSubeNull WHERE idSube = @idSubeNotNull";
+
+            parameters.Add("@idSubeNull", DBNull.Value);
+            parameters.Add("@idSubeNotNull", pasajero.IdSube);
+            data.Update(update, parameters);
+            parameters.Clear();
+            string delete = @"DELETE FROM viajes WHERE idCard = @idSube;
+                    DELETE FROM tarjetas WHERE id = @CardNumber;
+                    DELETE FROM tramites WHERE dniClaimer = @Dni";
+            parameters.Add("@idSube", pasajero.IdSube);
+            parameters.Add("@CardNumber", pasajero.IdSube);
+            parameters.Add("@Dni", pasajero.Dni);
+            data.Delete(delete, parameters);
+        }
+        public void UpdateSocialRateSube(TarjetaSube sube, int claimId, EClaimStatus status)
+        {
+            parameters.Clear();
+            UpdateTramiteStatus(claimId, status);
+            string update = @"UPDATE tarjetas SET socialRate =  @IdSocialRate";
+            parameters.Add("@IdSocialRate", sube.TarifaSocial);
+            data.Update(update, parameters);
+        }
+        public void UpdateTramiteStatus(int claimId, EClaimStatus status)
+        {
+            parameters.Clear();
+            string update = @"
+            UPDATE tramites SET idClaimStatus = @UpdateClaimStatus WHERE idClaim = @IdClaim";
+            parameters.Add("@IdClaim", claimId);
+            parameters.Add("@UpdateClaimStatus", status);
+            data.Update(update, parameters);
+        }
+        public void UpdateSubeGold(TarjetaSube sube)
+        {
+            parameters.Clear();
+            string update = @"
+            UPDATE tarjetas SET idSocialRate = @SubeGold WHERE id = @CardNumber";
+            parameters.Add("@CardNumber", sube.CardNumber);
+            parameters.Add("@SubeGold", ETarifaSocial.SubeGold);
+            data.Update(update, parameters);
         }
     }
 }
