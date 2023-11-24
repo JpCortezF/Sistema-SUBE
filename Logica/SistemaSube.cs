@@ -1,7 +1,8 @@
 ﻿using Biblioteca_DataBase;
 using Biblioteca_TarjetaSube;
 using Biblioteca_Usuarios;
-using SubeEvent;
+using MyExceptions;
+using System.Data;
 
 namespace Logica
 {
@@ -173,6 +174,25 @@ namespace Logica
             }
             return exist;
         }
+
+        public TarjetaSube GetSocialRateFromSube(TarjetaSube sube)
+        {
+            List<TarjetaSube> listSube = new List<TarjetaSube>();
+
+            string queryTarjeta = @"
+                SELECT tarifassociales.rate
+                FROM tarjetas
+                INNER JOIN 
+                    tarifassociales ON tarifassociales.id = tarjetas.id
+                WHERE 
+                    tarifassociales.rate = @SocialRate";
+            parameters.Add("@SocialRate", sube.TarifaSocial);
+
+            listSube = data.Select(queryTarjeta, parameters, sube.Map);
+            sube = listSube.FirstOrDefault();
+            return sube;
+        }
+
         public void UpdateSubeGold(TarjetaSube sube)
         {
             parameters.Clear();

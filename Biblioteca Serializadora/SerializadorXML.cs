@@ -1,4 +1,5 @@
 ﻿using Biblioteca_TarjetaSube;
+using NPOI.HPSF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,21 @@ namespace Biblioteca_Usuarios
         {
             
         }
-        public bool Serialize(string path, T Lista)
+        public bool Serialize(string path, T objeto)
         {
             bool success = false;
-            using (StreamWriter sw = new StreamWriter(path))
+            try
             {
-                if(sw != null)
+                XmlSerializer ser = new XmlSerializer(typeof(T));
+                using (StreamWriter sw = new StreamWriter(path))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(List<T>));
-                    ser.Serialize(sw, Lista);
-                    success = true;
+                    ser.Serialize(sw, objeto);
                 }
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error durante la serialización: {ex.Message}");
             }
             return success;
         }
