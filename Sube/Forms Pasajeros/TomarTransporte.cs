@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using NPOI.SS.Formula.Functions;
 using System.Collections;
 using NPOI.POIFS.Crypt.Dsig;
+using Sube.Forms_Pasajeros;
 
 namespace Sube
 {
@@ -105,7 +106,7 @@ namespace Sube
                                             break;
                                     }
                                     int totalTravels = sistemaViaje.CountTravels(sube);
-                                    if (totalTravels >= 6 && totalTravels <= 9)
+                                    if (totalTravels % 2 == 0)
                                     {
                                         sistemaViaje.DiscountGoldEvent += sistemaViaje.HandleDiscountGoldEvent;
                                     }
@@ -113,9 +114,20 @@ namespace Sube
                                     {
                                         sistemaViaje.DiscountGoldEvent -= sistemaViaje.HandleDiscountGoldEvent;
                                     }
-                                    miViaje = sistemaViaje.CountTravelsWithSubeGold(miViaje, totalTravels);
-                                    MessageBox.Show($"¡Viaje realizado con éxito!\nPAGO REALIZADO: ${miViaje.TicketCost}\nSALDO: ${balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    sistemaSube.LoadTravelWithTimer(sube, miTransporte, miLinea, miViaje);
+                                    miViaje = sistemaViaje.CountTravelsWithSubeGold(sube, miViaje, totalTravels);
+                                    MessageBox.Show($"PAGO REALIZADO: ${miViaje.TicketCost}\nSALDO: ${sube.Balance.ToString("F2")}\nSIN SUBSIDIO: ${PrecioViajes.ValorSinSubsidio}", "En viaje!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    EnViaje formViaje = new EnViaje(sube, miLinea, miViaje);
+                                    formViaje.ShowDialog();
+                                    if(formViaje.DialogResult == DialogResult.OK)
+                                    {
+                                        if(sube.TarifaSocial == ETarifaSocial.SubeGold)
+                                        {
+                                            if (totalTravels % 10 == 0)
+                                            {
+                                                MessageBox.Show("Llegate a los 10 viajes con tu SUBE GOLD.\nEl saldo se vera reflajado en tu cuenta!", "Aceptar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                        }
+                                    }
                                 }
                                 else
                                 {

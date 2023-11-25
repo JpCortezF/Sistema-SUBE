@@ -94,6 +94,10 @@ namespace Logica
 
             return data.Data(query, parameters);
         }
+        /// <summary>
+        /// Elimina la asociación de una tarjeta SUBE con un pasajero, y borra registros asociados en las tablas de viajes, tarjetas y trámites.
+        /// </summary>
+        /// <param name="pasajero">Objeto Pasajero con información relacionada.</param>
         public void TramiteDeleteSube(Pasajero pasajero)
         {
             parameters.Clear();
@@ -111,6 +115,12 @@ namespace Logica
             parameters.Add("@Dni", pasajero.Dni);
             data.Delete(delete, parameters);
         }
+        /// <summary>
+        /// Actualiza el valor de la tarifa social en la tabla de tarjetas SUBE y actualiza el estado de un trámite en la tabla de trámites.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube con la información de la tarjeta SUBE.</param>
+        /// <param name="claimId">ID del trámite asociado.</param>
+        /// <param name="status">Nuevo estado del trámite.</param>
         public void UpdateSocialRateSube(TarjetaSube sube, int claimId, EClaimStatus status)
         {
             parameters.Clear();
@@ -119,6 +129,11 @@ namespace Logica
             parameters.Add("@IdSocialRate", sube.TarifaSocial);
             data.Update(update, parameters);
         }
+        /// <summary>
+        /// Actualiza el estado de un trámite en la tabla de trámites.
+        /// </summary>
+        /// <param name="claimId">ID del trámite a actualizar.</param>
+        /// <param name="status">Nuevo estado del trámite.</param>
         public void UpdateTramiteStatus(int claimId, EClaimStatus status)
         {
             parameters.Clear();
@@ -128,6 +143,10 @@ namespace Logica
             parameters.Add("@UpdateClaimStatus", status);
             data.Update(update, parameters);
         }
+        /// <summary>
+        /// Actualiza el tipo de tarifa social a "SUBE Gold" en la tabla de tarjetas SUBE.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube con la información de la tarjeta SUBE.</param>
         public void UpdateSubeGold(TarjetaSube sube)
         {
             parameters.Clear();
@@ -137,6 +156,10 @@ namespace Logica
             parameters.Add("@SubeGold", ETarifaSocial.SubeGold);
             data.Update(update, parameters);
         }
+        /// <summary>
+        /// Obtiene todos los registros de trámites desde la tabla de trámites.
+        /// </summary>
+        /// <returns>Lista de objetos Tramites con la información de los trámites.</returns>
         public List<Tramites> GetAllTramites()
         {
             DataBase<Tramites> data = new DataBase<Tramites>();

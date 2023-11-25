@@ -20,6 +20,10 @@ namespace Logica
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<Pasajero> data = new DataBase<Pasajero>();
 
+        /// <summary>
+        /// Obtiene una lista de todos los pasajeros registrados en la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos Pasajero con la información de todos los pasajeros.</returns>
         public List<Pasajero> GetAllPasajeros()
         {
             List<Pasajero> listaPasajeros;
@@ -117,6 +121,11 @@ namespace Logica
             return passenger;
         }
 
+        /// <summary>
+        /// Obtiene la información de un pasajero mediante su número de DNI.
+        /// </summary>
+        /// <param name="dniPassenger">Número de DNI del pasajero a buscar.</param>
+        /// <returns>Objeto Pasajero con la información del pasajero correspondiente al número de DNI proporcionado.</returns>
         public Pasajero GetPasajeroByDni(int dniPassenger)
         {
             string query = "SELECT * FROM pasajeros WHERE dni = @selectedDni";
@@ -155,6 +164,11 @@ namespace Logica
             data.Update(query, parameters);
         }
 
+        /// <summary>
+        /// Carga un DataTable con información de pasajeros basada en una búsqueda por número de DNI.
+        /// </summary>
+        /// <param name="dni">Número de DNI a buscar.</param>
+        /// <returns>DataTable con información de pasajeros que coinciden con la búsqueda de número de DNI.</returns>
         public DataTable LoadDataTableWithDniSearch(int dni)
         {
             DataTable dt;
@@ -171,7 +185,12 @@ namespace Logica
             dt = data.Data(query, parameters);
             return dt;
         }
-
+        /// <summary>
+        /// Carga un DataTable con información de pasajeros basada en una búsqueda por nombre y apellido.
+        /// </summary>
+        /// <param name="name">Nombre a buscar.</param>
+        /// <param name="lastName">Apellido a buscar.</param>
+        /// <returns>DataTable con información de pasajeros que coinciden con la búsqueda de nombre y apellido.</returns>
         public DataTable LoadDataTableWithNameSearch(string name, string lastName)
         {
             DataTable dt;
@@ -189,7 +208,11 @@ namespace Logica
             dt = data.Data(query, parameters);
             return dt;
         }
-
+        /// <summary>
+        /// Carga un DataTable con información de pasajeros basada en una búsqueda por número de tarjeta SUBE.
+        /// </summary>
+        /// <param name="subeId">Número de tarjeta SUBE a buscar.</param>
+        /// <returns>DataTable con información de pasajeros que coinciden con la búsqueda por número de tarjeta SUBE.</returns>
         public DataTable LoadDataTableWithSubeSearch(string subeId)
         {
             DataTable dt;
@@ -206,7 +229,10 @@ namespace Logica
             dt = data.Data(query, parameters);
             return dt;
         }
-
+        /// <summary>
+        /// Carga un DataTable con información de todos los pasajeros registrados.
+        /// </summary>
+        /// <returns>DataTable con información de todos los pasajeros registrados.</returns>
         public DataTable LoadDataTableWithAllPassengers()
         {
             DataTable dt;

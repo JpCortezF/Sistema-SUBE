@@ -13,7 +13,7 @@ using NPOI.POIFS.Crypt.Dsig;
 
 namespace Logica
 {
-        public delegate void SubeGoldSuscription(Viajes viaje, SubeEvento e);
+        public delegate void SubeGoldSuscription(TarjetaSube sube, Viajes viaje, SubeEvento e);
     public class SistemaViajes
     {
         Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -66,6 +66,11 @@ namespace Logica
                 return data.Data(query, parameters);
             }
         }
+        /// <summary>
+        /// Counts the total number of travels made with a given Sube card, considering the social rate.
+        /// </summary>
+        /// <param name="sube">The Sube card for which travels are counted.</param>
+        /// <returns>The total number of travels made with the Sube card.</returns>
         public int CountTravels(TarjetaSube sube)
         {
             int totalTravels = 0;
@@ -81,20 +86,39 @@ namespace Logica
 
             return totalTravels;
         }
-        public Viajes CountTravelsWithSubeGold(Viajes viaje, int travels)
+        /// <summary>
+        /// Modifies the given Viajes object by invoking the DiscountGoldEvent based on the number of travels.
+        /// </summary>
+        /// <param name="viaje">The Viajes object to be modified.</param>
+        /// <param name="travels">The total number of travels associated with the Viajes object.</param>
+        /// <returns>The modified Viajes object.</returns>
+        public Viajes CountTravelsWithSubeGold(TarjetaSube sube, Viajes viaje, int travels)
         {
             SubeEvento evento = new SubeEvento();
             evento.TravelsCount = travels;
-            DiscountGoldEvent?.Invoke(viaje, evento);            
-            return viaje; 
+            DiscountGoldEvent?.Invoke(sube, viaje, evento);
+            return viaje;
         }
-        public void HandleDiscountGoldEvent(Viajes viaje, SubeEvento e)
+        /// <summary>
+        /// Handles the DiscountGoldEvent by applying a ticket cost discount based on the number of travels.
+        /// </summary>
+        /// <param name="viaje">The Viajes object associated with the event.</param>
+        /// <param name="e">The SubeEvento object containing information about the travels count.</param>
+        public void HandleDiscountGoldEvent(TarjetaSube sube, Viajes viaje, SubeEvento e)
         {
-            if (e.TravelsCount >= 6 && e.TravelsCount <= 9)
+            if (e.TravelsCount % 2 == 0)
             {
                 viaje.TicketCost = 0;
+                if (e.TravelsCount % 10 == 0)
+                {
+                    sube.Balance -= 300;
+                }
             }
         }
+        /// <summary>
+        /// Deletes all travels associated with the specified Sube card from the database.
+        /// </summary>
+        /// <param name="sube">The Sube card for which travels are to be deleted.</param>
         public void DeleteTravels(TarjetaSube sube)
         {
             parameters.Clear();

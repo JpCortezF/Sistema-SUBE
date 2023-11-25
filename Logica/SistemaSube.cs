@@ -11,6 +11,11 @@ namespace Logica
         Dictionary<string, object> parameters = new Dictionary<string, object>();
         DataBase<TarjetaSube> data = new DataBase<TarjetaSube>();
 
+        /// <summary>
+        /// Retorna la información de la tarjeta SUBE asociada a un pasajero específico.
+        /// </summary>
+        /// <param name="passenger">Objeto Pasajero con la información del pasajero.</param>
+        /// <returns>Objeto TarjetaSube con la información de la tarjeta SUBE asociada al pasajero.</returns>
         public TarjetaSube ReturnSubePassenger(Pasajero passenger)
         {
             parameters.Clear();
@@ -60,7 +65,11 @@ namespace Logica
 
             return parameters;
         }
-
+        /// <summary>
+        /// Obtiene la información de una tarjeta SUBE asociada a un pasajero específico.
+        /// </summary>
+        /// <param name="pasajero">Objeto Pasajero con la información del pasajero.</param>
+        /// <returns>Objeto TarjetaSube con la información de la tarjeta SUBE asociada al pasajero.</returns>
         public TarjetaSube GetSubeFromPasajero(Pasajero pasajero)
         {
             parameters.Clear();
@@ -174,7 +183,11 @@ namespace Logica
             }
             return exist;
         }
-
+        /// <summary>
+        /// Obtiene una tarjeta SUBE que tenga una tarifa social específica.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube con la información de la tarjeta SUBE, incluida la tarifa social a buscar.</param>
+        /// <returns>Objeto TarjetaSube con la información de la tarjeta que tiene la tarifa social especificada.</returns>
         public TarjetaSube GetSocialRateFromSube(TarjetaSube sube)
         {
             List<TarjetaSube> listSube = new List<TarjetaSube>();
@@ -192,7 +205,10 @@ namespace Logica
             sube = listSube.FirstOrDefault();
             return sube;
         }
-
+        /// <summary>
+        /// Actualiza el valor de la tarifa social a "SUBE Gold" en la tabla de tarjetas SUBE.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube con la información de la tarjeta SUBE.</param>
         public void UpdateSubeGold(TarjetaSube sube)
         {
             parameters.Clear();
@@ -202,6 +218,10 @@ namespace Logica
             parameters.Add("@SubeGold", ETarifaSocial.SubeGold);
             data.Update(update, parameters);
         }
+        /// <summary>
+        /// Restablece el valor de la tarifa social a "Ninguna" en la tabla de tarjetas SUBE.
+        /// </summary>
+        /// <param name="sube">Objeto TarjetaSube con la información de la tarjeta SUBE.</param>
         public void ResetSocialRate(TarjetaSube sube)
         {
             parameters.Clear();

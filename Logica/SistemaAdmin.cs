@@ -15,6 +15,12 @@ namespace Logica
         List<Administrador> admins = new List<Administrador>();
         DataBase<Administrador> data = new DataBase<Administrador>();
 
+        /// <summary>
+        /// Carga la información de un administrador basado en su correo electrónico y número de DNI.
+        /// </summary>
+        /// <param name="email">Correo electrónico del administrador.</param>
+        /// <param name="dni">Número de DNI del administrador.</param>
+        /// <returns>Objeto Administrador con la información del administrador.</returns>
         public Administrador cargarAdmin(string email, string dni)
         {
             Administrador admin = new Administrador();
@@ -26,7 +32,11 @@ namespace Logica
 
             return admin;
         }
-
+        /// <summary>
+        /// Verifica si ya existe un administrador con el mismo número de DNI o correo electrónico.
+        /// </summary>
+        /// <param name="admin">Objeto Administrador a verificar.</param>
+        /// <returns>True si el administrador ya existe, False si no.</returns>
         public bool AdminExists(Administrador admin)
         {
             parameters.Clear();
@@ -40,7 +50,11 @@ namespace Logica
             }
             return exists;
         }
-
+        /// <summary>
+        /// Genera un nuevo administrador y lo agrega a la base de datos si no existe otro con el mismo número de DNI o correo electrónico.
+        /// </summary>
+        /// <param name="admin">Objeto Administrador a agregar.</param>
+        /// <returns>True si se generó y agregó el nuevo administrador, False si no.</returns>
         public bool GenerateNewAdmin(Administrador admin)
         {
             bool created = false;
@@ -60,7 +74,11 @@ namespace Logica
             }
             return created;
         }
-
+        /// <summary>
+        /// Muestra los viajes de un pasajero específico en un DataTable.
+        /// </summary>
+        /// <param name="pasajero">Objeto Pasajero con la información del pasajero.</param>
+        /// <returns>DataTable con la información de los viajes del pasajero.</returns>
         public DataTable ShowPassengerTravels(Pasajero pasajero)
         {
             DataTable dt;
