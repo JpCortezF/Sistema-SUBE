@@ -33,7 +33,7 @@ namespace TestProject
         public void CostByKilometres_DeberiaLanzarExcepcionKilometrosCero()
         {
             // Arrange
-            Viajes miViaje = new Viajes { Kilometres = 0 }; // Kilómetros 0
+            Viajes miViaje = new Viajes { Kilometres = 5 }; // Kilómetros 0
 
             // Act & Assert
             miViaje.CostByKilometres(miViaje); // Debería lanzar una excepción KilometrosException
@@ -44,7 +44,7 @@ namespace TestProject
         public void CostByKilometres_DeberiaLanzarExcepcionKilometrosExcedidos()
         {
             // Arrange
-            Viajes miViaje = new Viajes { Kilometres = 25 }; // Kilómetros exceden el límite
+            Viajes miViaje = new Viajes { Kilometres = 24 }; // Kilómetros exceden el límite
 
             // Act & Assert
             miViaje.CostByKilometres(miViaje); // Debería lanzar una excepción KilometrosException
