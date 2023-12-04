@@ -42,10 +42,10 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
 
 <div style="display: flex; margin-bottom: 20px; margin-right: 10px;">
   <a href="https://postimg.cc/qNhMGS7J" target="_blank">
-    <img src="https://i.postimg.cc/L8vYmMK1/Form-Transporte.png" alt="Formulario de Transporte" style="width: 200px; height: auto; margin-right: 10px;">
+    <img src="https://i.postimg.cc/L8vYmMK1/Form-Transporte.png" alt="Formulario de Transporte" style="width: 600px; height: auto; margin-right: 10px;">
   </a>
   <a href="https://postimg.cc/LgzLtQhy" target="_blank">
-    <img src="https://i.postimg.cc/d3f6KzFK/Gps-Product.gif" alt="Viaja con tu SUBE" style="width: 200px; height: auto;">
+    <img src="https://i.postimg.cc/d3f6KzFK/Gps-Product.gif" alt="Viaja con tu SUBE" style="width: 600px; height: auto;">
   </a>
 </div>
 
@@ -54,10 +54,10 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
 
 <div style="display: flex; margin-bottom: 20px; margin-right: 10px;">
   <a href="https://postimg.cc/Yvhjsjdw" target="_blank">
-    <img src="https://i.postimg.cc/wjkJ3mJ3/Form-Sube-Pasajero.png" alt="Formulario SUBE Pasajero" style="width: 200px; height: auto; margin-right: 10px;">
+    <img src="https://i.postimg.cc/wjkJ3mJ3/Form-Sube-Pasajero.png" alt="Formulario SUBE Pasajero" style="width: 600px; height: auto; margin-right: 10px;">
   </a>
   <a href="https://postimg.cc/ZvdVHJXP" target="_blank">
-    <img src="https://i.postimg.cc/Wz9C23ny/Carga-Sube.png" alt="Carga SUBE" style="width: 200px; height: auto;">
+    <img src="https://i.postimg.cc/Wz9C23ny/Carga-Sube.png" alt="Carga SUBE" style="width: 600px; height: auto;">
   </a>
 </div>
 
@@ -65,26 +65,19 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
   - **Tarifa Social:** Inicia un trámite para acceder a la tarifa social y recibir descuentos en los viajes.
 
 <a href="https://postimg.cc/v1Cnz5yj" target="_blank">
-  <img src="https://i.postimg.cc/yd8T7TbV/Form-Tramites.png" alt="Formulario Trámites" style="width: 200px; height: auto; margin-bottom: 20px;">
+  <img src="https://i.postimg.cc/yd8T7TbV/Form-Tramites.png" alt="Formulario Trámites" style="width: 600px; height: auto; margin-bottom: 20px;">
 </a>
 
   - **Dar de Baja:** Da de baja tu tarjeta SUBE por robo, pérdida o rotura.
 
 <a href="https://postimg.cc/K1zgh0vw" target="_blank">
-  <img src="https://i.postimg.cc/GmPPYN0L/Dar-De-Baja.png" alt="Dar de Baja" style="width: 200px; height: auto; margin-bottom: 20px;">
+  <img src="https://i.postimg.cc/GmPPYN0L/Dar-De-Baja.png" alt="Dar de Baja" style="width: 600px; height: auto; margin-bottom: 20px;">
 </a>
 
   - **SUBE GOLD:** Obtén información sobre cómo obtener una tarjeta SUBE GOLD.
 
 <a href="https://postimg.cc/PvTP34R6" target="_blank">
-  <img src="https://i.postimg.cc/br2kvVHj/SubeGOLD.png" alt="SUBE GOLD" style="width: 200px; height: auto; margin-bottom: 20px;">
-</a>
-
-- **Mis Trámites:** Visualiza el estado actual de tus trámites.
-
-<a href="https://postimg.cc/s1mYFQ4B" target="_blank">
-  <img src="https://i.postimg.cc/m2f8H7cS/Estado-Reclamo-Act.png" alt="Estado de Reclamo" style="width: 200px; height: auto; margin-bottom: 20px;">
-</a>
+  <img src="https://i.postimg.cc/
 
 - **Salir:** Regresa al formulario principal.
 
