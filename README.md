@@ -56,10 +56,10 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
 
 <div style="display: flex; margin-bottom: 20px; margin-right: 10px;">
   <a href="https://postimg.cc/LgzLtQhy" target="_blank">
-    <img src="https://i.postimg.cc/d3f6KzFK/Gps-Product.gif" alt="Viaja con tu SUBE" style="width: 300px; height: auto;">
+    <img src="https://i.postimg.cc/d3f6KzFK/Gps-Product.gif" alt="Viaja con tu SUBE" style="width: 400px; height: auto;">
   </a>
   <a href="https://postimg.cc/qNhMGS7J" target="_blank">
-    <img src="https://i.postimg.cc/L8vYmMK1/Form-Transporte.png" alt="Formulario de Transporte" style="width: 300px; height: auto; margin-right: 10px;">
+    <img src="https://i.postimg.cc/L8vYmMK1/Form-Transporte.png" alt="Formulario de Transporte" style="width: 400px; height: auto; margin-right: 10px;">
   </a>
 </div>
 
@@ -68,10 +68,10 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
 
 <div style="display: flex; margin-bottom: 20px; margin-right: 10px;">
   <a href="https://postimg.cc/Yvhjsjdw" target="_blank">
-    <img src="https://i.postimg.cc/wjkJ3mJ3/Form-Sube-Pasajero.png" alt="Formulario SUBE Pasajero" style="width: 300px; height: auto; margin-right: 10px;">
+    <img src="https://i.postimg.cc/wjkJ3mJ3/Form-Sube-Pasajero.png" alt="Formulario SUBE Pasajero" style="width: 400px; height: auto; margin-right: 10px;">
   </a>
   <a href="https://postimg.cc/ZvdVHJXP" target="_blank">
-    <img src="https://i.postimg.cc/Wz9C23ny/Carga-Sube.png" alt="Carga SUBE" style="width: 300px; height: auto;">
+    <img src="https://i.postimg.cc/Wz9C23ny/Carga-Sube.png" alt="Carga SUBE" style="width: 400px; height: auto;">
   </a>
 </div>
 
