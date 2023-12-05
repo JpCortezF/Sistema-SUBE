@@ -54,7 +54,7 @@ namespace Sube
                 case 2:
                     dataGridView.DataSource = sistemaPasajero.LoadDataTableWithSubeSearch(txtDni.Text);
                     break;
-            } 
+            }
             LoadDataGridView();
         }
 
@@ -131,5 +131,10 @@ namespace Sube
             txtName.Text = Regex.Replace(txtName.Text, "[^a-zA-Z ]", "");
         }
 
+        private void FormBuscarUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ContainerAdmin admin = (ContainerAdmin)this.MdiParent;
+            admin.ShowPictureBox();
+        }
     }
 }

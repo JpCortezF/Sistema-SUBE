@@ -34,7 +34,10 @@
             buscadorToolStripMenuItem = new ToolStripMenuItem();
             notificacionesToolStripMenuItem = new ToolStripMenuItem();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -71,13 +74,37 @@
             notificacionesToolStripMenuItem.Text = "NOTIFICACIONES";
             notificacionesToolStripMenuItem.Click += notificacionesToolStripMenuItem_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.fondoAdmin2;
+            pictureBox1.Location = new Point(0, 39);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1084, 522);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ImageAlign = ContentAlignment.BottomCenter;
+            label1.Location = new Point(314, 527);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 25);
+            label1.TabIndex = 13;
+            label1.Text = "label1";
+            // 
             // ContainerAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.fondoSube;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1084, 561);
+            Controls.Add(label1);
+            Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -89,6 +116,7 @@
             Load += ContainerAdmin_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -100,6 +128,8 @@
         private ToolStripMenuItem buscadorToolStripMenuItem;
         private ToolStripMenuItem notificacionesToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }
 

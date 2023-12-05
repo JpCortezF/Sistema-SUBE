@@ -43,7 +43,9 @@
             txtDni = new TextBox();
             label2 = new Label();
             cmbDni = new ComboBox();
+            pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -72,10 +74,10 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(cmbDni);
-            groupBox1.Location = new Point(460, 0);
+            groupBox1.Location = new Point(403, -1);
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(467, 429);
+            groupBox1.Size = new Size(419, 390);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             // 
@@ -86,7 +88,7 @@
             btnHardcoce.FlatStyle = FlatStyle.Flat;
             btnHardcoce.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnHardcoce.ForeColor = SystemColors.Control;
-            btnHardcoce.Location = new Point(68, 354);
+            btnHardcoce.Location = new Point(67, 306);
             btnHardcoce.Name = "btnHardcoce";
             btnHardcoce.Size = new Size(97, 39);
             btnHardcoce.TabIndex = 20;
@@ -124,7 +126,7 @@
             lblRegistro.Cursor = Cursors.Hand;
             lblRegistro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistro.ForeColor = Color.LimeGreen;
-            lblRegistro.Location = new Point(275, 365);
+            lblRegistro.Location = new Point(274, 317);
             lblRegistro.Name = "lblRegistro";
             lblRegistro.Size = new Size(121, 17);
             lblRegistro.TabIndex = 6;
@@ -138,7 +140,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(171, 354);
+            btnIngresar.Location = new Point(170, 306);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(89, 39);
             btnIngresar.TabIndex = 0;
@@ -221,21 +223,33 @@
             cmbDni.Size = new Size(316, 28);
             cmbDni.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.LigthMode;
+            pictureBox1.Location = new Point(0, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(458, 390);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
             // FormIngreso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.SubeIngreso;
-            ClientSize = new Size(927, 430);
+            ClientSize = new Size(826, 389);
             ControlBox = false;
             Controls.Add(groupBox1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormIngreso";
+            Opacity = 0.75D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormIngreso";
             Load += FormIngreso_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -254,5 +268,6 @@
         private Label label2;
         private ComboBox cmbDni;
         private Button btnHardcoce;
+        private PictureBox pictureBox1;
     }
 }

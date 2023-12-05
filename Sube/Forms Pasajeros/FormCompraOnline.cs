@@ -56,7 +56,7 @@ namespace Sube.Forms_Pasajeros
                 {
                     MessageBox.Show("No puede tener más de una SUBE a su nombre", "Nueva SUBE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }           
+            }
         }
         private void FormCompraOnline_Load(object sender, EventArgs e)
         {
@@ -72,5 +72,9 @@ namespace Sube.Forms_Pasajeros
             txtDni.Text = Regex.Replace(txtDni.Text, @"[^0-9]", "");
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

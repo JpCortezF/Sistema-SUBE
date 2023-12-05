@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubeONLINE));
             pictureBox2 = new PictureBox();
             txtDomicilio = new TextBox();
             label7 = new Label();
@@ -41,18 +40,18 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Image = Properties.Resources.Reparto;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(925, 458);
+            pictureBox2.Size = new Size(420, 389);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 33;
             pictureBox2.TabStop = false;
             // 
             // txtDomicilio
             // 
             txtDomicilio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDomicilio.Location = new Point(506, 65);
+            txtDomicilio.Location = new Point(429, 41);
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.Size = new Size(388, 26);
             txtDomicilio.TabIndex = 46;
@@ -61,7 +60,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(506, 37);
+            label7.Location = new Point(429, 13);
             label7.Name = "label7";
             label7.Size = new Size(140, 16);
             label7.TabIndex = 49;
@@ -73,7 +72,7 @@
             txtCarga.BorderStyle = BorderStyle.FixedSingle;
             txtCarga.Enabled = false;
             txtCarga.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            txtCarga.Location = new Point(624, 328);
+            txtCarga.Location = new Point(536, 264);
             txtCarga.Name = "txtCarga";
             txtCarga.PlaceholderText = "500";
             txtCarga.Size = new Size(180, 45);
@@ -86,7 +85,7 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Enabled = false;
             textBox1.Font = new Font("Lucida Sans", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.Location = new Point(522, 330);
+            textBox1.Location = new Point(434, 266);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "$ARS";
             textBox1.Size = new Size(96, 38);
@@ -99,7 +98,7 @@
             btnComprar.FlatAppearance.BorderSize = 0;
             btnComprar.FlatStyle = FlatStyle.Flat;
             btnComprar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnComprar.Location = new Point(631, 402);
+            btnComprar.Location = new Point(543, 338);
             btnComprar.Name = "btnComprar";
             btnComprar.Size = new Size(173, 44);
             btnComprar.TabIndex = 54;
@@ -110,7 +109,7 @@
             // txtClaim
             // 
             txtClaim.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtClaim.Location = new Point(506, 113);
+            txtClaim.Location = new Point(429, 89);
             txtClaim.MaxLength = 138;
             txtClaim.Multiline = true;
             txtClaim.Name = "txtClaim";
@@ -122,7 +121,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(925, 458);
+            ClientSize = new Size(826, 389);
             ControlBox = false;
             Controls.Add(txtClaim);
             Controls.Add(btnComprar);

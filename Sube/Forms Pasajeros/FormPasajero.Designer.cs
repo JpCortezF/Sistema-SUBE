@@ -50,7 +50,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(620, 409);
+            label3.Location = new Point(558, 373);
             label3.Name = "label3";
             label3.Size = new Size(126, 16);
             label3.TabIndex = 32;
@@ -64,7 +64,7 @@
             btnOnline.Cursor = Cursors.Hand;
             btnOnline.FlatAppearance.BorderSize = 0;
             btnOnline.FlatStyle = FlatStyle.Flat;
-            btnOnline.Location = new Point(584, 355);
+            btnOnline.Location = new Point(522, 319);
             btnOnline.Name = "btnOnline";
             btnOnline.Size = new Size(197, 51);
             btnOnline.TabIndex = 26;
@@ -77,7 +77,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(620, 307);
+            label2.Location = new Point(558, 271);
             label2.Name = "label2";
             label2.Size = new Size(132, 16);
             label2.TabIndex = 30;
@@ -91,7 +91,7 @@
             btnRegistrar.Cursor = Cursors.Hand;
             btnRegistrar.FlatAppearance.BorderSize = 0;
             btnRegistrar.FlatStyle = FlatStyle.Flat;
-            btnRegistrar.Location = new Point(584, 253);
+            btnRegistrar.Location = new Point(522, 217);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(197, 51);
             btnRegistrar.TabIndex = 25;
@@ -104,7 +104,7 @@
             lblIngresar.BackColor = Color.Transparent;
             lblIngresar.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblIngresar.ForeColor = Color.White;
-            lblIngresar.Location = new Point(620, 203);
+            lblIngresar.Location = new Point(558, 167);
             lblIngresar.Name = "lblIngresar";
             lblIngresar.Size = new Size(138, 16);
             lblIngresar.TabIndex = 23;
@@ -119,7 +119,7 @@
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(583, 149);
+            btnIngresar.Location = new Point(521, 113);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(198, 51);
             btnIngresar.TabIndex = 22;
@@ -138,7 +138,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(933, 500);
+            panel1.Size = new Size(830, 430);
             panel1.TabIndex = 35;
             // 
             // pictureBox1
@@ -147,19 +147,18 @@
             pictureBox1.Image = Properties.Resources.brigdeTrainGif;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(933, 500);
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.Size = new Size(830, 430);
             pictureBox1.TabIndex = 33;
             pictureBox1.TabStop = false;
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = SystemColors.ActiveCaption;
+            menuStrip1.BackColor = Color.MediumSlateBlue;
             menuStrip1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.Items.AddRange(new ToolStripItem[] { iNICIOToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(933, 37);
+            menuStrip1.Size = new Size(830, 37);
             menuStrip1.TabIndex = 33;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -175,7 +174,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkGray;
-            ClientSize = new Size(933, 500);
+            ClientSize = new Size(830, 430);
             ControlBox = false;
             Controls.Add(menuStrip1);
             Controls.Add(panel1);

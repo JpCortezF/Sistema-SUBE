@@ -27,7 +27,7 @@ namespace Sube.Forms_Pasajeros
         private void SubeGold_Load(object sender, EventArgs e)
         {
             lblMensaje.Text = "¿Deseas suscribirte a Sube GOLD?";
-            label1.Text = "La próxima vez que inicies sesión verás reflejada la SUBE GOLD\nUna vez que realices los 5 primeros viajes con tu Sube GOLD,\nlos próximos 5 viajes seran GRATIS.";
+            label1.Text = "La próxima vez que inicies sesión verás reflejada la SUBE GOLD\nCon esta SUBE pagas 1 de 2 viajes que realices.\nCada 10 viajes se hara un descuento a tu saldo.";
         }
 
         private void button1_Click(object sender, EventArgs e)

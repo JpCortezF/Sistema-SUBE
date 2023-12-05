@@ -142,6 +142,12 @@
   <data name="DarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\DarkMode.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fondoAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fondoadmin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fondoAdmin2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fondoadmin2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="fondoPasajero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\fondoPasajero.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -189,6 +195,9 @@
   </data>
   <data name="proyectoSube" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\proyectosube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Reparto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\reparto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SubeGold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\subegold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

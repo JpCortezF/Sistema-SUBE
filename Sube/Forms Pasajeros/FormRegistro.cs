@@ -67,14 +67,14 @@ namespace Sube
                 {
                     string password = txtClave.Text;
                     string name = txtName.Text;
-                    string lastname = txtLastname.Text; 
+                    string lastname = txtLastname.Text;
                     string email = txtCorreo.Text;
                     string document = txtDni.Text;
                     string cardNumber = userCardNumber;
                     int.TryParse(document, out int dni);
                     Pasajero passenger = new Pasajero(dni, idGender, email, password, name, lastname, cardNumber);
                     SistemaPasajero sistemaPasajero = new SistemaPasajero();
-                    if(!sistemaPasajero.PassengerExist(passenger))
+                    if (!sistemaPasajero.PassengerExist(passenger))
                     {
                         MessageBox.Show($"Se registro exitosamente!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         sistemaPasajero.InsertPassenger(passenger);

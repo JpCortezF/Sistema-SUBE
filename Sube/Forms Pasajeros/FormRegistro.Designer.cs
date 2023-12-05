@@ -61,11 +61,12 @@
             label3 = new Label();
             txtDni = new TextBox();
             btnDni = new Button();
-            label1 = new Label();
             panelDatos = new Panel();
+            pictureBox1 = new PictureBox();
             grpDatos.SuspendLayout();
             grpTarjeta.SuspendLayout();
             panelDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // grpDatos
@@ -96,10 +97,9 @@
             grpDatos.Controls.Add(label3);
             grpDatos.Controls.Add(txtDni);
             grpDatos.Controls.Add(btnDni);
-            grpDatos.Controls.Add(label1);
-            grpDatos.Location = new Point(3, 0);
+            grpDatos.Location = new Point(30, 0);
             grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(445, 755);
+            grpDatos.Size = new Size(418, 760);
             grpDatos.TabIndex = 4;
             grpDatos.TabStop = false;
             // 
@@ -110,7 +110,7 @@
             btnHardcode.FlatStyle = FlatStyle.Flat;
             btnHardcode.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnHardcode.ForeColor = SystemColors.Control;
-            btnHardcode.Location = new Point(32, 674);
+            btnHardcode.Location = new Point(26, 630);
             btnHardcode.Name = "btnHardcode";
             btnHardcode.Size = new Size(147, 41);
             btnHardcode.TabIndex = 50;
@@ -123,7 +123,7 @@
             btnMostrarPass.BackgroundImage = (Image)resources.GetObject("btnMostrarPass.BackgroundImage");
             btnMostrarPass.BackgroundImageLayout = ImageLayout.Zoom;
             btnMostrarPass.Cursor = Cursors.Hand;
-            btnMostrarPass.Location = new Point(367, 536);
+            btnMostrarPass.Location = new Point(361, 492);
             btnMostrarPass.Name = "btnMostrarPass";
             btnMostrarPass.Size = new Size(53, 27);
             btnMostrarPass.TabIndex = 11;
@@ -134,7 +134,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(32, 150);
+            label7.Location = new Point(26, 106);
             label7.Name = "label7";
             label7.Size = new Size(72, 16);
             label7.TabIndex = 48;
@@ -144,7 +144,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(32, 212);
+            label6.Location = new Point(26, 168);
             label6.Name = "label6";
             label6.Size = new Size(83, 16);
             label6.TabIndex = 47;
@@ -153,7 +153,7 @@
             // txtLastname
             // 
             txtLastname.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtLastname.Location = new Point(32, 231);
+            txtLastname.Location = new Point(26, 187);
             txtLastname.Name = "txtLastname";
             txtLastname.Size = new Size(388, 26);
             txtLastname.TabIndex = 46;
@@ -161,7 +161,7 @@
             // txtName
             // 
             txtName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(31, 169);
+            txtName.Location = new Point(25, 125);
             txtName.Name = "txtName";
             txtName.Size = new Size(388, 26);
             txtName.TabIndex = 45;
@@ -171,7 +171,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(33, 574);
+            label11.Location = new Point(27, 530);
             label11.Name = "label11";
             label11.Size = new Size(112, 16);
             label11.TabIndex = 41;
@@ -180,7 +180,7 @@
             // txtRepetirClave
             // 
             txtRepetirClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtRepetirClave.Location = new Point(33, 593);
+            txtRepetirClave.Location = new Point(27, 549);
             txtRepetirClave.MaxLength = 4;
             txtRepetirClave.Name = "txtRepetirClave";
             txtRepetirClave.PasswordChar = '•';
@@ -193,7 +193,7 @@
             lblClave.AutoSize = true;
             lblClave.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblClave.ForeColor = Color.DarkRed;
-            lblClave.Location = new Point(34, 622);
+            lblClave.Location = new Point(28, 578);
             lblClave.Name = "lblClave";
             lblClave.Size = new Size(77, 15);
             lblClave.TabIndex = 39;
@@ -204,7 +204,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(35, 516);
+            label8.Location = new Point(29, 472);
             label8.Name = "label8";
             label8.Size = new Size(57, 16);
             label8.TabIndex = 38;
@@ -213,7 +213,7 @@
             // txtClave
             // 
             txtClave.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtClave.Location = new Point(31, 536);
+            txtClave.Location = new Point(25, 492);
             txtClave.MaxLength = 4;
             txtClave.Name = "txtClave";
             txtClave.PasswordChar = '•';
@@ -226,7 +226,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(33, 350);
+            label4.Location = new Point(27, 306);
             label4.Name = "label4";
             label4.Size = new Size(68, 16);
             label4.TabIndex = 23;
@@ -238,7 +238,7 @@
             btnMasculino.Cursor = Cursors.Hand;
             btnMasculino.FlatStyle = FlatStyle.Flat;
             btnMasculino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnMasculino.Location = new Point(34, 369);
+            btnMasculino.Location = new Point(28, 325);
             btnMasculino.Name = "btnMasculino";
             btnMasculino.Size = new Size(130, 28);
             btnMasculino.TabIndex = 6;
@@ -251,7 +251,7 @@
             btnFemenino.Cursor = Cursors.Hand;
             btnFemenino.FlatStyle = FlatStyle.Flat;
             btnFemenino.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnFemenino.Location = new Point(161, 369);
+            btnFemenino.Location = new Point(155, 325);
             btnFemenino.Name = "btnFemenino";
             btnFemenino.Size = new Size(130, 28);
             btnFemenino.TabIndex = 7;
@@ -264,7 +264,7 @@
             btnX.Cursor = Cursors.Hand;
             btnX.FlatStyle = FlatStyle.Flat;
             btnX.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnX.Location = new Point(290, 369);
+            btnX.Location = new Point(284, 325);
             btnX.Name = "btnX";
             btnX.Size = new Size(130, 28);
             btnX.TabIndex = 8;
@@ -279,7 +279,7 @@
             grpTarjeta.Controls.Add(txtTarjeta2);
             grpTarjeta.Controls.Add(textBox5);
             grpTarjeta.Controls.Add(lblTarjeta);
-            grpTarjeta.Location = new Point(18, 47);
+            grpTarjeta.Location = new Point(12, 3);
             grpTarjeta.Name = "grpTarjeta";
             grpTarjeta.Size = new Size(427, 100);
             grpTarjeta.TabIndex = 36;
@@ -360,7 +360,7 @@
             btnContinuar.FlatStyle = FlatStyle.Flat;
             btnContinuar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnContinuar.ForeColor = SystemColors.Control;
-            btnContinuar.Location = new Point(272, 675);
+            btnContinuar.Location = new Point(266, 631);
             btnContinuar.Name = "btnContinuar";
             btnContinuar.Size = new Size(147, 41);
             btnContinuar.TabIndex = 13;
@@ -373,7 +373,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.DarkRed;
-            label9.Location = new Point(33, 410);
+            label9.Location = new Point(27, 366);
             label9.Name = "label9";
             label9.Size = new Size(68, 15);
             label9.TabIndex = 35;
@@ -385,7 +385,7 @@
             lblCorreo.AutoSize = true;
             lblCorreo.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblCorreo.ForeColor = Color.DarkRed;
-            lblCorreo.Location = new Point(33, 488);
+            lblCorreo.Location = new Point(27, 444);
             lblCorreo.Name = "lblCorreo";
             lblCorreo.Size = new Size(84, 15);
             lblCorreo.TabIndex = 34;
@@ -396,7 +396,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(34, 440);
+            label5.Location = new Point(28, 396);
             label5.Name = "label5";
             label5.Size = new Size(145, 16);
             label5.TabIndex = 30;
@@ -405,7 +405,7 @@
             // txtCorreo
             // 
             txtCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCorreo.Location = new Point(33, 459);
+            txtCorreo.Location = new Point(27, 415);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(387, 26);
             txtCorreo.TabIndex = 9;
@@ -415,7 +415,7 @@
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblDni.ForeColor = Color.DarkRed;
-            lblDni.Location = new Point(33, 321);
+            lblDni.Location = new Point(27, 277);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(68, 15);
             lblDni.TabIndex = 27;
@@ -426,7 +426,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(33, 273);
+            label3.Location = new Point(27, 229);
             label3.Name = "label3";
             label3.Size = new Size(43, 16);
             label3.TabIndex = 22;
@@ -435,7 +435,7 @@
             // txtDni
             // 
             txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDni.Location = new Point(33, 292);
+            txtDni.Location = new Point(27, 248);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(335, 26);
@@ -447,39 +447,39 @@
             btnDni.BackgroundImage = (Image)resources.GetObject("btnDni.BackgroundImage");
             btnDni.BackgroundImageLayout = ImageLayout.Zoom;
             btnDni.Cursor = Cursors.Hand;
-            btnDni.Location = new Point(367, 291);
+            btnDni.Location = new Point(361, 247);
             btnDni.Name = "btnDni";
             btnDni.Size = new Size(53, 27);
             btnDni.TabIndex = 5;
             btnDni.UseVisualStyleBackColor = true;
             btnDni.Click += btnDni_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(32, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(85, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Paso 1";
-            // 
             // panelDatos
             // 
             panelDatos.AutoScroll = true;
             panelDatos.Controls.Add(grpDatos);
-            panelDatos.Location = new Point(459, 0);
+            panelDatos.Location = new Point(359, 0);
             panelDatos.Name = "panelDatos";
             panelDatos.Size = new Size(468, 458);
             panelDatos.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.DarkMode;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(400, 391);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
             // 
             // FormRegistro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.SubeIngreso;
-            ClientSize = new Size(927, 430);
+            ClientSize = new Size(826, 389);
             ControlBox = false;
+            Controls.Add(pictureBox1);
             Controls.Add(panelDatos);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -492,6 +492,7 @@
             grpTarjeta.ResumeLayout(false);
             grpTarjeta.PerformLayout();
             panelDatos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -518,7 +519,6 @@
         private Label label3;
         private TextBox txtDni;
         private Button btnDni;
-        private Label label1;
         private Label label11;
         private TextBox txtRepetirClave;
         private Label lblClave;
@@ -531,5 +531,6 @@
         private TextBox txtName;
         private Button btnMostrarPass;
         private Button btnHardcode;
+        private PictureBox pictureBox1;
     }
 }
