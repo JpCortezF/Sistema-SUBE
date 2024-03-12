@@ -102,14 +102,14 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
 
 - **Salir:** Regresa al formulario principal.
 
-
-## Licencia
-
-Este proyecto está bajo la licencia [MIT license].
-
 Integrantes:
 
 | Nombre  | Apellido | Github |
 | ------------- | ------------- |  ------------- |
 | Juan Pablo        | Cortez Fernandez  | <a href="https://github.com/JpCortezF" target="_blank">JpCortezF</a> |
 | Ezequiel Anthony  | Melo              | <a href="https://github.com/EzequielMelo" target="_blank">EzequielMelo</a> |
+
+## Licencia
+
+Este proyecto está bajo la licencia [MIT license].
+
