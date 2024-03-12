@@ -102,7 +102,7 @@ En la página de inicio, encontrarás un menú con las siguientes opciones:
 
 - **Salir:** Regresa al formulario principal.
 
-### Ingreso
+### Integrantes
 
 | Nombre  | Apellido | Github |
 | ------------- | ------------- |  ------------- |
