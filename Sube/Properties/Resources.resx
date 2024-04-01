@@ -127,6 +127,9 @@
   <data name="camionGif" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\camiongif.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cloudspoly" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\cloudspoly.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="compra_en_linea" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\compra-en-linea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -143,7 +146,7 @@
     <value>..\resources\DarkMode.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fondoAdmin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\fondoadmin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\resources\fondoAdmin.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fondoAdmin2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\fondoadmin2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -35,7 +35,6 @@
             notificacionesToolStripMenuItem = new ToolStripMenuItem();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -77,25 +76,12 @@
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.fondoAdmin2;
+            pictureBox1.Image = Properties.Resources.cloudspoly;
             pictureBox1.Location = new Point(0, 39);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1084, 522);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ImageAlign = ContentAlignment.BottomCenter;
-            label1.Location = new Point(314, 527);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 25);
-            label1.TabIndex = 13;
-            label1.Text = "label1";
             // 
             // ContainerAdmin
             // 
@@ -103,7 +89,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1084, 561);
-            Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.None;
@@ -129,7 +114,6 @@
         private ToolStripMenuItem notificacionesToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private PictureBox pictureBox1;
-        private Label label1;
     }
 }
 

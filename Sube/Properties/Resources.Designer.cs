@@ -103,6 +103,16 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap cloudspoly {
+            get {
+                object obj = ResourceManager.GetObject("cloudspoly", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap compra_en_linea {
             get {
                 object obj = ResourceManager.GetObject("compra_en_linea", resourceCulture);
