@@ -138,12 +138,12 @@ namespace Biblioteca_DataBase
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine("Error en la actualización de MySQL: " + ex.Message);
+                Console.WriteLine("Error al insertar a MySQL: " + ex.Message);
                 return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error general en la actualización de MySQL: " + ex.Message);
+                Console.WriteLine("Error general al insertar el elemento a MySQL: " + ex.Message);
                 return false;
             }
             finally

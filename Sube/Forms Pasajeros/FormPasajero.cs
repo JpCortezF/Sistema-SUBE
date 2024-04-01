@@ -28,7 +28,7 @@ namespace Sube
             ToolStripMenuItem itemSalir = new ToolStripMenuItem("| SALIR |");
             menuStrip1.Items.Add(itemSalir);
             itemSalir.Alignment = ToolStripItemAlignment.Right;
-            itemSalir.BackColor = SystemColors.ActiveCaption;
+            itemSalir.BackColor = Color.MediumSlateBlue;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
             Image backgroundImage = Properties.Resources.fondoPasajero;
@@ -60,6 +60,7 @@ namespace Sube
             btnIngresar.Region = new Region(CrearRegionConEsquinasRedondeadas(btnIngresar.Width, btnIngresar.Height, radio));
             btnRegistrar.Region = new Region(CrearRegionConEsquinasRedondeadas(btnRegistrar.Width, btnRegistrar.Height, radio));
             btnOnline.Region = new Region(CrearRegionConEsquinasRedondeadas(btnOnline.Width, btnOnline.Height, radio));
+            this.Region = new Region(CrearRegionConEsquinasRedondeadas(this.Width, this.Height, radio));
         }
         private void itemSalir_Click(object sender, EventArgs e)
         {
@@ -81,6 +82,7 @@ namespace Sube
             if (currentChildForm is null || !(currentChildForm is FormIngreso))
             {
                 FormIngreso formIngreso = new FormIngreso(this);
+                formIngreso.Opacity = 0.50;
                 OpenChildForm(formIngreso);
             }
         }

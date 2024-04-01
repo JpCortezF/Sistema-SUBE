@@ -38,6 +38,10 @@ namespace Sube
             itemSalir.BackColor = SystemColors.ActiveCaption;
             itemSalir.ForeColor = SystemColors.ControlText;
             itemSalir.Click += itemSalir_Click;
+
+            label1.Text = GenerateTips();
+            label1.Location = new Point(316, 451);
+            pictureBox1.Controls.Add(label1);
         }
 
         private void itemSalir_Click(object sender, EventArgs e)
@@ -61,7 +65,8 @@ namespace Sube
             {
                 currentChildForm.Close();
             }
-
+            label1.Visible = false;
+            pictureBox1.Visible = false;
             currentChildForm = childForm;
             childForm.MdiParent = this;
             childForm.Location = new Point(0, 0);
@@ -105,13 +110,63 @@ namespace Sube
             }
 
         }
+        private string GenerateTips()
+        {
+            string tip;
+            Random random = new Random();
+            int randomNumber = random.Next(1, 11);
 
+            Console.WriteLine($"Número aleatorio: {randomNumber}");
+
+            switch (randomNumber)
+            {
+                case 1:
+                    tip = "Debajo de toda esa piedra, hay diamantes.";
+                    break;
+                case 2:
+                    tip = "Todos vivimos en el mismo planeta, pero cada quien en su mundo.";
+                    break;
+                case 3:
+                    tip = "No todo lo que brilla es valioso.";
+                    break;
+                case 4:
+                    tip = "¿La gente lee estas cosas?";
+                    break;
+                case 5:
+                    tip = "No borres el mundo entero por un mal momento.";
+                    break;
+                case 6:
+                    tip = "No dejes árboles flotando.";
+                    break;
+                case 7:
+                    tip = "Entre más bella y rara sea la espada, más daño te hará.";
+                    break;
+                case 8:
+                    tip = "Trata bien a los animales.";
+                    break;
+                case 9:
+                    tip = "Si activas los trucos se desactivan los logros.";
+                    break;
+                case 10:
+                    tip = "No habla de Minecraft, habla de la vida.";
+                    break;
+                default:
+                    tip = "Número no esperado.";
+                    break;
+            }
+            return tip;
+        }
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Form childForm in this.MdiChildren)
             {
                 childForm.Close();
             }
+        }
+        public void ShowPictureBox()
+        {
+            pictureBox1.Visible = true;
+            label1.Visible = true;
         }
     }
 }

@@ -84,16 +84,16 @@ namespace Sube
             {
                 Image gifImage = Properties.Resources.DarkMode;
                 pictureBox1.Image = gifImage;
-                pictureBox1.BackColor = Color.Transparent;
-                lblNombre.BackColor = Color.Black;
+                lblNombre.Location = new Point(322, 480);
+                pictureBox1.Controls.Add(lblNombre);
                 darkMode = true;
             }
             else
             {
                 Image gifImage = Properties.Resources.LigthMode;
                 pictureBox1.Image = gifImage;
-                pictureBox1.BackColor = Color.Transparent;
-                lblNombre.BackColor = Color.SteelBlue;
+                lblNombre.Location = new Point(322, 480);
+                pictureBox1.Controls.Add(lblNombre);
                 darkMode = false;
             }
             toggleButton.Checked = darkMode;
@@ -197,7 +197,6 @@ namespace Sube
             {
                 currentChildForm = null;
             };
-            lblNombre.Visible = false;
             pictureBox1.Visible = false;
             toggleButton.Enabled = false;
             childForm.Show();
@@ -304,7 +303,7 @@ namespace Sube
                 Image gifImage = Properties.Resources.DarkMode;
                 pictureBox1.Image = gifImage;
                 pictureBox1.BackColor = Color.Transparent;
-                lblNombre.BackColor = Color.Black;
+                pictureBox1.Controls.Add(lblNombre);
                 BackgroundImage = Properties.Resources.DarkMode;
                 menuStrip1.BackColor = Color.MediumSlateBlue;
                 itemSalir.BackColor = Color.MediumSlateBlue;
@@ -315,14 +314,13 @@ namespace Sube
                 Image gifImage = Properties.Resources.LigthMode;
                 pictureBox1.Image = gifImage;
                 pictureBox1.BackColor = Color.Transparent;
-                lblNombre.BackColor = Color.SteelBlue;
+                pictureBox1.Controls.Add(lblNombre);
                 BackgroundImage = Properties.Resources.LigthMode;
                 menuStrip1.BackColor = SystemColors.ActiveCaption;
                 itemSalir.BackColor = SystemColors.ActiveCaption;
                 darkMode = false;
             }
         }
-
         private void InicioPasajero_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Stop();

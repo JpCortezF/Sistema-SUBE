@@ -61,6 +61,7 @@ namespace Sube.Forms_Pasajeros
         {
             FormPasajero formPasajero = (FormPasajero)this.MdiParent;
             formPasajero.ItemsMdiParentVisibles();
+
         }
     }
 }

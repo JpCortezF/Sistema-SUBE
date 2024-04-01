@@ -153,6 +153,26 @@ namespace Sube.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap fondoAdmin {
+            get {
+                object obj = ResourceManager.GetObject("fondoAdmin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap fondoAdmin2 {
+            get {
+                object obj = ResourceManager.GetObject("fondoAdmin2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fondoPasajero {
             get {
                 object obj = ResourceManager.GetObject("fondoPasajero", resourceCulture);
@@ -306,6 +326,16 @@ namespace Sube.Properties {
         public static System.Drawing.Bitmap proyectoSube {
             get {
                 object obj = ResourceManager.GetObject("proyectoSube", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Reparto {
+            get {
+                object obj = ResourceManager.GetObject("Reparto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

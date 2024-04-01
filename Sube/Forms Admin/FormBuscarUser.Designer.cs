@@ -150,6 +150,7 @@
             Name = "FormBuscarUser";
             StartPosition = FormStartPosition.Manual;
             Text = "Form1";
+            FormClosed += FormBuscarUser_FormClosed;
             Load += FormBuscarUser_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             panel1.ResumeLayout(false);

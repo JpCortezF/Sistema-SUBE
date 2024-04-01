@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCompraOnline));
             btnIngresar = new Button();
             txtDni = new TextBox();
             label2 = new Label();
@@ -45,7 +44,7 @@
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = SystemColors.Control;
-            btnIngresar.Location = new Point(616, 386);
+            btnIngresar.Location = new Point(516, 291);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(201, 49);
             btnIngresar.TabIndex = 20;
@@ -56,7 +55,7 @@
             // txtDni
             // 
             txtDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDni.Location = new Point(542, 163);
+            txtDni.Location = new Point(459, 149);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(316, 26);
@@ -66,7 +65,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(542, 141);
+            label2.Location = new Point(459, 127);
             label2.Name = "label2";
             label2.Size = new Size(147, 19);
             label2.TabIndex = 26;
@@ -76,7 +75,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(542, 71);
+            label1.Location = new Point(459, 57);
             label1.Name = "label1";
             label1.Size = new Size(164, 19);
             label1.TabIndex = 21;
@@ -86,18 +85,18 @@
             // 
             cmbDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDni.FormattingEnabled = true;
-            cmbDni.Location = new Point(542, 93);
+            cmbDni.Location = new Point(459, 79);
             cmbDni.Name = "cmbDni";
             cmbDni.Size = new Size(316, 28);
             cmbDni.TabIndex = 22;
             // 
             // pictureBox2
             // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Image = Properties.Resources.brigdeTrainGif;
+            pictureBox2.Location = new Point(0, -1);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(925, 458);
+            pictureBox2.Size = new Size(415, 390);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 32;
             pictureBox2.TabStop = false;
             // 
@@ -106,7 +105,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(925, 458);
+            ClientSize = new Size(826, 389);
             ControlBox = false;
             Controls.Add(btnIngresar);
             Controls.Add(txtDni);

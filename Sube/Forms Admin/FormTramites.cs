@@ -33,7 +33,7 @@ namespace Sube
         {
             InitializeComponent();
             parentForm = parent;
-            this.listTramites = tramites;       
+            this.listTramites = tramites;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -48,12 +48,12 @@ namespace Sube
                     if (selectedRow.Cells["DNI"].Value != null)
                     {
                         int dniPassenger = Convert.ToInt32(selectedRow.Cells["DNI"].Value);
-                        
+
                         selectedClaimId = (int)(selectedRow.Cells["IdReclamo"].Value);
                         selectedIndex = listTramites.FindIndex(tramite => tramite.ClaimId == selectedClaimId);
                         Pasajero passenger = sistemaPasajero.GetPasajeroByDni(dniPassenger);
                         FormAdminEstadoTramite editarUsuario = new FormAdminEstadoTramite(passenger, listTramites[selectedIndex]);
-                        editarUsuario.MdiParent = parentForm;                       
+                        editarUsuario.MdiParent = parentForm;
                         sistemaTramite.UpdateTramiteStatus(selectedClaimId, EClaimStatus.EnRevision);
                         editarUsuario.UpdateDataGridViewEvent += FormTramites_Load;
                         editarUsuario.Show();
@@ -100,12 +100,18 @@ namespace Sube
 
             dataGridView1.DataSource = result;
 
-            lblCount.Text = dataGridView1.Rows.Count.ToString();         
+            lblCount.Text = dataGridView1.Rows.Count.ToString();
         }
 
         private async Task<DataTable> GetDataAsync()
         {
             return await Task.Run(() => sistemaTramite.LoadDataTable());
+        }
+
+        private void FormTramites_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ContainerAdmin admin = (ContainerAdmin)this.MdiParent;
+            admin.ShowPictureBox();
         }
     }
 }

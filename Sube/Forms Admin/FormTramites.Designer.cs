@@ -85,6 +85,7 @@
             Name = "FormTramites";
             StartPosition = FormStartPosition.Manual;
             Text = "FormTramites";
+            FormClosed += FormTramites_FormClosed;
             Load += FormTramites_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
