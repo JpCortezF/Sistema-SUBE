@@ -18,12 +18,12 @@ namespace Biblioteca_TarjetaSube
 
         static PrecioViajes()
         {
-            ValorColectivo0To3Km = 52.96f;
-            ValorColectivo3To6Km = 59.00f;
-            ValorColectivo6To12Km = 63.54f;
-            ValorColectivo12To27Km = 68.09f;
-            ValorSubte = 80f;
-            ValorTren = 90f;
+            ValorColectivo0To3Km = 270.00f;
+            ValorColectivo3To6Km = 300.78f;
+            ValorColectivo6To12Km = 323.95f;
+            ValorColectivo12To27Km = 347.15f;
+            ValorSubte = 125f;
+            ValorTren = 208f;
             ValorSinSubsidio = 700;
         }
     }

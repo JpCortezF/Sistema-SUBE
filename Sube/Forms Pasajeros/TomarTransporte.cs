@@ -106,7 +106,7 @@ namespace Sube
                                             break;
                                     }
                                     int totalTravels = sistemaViaje.CountTravels(sube);
-                                    if (totalTravels % 2 == 0)
+                                    if (totalTravels % 2 == 0 && (sube.TarifaSocial == ETarifaSocial.SubeGold))
                                     {
                                         sistemaViaje.DiscountGoldEvent += sistemaViaje.HandleDiscountGoldEvent;
                                     }
