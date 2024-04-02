@@ -1,4 +1,20 @@
-# Proyecto Integrador SUBE
+<h1>Proyecto Integrador SUBE</h1> 
+
+<p>Este proyecto se ha llevado a cabo en C# WinForms, en conjunto con MySQL, y tiene como objetivo simular un sistema de gestión de viajes similar al Sistema Único de Boletos Electrónicos (SUBE) en Argentina.
+Este sistema, dividido en dos roles distintos de usuario y administrador, busca proporcionar una experiencia eficiente y segura para los usuarios mientras gestionan sus viajes y tarjetas.
+
+Funcionalidades para el Usuario:
+Carga de la SUBE: Facilita la recarga de saldo en la tarjeta SUBE para los usuarios.
+Realización de Viajes: Implementa un proceso asincrónico para llevar a cabo los viajes.
+Historial de Viajes: Permite a los usuarios revisar su historial de viajes realizados.
+Trámite de Tarifas Sociales: Ofrece la posibilidad de solicitar y gestionar tarifas especiales, como descuentos para jubilados, estudiantes, discapacitados, entre otros.
+Reporte de Tarjeta: Permite reportar pérdida, robo o rotura de la tarjeta, así como verificar el estado de dichos reportes.
+
+Funcionalidades para el Administrador:
+Gestión de Usuarios: Permite al administrador visualizar y administrar todos los usuarios registrados en el sistema.
+Trámites de Usuarios: Facilita la gestión de los diferentes trámites generados por los usuarios, brindando la opción de aceptar o rechazar solicitudes.
+
+Todas estas funcionalidades están completamente integradas con una base de datos MySQL, lo que garantiza la persistencia y seguridad de los datos en todo momento.</p>
 
 ## Form Principal (Admin o Pasajero)
 
